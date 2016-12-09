@@ -14,5 +14,5 @@ node_modules
 .vscode
 .idea
 
-**/dist
+packages/**/dist
 ts-output

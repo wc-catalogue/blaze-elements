@@ -14,6 +14,7 @@
     "packagelist": "node utils/generate-packages-list.js",
     "start": "npm run packagelist && webpack-dev-server --env.dev --hot",
     "build": "npm run packagelist && rimraf dist && webpack --env.prod",
+    "build:publish": "npm run build && ./utils/deploy-ghpages.sh",
     "prepublish": "npm run build",
     "start:prod": "pushstate-server dist/"
   },
