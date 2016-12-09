@@ -6,7 +6,9 @@
   "author": "elemementor",
   "license": "MIT",
   "files": [
-    "dist"
+    "./dist/main.js",
+    "./dist/polyfills.js",
+    "./dist/vendors.js"
   ],
   "scripts": {
     "packagelist": "node utils/generate-packages-list.js",
