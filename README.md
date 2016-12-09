@@ -1,2 +1,3 @@
-# blaze-elements
+# Blaze Elements
+
 Web Component Blaze Elements

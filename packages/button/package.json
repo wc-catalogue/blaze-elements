@@ -1,0 +1,15 @@
+{
+  "name": "bl-button",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "license": "MIT",
+  "main": "dist/main.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "../../node_modules/.bin/webpack-dev-server  --config ../../webpack.config.js --env.dev --hot",
+    "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.element=button",
+    "prepublish": "npm run build"
+  }
+}

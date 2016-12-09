@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmitHelpers": true,
+    // with this __extends cannot be overriden
+    // "importHelpers": true,
+    "moduleResolution": "node",
+    "outDir": "ts-output",
+    "rootDir": "./",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "pretty": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "manual_definitions/*"
+      ]
+    },
+    "typeRoots": [
+      // "node_modules/@types",
+      "manual_definitions"
+    ],
+    "types": [
+      "skatejs",
+      "jsx"
+    ],
+    "lib": [
+      "dom",
+      "es2015"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
