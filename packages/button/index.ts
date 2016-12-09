@@ -1,2 +1,2 @@
 import './Button';
-import './demo/Demo';
+import './Button.demo';
