@@ -120,10 +120,10 @@ module.exports = ( env ) => {
        * This will also take care of moving the index.html file to the build directory using the index.html in src as a template.
        * https://github.com/ampedandwired/html-webpack-plugin
        */
-      ifNotProd( new HtmlWebpackPlugin( {
+      new HtmlWebpackPlugin( {
         template: resolve( 'index.html' ),
         packages: env.element ? env.element : require('./package.json').packages
-      } ) )
+      } )
 
     ])
   }
