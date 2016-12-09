@@ -1,10 +1,13 @@
 {
   "name": "blaze-elements",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/main.js",
   "repository": "git@github.com:wc-catalogue/blaze-elements.git",
   "author": "elemementor",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "packagelist": "node utils/generate-packages-list.js",
     "start": "npm run packagelist && webpack-dev-server --env.dev --hot",
