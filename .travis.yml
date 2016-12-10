@@ -7,3 +7,5 @@ branches:
 cache: yarn
 script:
   - npm run build:publish
+after_success:
+  - utils/publish-packages.sh
