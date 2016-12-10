@@ -29,15 +29,22 @@ export class Demo extends Component<void> {
     const {isOpen} = this;
     return [
       <style></style>,
-      !isOpen && <Button onClick={this.openAlert}>Show alerts</Button>,
-      <div>
-        <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert}>Alert default</Alert>
-        <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="brand">Alert brand</Alert>
-        <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="warning">Alert warning</Alert>
-        <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="info">Alert info</Alert>
-        <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="success">Alert success</Alert>
-        <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="error">Alert error</Alert>
-      </div>
+
+      <fieldset>
+        <legend>{Alert.is}</legend>
+
+        {!isOpen && <Button onClick={this.openAlert}>Show alerts</Button>}
+
+        <div>
+          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert}>Alert default</Alert>
+          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="brand">Alert brand</Alert>
+          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="warning">Alert warning</Alert>
+          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="info">Alert info</Alert>
+          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="success">Alert success</Alert>
+          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="error">Alert error</Alert>
+        </div>
+
+      </fieldset>
     ]
   }
 }
