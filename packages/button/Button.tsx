@@ -7,7 +7,8 @@ const ButtonTypes = {
   info: 'info',
   warning: 'warning',
   success: 'success',
-  error: 'error'
+  error: 'error',
+  close: 'close'
 };
 
 type ButtonType = typeof ButtonTypes;
@@ -45,6 +46,7 @@ export class Button extends Component<ButtonProps> {
         'c-button--success': type === ButtonTypes.success,
         'c-button--warning': type === ButtonTypes.warning,
         'c-button--error': type === ButtonTypes.error,
+        'c-button--close': type === ButtonTypes.close,
       }
     );
     return [

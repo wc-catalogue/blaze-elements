@@ -44,6 +44,7 @@
     "webpack-dev-server": "beta"
   },
   "packages": [
+    "alert",
     "badge",
     "button",
     "card",

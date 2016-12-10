@@ -26,7 +26,8 @@ module.exports = ( env ) => {
       'main': `./packages/${ env.element }/${ capitalize( env.element ) }.tsx`,
       'main.demo': `./packages/${ env.element }/${ capitalize( env.element ) }.demo.tsx`
     } : {
-      'main': './main.ts',
+      'main': './packages/index.ts',
+      'demo': './packages/index.demo.ts',
       'vendors': './vendors.ts',
       'polyfills': './polyfills.ts'
     },

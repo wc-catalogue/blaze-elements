@@ -1,3 +1,4 @@
+import './alert/Alert';
 import './badge/Badge';
 import './button/Button';
 import './card/Card';
