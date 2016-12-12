@@ -99,7 +99,7 @@ export class Modal extends Component<ModalProps> {
 
   renderedCallback() {
     if ( this.isOpen ) {
-      this.lastActiveElement = document.activeElement as HTMLElement;
+      this.lastActiveElement = this.deepActiveElement();
 
       this.focusModal();
 
@@ -112,6 +112,16 @@ export class Modal extends Component<ModalProps> {
       }
     }
   }
+
+  private deepActiveElement(): HTMLElement {
+    let activeElement = document.activeElement;
+    while (activeElement && activeElement.shadowRoot && activeElement.shadowRoot.activeElement) {
+      activeElement = activeElement.shadowRoot.activeElement;
+    }
+
+    return activeElement as HTMLElement;
+  }
+
 }
 
 customElements.define( Modal.is, Modal )
