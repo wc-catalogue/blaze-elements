@@ -11,14 +11,14 @@ export class Card extends Component<void> {
         <header class="c-card__header">
           <slot name="dismiss"></slot>
           <h2 class="c-heading">
-            <slot name="heading">dfdsf</slot>
+            <slot name="heading"></slot>
           </h2>
         </header>
         <div class="c-card__body">
-          <slot name="body">asdidsfds</slot>
+          <slot name="body"></slot>
         </div>
         <footer class="c-card__footer">
-          <slot name="footer">Close</slot>
+          <slot name="footer"></slot>
         </footer>
       </div>
     ]

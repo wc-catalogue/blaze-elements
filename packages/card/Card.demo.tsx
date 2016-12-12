@@ -13,7 +13,7 @@ export class Demo extends Component<void> {
 
         <div>
           <Card>
-            <span slot="title">Hello</span>
+            <span slot="heading">Hello</span>
             <span slot="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, reiciendis.</span>
             <span slot="footer">Footer baby</span>
           </Card>
