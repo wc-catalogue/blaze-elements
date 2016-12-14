@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "../../node_modules/.bin/webpack-dev-server  --config ../../webpack.config.js --env.dev --hot",
-    "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.element=tooltip",
+    "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.element=tree",
     "prepublish": "npm run build"
   }
 }
