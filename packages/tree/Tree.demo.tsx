@@ -12,25 +12,28 @@ export class Demo extends Component<void> {
         <legend>{Tree.is}</legend>
         <div>
           <Tree>
-            <TreeItem hasSubItem>
+            <TreeItem>
               Directory 1
               <Tree slot="subItems">
                 <TreeItem>File 1</TreeItem>
                 <TreeItem>File 2</TreeItem>
-              </Tree></TreeItem>
-            <TreeItem hasSubItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem>
               Directory 2
               <Tree slot="subItems">
                 <TreeItem>File 1</TreeItem>
                 <TreeItem>File 2</TreeItem>
-              </Tree></TreeItem>
-            <TreeItem hasSubItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem>
               Directory 3
               <Tree slot="subItems">
                 <TreeItem>File 1</TreeItem>
                 <TreeItem>File 2</TreeItem>
-              </Tree></TreeItem>
-            <TreeItem isOpen hasSubItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem isOpen>
               Directory 4
               <Tree slot="subItems">
                 <TreeItem>File 1</TreeItem>

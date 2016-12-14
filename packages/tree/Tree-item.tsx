@@ -3,7 +3,6 @@ import { h, Component, prop } from 'skatejs';
 import { css } from '../../utils/css';
 
 interface TreeItemProps extends JSX.HTMLProps<HTMLElement | any> {
-  hasSubItem?: boolean,
   isOpen?: boolean,
 }
 export class TreeItem extends Component<TreeItemProps> {
@@ -13,17 +12,13 @@ export class TreeItem extends Component<TreeItemProps> {
 
   static get props() {
     return {
-      hasSubItem: prop.boolean( {
+      isOpen: prop.boolean({
         attribute: true
-      } ),
-      isOpen: prop.boolean( {
-        attribute: true
-      } ),
+      }),
     }
   }
 
   isOpen: boolean;
-  hasSubItem: boolean;
 
   private handleClick() {
     this.isOpen = !this.isOpen;
@@ -35,7 +30,8 @@ export class TreeItem extends Component<TreeItemProps> {
   }
 
   renderCallback() {
-    const { isOpen, hasSubItem } = this;
+    const { isOpen } = this;
+    const hasSubItem = this.getElementsByTagName('bl-tree').length > 0;
 
     const className = css(
       'c-tree__item', {
