@@ -51,6 +51,7 @@
     "input",
     "modal",
     "toggle",
-    "tooltip"
+    "tooltip",
+    "tree"
   ]
 }

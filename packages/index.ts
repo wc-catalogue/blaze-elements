@@ -6,3 +6,4 @@ import './input/Input';
 import './modal/Modal';
 import './toggle/Toggle';
 import './tooltip/Tooltip';
+import './tree/Tree';
