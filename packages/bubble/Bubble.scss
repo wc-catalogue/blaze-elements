@@ -1,0 +1,35 @@
+@import '~blaze/scss/components.bubbles';
+
+.bubble-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.c-bubble {
+  position: absolute;
+  z-index: 1;
+}
+
+.c-bubble--top {
+  left: 50%;
+  bottom: 2.5em;
+  transform: translate(-50%);
+}
+
+.c-bubble--bottom {
+  left: 50%;
+  top: 2.5em;
+  transform: translate(-50%);
+}
+
+.c-bubble--left {
+  top: 50%;
+  left: -1em;
+  transform: translate(-100%, -50%);
+}
+
+.c-bubble--right {
+  top: 50%;
+  right: -1em;
+  transform: translate(100%, -50%);
+}

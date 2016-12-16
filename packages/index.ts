@@ -1,5 +1,6 @@
 import './alert/Alert';
 import './badge/Badge';
+import './bubble/Bubble';
 import './button/Button';
 import './card/Card';
 import './input/Input';
