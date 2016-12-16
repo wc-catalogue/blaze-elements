@@ -14,7 +14,8 @@ type BubbleTypesType = typeof BubbleTypes;
 // public
 interface BubbleProps extends JSX.HTMLProps<HTMLElement | any> {
   type?: keyof BubbleTypesType,
-  isDisplayed?: boolean
+  isDisplayed?: boolean,
+  disableAutoShowHide?: boolean
 }
 
 export class Bubble extends Component<BubbleProps> {
@@ -27,19 +28,27 @@ export class Bubble extends Component<BubbleProps> {
       }),
       isDisplayed: prop.boolean({
         attribute: true
+      }),
+      disableAutoShowHide: prop.boolean({
+        attribute: true
       })
     }
   }
 
   type = 'right';
   isDisplayed = false;
+  disableAutoShowHide = false;
 
   private handleMouseOver() {
-    this.isDisplayed = true;
+    if ( !this.disableAutoShowHide ) {
+      this.isDisplayed = true;
+    }
   }
 
   private handleMouseLeave() {
-    this.isDisplayed = false;
+    if ( !this.disableAutoShowHide ) {
+      this.isDisplayed = false;
+    }
   }
 
   connectedCallback(){
@@ -62,7 +71,7 @@ export class Bubble extends Component<BubbleProps> {
     return [
       <style>{styles}</style>,
       isDisplayed
-        ? <div className={"bubble-wrapper"} onMouseleave={this.handleMouseLeave}>
+        ? <div tabIndex={0} className={"bubble-wrapper"} onMouseleave={this.handleMouseLeave} onBlur={this.handleMouseLeave}>
             <slot></slot>
             <div
               className={className}
@@ -70,7 +79,7 @@ export class Bubble extends Component<BubbleProps> {
               <slot name={"bubble"}></slot>
             </div>
           </div>
-        : <div className={"bubble-wrapper"} onMouseover={this.handleMouseOver}>
+        : <div tabIndex={0} className={"bubble-wrapper"} onMouseover={this.handleMouseOver} onFocus={this.handleMouseOver}>
             <slot></slot>
           </div>
     ]

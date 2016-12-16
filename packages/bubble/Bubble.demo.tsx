@@ -12,7 +12,7 @@ export class Demo extends Component<void> {
 
         <div>
           <div style={"margin-left: 15em; margin-bottom: 5em; margin-top: 5em"}>
-            There is some <Bubble type="top" isDisplayed>
+            There is some <Bubble type="top" isDisplayed disableAutoShowHide>
             <strong>displayed Bubble top</strong>
             <div slot="bubble">Some text with bubble on the top<br /><code>AAAA</code></div>
           </Bubble> with some other text
