@@ -50,6 +50,7 @@
     "card",
     "input",
     "modal",
+    "overlay",
     "toggle",
     "tooltip"
   ]
