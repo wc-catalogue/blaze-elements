@@ -72,15 +72,15 @@ export class Bubble extends Component<BubbleProps> {
       <style>{styles}</style>,
       isDisplayed
         ? <div tabIndex={0} className={"bubble-wrapper"} onMouseleave={this.handleMouseLeave} onBlur={this.handleMouseLeave}>
-            <slot></slot>
+            <slot name={"handle"}></slot>
             <div
               className={className}
             >
-              <slot name={"bubble"}></slot>
+              <slot></slot>
             </div>
           </div>
         : <div tabIndex={0} className={"bubble-wrapper"} onMouseover={this.handleMouseOver} onFocus={this.handleMouseOver}>
-            <slot></slot>
+            <slot name={"handle"}></slot>
           </div>
     ]
   }

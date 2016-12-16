@@ -13,36 +13,35 @@ export class Demo extends Component<void> {
         <div>
           <div style={"margin-left: 15em; margin-bottom: 5em; margin-top: 5em"}>
             There is some <Bubble type="top" isDisplayed disableAutoShowHide>
-            <strong>displayed Bubble top</strong>
-            <div slot="bubble">Some text with bubble on the top<br /><code>AAAA</code></div>
+            <div>Some text with bubble on the top<br /><code>AAAA</code></div>
           </Bubble> with some other text
           </div>
 
           <div style={"margin-left: 15em; margin-bottom: 5em; margin-top: 5em"}>
             There is some <Bubble type="top">
-            <strong>Bubble top</strong>
-            <div slot="bubble">Some text with bubble on the top<br /><code>AAAA</code></div>
+            <strong slot="handle">Bubble top</strong>
+            <div>Some text with bubble on the top<br /><code>AAAA</code></div>
           </Bubble> with some other text
           </div>
 
           <div style={"margin-left: 15em; margin-bottom: 5em"}>
             There is some <Bubble>
-              <strong>Bubble default</strong>
-              <div slot="bubble">Some text with bubble on the right<br /><code>AAAA</code></div>
+              <strong slot="handle">Bubble default</strong>
+              <div>Some text with bubble on the right<br /><code>AAAA</code></div>
             </Bubble> with some other text
           </div>
 
           <div style={"margin-left: 15em; margin-bottom: 5em"}>
             There is some <Bubble type="left">
-              <strong>Bubble left</strong>
-              <div slot="bubble">Some text with bubble on the left<br /><code>AAAA</code></div>
+              <strong slot="handle">Bubble left</strong>
+              <div>Some text with bubble on the left<br /><code>AAAA</code></div>
             </Bubble> with some other text
           </div>
 
           <div style={"margin-left: 15em; margin-bottom: 5em"}>
             There is some <Bubble type="bottom">
-              <strong>Bubble bottom</strong>
-              <div slot="bubble">Some text with bubble on the bottom<br /><code>AAAA</code></div>
+              <strong slot="handle">Bubble bottom</strong>
+              <div>Some text with bubble on the bottom<br /><code>AAAA</code></div>
             </Bubble> with some other text
           </div>
         </div>
