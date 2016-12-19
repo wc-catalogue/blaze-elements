@@ -23,15 +23,11 @@ export class Bubble extends Component<BubbleProps> {
   static get is() { return 'bl-bubble' }
   static get props() {
     return {
-      type: prop.string({
-        attribute: true
-      }),
+      type: prop.string(),
       isDisplayed: prop.boolean({
         attribute: true
       }),
-      disableAutoShowHide: prop.boolean({
-        attribute: true
-      })
+      disableAutoShowHide: prop.boolean()
     }
   }
 
@@ -72,15 +68,13 @@ export class Bubble extends Component<BubbleProps> {
       <style>{styles}</style>,
       isDisplayed
         ? <div tabIndex={0} className={"bubble-wrapper"} onMouseleave={this.handleMouseLeave} onBlur={this.handleMouseLeave}>
-            <slot name={"handle"}></slot>
-            <div
-              className={className}
-            >
+            <slot name="handle"></slot>
+            <div className={className}>
               <slot></slot>
             </div>
           </div>
         : <div tabIndex={0} className={"bubble-wrapper"} onMouseover={this.handleMouseOver} onFocus={this.handleMouseOver}>
-            <slot name={"handle"}></slot>
+            <slot name="handle"></slot>
           </div>
     ]
   }
