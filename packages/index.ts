@@ -4,6 +4,7 @@ import './breadcrumb/Breadcrumb';
 import './bubble/Bubble';
 import './button/Button';
 import './card/Card';
+import './collapsible/Collapsible';
 import './drawer/Drawer'
 import './input/Input';
 import './link/Link';
