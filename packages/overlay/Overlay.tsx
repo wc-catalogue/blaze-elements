@@ -14,19 +14,12 @@ export class Overlay extends Component<OverlayProps> {
   static get is() { return 'bl-overlay' }
   static get props() {
     return {
-      isDismissable: prop.boolean({
-        attribute: true
-      }),
-      isTransparent: prop.boolean({
-        attribute: true
-      }),
-      isFullpage: prop.boolean({
-        attribute: true
-      })
+      isDismissable: prop.boolean(),
+      isTransparent: prop.boolean(),
+      isFullpage: prop.boolean()
     }
   }
 
-  type = 'right';
   isDismissable = false;
   isTransparent = false;
   isFullpage = false;

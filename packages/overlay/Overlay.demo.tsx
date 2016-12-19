@@ -7,8 +7,8 @@ export class Demo extends Component<void> {
   static get is() { return 'bl-overlay-demo' }
   static get props() {
     return {
-      overlay: prop.boolean({}),
-      fullPageOverlay: prop.boolean({}),
+      overlay: prop.boolean(),
+      fullPageOverlay: prop.boolean(),
     }
   }
 
