@@ -1,0 +1,9 @@
+@import "~blaze/scss/components.typography";
+@import "~blaze/scss/components.links";
+@import "~blaze/scss/components.breadcrumbs";
+
+.c-breadcrumbs__crumb:not(.last):after {
+  padding: $breadcrumb-crumb-separator-padding;
+  color: $breadcrumb-crumb-separator-color;
+  content: $breadcrumb-crumb-separator-content;
+}
