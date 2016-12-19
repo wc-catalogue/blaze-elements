@@ -5,6 +5,7 @@ import './button/Button';
 import './card/Card';
 import './input/Input';
 import './modal/Modal';
+import './nav/Nav';
 import './overlay/Overlay';
 import './toggle/Toggle';
 import './tooltip/Tooltip';
