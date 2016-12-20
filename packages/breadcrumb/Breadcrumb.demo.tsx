@@ -18,8 +18,6 @@ export class Demo extends Component<void> {
             <BreadcrumbItem isActive>Directory 4</BreadcrumbItem>
             <BreadcrumbItem href="#root-file-5">Root file 5</BreadcrumbItem>
           </Breadcrumb>
-          <Breadcrumb>
-          </Breadcrumb>
         </div>
       </fieldset>
     ]
