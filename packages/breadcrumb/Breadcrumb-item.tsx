@@ -4,7 +4,6 @@ import { css } from '../../utils/css';
 
 interface BreadcrumbItemProps extends JSX.HTMLProps<HTMLElement | any> {
   isActive?: boolean,
-  isLast?: boolean,
   href?: string
 }
 export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
