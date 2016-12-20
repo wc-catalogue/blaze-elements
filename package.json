@@ -46,6 +46,7 @@
   "packages": [
     "alert",
     "badge",
+    "breadcrumb",
     "bubble",
     "button",
     "card",
