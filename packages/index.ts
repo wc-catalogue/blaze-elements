@@ -4,6 +4,7 @@ import './bubble/Bubble';
 import './button/Button';
 import './card/Card';
 import './input/Input';
+import './link/Link';
 import './modal/Modal';
 import './overlay/Overlay';
 import './toggle/Toggle';

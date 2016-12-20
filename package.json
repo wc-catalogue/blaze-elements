@@ -50,6 +50,7 @@
     "button",
     "card",
     "input",
+    "link",
     "modal",
     "overlay",
     "toggle",
