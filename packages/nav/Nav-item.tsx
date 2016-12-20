@@ -15,7 +15,7 @@ interface NavItemProps extends JSX.HTMLProps<HTMLElement | any> {
   type?: keyof NavItemTypesType,
   active?: boolean,
   right?: boolean,
-
+  inline?: boolean,
 }
 export class NavItem extends Component<NavItemProps> {
   _props: NavItemProps;
@@ -23,19 +23,29 @@ export class NavItem extends Component<NavItemProps> {
   static get is() { return 'bl-nav-item' }
   static get props() {
     return {
-      type: prop.string(),
-      active: prop.boolean(),
-      right: prop.boolean(),
+      type: prop.string({
+        attribute: true
+      }),
+      active: prop.boolean({
+        attribute: true
+      }),
+      right: prop.boolean({
+        attribute: true
+      }),
+      inline: prop.boolean({
+        attribute: true
+      }),
     }
   }
 
   type: string;
   active: boolean;
   right: boolean;
+  inline: boolean;
 
   renderCallback() {
-    const { type, active, right } = this;
-
+    const { type, active, right, inline } = this;
+    console.log( right );
     const className = css(
       {
         'c-nav__item--active': active,
@@ -46,6 +56,7 @@ export class NavItem extends Component<NavItemProps> {
         'c-nav__item--brand': type === NavItemTypes.brand,
         'c-nav__item--info': type === NavItemTypes.info,
         'c-nav__item--error': type === NavItemTypes.error,
+        'inline-li': inline,
       });
 
     return [
