@@ -3,6 +3,7 @@ import './badge/Badge';
 import './bubble/Bubble';
 import './button/Button';
 import './card/Card';
+import './drawer/Drawer'
 import './input/Input';
 import './modal/Modal';
 import './overlay/Overlay';
