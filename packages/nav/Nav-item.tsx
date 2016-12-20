@@ -45,7 +45,6 @@ export class NavItem extends Component<NavItemProps> {
 
   renderCallback() {
     const { type, active, right, inline } = this;
-    console.log( right );
     const className = css(
       {
         'c-nav__item--active': active,
