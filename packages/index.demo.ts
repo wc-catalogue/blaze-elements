@@ -1,3 +1,4 @@
+import './accordion/Accordion.demo';
 import './alert/Alert.demo';
 import './badge/Badge.demo';
 import './breadcrumb/Breadcrumb.demo';
