@@ -1,0 +1,10 @@
+@import '~blaze/scss/components.navs';
+@import '~blaze/scss/utilities.elevation';
+
+.inline-li {
+  display: inline-block;
+}
+
+.inline-li.c-nav__item--right {
+  float: right;
+}

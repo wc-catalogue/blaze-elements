@@ -8,6 +8,7 @@ import './drawer/Drawer'
 import './input/Input';
 import './link/Link';
 import './modal/Modal';
+import './nav/Nav';
 import './overlay/Overlay';
 import './toggle/Toggle';
 import './tooltip/Tooltip';
