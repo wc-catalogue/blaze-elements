@@ -22,7 +22,7 @@ interface LinkProps extends JSX.HTMLProps<Link | any> {
   download?: string,
   hreflang?: string,
   rel?: string,
-  target?: keyof typeof LinkTargets,
+  target?: keyof typeof LinkTargets | string,
   type?: string,
   color?: keyof typeof LinkColors,
 }
