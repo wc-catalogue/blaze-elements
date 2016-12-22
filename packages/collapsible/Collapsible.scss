@@ -1,0 +1,6 @@
+@import "../generics.shared";
+@import "~blaze/scss/components.cards";
+
+.c-card__item:not(.last) {
+  border-bottom: $card-item-border-bottom;
+}

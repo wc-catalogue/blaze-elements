@@ -44,12 +44,14 @@
     "webpack-dev-server": "beta"
   },
   "packages": [
+    "accordion",
     "alert",
     "badge",
     "breadcrumb",
     "bubble",
     "button",
     "card",
+    "collapsible",
     "drawer",
     "input",
     "link",

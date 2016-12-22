@@ -1,0 +1,11 @@
+{
+  "name": "bl-accordion",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "../../node_modules/.bin/webpack-dev-server  --config ../../webpack.config.js --env.dev --hot",
+    "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.element=accordion",
+    "prepublish": "npm run build"
+  }
+}

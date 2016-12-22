@@ -1,9 +1,11 @@
+import './accordion/Accordion.demo';
 import './alert/Alert.demo';
 import './badge/Badge.demo';
 import './breadcrumb/Breadcrumb.demo';
 import './bubble/Bubble.demo';
 import './button/Button.demo';
 import './card/Card.demo';
+import './collapsible/Collapsible.demo';
 import './drawer/Drawer.demo';
 import './input/Input.demo';
 import './link/Link.demo';
