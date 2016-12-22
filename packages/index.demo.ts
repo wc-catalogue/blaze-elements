@@ -4,6 +4,7 @@ import './breadcrumb/Breadcrumb.demo';
 import './bubble/Bubble.demo';
 import './button/Button.demo';
 import './card/Card.demo';
+import './drawer/Drawer.demo';
 import './input/Input.demo';
 import './modal/Modal.demo';
 import './overlay/Overlay.demo';
