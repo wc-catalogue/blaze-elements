@@ -52,6 +52,7 @@
     "card",
     "drawer",
     "input",
+    "link",
     "modal",
     "overlay",
     "toggle",
