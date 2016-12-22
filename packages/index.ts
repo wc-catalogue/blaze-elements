@@ -13,6 +13,7 @@ import './modal/Modal';
 import './nav/Nav';
 import './overlay/Overlay';
 import './progress/Progress';
+import './range/Range';
 import './toggle/Toggle';
 import './tooltip/Tooltip';
 import './tree/Tree';
