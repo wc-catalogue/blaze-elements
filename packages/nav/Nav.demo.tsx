@@ -13,7 +13,6 @@ export class Demo extends Component<void> {
         <h3>Vertical</h3>
         <div style="width:200px">
           <Nav>
-            <NavItem type="content">MY APP</NavItem>
             <NavItem type="success" active>Create New</NavItem>
             <NavItem>Home</NavItem>
             <NavItem type="brand">About</NavItem>

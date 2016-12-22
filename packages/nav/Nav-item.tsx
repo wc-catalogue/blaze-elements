@@ -3,7 +3,6 @@ import { h, Component, prop } from 'skatejs';
 import { css } from '../../utils/css';
 
 const NavItemTypes = {
-  content: 'content',
   success: 'success',
   brand: 'brand',
   info: 'info',
@@ -49,7 +48,6 @@ export class NavItem extends Component<NavItemProps> {
       {
         'c-nav__item--active': active,
         'c-nav__item--right': right,
-        'c-nav__item': type !== NavItemTypes.content,
         'c-nav__item--success': type === NavItemTypes.success,
         'c-nav__item--brand': type === NavItemTypes.brand,
         'c-nav__item--info': type === NavItemTypes.info,
