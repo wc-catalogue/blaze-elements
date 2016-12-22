@@ -27,8 +27,9 @@ export class Accordion extends Component<AccordionProps> {
 
   renderCallback() {
     const collapsibleItems = this.getElementsByTagName('bl-collapsible');
+    const numberOfItems = collapsibleItems.length;
 
-    for(let i = 0; i < collapsibleItems.length; i++) {
+    for(let i = 0; i < numberOfItems; i++) {
       const collapsibleItem = collapsibleItems.item(i) as Collapsible;
       collapsibleItem.addEventListener('stateChanged', this.handleStateChanged);
       collapsibleItem.isNotStandAlone = true;
