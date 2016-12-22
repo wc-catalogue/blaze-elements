@@ -49,7 +49,6 @@ export class NavItem extends Component<NavItemProps> {
       {
         'c-nav__item--active': active,
         'c-nav__item--right': right,
-        'c-nav__content': type === NavItemTypes.content,
         'c-nav__item': type !== NavItemTypes.content,
         'c-nav__item--success': type === NavItemTypes.success,
         'c-nav__item--brand': type === NavItemTypes.brand,
