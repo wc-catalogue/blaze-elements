@@ -44,7 +44,7 @@ export class Nav extends Component<NavProps> {
 
     if ( inline ) {
 
-      const items = this.getElementsByTagName('bl-nav-item');
+      const items = this.querySelectorAll('bl-nav-item, bl-nav-content');
       const length = items.length;
 
       if ( length ) {

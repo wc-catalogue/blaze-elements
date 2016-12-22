@@ -1,6 +1,7 @@
 import{ h, Component } from 'skatejs';
 import { Nav } from './Nav';
 import { NavItem } from './Nav-item'
+import { NavContent } from './Nav-content';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-nav-demo'}
@@ -34,6 +35,15 @@ export class Demo extends Component<void> {
         <div>
           <Nav inline shadow>
             <NavItem>Home</NavItem>
+            <NavItem>News</NavItem>
+            <NavItem right>Contact</NavItem>
+          </Nav>
+        </div>
+
+        <h3>Horizontal with images in menu</h3>
+        <div>
+          <Nav inline>
+            <NavContent><img class="o-image" src="http://www.fillmurray.com/200/300" style="height: 100%" /></NavContent>
             <NavItem>News</NavItem>
             <NavItem right>Contact</NavItem>
           </Nav>
