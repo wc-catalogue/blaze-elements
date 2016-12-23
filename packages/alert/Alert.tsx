@@ -1,21 +1,12 @@
 import { h, Component, prop, emit } from 'skatejs';
+import {ColorType, cssClassForColorType} from '../colorTypes'
 import styles from './Alert.scss';
 import { css } from '../../utils/css';
 import { Button } from '../button/Button';
 
-const AlertColors = {
-  brand: 'brand',
-  info: 'info',
-  warning: 'warning',
-  success: 'success',
-  error: 'error',
-};
-
-type AlertColorsType = typeof AlertColors;
-
 // public
 interface AlertProps extends JSX.HTMLProps<HTMLElement | any> {
-  color?: keyof AlertColorsType,
+  color?: keyof ColorType,
   isOpen?: boolean,
   onAlertClose?: Function,
 }
@@ -25,7 +16,9 @@ export class Alert extends Component<AlertProps> {
   static get is() { return 'bl-alert' }
   static get props() {
     return {
-      color: prop.string(),
+      color: prop.string({
+        attribute: true
+      }),
       isOpen: prop.boolean({
         attribute: true
       })
@@ -44,19 +37,12 @@ export class Alert extends Component<AlertProps> {
     this.close = this.close.bind(this);
   }
 
-  color: string;
+  color: ColorType;
 
   renderCallback() {
     const { color, isOpen } = this;
-    const className = css(
-      'c-alert',{
-        'c-alert--brand': color === AlertColors.brand,
-        'c-alert--info': color === AlertColors.info,
-        'c-alert--warning': color === AlertColors.warning,
-        'c-alert--success': color === AlertColors.success,
-        'c-alert--error': color === AlertColors.error,
-      }
-    );
+    const colorClass = cssClassForColorType('c-alert', color);
+    const className = css('c-alert', colorClass);
 
     return [
       <style>{styles}</style>,

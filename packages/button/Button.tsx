@@ -1,23 +1,14 @@
 import { h, Component, prop } from 'skatejs';
+import {ColorType, cssClassForColorType} from '../colorTypes'
 import styles from './Button.scss';
 import { css } from '../../utils/css';
-
-const ButtonTypes = {
-  brand: 'brand',
-  info: 'info',
-  warning: 'warning',
-  success: 'success',
-  error: 'error',
-  close: 'close'
-};
-
-type ButtonType = typeof ButtonTypes;
-
 
 // public
 interface ButtonProps extends JSX.HTMLProps<HTMLButtonElement | HTMLAnchorElement | any> {
   disabled?: boolean,
-  type?: keyof ButtonType,
+  close?: boolean,
+  ghost?: boolean,
+  color?: keyof ColorType,
 }
 
 export class Button extends Component<ButtonProps> {
@@ -26,27 +17,35 @@ export class Button extends Component<ButtonProps> {
     return {
       disabled: prop.boolean( {
         attribute: true
-      } ),
-      type: prop.string({
+      }),
+      close: prop.boolean({
+        attribute: true
+      }),
+      ghost: prop.boolean({
+        attribute: true
+      }),
+      color: prop.string({
         attribute: true
       })
     }
   }
 
   disabled: boolean;
-  type = '';
+  close: boolean;
+  ghost: boolean;
+  color: ColorType;
 
   renderCallback() {
-    const {type} = this;
+    const {color, ghost, close} = this;
+    const colorClass = cssClassForColorType('c-button', color);
+    const ghostColorClass = ghost ? cssClassForColorType('c-button--ghost', color, true) : null;
     const className = css(
       'c-button',
+      colorClass,
+      ghostColorClass,
       {
-        'c-button--brand': type === ButtonTypes.brand,
-        'c-button--info': type === ButtonTypes.info,
-        'c-button--success': type === ButtonTypes.success,
-        'c-button--warning': type === ButtonTypes.warning,
-        'c-button--error': type === ButtonTypes.error,
-        'c-button--close': type === ButtonTypes.close,
+        'c-button--ghost': ghost && !color,
+        'c-button--close': close,
       }
     );
     return [
