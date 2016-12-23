@@ -1,16 +1,8 @@
 import { h, Component, prop, emit } from 'skatejs';
+import {Size, cssClassForSize} from '../sizes'
 import styles from './Input.scss';
 import { css } from '../../utils/css';
 
-
-const InputSizes = {
-  xsmall: 'xsmall',
-  small: 'small',
-  medium: 'medium',
-  large: 'large',
-  xlarge: 'xlarge',
-  'super': 'super' // super is reserved word!!!
-};
 
 type TypesType = {
   text: string,
@@ -20,15 +12,13 @@ type TypesType = {
   number: string
 }
 
-type InputSizesType = typeof InputSizes;
-
 //public
 interface InputProps extends JSX.HTMLProps<HTMLInputElement | any> {
   value: string,
   valid?: string,
   placeholder?: string,
   disabled?: boolean,
-  inputSize?: keyof InputSizesType,
+  inputSize?: keyof Size,
   type?: keyof TypesType
 }
 
@@ -40,17 +30,27 @@ export class Input extends Component<InputProps> {
       value: prop.string({
         attribute: true
       }),
-      valid: prop.string(),
-      placeholder: prop.string(),
-      disabled: prop.boolean(),
-      type: prop.string(),
-      inputSize: prop.string(),
+      valid: prop.string({
+        attribute: true
+      }),
+      placeholder: prop.string({
+        attribute: true
+      }),
+      disabled: prop.boolean({
+        attribute: true
+      }),
+      type: prop.string({
+        attribute: true
+      }),
+      inputSize: prop.string({
+        attribute: true
+      }),
     }
   }
 
   valid: string;
   value = '';
-  inputSize: string;
+  inputSize: Size;
   placeholder: string;
   type = 'text';
   disabled: boolean;
@@ -69,17 +69,13 @@ export class Input extends Component<InputProps> {
 
   renderCallback() {
     const { valid, value, placeholder, disabled, inputSize, type } = this;
+    const sizeClass = cssClassForSize(inputSize);
     const className = css(
       'c-field',
+      sizeClass,
       {
         'c-field--success': valid === 'true',
         'c-field--error': valid === 'false',
-        'u-xsmall': inputSize === InputSizes.xsmall,
-        'u-small': inputSize === InputSizes.small,
-        'u-medium': inputSize === InputSizes.medium,
-        'u-large': inputSize === InputSizes.large,
-        'u-xlarge': inputSize === InputSizes.xlarge,
-        'u-super': inputSize === InputSizes.super
       }
     );
 
@@ -100,5 +96,3 @@ export class Input extends Component<InputProps> {
 
 
 customElements.define( Input.is, Input );
-
-
