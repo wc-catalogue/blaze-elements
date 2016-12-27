@@ -9,6 +9,7 @@ import { css } from '../../utils/css';
 interface ProgressProps extends JSX.HTMLProps<HTMLElement | any> {
   color?: keyof ColorType,
   displaySize?: keyof Size,
+  rounded?: boolean
 }
 
 export class Progress extends Component<ProgressProps> {
@@ -25,20 +26,27 @@ export class Progress extends Component<ProgressProps> {
       displaySize: prop.string({
         attribute: true
       }),
+      rounded: prop.boolean({
+        attribute: true
+      })
     }
   }
 
   color: ColorType;
   displaySize: Size;
   value: number;
+  rounded: boolean;
 
   renderCallback() {
-    const { color, displaySize, value } = this;
+    const { color, displaySize, value, rounded } = this;
 
     const sizeClass = cssClassForSize(displaySize);
     const className = css(
       'c-progress',
-      sizeClass
+      sizeClass,
+      {
+        'c-progress--rounded': rounded
+      }
     );
 
     const colorClass = cssClassForColorType('c-progress__bar', color);

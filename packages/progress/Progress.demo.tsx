@@ -28,6 +28,7 @@ export class Demo extends Component<void> {
 
         <div>
           <Progress value="5"
+                    rounded
           ></Progress>
           <br />
           <Progress value="10"
