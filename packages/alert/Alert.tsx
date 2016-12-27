@@ -47,7 +47,7 @@ export class Alert extends Component<AlertProps> {
     return [
       <style>{styles}</style>,
       isOpen && <div className={className}>
-        <Button type="close" onClick={this.close}>×</Button>
+        <Button close onClick={this.close}>×</Button>
         <slot />
       </div>
     ]
