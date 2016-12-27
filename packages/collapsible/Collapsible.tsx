@@ -38,10 +38,8 @@ export class Collapsible extends Component<CollapsibleProps> {
   // internal property to be used from other components, when there is collection of collapsible items
   isNotStandAlone: boolean;
 
-  inputElement: HTMLInputElement;
-
   private handleStateChange(event: Event) {
-    this.isOpened = this.inputElement.checked;
+    this.isOpened = !this.isOpened;
 
     emit(this,'stateChanged', {
       detail: {
@@ -66,6 +64,14 @@ export class Collapsible extends Component<CollapsibleProps> {
       }
     );
 
+    const headerClassName = css(
+      'c-card__item',
+      {
+        'last': !isNotStandAlone || isLast,
+        'c-card__item--active': isOpened
+      }
+    );
+
     const className = css(
       'c-card__item',
       {
@@ -82,12 +88,7 @@ export class Collapsible extends Component<CollapsibleProps> {
     return [
       <style>{styles}</style>,
       <div className={wrapperClassName}>
-        <input type="checkbox"
-               ref={(_ref: HTMLInputElement)=>this.inputElement=_ref}
-               id="accordion"
-               checked={isOpened}
-               onChange={this.handleStateChange} />
-        <label className={className} for="accordion">
+        <label className={headerClassName} onClick={this.handleStateChange}>
           <slot name="title" />
         </label>
         {content}

@@ -4,3 +4,7 @@
 .c-card__item:not(.last) {
   border-bottom: $card-item-border-bottom;
 }
+
+.c-card--accordion .c-card__item--active:before {
+  transform: rotate(45deg);
+}
