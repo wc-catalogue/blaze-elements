@@ -18,7 +18,7 @@ export class Breadcrumb extends Component<BreadcrumbProps> {
 
     return [
       <style>{styles}</style>,
-      <ol className="c-breadcrumbs c-text">
+      <ol className="c-breadcrumbs">
         <slot />
       </ol>
     ]
