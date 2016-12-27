@@ -12,6 +12,7 @@ import './link/Link';
 import './modal/Modal';
 import './nav/Nav';
 import './overlay/Overlay';
+import './progress/Progress';
 import './toggle/Toggle';
 import './tooltip/Tooltip';
 import './tree/Tree';
