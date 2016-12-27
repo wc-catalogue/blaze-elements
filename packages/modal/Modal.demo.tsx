@@ -29,8 +29,8 @@ export class Demo extends Component<void> {
         <legend>{Modal.is}</legend>
 
         <Button type="info" onClick={this.toggleModal}>Open Modal</Button>
-        <Modal isOpen={isModalOpen} onModalClose={this.toggleModal}>
-          <span slot="title">Modal heading</span>
+        <Modal isOpen={isModalOpen} onModalClose={this.toggleModal} closeTitle="Close me">
+          <span slot="title">Modal <em>heading</em></span>
           <span>
             This is the modal body
             <input type="text"/>
