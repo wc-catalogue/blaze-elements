@@ -1,20 +1,14 @@
 import styles from './Toggle.scss';
 import { h, Component, prop, props } from 'skatejs';
+import {ColorType, cssClassForColorType} from '../utils/colorTypes'
 import { css } from '../../utils/css';
 
 
 export interface ToggleProps extends JSX.HTMLProps<HTMLInputElement | any> {
   disabled?: boolean,
   checked?: boolean,
-  type?: string,
+  color?: keyof ColorType,
 }
-const ToggleTypes = {
-  brand: 'brand',
-  info: 'info',
-  warning: 'warning',
-  success: 'success',
-  error: 'error'
-};
 
 export class Toggle extends Component<ToggleProps> {
   _props: ToggleProps;
@@ -27,14 +21,14 @@ export class Toggle extends Component<ToggleProps> {
       checked: prop.boolean({
         attribute: true
       }),
-      type: prop.string({
+      color: prop.string({
         attribute: true
       })
     }
   }
   disabled = false;
   checked = false;
-  type = '';
+  color: ColorType;
 
   private handleChecked(e?:Event){
     props( this, { checked: !this.checked } );
@@ -44,17 +38,10 @@ export class Toggle extends Component<ToggleProps> {
     this.handleChecked = this.handleChecked.bind(this);
   }
   renderCallback(){
-    const { disabled, checked, type } = this;
-    const className = css(
-      'c-toggle',
-      {
-        'c-toggle--brand': type === ToggleTypes.brand,
-        'c-toggle--info': type === ToggleTypes.info,
-        'c-toggle--success': type === ToggleTypes.success,
-        'c-toggle--warning': type === ToggleTypes.warning,
-        'c-toggle--error': type === ToggleTypes.error,
-      }
-    );
+    const { disabled, checked, color } = this;
+    const colorClass = cssClassForColorType('c-toggle', color);
+    const className = css('c-toggle', colorClass);
+
     return [
       <style>{styles}</style>,
       <label class={className}>

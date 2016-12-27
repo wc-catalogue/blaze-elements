@@ -1,19 +1,10 @@
 import styles from './Badge.scss'
 import { h, Component, prop } from 'skatejs';
+import {ColorType, cssClassForColorType} from '../utils/colorTypes'
 import { css } from '../../utils/css';
 
-const BadgeColors = {
-  brand: 'brand',
-  info: 'info',
-  warning: 'warning',
-  success: 'success',
-  error: 'error',
-};
-
-type BadgeColorsType = typeof BadgeColors;
-
 interface BadgeProps extends JSX.HTMLProps<HTMLElement | any> {
-  color?: keyof BadgeColorsType,
+  color?: keyof ColorType,
   rounded?: boolean,
   ghost?: boolean,
 }
@@ -23,13 +14,19 @@ export class Badge extends Component<BadgeProps> {
   static get is() { return 'bl-badge' }
   static get props() {
     return {
-      color: prop.string(),
-      rounded: prop.boolean(),
-      ghost: prop.boolean(),
+      color: prop.string({
+        attribute: true
+      }),
+      rounded: prop.boolean({
+        attribute: true
+      }),
+      ghost: prop.boolean({
+        attribute: true
+      }),
     }
   }
 
-  color: string;
+  color: ColorType;
   rounded: boolean;
   ghost: boolean;
 
@@ -37,16 +34,13 @@ export class Badge extends Component<BadgeProps> {
 
     const { color, rounded, ghost } = this;
 
+    const colorClass = cssClassForColorType('c-badge', color);
     const className = css(
       'c-badge',
+      colorClass,
       {
         'c-badge--rounded': rounded,
         'c-badge--ghost': ghost,
-        'c-badge--brand': color === BadgeColors.brand,
-        'c-badge--info': color === BadgeColors.info,
-        'c-badge--warning': color === BadgeColors.warning,
-        'c-badge--success': color === BadgeColors.success,
-        'c-badge--error': color === BadgeColors.error,
       }
 
     );

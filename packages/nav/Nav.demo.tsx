@@ -14,11 +14,12 @@ export class Demo extends Component<void> {
         <h3>Vertical</h3>
         <div style="width:200px">
           <Nav>
-            <NavItem type="success" active>Create New</NavItem>
+            <NavItem color="success" active>Create New</NavItem>
             <NavItem>Home</NavItem>
-            <NavItem type="brand">About</NavItem>
-            <NavItem type="info">News</NavItem>
-            <NavItem type="error">Help</NavItem>
+            <NavItem color="brand">About</NavItem>
+            <NavItem color="info">News</NavItem>
+            <NavItem color="error">Help</NavItem>
+            <NavItem color="warning">Warning</NavItem>
           </Nav>
         </div>
 

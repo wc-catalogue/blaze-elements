@@ -1,17 +1,10 @@
 import styles from './Nav.scss'
 import { h, Component, prop } from 'skatejs';
+import {ColorType, cssClassForColorType} from '../utils/colorTypes'
 import { css } from '../../utils/css';
 
-const NavItemTypes = {
-  success: 'success',
-  brand: 'brand',
-  info: 'info',
-  error: 'error',
-};
-type NavItemTypesType = typeof NavItemTypes;
-
 interface NavItemProps extends JSX.HTMLProps<HTMLElement | any> {
-  type?: keyof NavItemTypesType,
+  color?: keyof ColorType,
   active?: boolean,
   right?: boolean,
   inline?: boolean,
@@ -22,7 +15,7 @@ export class NavItem extends Component<NavItemProps> {
   static get is() { return 'bl-nav-item' }
   static get props() {
     return {
-      type: prop.string({
+      color: prop.string({
         attribute: true
       }),
       active: prop.boolean({
@@ -37,24 +30,23 @@ export class NavItem extends Component<NavItemProps> {
     }
   }
 
-  type: string;
+  color: ColorType;
   active: boolean;
   right: boolean;
   inline: boolean;
 
   renderCallback() {
-    const { type, active, right, inline } = this;
+    const { color, active, right, inline } = this;
+    const colorClass = cssClassForColorType('c-nav__item', color);
     const className = css(
       'c-nav__item',
+      colorClass,
       {
         'c-nav__item--active': active,
         'c-nav__item--right': right,
-        'c-nav__item--success': type === NavItemTypes.success,
-        'c-nav__item--brand': type === NavItemTypes.brand,
-        'c-nav__item--info': type === NavItemTypes.info,
-        'c-nav__item--error': type === NavItemTypes.error,
-        'inline-li': inline,
-      });
+        'inline-li': inline
+      }
+    );
 
     return [
       <style>{styles}</style>,

@@ -11,7 +11,7 @@ class Demo extends Component<void> {
         <legend>{Toggle.is}</legend>
 
         <div>
-          <Toggle checked={true} type="brand">Yo mama</Toggle>
+          <Toggle checked={true} color="brand">Yo mama</Toggle>
           <Toggle disabled>Yo mama</Toggle>
         </div>
 

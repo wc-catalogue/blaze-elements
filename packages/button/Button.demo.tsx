@@ -11,10 +11,14 @@ export class Demo extends Component<void> {
           <legend>{Button.is}</legend>
           <Button
             disabled
-            type="brand"
+            color="brand"
           >Click me</Button>
           <Button
-            type="brand"
+            color="brand"
+          >Click me</Button>
+          <Button
+            ghost
+            color="warning"
           >Click me</Button>
         </fieldset>
     ]

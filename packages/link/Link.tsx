@@ -1,4 +1,5 @@
 import { h, Component, prop } from 'skatejs';
+import {ColorType, cssClassForColorType} from '../utils/colorTypes'
 import style from './Link.scss';
 import { css } from '../../utils/css';
 
@@ -9,14 +10,6 @@ const LinkTargets = {
   _top: '_top',
 };
 
-const LinkColors = {
-  brand: 'brand',
-  info: 'info',
-  warning: 'warning',
-  success: 'success',
-  error: 'error',
-};
-
 interface LinkProps extends JSX.HTMLProps<Link | any> {
   href?: string,
   download?: string,
@@ -24,7 +17,7 @@ interface LinkProps extends JSX.HTMLProps<Link | any> {
   rel?: string,
   target?: keyof typeof LinkTargets | string,
   type?: string,
-  color?: keyof typeof LinkColors,
+  color?: keyof ColorType,
 }
 
 export class Link extends Component<LinkProps> {
@@ -67,20 +60,13 @@ export class Link extends Component<LinkProps> {
   rel: string;
   target: string;
   type: string;
-  color: string;
+  color: ColorType;
 
   renderCallback() {
 
     const { href, download, hreflang, rel, target, type, color } = this;
-    const className = css(
-      'c-link',
-      {
-        'c-link--brand': color === LinkColors.brand,
-        'c-link--success': color === LinkColors.success,
-        'c-link--error': color === LinkColors.error,
-        'c-link--warning': color === LinkColors.warning,
-        'c-link--info': color === LinkColors.info,
-      } );
+    const colorClass = cssClassForColorType('c-link', color);
+    const className = css('c-link', colorClass);
 
     return [
       <style>{style}</style>,
