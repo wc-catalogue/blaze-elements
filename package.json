@@ -58,6 +58,7 @@
     "modal",
     "nav",
     "overlay",
+    "progress",
     "toggle",
     "tooltip",
     "tree",
