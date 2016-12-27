@@ -31,7 +31,7 @@ export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
     const { isActive, isLast, href } = this;
 
     const className = css(
-      'c-breadcrumbs__crumb', 'c-text', {
+      'c-breadcrumbs__crumb', {
         'c-text--loud': isActive,
         'last': isLast,
       }
