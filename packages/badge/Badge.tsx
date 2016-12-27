@@ -10,7 +10,6 @@ interface BadgeProps extends JSX.HTMLProps<HTMLElement | any> {
 }
 
 export class Badge extends Component<BadgeProps> {
-  _props: BadgeProps;
   static get is() { return 'bl-badge' }
   static get props() {
     return {

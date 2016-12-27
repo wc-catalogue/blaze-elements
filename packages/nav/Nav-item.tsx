@@ -10,8 +10,6 @@ interface NavItemProps extends JSX.HTMLProps<HTMLElement | any> {
   inline?: boolean,
 }
 export class NavItem extends Component<NavItemProps> {
-  _props: NavItemProps;
-
   static get is() { return 'bl-nav-item' }
   static get props() {
     return {

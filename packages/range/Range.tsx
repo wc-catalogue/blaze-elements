@@ -10,7 +10,6 @@ interface RangeProps extends JSX.HTMLProps<HTMLInputElement | any> {
 }
 
 export class Range extends Component<RangeProps> {
-  _props: RangeProps;
   static get is() { return 'bl-range' }
   static get props() {
     return {

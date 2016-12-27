@@ -10,7 +10,6 @@ interface OverlayProps extends JSX.HTMLProps<HTMLElement | any> {
 }
 
 export class Overlay extends Component<OverlayProps> {
-  _props: OverlayProps;
   static get is() { return 'bl-overlay' }
   static get props() {
     return {

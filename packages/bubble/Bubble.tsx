@@ -19,7 +19,6 @@ interface BubbleProps extends JSX.HTMLProps<HTMLElement | any> {
 }
 
 export class Bubble extends Component<BubbleProps> {
-  _props: BubbleProps;
   static get is() { return 'bl-bubble' }
   static get props() {
     return {

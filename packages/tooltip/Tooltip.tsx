@@ -17,7 +17,6 @@ interface TooltipProps extends JSX.HTMLProps<HTMLElement | any> {
 }
 
 export class Tooltip extends Component<TooltipProps> {
-  _props: TooltipProps;
   static get is() { return 'bl-tooltip' }
   static get props() {
     return {

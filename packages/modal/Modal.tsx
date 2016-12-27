@@ -9,7 +9,6 @@ interface ModalProps extends JSX.HTMLProps<HTMLElement | any> {
   onModalClose?: Function,
 }
 export class Modal extends Component<ModalProps> {
-  _props: ModalProps;
   static get is() { return 'bl-modal' }
   static get props() {
     return {
