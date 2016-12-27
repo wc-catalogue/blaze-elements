@@ -1,6 +1,6 @@
 import styles from './Toggle.scss';
 import { h, Component, prop, props } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../colorTypes'
+import {ColorType, cssClassForColorType} from '../utils/colorTypes'
 import { css } from '../../utils/css';
 
 

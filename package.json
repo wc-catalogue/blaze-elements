@@ -60,6 +60,7 @@
     "overlay",
     "toggle",
     "tooltip",
-    "tree"
+    "tree",
+    "utils"
   ]
 }

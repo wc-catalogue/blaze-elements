@@ -1,5 +1,5 @@
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../colorTypes'
+import {ColorType, cssClassForColorType} from '../utils/colorTypes'
 import styles from './Button.scss';
 import { css } from '../../utils/css';
 
@@ -37,12 +37,10 @@ export class Button extends Component<ButtonProps> {
 
   renderCallback() {
     const {color, ghost, close} = this;
-    const colorClass = cssClassForColorType('c-button', color);
-    const ghostColorClass = ghost ? cssClassForColorType('c-button--ghost', color, true) : null;
+    const colorClass = cssClassForColorType(ghost ? 'c-button--ghost' : 'c-button', color, ghost);
     const className = css(
       'c-button',
       colorClass,
-      ghostColorClass,
       {
         'c-button--ghost': ghost && !color,
         'c-button--close': close,

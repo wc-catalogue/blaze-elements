@@ -1,5 +1,5 @@
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../colorTypes'
+import {ColorType, cssClassForColorType} from '../utils/colorTypes'
 import style from './Link.scss';
 import { css } from '../../utils/css';
 

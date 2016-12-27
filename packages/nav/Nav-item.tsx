@@ -1,6 +1,6 @@
 import styles from './Nav.scss'
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../colorTypes'
+import {ColorType, cssClassForColorType} from '../utils/colorTypes'
 import { css } from '../../utils/css';
 
 interface NavItemProps extends JSX.HTMLProps<HTMLElement | any> {

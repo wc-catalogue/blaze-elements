@@ -1,5 +1,5 @@
 import { h, Component, prop, emit } from 'skatejs';
-import {Size, cssClassForSize} from '../sizes'
+import {Size, cssClassForSize} from '../utils/sizes'
 import styles from './Input.scss';
 import { css } from '../../utils/css';
 
