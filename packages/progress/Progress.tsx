@@ -1,7 +1,7 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Progress.scss';
-import {ColorType, cssClassForColorType} from '../colorTypes'
-import {Size, cssClassForSize} from '../sizes'
+import {ColorType, cssClassForColorType} from '../utils/colorTypes'
+import {Size, cssClassForSize} from '../utils/sizes'
 import { css } from '../../utils/css';
 
 
