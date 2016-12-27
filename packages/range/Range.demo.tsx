@@ -27,7 +27,8 @@ export class Demo extends Component<void> {
         <legend>{Range.is}</legend>
 
         <div>
-          <Range valid="false"
+          1 &mdash; 10
+          <Range color="error"
                  value="5"
                  min="1"
                  max="10"
@@ -38,9 +39,31 @@ export class Demo extends Component<void> {
           ></Range>
           Current value: {this.val}
 
-          <Range valid="true"
+          <br />
+
+          0 &mdash; 100
+          <Range color="warning"
                  value="25"
           ></Range>
+
+          <br />
+
+          0 &mdash; 100
+          <Range color="success"
+                 value="33"
+          ></Range>
+
+          <br />
+
+          0 &mdash; 10
+          <Range color="info"
+                 max="10"
+                 value="5"
+          ></Range>
+
+          <br />
+
+          1 &mdash; 10
           <Range value="5"
                  min="1"
                  max="10"

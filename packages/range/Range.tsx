@@ -1,11 +1,12 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Range.scss';
+import {ColorType, cssClassForColorType} from '../utils/colorTypes'
 import { css } from '../../utils/css';
 
 
 //public
 interface RangeProps extends JSX.HTMLProps<HTMLInputElement | any> {
-  valid?: string
+  color?: keyof ColorType,
 }
 
 export class Range extends Component<RangeProps> {
@@ -22,7 +23,7 @@ export class Range extends Component<RangeProps> {
       max: prop.number({
         attribute: true
       }),
-      valid: prop.string({
+      color: prop.string({
         attribute: true
       }),
       disabled: prop.boolean({
@@ -31,7 +32,7 @@ export class Range extends Component<RangeProps> {
     }
   }
 
-  valid: string;
+  color: ColorType;
   value: number;
   min = 0;
   max = 100;
@@ -51,14 +52,9 @@ export class Range extends Component<RangeProps> {
   }
 
   renderCallback() {
-    const { valid, value, min, max, disabled } = this;
-    const className = css(
-      'c-range',
-      {
-        'c-range--success': valid === 'true',
-        'c-range--error': valid === 'false'
-      }
-    );
+    const { color, value, min, max, disabled } = this;
+    const colorClass = cssClassForColorType('c-range', color);
+    const className = css('c-range', colorClass);
 
     return [
       <style>{styles}</style>,
