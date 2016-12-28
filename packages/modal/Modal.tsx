@@ -2,6 +2,7 @@ import { h, Component, prop, emit } from 'skatejs';
 import styles from './Modal.scss';
 import { Button } from '../button/Button';
 import { Card } from '../card/Card';
+import { Overlay } from '../overlay/Overlay';
 
 interface ModalProps extends JSX.HTMLProps<HTMLElement | any> {
   isOpen?: boolean,
@@ -63,9 +64,9 @@ export class Modal extends Component<ModalProps> {
     return [
       <style>{styles}</style>,
       isOpen &&
-      <div class="c-overlay c-overlay--fullpage"
-           tabIndex={-1}
-           onFocus={this.focusModal} />,
+      <Overlay isFullpage
+               tabIndex={-1}
+               onFocus={this.focusModal} />,
       isOpen &&
       <div ref={(_ref: HTMLDivElement)=>this.modalElement=_ref}
            tabIndex={-1}
