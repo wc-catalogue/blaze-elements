@@ -128,7 +128,7 @@ module.exports = ( env ) => {
       new HtmlWebpackPlugin( {
         template: resolve( 'index.html' ),
         packages: env.element ? env.element : require('./package.json').packages,
-        excludeChunks: ifProd( [ 'main.demo' ], [ 'main' ] ),
+        excludeChunks: [ 'main' ],
         inject: 'head'
       } )
 
