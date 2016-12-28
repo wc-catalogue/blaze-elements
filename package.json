@@ -62,7 +62,6 @@
     "range",
     "toggle",
     "tooltip",
-    "tree",
-    "utils"
+    "tree"
   ]
 }

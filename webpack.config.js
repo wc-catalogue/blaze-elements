@@ -24,12 +24,16 @@ module.exports = ( env ) => {
     // The point or points to enter the application.
     entry: env.element ? {
       'main': `./packages/${ env.element }/${ capitalize( env.element ) }.tsx`,
-      'main.demo': `./packages/${ env.element }/${ capitalize( env.element ) }.demo.tsx`
+      'main.demo': `./packages/${ env.element }/${ capitalize( env.element ) }.demo.tsx`,
+      'vendors': './vendors.ts',
+      'polyfills': './polyfills.ts',
+      'styles': './styles.ts'
     } : {
       'main': './packages/index.ts',
       'main.demo': './packages/index.demo.ts',
       'vendors': './vendors.ts',
-      'polyfills': './polyfills.ts'
+      'polyfills': './polyfills.ts',
+      'styles': './styles.ts'
     },
     output: {
       filename: '[name].js',
@@ -124,7 +128,8 @@ module.exports = ( env ) => {
       new HtmlWebpackPlugin( {
         template: resolve( 'index.html' ),
         packages: env.element ? env.element : require('./package.json').packages,
-        excludeChunks: ifProd( [ 'main.demo' ], [ 'main' ] )
+        excludeChunks: ifProd( [ 'main.demo' ], [ 'main' ] ),
+        inject: 'head'
       } )
 
     ])
