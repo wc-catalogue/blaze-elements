@@ -27,7 +27,7 @@ module.exports = ( env ) => {
       'main.demo': `./packages/${ env.element }/${ capitalize( env.element ) }.demo.tsx`
     } : {
       'main': './packages/index.ts',
-      'demo': './packages/index.demo.ts',
+      'main.demo': './packages/index.demo.ts',
       'vendors': './vendors.ts',
       'polyfills': './polyfills.ts'
     },
@@ -123,7 +123,8 @@ module.exports = ( env ) => {
        */
       new HtmlWebpackPlugin( {
         template: resolve( 'index.html' ),
-        packages: env.element ? env.element : require('./package.json').packages
+        packages: env.element ? env.element : require('./package.json').packages,
+        excludeChunks: ifProd( [ 'main.demo' ], [ 'main' ] )
       } )
 
     ])
