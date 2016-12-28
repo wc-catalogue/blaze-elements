@@ -44,7 +44,7 @@ export class Demo extends Component<void> {
         <h3>Horizontal with images in menu</h3>
         <div>
           <Nav inline>
-            <NavContent><img class="o-image" src="http://www.fillmurray.com/200/300" style="height: 100%" /></NavContent>
+            <NavContent><img class="o-image" src="https://www.fillmurray.com/200/300" style="height: 100%" /></NavContent>
             <NavItem>News</NavItem>
             <NavItem right>Contact</NavItem>
           </Nav>
