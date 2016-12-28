@@ -1,7 +1,7 @@
 import { h, Component, prop, emit } from 'skatejs';
-import {Size, cssClassForSize} from '../utils/sizes'
+import {Size, cssClassForSize} from '../_helpers/sizes'
 import styles from './Input.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 
 type TypesType = {

@@ -1,7 +1,7 @@
 import styles from './Toggle.scss';
 import { h, Component, prop, props } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../utils/colorTypes'
-import { css } from '../../utils/css';
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
+import { css } from '../_helpers/css';
 
 
 export interface ToggleProps extends JSX.HTMLProps<HTMLInputElement | any> {

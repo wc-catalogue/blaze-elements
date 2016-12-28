@@ -1,6 +1,6 @@
 import { h, Component, prop } from 'skatejs';
 import styles from './Bubble.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 const BubbleTypes = {
   top: 'top',

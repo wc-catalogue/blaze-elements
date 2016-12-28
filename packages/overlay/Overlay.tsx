@@ -1,6 +1,6 @@
 import { h, Component, prop } from 'skatejs';
 import styles from './Overlay.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 // public
 interface OverlayProps extends JSX.HTMLProps<HTMLElement | any> {

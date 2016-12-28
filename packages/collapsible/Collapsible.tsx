@@ -1,6 +1,6 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Collapsible.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 // public
 interface CollapsibleProps extends JSX.HTMLProps<HTMLElement | any> {

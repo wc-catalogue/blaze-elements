@@ -1,7 +1,7 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Range.scss';
-import {ColorType, cssClassForColorType} from '../utils/colorTypes'
-import { css } from '../../utils/css';
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
+import { css } from '../_helpers/css';
 
 
 //public
