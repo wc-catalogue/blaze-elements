@@ -15,5 +15,5 @@ fs.writeFileSync( './packages/index.ts', indexFile + "\n" );
 fs.writeFileSync( './packages/index.demo.ts', indexDemoFile + "\n" );
 
 function capitalizeFirstLetter( string ) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    return string.charAt(0).toUpperCase() + string.slice(1).replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
 }
