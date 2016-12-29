@@ -9,6 +9,7 @@ import './collapsible/Collapsible.demo';
 import './drawer/Drawer.demo';
 import './input/Input.demo';
 import './link/Link.demo';
+import './loud-text/LoudText.demo';
 import './modal/Modal.demo';
 import './nav/Nav.demo';
 import './overlay/Overlay.demo';
