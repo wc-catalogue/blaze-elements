@@ -45,5 +45,17 @@ http://blazecss.com/components/buttons/
 | Toasts | - |
 | Tooltips | DONE |
 | Trees | DONE |
-| Typography | - |
-| - Link | DONE |
+
+### Typography
+| Component | State |
+|-----------|:-----:|
+| Paragraph | - |
+| Link | DONE |
+| Highlighting | - |
+| Emphasising | - |
+| Abbreviations | - |
+| Monospaced | - |
+| Keys on a keyboard | - |
+| Inline code | - |
+| Multiline code | - |
+| Blockquote | - |
