@@ -1,6 +1,7 @@
 import './accordion/Accordion.demo';
 import './alert/Alert.demo';
 import './badge/Badge.demo';
+import './blockquote/Blockquote.demo';
 import './breadcrumb/Breadcrumb.demo';
 import './bubble/Bubble.demo';
 import './button/Button.demo';
