@@ -1,3 +1,4 @@
+import './abbreviation/index';
 import './accordion/index';
 import './alert/index';
 import './badge/index';

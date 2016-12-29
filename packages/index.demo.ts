@@ -1,3 +1,4 @@
+import './abbreviation/Abbreviation.demo';
 import './accordion/Accordion.demo';
 import './alert/Alert.demo';
 import './badge/Badge.demo';
