@@ -12,6 +12,7 @@ import './link/Link.demo';
 import './modal/Modal.demo';
 import './nav/Nav.demo';
 import './overlay/Overlay.demo';
+import './paragraph/Paragraph.demo';
 import './progress/Progress.demo';
 import './range/Range.demo';
 import './toggle/Toggle.demo';

@@ -12,6 +12,7 @@ import './link/index';
 import './modal/index';
 import './nav/index';
 import './overlay/index';
+import './paragraph/index';
 import './progress/index';
 import './range/index';
 import './toggle/index';
