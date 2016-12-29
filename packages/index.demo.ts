@@ -7,6 +7,7 @@ import './button/Button.demo';
 import './card/Card.demo';
 import './collapsible/Collapsible.demo';
 import './drawer/Drawer.demo';
+import './highlighted-text/HighlightedText.demo';
 import './input/Input.demo';
 import './link/Link.demo';
 import './modal/Modal.demo';

@@ -7,6 +7,7 @@ import './button/index';
 import './card/index';
 import './collapsible/index';
 import './drawer/index';
+import './highlighted-text/index';
 import './input/index';
 import './link/index';
 import './modal/index';
