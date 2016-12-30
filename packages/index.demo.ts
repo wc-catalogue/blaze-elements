@@ -18,6 +18,7 @@ import './monospace-text/MonospaceText.demo';
 import './nav/Nav.demo';
 import './overlay/Overlay.demo';
 import './progress/Progress.demo';
+import './quiet-text/QuietText.demo';
 import './range/Range.demo';
 import './toggle/Toggle.demo';
 import './tooltip/Tooltip.demo';

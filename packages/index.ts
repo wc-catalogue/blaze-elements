@@ -18,6 +18,7 @@ import './monospace-text/index';
 import './nav/index';
 import './overlay/index';
 import './progress/index';
+import './quiet-text/index';
 import './range/index';
 import './toggle/index';
 import './tooltip/index';
