@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="../../node_modules/web-component-tester/browser.js"></script>
+  <script src="../../node_modules/@polymer/iron-test-helpers/mock-interactions.js"></script>
+  <script src="../../dist/vendors.js"></script>
+  <script src="../../dist/polyfills.js"></script>
+  <script src="../../dist/main.js"></script>
+</head>
+<body>
+
+  <bl-collapsible id="firstCollapsible">
+    <span slot="title">Some <strong>Name</strong></span>
+    <div>
+      Some first content <strong>!!!</strong>
+    </div>
+  </bl-collapsible>
+
+  <bl-collapsible id="secondCollapsible">
+    <span slot="title">Some <strong>Name</strong></span>
+    <div>
+      Some second content <strong>!!!</strong>
+    </div>
+  </bl-collapsible>
+
+  <script>
+
+    suite('<bl-collapsible>', () => {
+
+      const firstCollapsible = document.getElementById( 'firstCollapsible' );
+
+      const secondCollapsible = document.getElementById( 'secondCollapsible' );
+
+      test('open proper element', ( done ) => {
+
+        expect(secondCollapsible.shadowRoot.querySelectorAll('div.c-card__item').length).to.be.equal(0);
+
+        secondCollapsible.addEventListener('stateChanged', () => {
+
+          setTimeout( () => {
+
+            expect(firstCollapsible.shadowRoot.querySelectorAll('div.c-card__item').length).to.be.equal(0);
+
+            expect(secondCollapsible.shadowRoot.querySelectorAll('div.c-card__item').length).to.be.equal(1);
+
+            done();
+
+          })
+
+        });
+
+        MockInteractions.tap(secondCollapsible.shadowRoot.querySelector('label.c-card__item'));
+
+      });
+
+    });
+
+  </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import { h, Component, prop, emit } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../utils/colorTypes'
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
 import styles from './Alert.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 import { Button } from '../button/Button';
 
 // public

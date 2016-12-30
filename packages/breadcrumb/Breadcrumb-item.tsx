@@ -1,6 +1,6 @@
 import styles from './Breadcrumb.scss'
 import { h, Component, prop } from 'skatejs';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 interface BreadcrumbItemProps extends JSX.HTMLProps<HTMLElement | any> {
   isActive?: boolean,

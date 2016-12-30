@@ -1,7 +1,7 @@
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../utils/colorTypes'
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
 import styles from './Blockquote.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 // public
 interface BlockquoteProps extends JSX.HTMLProps<HTMLElement | any> {

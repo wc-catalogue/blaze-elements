@@ -1,7 +1,7 @@
 import styles from './Badge.scss'
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../utils/colorTypes'
-import { css } from '../../utils/css';
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
+import { css } from '../_helpers/css';
 
 interface BadgeProps extends JSX.HTMLProps<HTMLElement | any> {
   color?: keyof ColorType,

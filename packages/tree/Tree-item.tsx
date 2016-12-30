@@ -1,6 +1,6 @@
 import styles from './Tree.scss'
 import { h, Component, prop } from 'skatejs';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 interface TreeItemProps extends JSX.HTMLProps<HTMLElement | any> {
   isOpen?: boolean,

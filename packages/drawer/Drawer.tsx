@@ -1,6 +1,6 @@
 import { h, Component, prop } from 'skatejs';
 import styles from './Drawer.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 const DrawerPositions = {
   top: 'top',

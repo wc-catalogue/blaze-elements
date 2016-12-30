@@ -1,22 +1,19 @@
 {
   "name": "blaze-elements",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "main": "dist/main.js",
   "repository": "git@github.com:wc-catalogue/blaze-elements.git",
   "author": "elemementor",
   "license": "MIT",
   "files": [
-    "dist/main.js",
-    "dist/polyfills.js",
-    "dist/vendors.js"
+    "dist"
   ],
   "scripts": {
-    "packagelist": "node utils/generate-packages-list.js",
+    "packagelist": "node toolbelt/generate-packages-list.js",
     "start": "npm run packagelist && webpack-dev-server --env.dev --hot --host 0.0.0.0",
-    "build": "npm run packagelist && rimraf dist && webpack --env.prod",
-    "build:publish": "npm run build && ./utils/deploy-ghpages.sh",
-    "prepublish": "npm run build",
-    "start:prod": "pushstate-server dist/"
+    "start:prod": "pushstate-server dist/",
+    "test": "npm run build && toolbelt/test.sh",
+    "build": "rimraf dist && npm run packagelist && webpack --env.prod"
   },
   "dependencies": {
     "blaze": "^3.2.0",
@@ -26,6 +23,7 @@
     "tslib": "^1.2.0"
   },
   "devDependencies": {
+    "@polymer/iron-test-helpers": "^0.0.3",
     "awesome-typescript-loader": "^3.0.0-beta.9",
     "css-loader": "^0.26.1",
     "html-webpack-plugin": "^2.24.1",
@@ -37,8 +35,11 @@
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
+    "test-fixture": "^1.0.2",
     "to-string-loader": "^1.1.5",
     "typescript": "next",
+    "wct-sauce": "2.0.0-pre.1",
+    "web-component-tester": "^5.0.0",
     "webpack": "beta",
     "webpack-config-utils": "^2.1.0",
     "webpack-dev-server": "beta"

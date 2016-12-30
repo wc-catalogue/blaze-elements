@@ -1,8 +1,9 @@
-# Blaze Elements
+Blaze Elements
+==============
 
-Web Component Blaze Elements
+[Blaze CSS](http://blazecss.com/) wrapped using [Web Component](http://webcomponents.org/)
 
-http://blazecss.com/components/buttons/
+[![Build Status](https://saucelabs.com/browser-matrix/elmariofredo.svg)](https://saucelabs.com/beta/builds/de2a9d3d2222445290dd8e29ba80de84)
 
 
 ## Objects

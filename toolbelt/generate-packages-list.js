@@ -2,7 +2,7 @@ const fs = require( 'fs' );
 const packageJson = require( '../package.json' );
 
 packageJson.packages = fs.readdirSync( './packages' )
-  .filter( ( node ) => node.indexOf( '.' ) === -1 && node !== 'utils' );
+  .filter( ( node ) => node.indexOf( '.' ) === -1 && node.substr( 0, 1 ) !== '_' );
 
 console.log( packageJson.packages );
 

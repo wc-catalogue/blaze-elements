@@ -1,7 +1,7 @@
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../utils/colorTypes'
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
 import style from './Link.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 const LinkTargets = {
   _self: '_self',

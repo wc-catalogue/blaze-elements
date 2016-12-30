@@ -1,6 +1,6 @@
 import { h, Component } from 'skatejs';
 import styles from './QuietText.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 // public
 interface QuietTextProps extends JSX.HTMLProps<HTMLElement | any> {
