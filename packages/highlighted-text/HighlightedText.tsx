@@ -1,6 +1,6 @@
 import { h, Component } from 'skatejs';
 import styles from './HighlightedText.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 // public
 interface HighlightedTextProps extends JSX.HTMLProps<HTMLElement | any> {

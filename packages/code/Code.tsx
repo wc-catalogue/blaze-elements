@@ -1,6 +1,6 @@
 import { h, Component, prop } from 'skatejs';
 import styles from './Code.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 // public
 interface CodeProps extends JSX.HTMLProps<HTMLElement | any> {

@@ -1,6 +1,6 @@
 import { h, Component } from 'skatejs';
 import styles from './Paragraph.scss';
-import { css } from '../../utils/css';
+import { css } from '../_helpers/css';
 
 // public
 interface ParagraphProps extends JSX.HTMLProps<HTMLElement | any> {
