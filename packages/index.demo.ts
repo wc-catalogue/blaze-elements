@@ -13,6 +13,7 @@ import './drawer/Drawer.demo';
 import './input/Input.demo';
 import './keyboard-keys/KeyboardKeys.demo';
 import './link/Link.demo';
+import './loud-text/LoudText.demo';
 import './modal/Modal.demo';
 import './monospace-text/MonospaceText.demo';
 import './nav/Nav.demo';

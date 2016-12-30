@@ -13,6 +13,7 @@ import './drawer/index';
 import './input/index';
 import './keyboard-keys/index';
 import './link/index';
+import './loud-text/index';
 import './modal/index';
 import './monospace-text/index';
 import './nav/index';
