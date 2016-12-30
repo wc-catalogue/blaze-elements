@@ -8,6 +8,7 @@ import './card/Card.demo';
 import './collapsible/Collapsible.demo';
 import './drawer/Drawer.demo';
 import './input/Input.demo';
+import './keyboard-keys/KeyboardKeys.demo';
 import './link/Link.demo';
 import './modal/Modal.demo';
 import './nav/Nav.demo';
