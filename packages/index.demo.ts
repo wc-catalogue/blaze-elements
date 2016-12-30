@@ -6,6 +6,7 @@ import './breadcrumb/Breadcrumb.demo';
 import './bubble/Bubble.demo';
 import './button/Button.demo';
 import './card/Card.demo';
+import './code/Code.demo';
 import './collapsible/Collapsible.demo';
 import './drawer/Drawer.demo';
 import './input/Input.demo';

@@ -6,6 +6,7 @@ import './breadcrumb/index';
 import './bubble/index';
 import './button/index';
 import './card/index';
+import './code/index';
 import './collapsible/index';
 import './drawer/index';
 import './input/index';
