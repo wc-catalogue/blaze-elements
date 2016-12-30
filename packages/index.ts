@@ -1,6 +1,7 @@
 import './accordion/index';
 import './alert/index';
 import './badge/index';
+import './blockquote/index';
 import './breadcrumb/index';
 import './bubble/index';
 import './button/index';
