@@ -8,6 +8,7 @@ import './card/index';
 import './collapsible/index';
 import './drawer/index';
 import './input/index';
+import './keyboard-keys/index';
 import './link/index';
 import './modal/index';
 import './nav/index';
