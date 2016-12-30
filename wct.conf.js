@@ -2,7 +2,7 @@ const packageJson = require( './package.json' );
 
 const config = {
   "suites": packageJson.packages.map( ( package ) => `./packages/${package}/index.test.html` ),
-    "plugins": {
+  "plugins": {
     "sauce": {
       "disabled": true,
       // See https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/

@@ -12,8 +12,8 @@
     "packagelist": "node toolbelt/generate-packages-list.js",
     "start": "npm run packagelist && webpack-dev-server --env.dev --hot --host 0.0.0.0",
     "start:prod": "pushstate-server dist/",
-    "test": "toolbelt/test.sh",
-    "build": "rimraf dist && npm run packagelist && webpack --env.prod && npm run test"
+    "test": "npm run build && toolbelt/test.sh",
+    "build": "rimraf dist && npm run packagelist && webpack --env.prod"
   },
   "dependencies": {
     "blaze": "^3.2.0",
