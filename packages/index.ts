@@ -10,6 +10,7 @@ import './card/index';
 import './code/index';
 import './collapsible/index';
 import './drawer/index';
+import './highlighted-text/index';
 import './input/index';
 import './keyboard-keys/index';
 import './link/index';

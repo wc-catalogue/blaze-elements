@@ -10,6 +10,7 @@ import './card/Card.demo';
 import './code/Code.demo';
 import './collapsible/Collapsible.demo';
 import './drawer/Drawer.demo';
+import './highlighted-text/HighlightedText.demo';
 import './input/Input.demo';
 import './keyboard-keys/KeyboardKeys.demo';
 import './link/Link.demo';
