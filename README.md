@@ -49,13 +49,12 @@ http://blazecss.com/components/buttons/
 ### Typography
 | Component | State |
 |-----------|:-----:|
-| Paragraph | - |
+| Paragraph | DONE |
 | Link | DONE |
-| Highlighting | - |
-| Emphasising | - |
-| Abbreviations | - |
-| Monospaced | - |
-| Keys on a keyboard | - |
-| Inline code | - |
-| Multiline code | - |
-| Blockquote | - |
+| Highlighting | DONE |
+| Emphasising | DONE |
+| Abbreviations | DONE |
+| Monospaced | DONE |
+| Keys on a keyboard | DONE |
+| Code (inline & multi-line) | DONE |
+| Blockquote | DONE |
