@@ -19,6 +19,7 @@ import './modal/Modal.demo';
 import './monospace-text/MonospaceText.demo';
 import './nav/Nav.demo';
 import './overlay/Overlay.demo';
+import './paragraph/Paragraph.demo';
 import './progress/Progress.demo';
 import './quiet-text/QuietText.demo';
 import './range/Range.demo';

@@ -19,6 +19,7 @@ import './modal/index';
 import './monospace-text/index';
 import './nav/index';
 import './overlay/index';
+import './paragraph/index';
 import './progress/index';
 import './quiet-text/index';
 import './range/index';
