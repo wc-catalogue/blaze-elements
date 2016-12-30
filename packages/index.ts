@@ -11,6 +11,7 @@ import './input/index';
 import './keyboard-keys/index';
 import './link/index';
 import './modal/index';
+import './monospace-text/index';
 import './nav/index';
 import './overlay/index';
 import './progress/index';

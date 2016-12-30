@@ -11,6 +11,7 @@ import './input/Input.demo';
 import './keyboard-keys/KeyboardKeys.demo';
 import './link/Link.demo';
 import './modal/Modal.demo';
+import './monospace-text/MonospaceText.demo';
 import './nav/Nav.demo';
 import './overlay/Overlay.demo';
 import './progress/Progress.demo';
