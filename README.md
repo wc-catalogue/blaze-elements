@@ -46,5 +46,16 @@ Blaze Elements
 | Toasts | - |
 | Tooltips | DONE |
 | Trees | DONE |
-| Typography | - |
-| - Link | DONE |
+
+### Typography
+| Component | State |
+|-----------|:-----:|
+| Paragraph | DONE |
+| Link | DONE |
+| Highlighting | DONE |
+| Emphasising | DONE |
+| Abbreviations | DONE |
+| Monospaced | DONE |
+| Keys on a keyboard | DONE |
+| Code (inline & multi-line) | DONE |
+| Blockquote | DONE |
