@@ -11,6 +11,8 @@ const webpack = require( 'webpack' );
  */
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+
 // webpack config helpers
 const { getIfUtils, removeEmpty } = require( 'webpack-config-utils' );
 
@@ -84,6 +86,21 @@ module.exports = ( env ) => {
           use: [ 'to-string-loader', 'css-loader', 'sass-loader' ]
         },
         {
+          test: /\.css$/,
+          use: [ 'style-loader', 'css-loader' ]
+        },
+        {
+          test: /\.md$/,
+          use: [
+            'html-loader',
+            'markdown-loader'
+          ]
+        },
+        {
+          test: /\.svg$/,
+          use: [ 'file-loader' ]
+        },
+        {
           test: /\.json$/,
           use: 'json-loader'
         }
@@ -119,6 +136,7 @@ module.exports = ( env ) => {
         output: { comments: false }
       } ) ),
 
+      ifProd( new FaviconsWebpackPlugin( './assets/blaze-elements-logo.svg' ) ),
 
       /**
        * Use the HtmlWebpackPlugin plugin to make index.html a template so css and js can dynamically be added to the page.
