@@ -49,33 +49,24 @@
     "webpack-dev-server": "beta"
   },
   "packages": [
-    "abbreviation",
     "accordion",
     "alert",
     "badge",
-    "blockquote",
     "breadcrumb",
     "bubble",
     "button",
     "card",
-    "code",
     "collapsible",
     "drawer",
-    "highlighted-text",
     "input",
-    "keyboard-keys",
-    "link",
-    "loud-text",
     "modal",
-    "monospace-text",
     "nav",
     "overlay",
-    "paragraph",
     "progress",
-    "quiet-text",
     "range",
     "toggle",
     "tooltip",
-    "tree"
+    "tree",
+    "typography"
   ]
 }
