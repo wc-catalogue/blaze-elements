@@ -9,11 +9,11 @@ then
 
   if [ "${TRAVIS_PULL_REQUEST}" = "false" ]
   then
-    wct --plugin sauce -s 'default'
+    wct --plugin sauce
   fi
 
 else
 
-  wct
+  wct $@
 
 fi
