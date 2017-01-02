@@ -7,8 +7,6 @@ interface BreadcrumbItemProps extends JSX.HTMLProps<HTMLElement | any> {
   href?: string
 }
 export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
-  _props: BreadcrumbItemProps;
-
   static get is() { return 'bl-breadcrumb-item' }
 
   static get props() {

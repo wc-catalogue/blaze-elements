@@ -6,8 +6,6 @@ interface TreeItemProps extends JSX.HTMLProps<HTMLElement | any> {
   isOpen?: boolean,
 }
 export class TreeItem extends Component<TreeItemProps> {
-  _props: TreeItemProps;
-
   static get is() { return 'bl-tree-item' }
 
   static get props() {

@@ -13,7 +13,6 @@ interface ProgressProps extends JSX.HTMLProps<HTMLElement | any> {
 }
 
 export class Progress extends Component<ProgressProps> {
-  _props: ProgressProps;
   static get is() { return 'bl-progress' }
   static get props() {
     return {

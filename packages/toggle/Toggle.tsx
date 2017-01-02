@@ -11,7 +11,6 @@ export interface ToggleProps extends JSX.HTMLProps<HTMLInputElement | any> {
 }
 
 export class Toggle extends Component<ToggleProps> {
-  _props: ToggleProps;
   static get is(){ return 'bl-toggle'}
   static get props(){
     return {

@@ -21,8 +21,6 @@ interface LinkProps extends JSX.HTMLProps<Link | any> {
 }
 
 export class Link extends Component<LinkProps> {
-  _props: LinkProps;
-
   static get is() { return 'bl-link' }
 
   static get props() {

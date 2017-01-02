@@ -12,7 +12,6 @@ interface AlertProps extends JSX.HTMLProps<HTMLElement | any> {
 }
 
 export class Alert extends Component<AlertProps> {
-  _props: AlertProps;
   static get is() { return 'bl-alert' }
   static get props() {
     return {

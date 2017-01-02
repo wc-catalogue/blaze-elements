@@ -23,7 +23,6 @@ interface InputProps extends JSX.HTMLProps<HTMLInputElement | any> {
 }
 
 export class Input extends Component<InputProps> {
-  _props: InputProps;
   static get is() { return 'bl-input' }
   static get props() {
     return {

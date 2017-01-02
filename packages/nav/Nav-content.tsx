@@ -6,8 +6,6 @@ interface NavContentProps extends JSX.HTMLProps<HTMLElement | any> {
   inline?: boolean,
 }
 export class NavContent extends Component<NavContentProps> {
-  _props: NavContentProps;
-
   static get is() { return 'bl-nav-content' }
   static get props() {
     return {
