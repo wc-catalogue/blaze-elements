@@ -3,8 +3,8 @@ import 'tslib';
 
 // Babel implementation of _inherits
 function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  if (typeof superClass !== 'function' && superClass !== null) {
+    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
   }
   subClass.prototype = Object.create(superClass && superClass.prototype, {
     constructor: {
