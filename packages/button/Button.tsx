@@ -9,6 +9,7 @@ interface ButtonProps extends JSX.HTMLProps<HTMLButtonElement | HTMLAnchorElemen
   close?: boolean,
   ghost?: boolean,
   color?: keyof ColorType,
+  tag?: boolean
 }
 
 export class Button extends Component<ButtonProps> {
@@ -26,17 +27,21 @@ export class Button extends Component<ButtonProps> {
       }),
       color: prop.string({
         attribute: true
-      })
+      }),
+      tag: prop.boolean({
+        attribute: true
+      }),
     }
   }
 
   disabled: boolean;
   close: boolean;
   ghost: boolean;
+  tag: boolean;
   color: ColorType;
 
   renderCallback() {
-    const {color, ghost, close} = this;
+    const {color, ghost, close, tag} = this;
     const colorClass = cssClassForColorType(ghost ? 'c-button--ghost' : 'c-button', color, ghost);
     const className = css(
       'c-button',
@@ -44,6 +49,7 @@ export class Button extends Component<ButtonProps> {
       {
         'c-button--ghost': ghost && !color,
         'c-button--close': close,
+        'c-tag': tag
       }
     );
     return [

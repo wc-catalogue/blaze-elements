@@ -13,6 +13,7 @@ import './nav/index.demo';
 import './overlay/index.demo';
 import './progress/index.demo';
 import './range/index.demo';
+import './tag/index.demo';
 import './toggle/index.demo';
 import './tooltip/index.demo';
 import './tree/index.demo';

@@ -64,6 +64,7 @@
     "overlay",
     "progress",
     "range",
+    "tag",
     "toggle",
     "tooltip",
     "tree",
