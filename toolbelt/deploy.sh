@@ -1,6 +1,7 @@
 #!/bin/bash
 
 (
+ cp assets/blaze-elements-logo.svg dist
  cd dist
  git init
  git config user.name "Travis-CI"

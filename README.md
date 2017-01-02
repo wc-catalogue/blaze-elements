@@ -1,7 +1,7 @@
 Blaze Elements
 ==============
 
-<img alt="Blaze Elements Logo" src="./assets/blaze-elements-logo.svg" width="400">
+<img alt="Blaze Elements Logo" src="https://wc-catalogue.github.io/blaze-elements/assets/blaze-elements-logo.svg" width="400">
 
 [Blaze CSS](http://blazecss.com/) wrapped using [Web Component](http://webcomponents.org/)
 
