@@ -6,6 +6,11 @@
   <title>Blaze WC elements catalogue</title>
 </head>
 <body class="c-text">
+
+  <header>
+    ${require( './README.md' )}
+  </header>
+
   <% for(var i=0; i < htmlWebpackPlugin.options.packages.length; i++) {%>
   <p>
     <bl-<%= htmlWebpackPlugin.options.packages[i] %>-demo>
