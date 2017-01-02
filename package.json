@@ -41,6 +41,8 @@
     "style-loader": "^0.13.1",
     "test-fixture": "^1.0.2",
     "to-string-loader": "^1.1.5",
+    "tslint": "^4.2.0",
+    "tslint-loader": "^3.3.0",
     "typescript": "next",
     "wct-sauce": "2.0.0-pre.1",
     "web-component-tester": "^5.0.0",

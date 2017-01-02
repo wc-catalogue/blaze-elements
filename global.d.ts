@@ -95,7 +95,7 @@ interface ShadowRootInit {
   delegatesFocus?: boolean;  // default false
 }
 
-type ShadowRootMode = "open" | "closed";
+type ShadowRootMode = 'open' | 'closed';
 
 interface Text {
   readonly assignedSlot: HTMLSlotElement | null;
@@ -120,5 +120,5 @@ interface Event {
 }
 
 interface Document {
-  createElement(tagName: "slot"): HTMLSlotElement;
+  createElement(tagName: 'slot'): HTMLSlotElement;
 }

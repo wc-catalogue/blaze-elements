@@ -58,6 +58,13 @@ module.exports = ( env ) => {
 
     module: {
       rules: [
+
+        {
+          test: /\.tsx?$/,
+          enforce: "pre",
+          loader: 'tslint-loader'
+        },
+
         // Typescript
         {
           test: /\.tsx?$/,
