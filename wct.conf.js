@@ -1,7 +1,6 @@
 const packageJson = require( './package.json' );
 
 const config = {
-  testTimeout: 200 * 1000,
   "suites": packageJson.packages.map( ( package ) => `./packages/${package}/index.test.html` ),
   "plugins": {
     "sauce": {
@@ -13,8 +12,8 @@ const config = {
           "version": "14.14393"
         }, {
           "browserName": "internet explorer",
-          "platform": "Windows 7",
-          "version": "11.0"
+          "platform": "Windows 10",
+          "version": "11.103"
         }, {
           "browserName": "chrome",
           "platform": "Windows 10",
