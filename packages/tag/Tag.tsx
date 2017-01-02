@@ -19,11 +19,11 @@ export class Tag extends Component<TagProps> {
 
     return [
       <style>{styles}</style>,
-      <Button tag>
+      <button type="button" class="c-button c-tag">
         <slot />
         <span class="c-tag__close" onClick={this.handleClick}>×</span>
-      </Button>
-      ]
+      </button>
+    ]
   }
 
 }
