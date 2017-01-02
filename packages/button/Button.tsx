@@ -26,7 +26,7 @@ export class Button extends Component<ButtonProps> {
       }),
       color: prop.string({
         attribute: true
-      }),
+      })
     }
   }
 
