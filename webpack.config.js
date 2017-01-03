@@ -26,7 +26,7 @@ module.exports = ( env ) => {
     // The point or points to enter the application.
     entry: env.element ? {
       'main': `./packages/${ env.element }/${ capitalize( env.element ) }.tsx`,
-      'main.demo': `./packages/${ env.element }/${ capitalize( env.element ) }.demo.tsx`,
+      'main.demo': `./packages/${ env.element }/index.demo.tsx`,
       'vendors': './vendors.ts',
       'polyfills': './polyfills.ts',
       'styles': './styles.ts'
