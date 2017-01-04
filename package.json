@@ -13,8 +13,8 @@
     "start": "npm run packagelist && webpack-dev-server --env.dev --hot --host 0.0.0.0",
     "start:prod": "pushstate-server dist/",
     "test": "npm run build && toolbelt/test.sh",
-    "test:watch": "concurrently \"npm run build -- -w\" \"toolbelt/test.sh\"",
-    "test:watch:firefox": "concurrently \"npm run build -- -w\" \"toolbelt/test.sh -l firefox\"",
+    "test:watch": "concurrently \"npm run build -- -w\" \"toolbelt/test.sh -p\"",
+    "test:watch:firefox": "concurrently \"npm run build -- -w\" \"toolbelt/test.sh -p -l firefox\"",
     "build": "rimraf dist && npm run packagelist && webpack --env.prod"
   },
   "dependencies": {
