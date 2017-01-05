@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="../../node_modules/web-component-tester/browser.js"></script>
+  <script src="../../node_modules/@polymer/iron-test-helpers/mock-interactions.js"></script>
+  <script src="../../dist/polyfills.js"></script>
+  <script src="../../dist/vendors.js"></script>
+  <script src="../../dist/main.js"></script>
+</head>
+<body>
+
+  <bl-input id="getValue">
+
+  <script>
+
+    suite('<bl-input>', function() {
+
+      var getValue = document.getElementById( 'getValue' );
+
+      test('property update attribute', function() {
+
+        getValue.value = 'b';
+
+        expect(getValue.getAttribute('value')).to.be.equal('b');
+
+      });
+
+      test('attribute update prperty', function() {
+
+        getValue.setAttribute('value', 'c')
+
+        expect(getValue.value).to.be.equal('c');
+
+      });
+
+      test('emit input', function( done ) {
+
+        var getValueInput = getValue.shadowRoot.querySelector('input');
+
+        getValue.addEventListener( 'input', function() {
+
+          done();
+
+        } );
+
+        getValueInput.dispatchEvent( new Event( 'input' ) );
+
+      });
+
+      test('emit change', function( done ) {
+
+        var getValueInput = getValue.shadowRoot.querySelector('input');
+
+        getValue.addEventListener( 'change', function() {
+
+          done();
+
+        } );
+
+        getValueInput.dispatchEvent( new Event( 'change' ) );
+
+      });
+
+    });
+
+  </script>
+</body>
+</html>

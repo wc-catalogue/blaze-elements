@@ -17,6 +17,7 @@ export class Demo extends Component<void> {
                 onFocus={() => { console.log("onFocus")}}
                 onBlur={() => { console.log("onBlur")}}
                 onChange={() => { console.log("onChange")}}
+                onInput={() => { console.log("onInput")}}
           ></Input>
           <Input valid="true" value="success state"
                 onChange={() => { console.log("onChange")}}
