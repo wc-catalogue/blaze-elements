@@ -1,22 +1,16 @@
 import { h, Component, prop } from 'skatejs';
 import { Tag } from './Tag';
 import { TagSelector } from './TagSelector';
-import { EventHandler } from '../../manual_definitions/jsx/index';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-tag-demo' }
-
   static get props() {
     return {
       tags: prop.array()
     }
   }
 
-  tags = [
-    { text: 'Tag 1' },
-    { text: 'Tag 2' },
-    { text: 'Tag 3' },
-  ];
+  tags = ['milk','bread','chocolate'];
 
   private tagClose() {
     console.log( 'Tag close emitted', this )
@@ -25,7 +19,8 @@ export class Demo extends Component<void> {
   }
 
   private tagChange( event ) {
-    // console.log( event );
+    console.log( 'Tag change:', event.detail.tags );
+    this.tags = [].concat( event.detail.tags );
   }
 
   renderCallback() {
@@ -44,7 +39,7 @@ export class Demo extends Component<void> {
         <fieldset>
           <legend>Tag Selector</legend>
           <TagSelector onTagChange={this.tagChange}
-                       tags={['milk','bread','chocolate']}></TagSelector>
+                       tags={this.tags}></TagSelector>
         </fieldset>
       </fieldset>
     ]

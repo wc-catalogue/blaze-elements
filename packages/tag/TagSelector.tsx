@@ -1,13 +1,11 @@
 import { h, Component, emit, prop } from 'skatejs';
 import styles from './Tag.scss';
-import { Button } from '../button/Button';
 import { Tag } from './Tag';
 
 
 // public
 interface TagSelectorProps extends JSX.HTMLProps<HTMLElement | any> {
   onTagChange?: Function,
-  onTagAdd?: Function,
   delimiter?: string,
   tags?: any
 }
@@ -18,30 +16,57 @@ export class TagSelector extends Component<TagSelectorProps> {
     return {
       tags: prop.array({
         attribute: true
-      })
+      }),
+      delimiter: prop.string({
+        attribute: true
+      }),
     }
   }
 
-  inputValue: string;
-  inputElement: HTMLInputElement = null;
   tags = [];
+  delimiter = ' '; // default value is space ' '
 
-  private handleTagSelectorSearch( event ) {
-    if ( event.which === 13 ) {
-      emit( this, 'tagChange' );
+  private handleInput( event ) {
+    const lastChar = event.target.value.substr(-1);
+    const value = event.target.value.slice(0, -1).trim();
+    const isDelimiter = lastChar === this.delimiter;
+
+    if ( value && isDelimiter ) {
+      this.addTag(value);
       event.target.value = '';
     }
   }
 
+  private addTag(value:string){
+    this.tags.push(value);
+    this.emitNewData( this.tags );
+  }
+
+  private removeTag(event: CustomEvent){
+    const index = this.tags.indexOf( event.detail.tag.innerHTML );
+    this.tags.splice( index, 1 );
+    this.emitNewData( this.tags );
+  }
+
+  private emitNewData( tags ) {
+    emit(this,'tagChange', {
+      detail: {
+        tags: tags
+      }
+    })
+  }
+
+
   connectedCallback() {
     super.connectedCallback();
-    this.handleTagSelectorSearch = this.handleTagSelectorSearch.bind( this );
+    this.handleInput = this.handleInput.bind( this );
+    this.removeTag = this.removeTag.bind( this );
   }
 
   renderCallback() {
-    console.log( 'tags:', this.tags );
+
     const tags = this.tags.map(tag => {
-      return <Tag>{tag}</Tag>;
+      return <Tag onTagClose={this.removeTag}>{tag}</Tag>;
     });
 
     return [
@@ -52,9 +77,7 @@ export class TagSelector extends Component<TagSelectorProps> {
         </div>
         <div class="c-tags__field-container">
           <input class="c-field"
-                 onKeyup={this.handleTagSelectorSearch}
-                 value={this.inputValue}
-                 ref={(_ref: HTMLInputElement)=>this.inputElement=_ref}/>
+                 onInput={this.handleInput} />
         </div>
       </div>
     ]

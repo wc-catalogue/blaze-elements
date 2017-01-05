@@ -1,7 +1,5 @@
-import { h, Component, emit } from 'skatejs';
+import { h, Component, emit, prop } from 'skatejs';
 import styles from './Tag.scss';
-import { Button } from '../button/Button';
-
 
 // public
 interface TagProps extends JSX.HTMLProps<HTMLElement | any> {
@@ -12,7 +10,16 @@ export class Tag extends Component<TagProps> {
   static get is() { return 'bl-tag' }
 
   private handleClick() {
-    emit(this,'tagClose')
+    emit( this, 'tagClose', {
+      detail: {
+        tag: this
+      }
+    } )
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.handleClick = this.handleClick.bind(this);
   }
 
   renderCallback() {
