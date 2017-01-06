@@ -1,26 +1,50 @@
-import { h, Component, emit } from 'skatejs';
+import { h, Component, emit, prop } from 'skatejs';
 import styles from './Tag.scss';
-import { Button } from '../button/Button';
-
 
 // public
 interface TagProps extends JSX.HTMLProps<HTMLElement | any> {
-  onTagClose?: Function
+  onTagClose?: Function,
+  label: string,
 }
 
 export class Tag extends Component<TagProps> {
+
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   static get is() { return 'bl-tag' }
+  static get events() {
+    return {
+      TAG_CLOSE: 'tagClose'
+    }
+  }
+  static get props() {
+    return {
+      label: prop.string({
+        attribute: true
+      })
+    }
+  }
+
+  label = '';
 
   private handleClick() {
-    emit(this,'tagClose')
+    emit( this, Tag.events.TAG_CLOSE, {
+      detail: {
+        tag: this
+      }
+    } )
   }
 
   renderCallback() {
+    const { label } = this;
 
     return [
       <style>{styles}</style>,
       <button type="button" class="c-button c-tag">
-        <slot />
+        { label }
         <span class="c-tag__close" onClick={this.handleClick}>×</span>
       </button>
     ]
