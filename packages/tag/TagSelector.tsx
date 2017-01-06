@@ -40,15 +40,16 @@ export class TagSelector extends Component<TagSelectorProps> {
   delimiter = ' '; // default value is space ' '
   inputValue = '';
 
-  private handleInput( event: Event ) {
-    const { value } = event.target;
+  private handleInput( event: KeyboardEvent ) {
+    const input = event.target as Input;
+    const { value } = input.inputElement;
     const lastChar = value.substr(-1);
     const newValue = value.slice(0, -1).trim();
     const isDelimiter = lastChar === this.delimiter;
 
     if ( newValue && isDelimiter ) {
       this.addTag(newValue);
-      this.inputValue = '';
+      input.inputElement.value = '';
     }
   }
 
@@ -58,7 +59,8 @@ export class TagSelector extends Component<TagSelectorProps> {
   }
 
   private handleTagClose(event: CustomEvent) {
-    const index = this.tags.indexOf( event.detail.tag.innerHTML );
+    const target = event.target as Tag;
+    const index = this.tags.indexOf( target.label );
     const newTags = this.tags.filter( (tag, tagIdx) => tagIdx !== index );
     this.emitNewData( newTags );
   }
@@ -73,8 +75,8 @@ export class TagSelector extends Component<TagSelectorProps> {
 
   renderCallback() {
 
-    const tags = this.tags.map(tag => {
-      return <Tag onTagClose={this.handleTagClose}>{tag}</Tag>;
+    const tags = this.tags.map(label => {
+      return <Tag onTagClose={this.handleTagClose} label={label}></Tag>;
     });
 
     return [
@@ -84,7 +86,7 @@ export class TagSelector extends Component<TagSelectorProps> {
           {tags}
         </div>
         <div class="c-tags__field-container">
-          <Input onChange={this.handleInput} value={this.inputValue} />
+          <Input onInput={this.handleInput} value={this.inputValue} />
         </div>
       </div>
     ]

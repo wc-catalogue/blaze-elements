@@ -31,10 +31,10 @@ export class Demo extends Component<void> {
         <legend>{Tag.is}</legend>
 
         <div>
-          <Tag onTagClose={this.tagClose}>Tag one</Tag>
-          <Tag onTagClose={this.tagClose}>Tag two</Tag>
-          <Tag onTagClose={this.tagClose}>Tag three</Tag>
-          <Tag onTagClose={this.tagClose}>Tag four</Tag>
+          <Tag onTagClose={this.tagClose} label="Taone"></Tag>
+          <Tag onTagClose={this.tagClose} label="Tatwo"></Tag>
+          <Tag onTagClose={this.tagClose} label="Tagree"></Tag>
+          <Tag onTagClose={this.tagClose} label="Tagour"></Tag>
         </div>
         <fieldset>
           <legend>Tag Selector</legend>

@@ -3,7 +3,8 @@ import styles from './Tag.scss';
 
 // public
 interface TagProps extends JSX.HTMLProps<HTMLElement | any> {
-  onTagClose?: Function
+  onTagClose?: Function,
+  label: string,
 }
 
 export class Tag extends Component<TagProps> {
@@ -19,6 +20,15 @@ export class Tag extends Component<TagProps> {
       TAG_CLOSE: 'tagClose'
     }
   }
+  static get props() {
+    return {
+      label: prop.string({
+        attribute: true
+      })
+    }
+  }
+
+  label = '';
 
   private handleClick() {
     emit( this, Tag.events.TAG_CLOSE, {
@@ -29,11 +39,12 @@ export class Tag extends Component<TagProps> {
   }
 
   renderCallback() {
+    const { label } = this;
 
     return [
       <style>{styles}</style>,
       <button type="button" class="c-button c-tag">
-        <slot />
+        { label }
         <span class="c-tag__close" onClick={this.handleClick}>×</span>
       </button>
     ]
