@@ -36,7 +36,7 @@ export class TagSelector extends Component<TagSelectorProps> {
     }
   }
 
-  tags = [];
+  tags: string[] = [];
   delimiter = ' '; // default value is space ' '
   inputValue = '';
 
@@ -60,8 +60,7 @@ export class TagSelector extends Component<TagSelectorProps> {
 
   private handleTagClose(event: CustomEvent) {
     const target = event.target as Tag;
-    const index = this.tags.indexOf( target.label );
-    const newTags = this.tags.filter( (tag, tagIdx) => tagIdx !== index );
+    const newTags = this.tags.filter( (tag) => tag !== target.label );
     this.emitNewData( newTags );
   }
 
@@ -76,7 +75,7 @@ export class TagSelector extends Component<TagSelectorProps> {
   renderCallback() {
 
     const tags = this.tags.map(label => {
-      return <Tag onTagClose={this.handleTagClose} label={label}></Tag>;
+      return <Tag onTagClose={this.handleTagClose} label={label} />;
     });
 
     return [
