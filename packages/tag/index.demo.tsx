@@ -20,7 +20,7 @@ export class Demo extends Component<void> {
 
   private tagChange( event ) {
     console.log( 'Tag change:', event.detail.tags );
-    this.tags = [].concat( event.detail.tags );
+    this.tags = [ ...event.detail.tags ];
   }
 
   renderCallback() {

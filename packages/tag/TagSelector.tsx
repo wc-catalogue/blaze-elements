@@ -11,7 +11,19 @@ interface TagSelectorProps extends JSX.HTMLProps<HTMLElement | any> {
 }
 
 export class TagSelector extends Component<TagSelectorProps> {
+
+  constructor() {
+    super();
+    this.handleInput = this.handleInput.bind( this );
+    this.handleTagClose = this.handleTagClose.bind( this );
+  }
+
   static get is() { return 'bl-tag-selector' }
+  static get events() {
+    return {
+      TAG_CHANGE: 'tagChange'
+    }
+  }
   static get props() {
     return {
       tags: prop.array({
@@ -26,47 +38,41 @@ export class TagSelector extends Component<TagSelectorProps> {
   tags = [];
   delimiter = ' '; // default value is space ' '
 
-  private handleInput( event ) {
-    const lastChar = event.target.value.substr(-1);
-    const value = event.target.value.slice(0, -1).trim();
+  private handleInput( event: Event ) {
+    const { value } = event.target;
+    const lastChar = value.substr(-1);
+    const newValue = value.slice(0, -1).trim();
     const isDelimiter = lastChar === this.delimiter;
 
-    if ( value && isDelimiter ) {
-      this.addTag(value);
+    if ( newValue && isDelimiter ) {
+      this.addTag(newValue);
       event.target.value = '';
     }
   }
 
-  private addTag(value:string){
-    this.tags.push(value);
-    this.emitNewData( this.tags );
+  private addTag(value: string) {
+    const newTags = this.tags.concat(value);
+    this.emitNewData( newTags );
   }
 
-  private removeTag(event: CustomEvent){
+  private handleTagClose(event: CustomEvent) {
     const index = this.tags.indexOf( event.detail.tag.innerHTML );
-    this.tags.splice( index, 1 );
-    this.emitNewData( this.tags );
+    const newTags = this.tags.filter( (tag, tagIdx) => tagIdx !== index );
+    this.emitNewData( newTags );
   }
 
-  private emitNewData( tags ) {
-    emit(this,'tagChange', {
+  private emitNewData( tags: string[] ) {
+    emit(this, TagSelector.events.TAG_CHANGE, {
       detail: {
         tags: tags
       }
     })
   }
 
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.handleInput = this.handleInput.bind( this );
-    this.removeTag = this.removeTag.bind( this );
-  }
-
   renderCallback() {
 
     const tags = this.tags.map(tag => {
-      return <Tag onTagClose={this.removeTag}>{tag}</Tag>;
+      return <Tag onTagClose={this.handleTagClose}>{tag}</Tag>;
     });
 
     return [

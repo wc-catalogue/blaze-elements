@@ -7,19 +7,25 @@ interface TagProps extends JSX.HTMLProps<HTMLElement | any> {
 }
 
 export class Tag extends Component<TagProps> {
+
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   static get is() { return 'bl-tag' }
+  static get events() {
+    return {
+      TAG_CLOSE: 'tagClose'
+    }
+  }
 
   private handleClick() {
-    emit( this, 'tagClose', {
+    emit( this, Tag.events.TAG_CLOSE, {
       detail: {
         tag: this
       }
     } )
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.handleClick = this.handleClick.bind(this);
   }
 
   renderCallback() {
