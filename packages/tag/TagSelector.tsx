@@ -1,6 +1,7 @@
 import { h, Component, emit, prop } from 'skatejs';
 import styles from './Tag.scss';
 import { Tag } from './Tag';
+import { Input } from '../input/Input';
 
 
 // public
@@ -37,6 +38,7 @@ export class TagSelector extends Component<TagSelectorProps> {
 
   tags = [];
   delimiter = ' '; // default value is space ' '
+  inputValue = '';
 
   private handleInput( event: Event ) {
     const { value } = event.target;
@@ -46,7 +48,7 @@ export class TagSelector extends Component<TagSelectorProps> {
 
     if ( newValue && isDelimiter ) {
       this.addTag(newValue);
-      event.target.value = '';
+      this.inputValue = '';
     }
   }
 
@@ -82,8 +84,7 @@ export class TagSelector extends Component<TagSelectorProps> {
           {tags}
         </div>
         <div class="c-tags__field-container">
-          <input class="c-field"
-                 onInput={this.handleInput} />
+          <Input onChange={this.handleInput} value={this.inputValue} />
         </div>
       </div>
     ]
