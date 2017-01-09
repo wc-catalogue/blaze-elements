@@ -4,6 +4,7 @@ import './badge/index';
 import './breadcrumb/index';
 import './bubble/index';
 import './button/index';
+import './calendar/index';
 import './card/index';
 import './collapsible/index';
 import './drawer/index';
