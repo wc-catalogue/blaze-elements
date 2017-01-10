@@ -19,6 +19,12 @@ export class Demo extends Component<void> {
   }
 
   selectedDate = new Date('1987-12-22').toDateString();
+  i18n = {
+    cs: {
+      monthsFull: ['Leden', 'Únor', 'Březěn', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'],
+      weekdays2char: ['Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So']
+    }
+  }
 
   renderCallback() {
     return [
@@ -27,6 +33,8 @@ export class Demo extends Component<void> {
         <legend>{Calendar.is}</legend>
         <span>Selected date: {this.selectedDate}</span>
         <Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler}></Calendar>
+        <h4>Internationalized calendar (Czech)</h4>
+        <Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler} i18n={this.i18n.cs}></Calendar>
       </fieldset>
     ]
   }
