@@ -3,6 +3,7 @@ import styles from './Calendar.scss';
 import { parse, isEqual, isToday, format, startOfWeek, getDate, addDays, getMonth, getYear } from 'date-fns';
 import { css } from '../_helpers/css';
 import { Button } from '../button/Button';
+import { buildFormatLocale, LocaleType } from '../_helpers/buildFormatLocale';
 
 interface CalendarProps extends JSX.HTMLProps<HTMLElement | any> {
   selectedDate?: string,
@@ -12,11 +13,6 @@ interface CalendarProps extends JSX.HTMLProps<HTMLElement | any> {
     weekdays2char: string[],
   }
 }
-
-const formatLocaleDefault = {
-  monthsFull: ['Leden', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  weekdays2char: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
-};
 
 export class Calendar extends Component<CalendarProps> {
 
@@ -60,10 +56,7 @@ export class Calendar extends Component<CalendarProps> {
   cols = Calendar.range( 7 );
   days = [];
   selectedDate: Date;
-  i18n = {
-    monthsFull: formatLocaleDefault.monthsFull,
-    weekdays2char: formatLocaleDefault.weekdays2char,
-  };
+  i18n: LocaleType;
 
   attributeChangedCallback() {
     this.initSelectedDay();
@@ -71,17 +64,10 @@ export class Calendar extends Component<CalendarProps> {
   }
 
   private format( date: Date, formatStr: string ) {
-
-    const formatters = {
-      'MMMM': (date) => this.i18n.monthsFull[date.getMonth()],
-      'dd': (date) => this.i18n.weekdays2char[date.getDay()],
-    };
-
+    const formatLocale = buildFormatLocale( this.i18n );
     const options = {
       locale: {
-        format: {
-          formatters: formatters
-        }
+        format: formatLocale
       }
     };
     return format( date, formatStr, options );
