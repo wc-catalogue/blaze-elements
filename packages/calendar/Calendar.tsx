@@ -11,7 +11,8 @@ interface CalendarProps extends JSX.HTMLProps<HTMLElement | any> {
   i18n?: {
     monthsFull: string[],
     weekdays2char: string[],
-  }
+  },
+  weekStartsOn?: number,
 }
 
 export class Calendar extends Component<CalendarProps> {
@@ -36,6 +37,9 @@ export class Calendar extends Component<CalendarProps> {
       selectedDate: prop.string( {
         attribute: true
       } ),
+      weekStartsOn: prop.number({
+        attribute: true
+      })
     };
   }
 
@@ -51,7 +55,7 @@ export class Calendar extends Component<CalendarProps> {
 
   year: number;
   month: number;
-  weekStartsOn: number;
+  weekStartsOn = 0; // default is sunday
   rows = Calendar.range( 6 );
   cols = Calendar.range( 7 );
   days = [];
@@ -78,7 +82,6 @@ export class Calendar extends Component<CalendarProps> {
     this.selectedDate = parse( this.selectedDate );
     this.year = getYear( this.selectedDate );
     this.month = getMonth( this.selectedDate );
-    this.weekStartsOn = 1;
   }
 
   private initDays() {
