@@ -123,6 +123,12 @@ export class Calendar extends Component<CalendarProps> {
 
   setDate( toDate ) {
     const date = new Date( toDate );
+
+    // reset hours, minutes and second to prevent set date from "new Date()"
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+
     this.selectedDate = date;
     this.month = getMonth( date );
     this.year = getYear( date );
@@ -173,7 +179,7 @@ export class Calendar extends Component<CalendarProps> {
         {weekDays}
         {days}
 
-        <Button onClick={partial(this.setDate, new Date())}>Today</Button>
+        <Button onClick={partial(this.setDate, new Date())} block>Today</Button>
       </div>
     ]
   }
