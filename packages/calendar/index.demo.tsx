@@ -11,7 +11,6 @@ export class Demo extends Component<void> {
 
   constructor() {
     super();
-
     this.dateChangeHandler = this.dateChangeHandler.bind(this);
   }
 
@@ -22,7 +21,6 @@ export class Demo extends Component<void> {
   selectedDate = new Date('1987-12-22').toDateString();
 
   renderCallback() {
-    console.log( 'renderCB' );
     return [
       <style></style>,
       <fieldset>
