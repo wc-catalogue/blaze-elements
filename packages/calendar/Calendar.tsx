@@ -1,6 +1,15 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Calendar.scss';
-import { parse, isEqual, isToday, format, startOfWeek, getDate, addDays, getMonth, getYear } from 'date-fns';
+
+import * as getYear from 'date-fns/get_year';
+import * as getMonth from 'date-fns/get_month';
+import * as addDays from 'date-fns/add_days';
+import * as getDate from 'date-fns/get_date';
+import * as startOfWeek from 'date-fns/start_of_week';
+import * as format from 'date-fns/format';
+import * as isToday from 'date-fns/is_today';
+import * as parse from 'date-fns/parse';
+import * as isEqual from 'date-fns/is_equal';
 import { css } from '../_helpers/css';
 import { Button } from '../button/Button';
 import { buildFormatLocale, LocaleType } from '../_helpers/buildFormatLocale';
