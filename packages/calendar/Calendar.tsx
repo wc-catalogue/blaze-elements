@@ -14,14 +14,18 @@ import { css } from '../_helpers/css';
 import { Button } from '../button/Button';
 import { buildFormatLocale, LocaleType } from '../_helpers/buildFormatLocale';
 
+const BUTTON_TODAY = 'today';
+const WEEK_STARTS_ON = 'sunday';
+
 interface CalendarProps extends JSX.HTMLProps<HTMLElement | any> {
-  selectedDate?: string,
+  selectedDate?: Date,
   onDateChange?: Function,
   i18n?: {
     monthsFull: string[],
     weekdays2char: string[],
   },
-  weekStartsOn?: number,
+  weekStartsOn?: 'sunday'|'monday',
+  todayButtonText?: string,
 }
 
 export class Calendar extends Component<CalendarProps> {
@@ -46,9 +50,10 @@ export class Calendar extends Component<CalendarProps> {
       selectedDate: prop.string( {
         attribute: true
       } ),
-      weekStartsOn: prop.number({
+      weekStartsOn: prop.string({
         attribute: true
-      })
+      }),
+      todayButtonText: prop.string()
     };
   }
 
@@ -64,12 +69,13 @@ export class Calendar extends Component<CalendarProps> {
 
   year: number;
   month: number;
-  weekStartsOn = 0; // default is sunday
+  weekStartsOn = WEEK_STARTS_ON; // default is sunday
   rows = Calendar.range( 6 );
   cols = Calendar.range( 7 );
   days = [];
   selectedDate: Date;
   i18n: LocaleType;
+  todayButtonText: string = BUTTON_TODAY;
 
   attributeChangedCallback() {
     this.initSelectedDay();
@@ -96,7 +102,7 @@ export class Calendar extends Component<CalendarProps> {
   private initDays() {
     const date = new Date( this.year, this.month );
     const days = [];
-    let currentDate = startOfWeek( date, { weekStartsOn: this.weekStartsOn } );
+    let currentDate = startOfWeek( date, { weekStartsOn: this.weekStartsOn === WEEK_STARTS_ON ? 0 : 1 } );
 
     this.rows.forEach( () => {
       this.cols.forEach( () => {
@@ -165,7 +171,7 @@ export class Calendar extends Component<CalendarProps> {
 
   renderCallback() {
 
-    const { year, month } = this;
+    const { year, month, todayButtonText } = this;
 
     // create date elements
     const days = this.days.map( ( day ) => {
@@ -201,7 +207,7 @@ export class Calendar extends Component<CalendarProps> {
         {weekDays}
         {days}
 
-        <Button onClick={this.setDateHandler()} block>Today</Button>
+        <Button onClick={this.setDateHandler()} block>{todayButtonText}</Button>
       </div>
     ];
   }

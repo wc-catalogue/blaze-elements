@@ -19,7 +19,7 @@ export class Demo extends Component<void> {
     this.selectedDate = event.detail.date;
   }
 
-  selectedDate = new Date( '1987-12-22' ).toDateString();
+  selectedDate = new Date( '1987-12-22' );
   i18n = {
     cs: {
       monthsFull: [
@@ -46,10 +46,10 @@ export class Demo extends Component<void> {
       <fieldset>
         <legend>{Calendar.is}</legend>
         <span>Selected date: {this.selectedDate}</span>
-        <Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler} />
+        <Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler}  />
         <h4>Internationalized calendar (Czech)</h4>
         <Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler} i18n={this.i18n.cs}
-                  weekStartsOn={1} />
+                  weekStartsOn={'monday'} todayButtonText="dnes" />
       </fieldset>
     ];
   }
