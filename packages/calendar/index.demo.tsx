@@ -1,5 +1,7 @@
 import { h, Component, prop } from 'skatejs';
-import { Calendar } from './Calendar';
+import { Calendar, CalendarChangeEvent } from './Calendar';
+
+
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-calendar-demo'; }
@@ -15,7 +17,7 @@ export class Demo extends Component<void> {
     this.dateChangeHandler = this.dateChangeHandler.bind( this );
   }
 
-  private dateChangeHandler( event: CustomEvent ) {
+  private dateChangeHandler( event: CalendarChangeEvent ) {
     this.selectedDate = event.detail.date;
   }
 
@@ -36,6 +38,7 @@ export class Demo extends Component<void> {
         'Listopad',
         'Prosinec'
       ],
+      todayButtonText: 'DNES',
       weekdays2char: [ 'Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So' ]
     }
   };
@@ -49,7 +52,7 @@ export class Demo extends Component<void> {
         <Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler}  />
         <h4>Internationalized calendar (Czech)</h4>
         <Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler} i18n={this.i18n.cs}
-                  weekStartsOn={'monday'} todayButtonText="dnes" />
+                  weekStartsOn={'monday'} />
       </fieldset>
     ];
   }

@@ -9,23 +9,25 @@ import * as startOfWeek from 'date-fns/start_of_week';
 import * as format from 'date-fns/format';
 import * as isToday from 'date-fns/is_today';
 import * as parse from 'date-fns/parse';
-import * as isEqual from 'date-fns/is_equal';
+import * as isSameDay from 'date-fns/is_same_day';
 import { css } from '../_helpers/css';
 import { Button } from '../button/Button';
 import { buildFormatLocale, LocaleType } from '../_helpers/buildFormatLocale';
 
-const BUTTON_TODAY = 'today';
+const BUTTON_TODAY = 'TODAY';
 const WEEK_STARTS_ON = 'sunday';
+
+export type CalendarChangeEvent = CustomEvent & {detail: { date: Date } };
 
 interface CalendarProps extends JSX.HTMLProps<HTMLElement | any> {
   selectedDate?: Date,
-  onDateChange?: Function,
+  onDateChange?: (ev: CalendarChangeEvent) => void,
   i18n?: {
     monthsFull: string[],
     weekdays2char: string[],
+    todayButtonText: string,
   },
   weekStartsOn?: 'sunday'|'monday',
-  todayButtonText?: string,
 }
 
 export class Calendar extends Component<CalendarProps> {
@@ -67,15 +69,17 @@ export class Calendar extends Component<CalendarProps> {
     return Array.from( Array( n ).keys() );
   }
 
-  year: number;
-  month: number;
+  private year: number;
+  private month: number;
+  private days = [];
+  private rows = Calendar.range( 6 );
+  private cols = Calendar.range( 7 );
+
   weekStartsOn = WEEK_STARTS_ON; // default is sunday
-  rows = Calendar.range( 6 );
-  cols = Calendar.range( 7 );
-  days = [];
   selectedDate: Date;
-  i18n: LocaleType;
-  todayButtonText: string = BUTTON_TODAY;
+  i18n: LocaleType = {
+    todayButtonText: BUTTON_TODAY
+  };
 
   attributeChangedCallback() {
     this.initSelectedDay();
@@ -91,7 +95,6 @@ export class Calendar extends Component<CalendarProps> {
     };
     return format( date, formatStr, options );
   }
-
 
   private initSelectedDay() {
     this.selectedDate = parse( this.selectedDate );
@@ -153,9 +156,7 @@ export class Calendar extends Component<CalendarProps> {
     const date = parse( toDate );
 
     // reset hours, minutes and second to prevent set date from "new Date()"
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setSeconds(0);
+    this.resetHoursMinutesSeconds( toDate );
 
     this.selectedDate = date;
     this.month = getMonth( date );
@@ -169,18 +170,24 @@ export class Calendar extends Component<CalendarProps> {
     });
   }
 
+  private resetHoursMinutesSeconds( date: Date ) {
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+  };
+
   renderCallback() {
 
-    const { year, month, todayButtonText } = this;
+    const { year, month, selectedDate } = this;
 
     // create date elements
     const days = this.days.map( ( day ) => {
       const className = css(
         'c-calendar__date',
         {
-          'c-calendar__date--in-month': getMonth( day ) === this.month,
+          'c-calendar__date--in-month': getMonth( day ) === month,
           'c-calendar__date--today': isToday( day ),
-          'c-calendar__date--selected': isEqual( day, this.selectedDate ),
+          'c-calendar__date--selected': isSameDay( day, selectedDate ),
         }
       );
       return <button className={className} onClick={this.setDateHandler(day)}>{getDate( day )}</button>;
@@ -207,7 +214,7 @@ export class Calendar extends Component<CalendarProps> {
         {weekDays}
         {days}
 
-        <Button onClick={this.setDateHandler()} block>{todayButtonText}</Button>
+        <Button onClick={this.setDateHandler()} block>{this.i18n.todayButtonText}</Button>
       </div>
     ];
   }

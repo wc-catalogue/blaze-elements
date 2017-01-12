@@ -7,6 +7,7 @@ export type LocaleType = {
   meridiemUppercase?: string[],
   meridiemLowercase?: string[],
   meridiemFull?: string[],
+  todayButtonText?: string,
 };
 
 const defaultLocale: LocaleType = {
