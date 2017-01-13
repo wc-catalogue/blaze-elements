@@ -14,6 +14,10 @@
   dependencies:
     webcomponents.js "^0.7.20"
 
+"@types/chai@*", "@types/chai@^3.4.34":
+  version "3.4.34"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-3.4.34.tgz#d5335792823bb09cddd5e38c3d211b709183854d"
+
 "@types/chalk@^0.4.28":
   version "0.4.31"
   resolved "https://registry.yarnpkg.com/@types/chalk/-/chalk-0.4.31.tgz#a31d74241a6b1edbb973cf36d97a2896834a51f9"
@@ -39,6 +43,10 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-0.0.29.tgz#fbcfd330573b912ef59eeee14602bface630754b"
 
+"@types/mocha@^2.2.35":
+  version "2.2.35"
+  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.35.tgz#dd3150b62a6de73368109308515c3aa86f81f1ec"
+
 "@types/node@*", "@types/node@^6.0.31":
   version "6.0.56"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.56.tgz#12bc7fff825e72807f55dcbce17e9db6177713dd"
@@ -49,6 +57,17 @@
   dependencies:
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
+
+"@types/sinon-chai@^2.7.27":
+  version "2.7.27"
+  resolved "https://registry.yarnpkg.com/@types/sinon-chai/-/sinon-chai-2.7.27.tgz#eb7729058ddf253a6979e559bb2b491084969aa1"
+  dependencies:
+    "@types/chai" "*"
+    "@types/sinon" "*"
+
+"@types/sinon@*":
+  version "1.16.34"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-1.16.34.tgz#a9761fff33d0f7b3fe61875b577778a2576a9a03"
 
 "@types/which@^1.0.27":
   version "1.0.28"
@@ -510,6 +529,12 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
+bore@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/bore/-/bore-1.1.1.tgz#3a3f65ef5481d16acd3c7562ba7657845c8d8160"
+  dependencies:
+    skatejs-dom-diff "^0.4.2"
+
 boxen@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/boxen/-/boxen-0.3.1.tgz#a7d898243ae622f7abb6bb604d740a76c6a5461b"
@@ -740,7 +765,7 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-chai@^3.2.0:
+chai@^3.2.0, chai@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/chai/-/chai-3.5.0.tgz#4d02637b067fe958bdbfdd3a40ec56fef7373247"
   dependencies:
@@ -2250,7 +2275,7 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-growl@1.9.2:
+growl@1.9.2, growl@^1.9.2:
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/growl/-/growl-1.9.2.tgz#0ea7743715db8d8de2c5ede1775e1b45ac85c02f"
 
@@ -3339,7 +3364,7 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   dependencies:
     minimist "0.0.8"
 
-mocha@^3.1.2:
+mocha@^3.1.2, mocha@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/mocha/-/mocha-3.2.0.tgz#7dc4f45e5088075171a68896814e6ae9eb7a85e3"
   dependencies:
@@ -4968,6 +4993,12 @@ sinon@^1.11.1:
     lolex "1.3.2"
     samsam "1.1.2"
     util ">=0.10.3 <1"
+
+skatejs-dom-diff@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/skatejs-dom-diff/-/skatejs-dom-diff-0.4.2.tgz#9f0406a6d6839c5505d79e75207a0e6a62a7f285"
+  dependencies:
+    object-assign "^4.0.1"
 
 skatejs-web-components@^5.0.0:
   version "5.0.1"

@@ -18,7 +18,7 @@ export interface StateChangedEvent extends Event {
 }
 
 export class Collapsible extends Component<CollapsibleProps> {
-  static get is(){ return 'bl-collapsible' }
+  static get is(){ return 'bl-collapsible'; }
   static get props() {
     return {
       isOpened: prop.boolean({
@@ -26,7 +26,7 @@ export class Collapsible extends Component<CollapsibleProps> {
       }),
       isNotStandAlone: prop.boolean(),
       isLast: prop.boolean()
-    }
+    };
   }
 
   isOpened: boolean;
@@ -41,7 +41,7 @@ export class Collapsible extends Component<CollapsibleProps> {
   private handleStateChange(event: Event) {
     this.isOpened = !this.isOpened;
 
-    emit(this,'stateChanged', {
+    emit( this, 'stateChanged', {
       detail: {
         opened: this.isOpened,
         collapsed: !this.isOpened
@@ -49,7 +49,7 @@ export class Collapsible extends Component<CollapsibleProps> {
     }); // emit state changed event on root element
   }
 
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     this.handleStateChange = this.handleStateChange.bind(this);
   }
@@ -93,7 +93,7 @@ export class Collapsible extends Component<CollapsibleProps> {
         </label>
         {content}
       </div>
-    ]
+    ];
   }
 }
 

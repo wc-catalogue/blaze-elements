@@ -122,3 +122,9 @@ interface Event {
 interface Document {
   createElement(tagName: 'slot'): HTMLSlotElement;
 }
+
+// Tests
+declare var expect: Chai.ExpectStatic;
+declare var MockInteractions: {
+  tap: (node: HTMLElement) => void
+};
