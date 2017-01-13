@@ -7,5 +7,14 @@
     "start": "../../node_modules/.bin/webpack-dev-server  --config ../../webpack.config.js --env.dev --hot --env.element=alert",
     "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.element=alert",
     "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "@polymer/iron-test-helpers": "^0.0.3",
+    "@types/mocha": "^2.2.37",
+    "concurrently": "^3.1.0",
+    "rimraf": "^2.5.4",
+    "web-component-tester": "^5.0.0",
+    "webpack": "beta",
+    "webpack-dev-server": "beta"
   }
 }

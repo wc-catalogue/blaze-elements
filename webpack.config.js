@@ -34,7 +34,7 @@ module.exports = ( env ) => {
         'test-helpers': './test-helpers.ts'
       },
       (env.element ? {
-        'main': `./packages/${ env.element }/${ capitalize( env.element ) }.tsx`,
+        'main': `./packages/${ env.element }/index.ts`,
         'main.demo': `./packages/${ env.element }/index.demo.tsx`,
         'vendors': './vendors.ts',
         'polyfills': './polyfills.ts',
