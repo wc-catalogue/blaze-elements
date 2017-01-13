@@ -1,0 +1,20 @@
+@import "../generics.shared";
+@import '~blaze/scss/components.lists';
+
+c-list--ordered .c-list__item:before {
+
+}
+
+:host{
+  counter-reset: a;
+
+  ol, ul {
+    padding-left: 10px !important;
+  }
+}
+
+//li::before {
+//  //color: red;
+//  content: counters(a,".") " ";
+//  counter-increment: a;
+//}

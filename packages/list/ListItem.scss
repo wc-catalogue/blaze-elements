@@ -1,0 +1,19 @@
+@import "../generics.shared";
+@import '~blaze/scss/components.lists';
+
+c-list--ordered .c-list__item:before {
+  list-style-type: inherit;
+  content: counters(a, ".") " ";
+}
+
+:host {
+  counter-increment: a;
+}
+
+:host::before {
+  content: counters(a, ".") " ";
+  display: block;
+  float: left;
+  padding-right:.5em;
+}
+

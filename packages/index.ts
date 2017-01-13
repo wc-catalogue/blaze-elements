@@ -9,6 +9,7 @@ import './collapsible/index';
 import './drawer/index';
 import './input/index';
 import './modal/index';
+import './list/index';
 import './nav/index';
 import './overlay/index';
 import './progress/index';
