@@ -57,14 +57,16 @@ export class Input extends Component<InputProps> {
 
   inputElement: HTMLInputElement;
 
-  private provideValue(event: Event) {
+  private delegateEventToParent( event: Event ) {
+
     this.value = this.inputElement.value;
-    emit(this,'change'); // emit change event on root element
+    emit(this, event.type);
+
   }
 
   connectedCallback(){
     super.connectedCallback();
-    this.provideValue = this.provideValue.bind(this);
+    this.delegateEventToParent = this.delegateEventToParent.bind(this);
   }
 
   renderCallback() {
@@ -86,7 +88,8 @@ export class Input extends Component<InputProps> {
         className={className}
         type={type}
         value={value}
-        onChange={this.provideValue}
+        onChange={this.delegateEventToParent}
+        onInput={this.delegateEventToParent}
         placeholder={placeholder}
         disabled={disabled}
       />
