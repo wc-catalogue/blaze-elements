@@ -4,21 +4,12 @@
   "main": "dist/main.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --env.dev --hot --host 0.0.0.0 --env.element=collapsible",
-    "test": "npm run build:test && ../../toolbelt/test.sh -l firefox",
-    "test:watch": "concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../toolbelt/test.sh -p\"",
-    "test:watch:firefox": "concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../toolbelt/test.sh -p -l firefox\"",
-    "build": "rimraf dist && webpack --config ../../webpack.config.js --env.prod --env.element=collapsible",
-    "build:test": "rimraf dist && webpack --config ../../webpack.config.js --env.test --env.element=collapsible",
-    "build:test:watch": "webpack-dev-server --config ../../webpack.config.js --env.test --env.element=collapsible"
-  },
-  "devDependencies": {
-    "@polymer/iron-test-helpers": "^0.0.3",
-    "@types/mocha": "^2.2.37",
-    "concurrently": "^3.1.0",
-    "rimraf": "^2.5.4",
-    "web-component-tester": "^5.0.0",
-    "webpack": "beta",
-    "webpack-dev-server": "beta"
+    "start": "../../node_modules/.bin/webpack-dev-server --env.dev --hot --host 0.0.0.0 --env.element=collapsible",
+    "test": "npm run build:test && ../../node_modules/.bin/wct -l firefox",
+    "test:watch": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p\"",
+    "test:watch:firefox": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p -l firefox\"",
+    "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.prod --env.element=collapsible",
+    "build:test": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.test --env.element=collapsible",
+    "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=collapsible"
   }
 }

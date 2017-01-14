@@ -1,6 +1,7 @@
 import { Collapsible } from './Collapsible';
 
 import { h, mount } from 'bore';
+import { click } from '../_helpers/test';
 
 describe( Collapsible.is, () => {
 
@@ -68,7 +69,7 @@ describe( Collapsible.is, () => {
 
       });
 
-      MockInteractions.tap(
+      click(
         secondCollapsible.shadowRoot.querySelector('label.c-card__item')
       );
 

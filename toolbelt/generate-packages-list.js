@@ -1,10 +1,11 @@
 const fs = require( 'fs' );
 const packageJson = require( '../package.json' );
 
-packageJson.packages = fs.readdirSync( './packages' )
-  .filter( ( node ) => node.indexOf( '.' ) === -1 && node.substr( 0, 1 ) !== '_' );
+const packageList = require('./packages-list.js').packageList();
 
-console.log( packageJson.packages );
+console.log(packageList);
+
+packageJson.packages = packageList;
 
 fs.writeFileSync( './package.json', JSON.stringify( packageJson, null, 2) + "\n" );
 

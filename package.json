@@ -29,7 +29,6 @@
     "tslib": "^1.2.0"
   },
   "devDependencies": {
-    "@polymer/iron-test-helpers": "^0.0.3",
     "@types/mocha": "^2.2.37",
     "@types/sinon-chai": "^2.7.27",
     "awesome-typescript-loader": "^3.0.0-beta.9",
