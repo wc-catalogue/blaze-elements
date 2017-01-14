@@ -125,6 +125,3 @@ interface Document {
 
 // Tests
 declare var expect: Chai.ExpectStatic;
-declare var MockInteractions: {
-  tap: (node: HTMLElement) => void
-};
