@@ -2,19 +2,7 @@
 # yarn lockfile v1
 
 
-"@polymer/iron-test-helpers@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-test-helpers/-/iron-test-helpers-0.0.3.tgz#1fea0dd46769106b12c35ecc4f479917e2f28bef"
-  dependencies:
-    "@polymer/polymer" "^1.2.5-npm-test.2"
-
-"@polymer/polymer@^1.2.5-npm-test.2":
-  version "1.2.5-npm-test.2"
-  resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-1.2.5-npm-test.2.tgz#7930f5663c2f686915451d211e663aa9997d7336"
-  dependencies:
-    webcomponents.js "^0.7.20"
-
-"@types/chai@*", "@types/chai@^3.4.34":
+"@types/chai@*":
   version "3.4.34"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-3.4.34.tgz#d5335792823bb09cddd5e38c3d211b709183854d"
 
@@ -43,9 +31,9 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-0.0.29.tgz#fbcfd330573b912ef59eeee14602bface630754b"
 
-"@types/mocha@^2.2.35":
-  version "2.2.35"
-  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.35.tgz#dd3150b62a6de73368109308515c3aa86f81f1ec"
+"@types/mocha@^2.2.37":
+  version "2.2.37"
+  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.37.tgz#8e0d5327ffa0734999c1010967853de917f3a38e"
 
 "@types/node@*", "@types/node@^6.0.31":
   version "6.0.56"
@@ -765,7 +753,7 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-chai@^3.2.0, chai@^3.5.0:
+chai@^3.2.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/chai/-/chai-3.5.0.tgz#4d02637b067fe958bdbfdd3a40ec56fef7373247"
   dependencies:
@@ -2275,7 +2263,7 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-growl@1.9.2, growl@^1.9.2:
+growl@1.9.2:
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/growl/-/growl-1.9.2.tgz#0ea7743715db8d8de2c5ede1775e1b45ac85c02f"
 
@@ -2982,9 +2970,9 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-lerna@2.0.0-beta.31:
-  version "2.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/lerna/-/lerna-2.0.0-beta.31.tgz#68da53b860f8193d4653a6d0601ef300b8d7176d"
+lerna@2.0.0-beta.32:
+  version "2.0.0-beta.32"
+  resolved "https://registry.yarnpkg.com/lerna/-/lerna-2.0.0-beta.32.tgz#67d51b1520ce57a27b8445160726b48f6dba3f1c"
   dependencies:
     async "^1.5.0"
     chalk "^1.1.1"
@@ -3364,7 +3352,7 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   dependencies:
     minimist "0.0.8"
 
-mocha@^3.1.2, mocha@^3.2.0:
+mocha@^3.1.2:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/mocha/-/mocha-3.2.0.tgz#7dc4f45e5088075171a68896814e6ae9eb7a85e3"
   dependencies:
@@ -5863,10 +5851,6 @@ web-component-tester@^5.0.0:
     update-notifier "^0.6.0"
     wct-local "^2.0.8"
     wct-sauce "^1.8.2"
-
-webcomponents.js@^0.7.20:
-  version "0.7.23"
-  resolved "https://registry.yarnpkg.com/webcomponents.js/-/webcomponents.js-0.7.23.tgz#fdbb29e8d9fd667aa72407d89908e62dfeba0513"
 
 webpack-combine-loaders@2.0.0:
   version "2.0.0"
