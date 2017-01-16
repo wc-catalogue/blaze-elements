@@ -1,7 +1,7 @@
 import { Collapsible } from './Collapsible';
 
 import { h, mount } from 'bore';
-import { click } from '../_helpers/test';
+import { emit } from 'skatejs';
 
 describe( Collapsible.is, () => {
 
@@ -69,8 +69,10 @@ describe( Collapsible.is, () => {
 
       });
 
-      click(
-        secondCollapsible.shadowRoot.querySelector('label.c-card__item')
+      emit(
+        secondCollapsible.shadowRoot.querySelector('label.c-card__item'),
+        'click',
+        {composed: false}
       );
 
     });
