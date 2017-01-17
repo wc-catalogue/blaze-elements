@@ -49,12 +49,17 @@ describe( Collapsible.is, () => {
         </Collapsible>
       </div>
     ).waitFor((element) => {
+      return (
+        !!element.one('#firstCollapsible').node.shadowRoot &&
+        !!element.one('#secondCollapsible').node.shadowRoot
+      );
+    }).then((element) => {
 
       const firstCollapsible = element.one('#firstCollapsible');
       const secondCollapsible = element.one('#secondCollapsible');
 
-      expect( firstCollapsible.has('div.c-card__item') ).to.be.false;
-      expect( secondCollapsible.has('div.c-card__item') ).to.be.false;
+      expect(firstCollapsible.has('div.c-card__item')).to.be.false;
+      expect(secondCollapsible.has('div.c-card__item')).to.be.false;
 
       secondCollapsible.node.addEventListener('stateChanged', function() {
 
@@ -70,7 +75,7 @@ describe( Collapsible.is, () => {
       });
 
       emit(
-        secondCollapsible.shadowRoot.querySelector('label.c-card__item'),
+        secondCollapsible.one('label.c-card__item').node,
         'click',
         {composed: false}
       );

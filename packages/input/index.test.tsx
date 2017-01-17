@@ -9,7 +9,7 @@ describe( Input.is, () => {
 
     mount(<Input value="initial"/>).wait((element) => {
 
-      element.node.addEventListener('change', function() {
+      element.node.addEventListener('change', () => {
 
         expect(element.node.value).to.equal('ok');
 
@@ -29,7 +29,7 @@ describe( Input.is, () => {
 
     mount(<Input value="initial"/>).wait((element) => {
 
-      element.node.addEventListener('input', function() {
+      element.node.addEventListener('input', () => {
 
         expect(element.node.value).to.equal('ok');
 
@@ -39,7 +39,8 @@ describe( Input.is, () => {
 
       const innerInput = element.one('input').node;
       innerInput.value = 'ok';
-      emit(innerInput, 'input', {composed: true});
+      emit(innerInput, 'input', { composed: true });
+
     });
 
   });
