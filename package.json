@@ -65,6 +65,7 @@
     "collapsible",
     "drawer",
     "input",
+    "list",
     "modal",
     "nav",
     "overlay",

@@ -60,9 +60,9 @@ export class Demo extends Component<void> {
               <ListItem>Item</ListItem>
               <ListItem>Item
                 <List ordered>
-                  <ListItem>Item</ListItem>
-                  <ListItem>Item</ListItem>
-                  <ListItem>Item</ListItem>
+                  <ListItem class="ordered">Item</ListItem>
+                  <ListItem class="ordered">Item</ListItem>
+                  <ListItem class="ordered">Item</ListItem>
                 </List>
               </ListItem>
               <ListItem>Item</ListItem>
