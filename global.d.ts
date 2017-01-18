@@ -122,3 +122,6 @@ interface Event {
 interface Document {
   createElement(tagName: 'slot'): HTMLSlotElement;
 }
+
+// Tests
+declare var expect: Chai.ExpectStatic;

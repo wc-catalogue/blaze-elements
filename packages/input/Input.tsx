@@ -1,5 +1,5 @@
 import { h, Component, prop, emit } from 'skatejs';
-import {Size, cssClassForSize} from '../_helpers/sizes'
+import { Size, cssClassForSize } from '../_helpers/sizes';
 import styles from './Input.scss';
 import { css } from '../_helpers/css';
 
@@ -10,9 +10,8 @@ type TypesType = {
   reset: string,
   hidden: string,
   number: string
-}
+};
 
-//public
 interface InputProps extends JSX.HTMLProps<HTMLInputElement | any> {
   value: string,
   valid?: string,
@@ -24,7 +23,7 @@ interface InputProps extends JSX.HTMLProps<HTMLInputElement | any> {
 
 export class Input extends Component<InputProps> {
   _props: InputProps;
-  static get is() { return 'bl-input' }
+  static get is() { return 'bl-input'; }
   static get props() {
     return {
       value: prop.string({
@@ -45,7 +44,7 @@ export class Input extends Component<InputProps> {
       inputSize: prop.string({
         attribute: true
       }),
-    }
+    };
   }
 
   valid: string;
@@ -57,14 +56,19 @@ export class Input extends Component<InputProps> {
 
   inputElement: HTMLInputElement;
 
-  private provideValue(event: Event) {
-    this.value = this.inputElement.value;
-    emit(this,'change'); // emit change event on root element
+  private propagateOnChange(event: Event) {
+    this.setValue();
+    emit(this, 'change'); // emit change event on root element
   }
 
-  connectedCallback(){
+  private setValue() {
+    this.value = this.inputElement.value;
+  }
+
+  connectedCallback() {
     super.connectedCallback();
-    this.provideValue = this.provideValue.bind(this);
+    this.propagateOnChange = this.propagateOnChange.bind(this);
+    this.setValue = this.setValue.bind(this);
   }
 
   renderCallback() {
@@ -82,15 +86,16 @@ export class Input extends Component<InputProps> {
     return [
       <style>{styles}</style>,
       <input
-        ref={(_ref: HTMLInputElement)=>this.inputElement=_ref}
+        ref={(_ref: HTMLInputElement) => this.inputElement = _ref}
         className={className}
         type={type}
         value={value}
-        onChange={this.provideValue}
+        onChange={this.propagateOnChange}
+        onInput={this.setValue}
         placeholder={placeholder}
         disabled={disabled}
       />
-    ]
+    ];
   }
 }
 

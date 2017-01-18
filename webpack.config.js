@@ -18,25 +18,35 @@ const { getIfUtils, removeEmpty } = require( 'webpack-config-utils' );
 
 
 module.exports = ( env ) => {
-  const { ifProd, ifNotProd } = getIfUtils( env );
+  const { ifProd, ifNotProd, ifTest, ifNotTest } = getIfUtils( env );
 
   return {
     // The base directory, an absolute path, for resolving entry points and loaders from configuration.
     context: resolve( __dirname ),
     // The point or points to enter the application.
-    entry: env.element ? {
-      'main': `./packages/${ env.element }/${ capitalize( env.element ) }.tsx`,
-      'main.demo': `./packages/${ env.element }/index.demo.tsx`,
-      'vendors': './vendors.ts',
-      'polyfills': './polyfills.ts',
-      'styles': './styles.ts'
-    } : {
-      'main': './packages/index.ts',
-      'main.demo': './packages/index.demo.ts',
-      'vendors': './vendors.ts',
-      'polyfills': './polyfills.ts',
-      'styles': './styles.ts'
-    },
+    entry: ifTest(
+      {
+        'test': (
+          env.element ?
+            `./packages/${env.element}/index.test.ts` :
+            './packages/index.test.ts'
+        ),
+        'test-helpers': './test-helpers.ts'
+      },
+      (env.element ? {
+        'main': `./packages/${ env.element }/index.ts`,
+        'main.demo': `./packages/${ env.element }/index.demo.tsx`,
+        'vendors': './vendors.ts',
+        'polyfills': './polyfills.ts',
+        'styles': './styles.ts'
+      } : {
+        'main': './packages/index.ts',
+        'main.demo': './packages/index.demo.ts',
+        'vendors': './vendors.ts',
+        'polyfills': './polyfills.ts',
+        'styles': './styles.ts'
+      })
+    ),
     output: {
       filename: '[name].js',
       path: env.element ? resolve( __dirname, 'packages', env.element, 'dist' ) : resolve( __dirname, 'dist' ),
@@ -150,13 +160,26 @@ module.exports = ( env ) => {
        * This will also take care of moving the index.html file to the build directory using the index.html in src as a template.
        * https://github.com/ampedandwired/html-webpack-plugin
        */
-      new HtmlWebpackPlugin( {
-        template: resolve( 'index.html' ),
-        packages: env.element ? env.element : require('./package.json').packages,
-        excludeChunks: [ 'main' ],
-        inject: 'head'
-      } )
+      ifNotTest(new HtmlWebpackPlugin({
+          template: resolve( 'index.html' ),
+          packages: env.element ? env.element : require('./package.json').packages,
+          excludeChunks: [ 'main' ], // Exclude 'main' as it is included in 'main.demo'
+          inject: 'head',
+          chunksSortMode: buildChunksSort([ 'polyfills', 'vendors', 'styles', 'main', 'main.demo', 'test-helpers', 'test' ])
+      }))
 
-    ])
+    ]),
+    performance: {
+      hints: ifTest() ? false : 'warning'
+    }
   }
 };
+
+/**
+ * Build sort function for chunksSortMode from array
+ */
+function buildChunksSort( order ) {
+
+  return (a, b) => order.indexOf(a.names[0]) - order.indexOf(b.names[0]);
+
+}

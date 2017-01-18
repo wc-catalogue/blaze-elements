@@ -4,8 +4,12 @@
   "main": "dist/main.js",
   "license": "MIT",
   "scripts": {
-    "start": "../../node_modules/.bin/webpack-dev-server  --config ../../webpack.config.js --env.dev --hot --env.element=overlay",
-    "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.element=overlay",
-    "prepublish": "npm run build"
+    "start": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.dev --hot --host 0.0.0.0 --env.element=overlay",
+    "test": "npm run build:test && ../../node_modules/.bin/wct -l firefox",
+    "test:watch": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p\"",
+    "test:watch:firefox": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p -l firefox\"",
+    "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.prod --env.element=overlay",
+    "build:test": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.test --env.element=overlay",
+    "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=overlay"
   }
 }

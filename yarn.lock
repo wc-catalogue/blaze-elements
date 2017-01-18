@@ -2,17 +2,9 @@
 # yarn lockfile v1
 
 
-"@polymer/iron-test-helpers@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-test-helpers/-/iron-test-helpers-0.0.3.tgz#1fea0dd46769106b12c35ecc4f479917e2f28bef"
-  dependencies:
-    "@polymer/polymer" "^1.2.5-npm-test.2"
-
-"@polymer/polymer@^1.2.5-npm-test.2":
-  version "1.2.5-npm-test.2"
-  resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-1.2.5-npm-test.2.tgz#7930f5663c2f686915451d211e663aa9997d7336"
-  dependencies:
-    webcomponents.js "^0.7.20"
+"@types/chai@*":
+  version "3.4.34"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-3.4.34.tgz#d5335792823bb09cddd5e38c3d211b709183854d"
 
 "@types/chalk@^0.4.28":
   version "0.4.31"
@@ -39,6 +31,10 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-0.0.29.tgz#fbcfd330573b912ef59eeee14602bface630754b"
 
+"@types/mocha@^2.2.37":
+  version "2.2.37"
+  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.37.tgz#8e0d5327ffa0734999c1010967853de917f3a38e"
+
 "@types/node@*", "@types/node@^6.0.31":
   version "6.0.56"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.56.tgz#12bc7fff825e72807f55dcbce17e9db6177713dd"
@@ -49,6 +45,17 @@
   dependencies:
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
+
+"@types/sinon-chai@^2.7.27":
+  version "2.7.27"
+  resolved "https://registry.yarnpkg.com/@types/sinon-chai/-/sinon-chai-2.7.27.tgz#eb7729058ddf253a6979e559bb2b491084969aa1"
+  dependencies:
+    "@types/chai" "*"
+    "@types/sinon" "*"
+
+"@types/sinon@*":
+  version "1.16.34"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-1.16.34.tgz#a9761fff33d0f7b3fe61875b577778a2576a9a03"
 
 "@types/which@^1.0.27":
   version "1.0.28"
@@ -344,9 +351,9 @@ autoprefixer@^6.3.1:
     postcss "^5.2.8"
     postcss-value-parser "^3.2.3"
 
-awesome-typescript-loader@^3.0.0-beta.9:
-  version "3.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/awesome-typescript-loader/-/awesome-typescript-loader-3.0.0-beta.17.tgz#f22cfb9c4365d8131f5cb737025ffcb3e516a8ec"
+awesome-typescript-loader@^3.0.0-beta.18:
+  version "3.0.0-beta.18"
+  resolved "https://registry.yarnpkg.com/awesome-typescript-loader/-/awesome-typescript-loader-3.0.0-beta.18.tgz#7a72b1cca9a2dca59794ab2a4133f779a3a221e7"
   dependencies:
     colors "^1.1.2"
     enhanced-resolve "^2.3.0"
@@ -509,6 +516,12 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+bore@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/bore/-/bore-1.1.1.tgz#3a3f65ef5481d16acd3c7562ba7657845c8d8160"
+  dependencies:
+    skatejs-dom-diff "^0.4.2"
 
 boxen@^0.3.1:
   version "0.3.1"
@@ -2412,7 +2425,7 @@ html-minifier@^3.0.1, html-minifier@^3.2.3:
     relateurl "0.2.x"
     uglify-js "2.7.x"
 
-html-webpack-plugin@^2.24.1:
+html-webpack-plugin@^2.26.0:
   version "2.26.0"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.26.0.tgz#ba97c8a66f912b85df80d2aeea65966c8bd9249e"
   dependencies:
@@ -2957,9 +2970,9 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-lerna@2.0.0-beta.31:
-  version "2.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/lerna/-/lerna-2.0.0-beta.31.tgz#68da53b860f8193d4653a6d0601ef300b8d7176d"
+lerna@2.0.0-beta.32:
+  version "2.0.0-beta.32"
+  resolved "https://registry.yarnpkg.com/lerna/-/lerna-2.0.0-beta.32.tgz#67d51b1520ce57a27b8445160726b48f6dba3f1c"
   dependencies:
     async "^1.5.0"
     chalk "^1.1.1"
@@ -4969,6 +4982,12 @@ sinon@^1.11.1:
     samsam "1.1.2"
     util ">=0.10.3 <1"
 
+skatejs-dom-diff@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/skatejs-dom-diff/-/skatejs-dom-diff-0.4.2.tgz#9f0406a6d6839c5505d79e75207a0e6a62a7f285"
+  dependencies:
+    object-assign "^4.0.1"
+
 skatejs-web-components@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/skatejs-web-components/-/skatejs-web-components-5.0.1.tgz#1ecc31b93cb7a98cebe9b9d244ca1fb89d6bd89d"
@@ -5832,10 +5851,6 @@ web-component-tester@^5.0.0:
     update-notifier "^0.6.0"
     wct-local "^2.0.8"
     wct-sauce "^1.8.2"
-
-webcomponents.js@^0.7.20:
-  version "0.7.23"
-  resolved "https://registry.yarnpkg.com/webcomponents.js/-/webcomponents.js-0.7.23.tgz#fdbb29e8d9fd667aa72407d89908e62dfeba0513"
 
 webpack-combine-loaders@2.0.0:
   version "2.0.0"

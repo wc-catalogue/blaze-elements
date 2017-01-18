@@ -22,12 +22,14 @@
       ]
     },
     "typeRoots": [
-      // "node_modules/@types",
+      "node_modules/@types",
       "manual_definitions"
     ],
     "types": [
       "skatejs",
-      "jsx"
+      "jsx",
+      "mocha",
+      "sinon-chai"
     ],
     "lib": [
       "dom",
@@ -35,6 +37,7 @@
     ]
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "packages/*/node_modules"
   ]
 }

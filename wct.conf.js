@@ -1,7 +1,9 @@
 const packageJson = require( './package.json' );
 
 const config = {
-  "suites": packageJson.packages.map( ( package ) => `./packages/${package}/index.test.html` ),
+  "suites": [
+    ( process.env.WCT_INDEX ? process.env.WCT_INDEX : './index.test.html' )
+  ],
   "plugins": {
     "sauce": {
       "disabled": true,
