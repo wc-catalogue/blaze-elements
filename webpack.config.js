@@ -154,7 +154,11 @@ module.exports = ( env ) => {
         template: resolve( 'index.html' ),
         packages: env.element ? env.element : require('./package.json').packages,
         excludeChunks: [ 'main' ],
-        inject: 'head'
+        inject: 'head',
+        chunksSortMode: function(a, b) {
+          const order = ["polyfills", "vendors", "styles", "main", "main.demo"];
+          return order.indexOf(a.names[0]) - order.indexOf(b.names[0]);
+        }
       } )
 
     ])
