@@ -76,7 +76,7 @@ yarn test
 
 # for running tests in watch mode
 yarn test:watch
-˝
+
 # for running tests in watch mode for firefox only
 yarn test:watch:firefox
 ```

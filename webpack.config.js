@@ -163,8 +163,9 @@ module.exports = ( env ) => {
       ifNotTest(new HtmlWebpackPlugin({
           template: resolve( 'index.html' ),
           packages: env.element ? env.element : require('./package.json').packages,
-          excludeChunks: [ 'main' ],
-          inject: 'head'
+          excludeChunks: [ 'main' ], // Exclude 'main' as it is included in 'main.demo'
+          inject: 'head',
+          chunksSortMode: buildChunksSort([ 'polyfills', 'vendors', 'styles', 'main', 'main.demo', 'test-helpers', 'test' ])
       }))
 
     ]),
@@ -173,3 +174,12 @@ module.exports = ( env ) => {
     }
   }
 };
+
+/**
+ * Build sort function for chunksSortMode from array
+ */
+function buildChunksSort( order ) {
+
+  return (a, b) => order.indexOf(a.names[0]) - order.indexOf(b.names[0]);
+
+}
