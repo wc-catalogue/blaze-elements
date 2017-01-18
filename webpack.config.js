@@ -28,7 +28,7 @@ module.exports = ( env ) => {
       {
         'test': (
           env.element ?
-            `./packages/${env.element}/index.test.tsx` :
+            `./packages/${env.element}/index.test.ts` :
             './packages/index.test.ts'
         ),
         'test-helpers': './test-helpers.ts'

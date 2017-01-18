@@ -31,7 +31,7 @@
   "devDependencies": {
     "@types/mocha": "^2.2.37",
     "@types/sinon-chai": "^2.7.27",
-    "awesome-typescript-loader": "^3.0.0-beta.9",
+    "awesome-typescript-loader": "^3.0.0-beta.18",
     "bore": "^1.1.1",
     "concurrently": "^3.1.0",
     "css-loader": "^0.26.1",
