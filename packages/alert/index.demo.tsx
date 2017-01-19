@@ -1,5 +1,5 @@
 import { h, Component, prop, props, define } from 'skatejs';
-import { Alert } from './Alert';
+import { Alert } from './';
 import { Button } from '../button/Button';
 
 type DemoProps = {isOpen?: boolean}
@@ -31,6 +31,7 @@ export class Demo extends Component<DemoProps> {
         {!isOpen && <Button onClick={this.handleAlertOpen}>Show alerts</Button>}
 
         <div>
+          <bl-alert isOpen={this.isOpen} onAlertClose={this.handleAlertClose}>Alert default via dom element</bl-alert>
           <Alert isOpen={this.isOpen} onAlertClose={this.handleAlertClose}>Alert default</Alert>
           <Alert isOpen={this.isOpen} onAlertClose={this.handleAlertClose} color="brand">Alert brand</Alert>
           <Alert isOpen={this.isOpen} onAlertClose={this.handleAlertClose} color="warning">Alert warning</Alert>

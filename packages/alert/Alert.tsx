@@ -16,6 +16,15 @@ type EventProps = {
   onAlertClose?: ( ev: CustomEvent ) => void,
 }
 
+// extend JSX.IntrinsicElements namepsace with our definition
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-alert': AlertProps,
+    }
+  }
+}
+
 export class Alert extends Component<AlertProps> {
   static get is() { return 'bl-alert' }
   static get props() {
