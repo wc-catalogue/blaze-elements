@@ -1,8 +1,9 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component, prop, props, define } from 'skatejs';
 import { Alert } from './Alert';
 import { Button } from '../button/Button';
 
-export class Demo extends Component<void> {
+type DemoProps = {isOpen?: boolean}
+export class Demo extends Component<DemoProps> {
   static get is() { return 'bl-alert-demo' }
   static get props(){
     return {
@@ -11,18 +12,12 @@ export class Demo extends Component<void> {
   }
 
   isOpen = false;
-  openAlert(){
-    this.isOpen = true;
-  }
 
-  closeAlert(){
-    this.isOpen = false;
+  private handleAlertOpen = () => {
+    props( this, { isOpen: true });
   }
-
-  connectedCallback(){
-    super.connectedCallback();
-    this.openAlert = this.openAlert.bind(this);
-    this.closeAlert = this.closeAlert.bind(this);
+  private handleAlertClose = () => {
+    props( this, { isOpen: false });
   }
 
   renderCallback() {
@@ -33,20 +28,21 @@ export class Demo extends Component<void> {
       <fieldset>
         <legend>{Alert.is}</legend>
 
-        {!isOpen && <Button onClick={this.openAlert}>Show alerts</Button>}
+        {!isOpen && <Button onClick={this.handleAlertOpen}>Show alerts</Button>}
 
         <div>
-          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert}>Alert default</Alert>
-          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="brand">Alert brand</Alert>
-          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="warning">Alert warning</Alert>
-          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="info">Alert info</Alert>
-          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="success">Alert success</Alert>
-          <Alert isOpen={this.isOpen} onAlertClose={this.closeAlert} color="error">Alert error</Alert>
+          <Alert isOpen={this.isOpen} onAlertClose={this.handleAlertClose}>Alert default</Alert>
+          <Alert isOpen={this.isOpen} onAlertClose={this.handleAlertClose} color="brand">Alert brand</Alert>
+          <Alert isOpen={this.isOpen} onAlertClose={this.handleAlertClose} color="warning">Alert warning</Alert>
+          <Alert isOpen={this.isOpen} onAlertClose={this.handleAlertClose} color="info">Alert info</Alert>
+          <Alert isOpen={this.isOpen} onAlertClose={this.handleAlertClose} color="success">Alert success</Alert>
+          <Alert isOpen={this.isOpen} onAlertClose={this.handleAlertClose} color="error">Alert error</Alert>
         </div>
 
       </fieldset>
     ]
   }
+
 }
 
-customElements.define( Demo.is, Demo );
+define( Demo );
