@@ -28,7 +28,6 @@ deploy:
   skip_cleanup: true
   provider: script
   script:
-    - toolbelt/deploy.sh
-    - toolbelt/publish.sh
+    - toolbelt/publish-and-deploy.sh
   on:
     branch: master
