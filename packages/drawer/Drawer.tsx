@@ -11,13 +11,12 @@ const DrawerPositions = {
 
 type DrawerPositionsType = typeof DrawerPositions;
 
-interface DrawerProps extends JSX.HTMLProps<HTMLElement | any> {
+interface DrawerProps {
   position?: keyof DrawerPositionsType,
   visible?: boolean,
 }
 
 export class Drawer extends Component<DrawerProps>{
-  _props: DrawerProps;
 
   static get is() { return 'bl-drawer' }
   static get props() {

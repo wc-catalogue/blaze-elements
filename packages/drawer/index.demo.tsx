@@ -3,6 +3,17 @@ import { Drawer } from './Drawer';
 import { Card } from '../card/Card';
 import { Button } from '../button/Button';
 
+const customDivStyleBase = {
+  position: 'relative',
+  height: '200px',
+  overflow: 'hidden',
+  border: '2px solid black',
+} as CSSStyleDeclaration;
+const customDivStyle = {
+  ...customDivStyleBase,
+  marginTop: '10px'
+} as CSSStyleDeclaration;
+
 export class Demo extends Component<void> {
   static get is() { return 'bl-drawer-demo' }
 
@@ -17,7 +28,7 @@ export class Demo extends Component<void> {
         <p>
           To hide drawer remove flag 'visible'
         </p>
-        <div style="position: relative; height: 200px; overflow: hidden; border: 2px solid black">
+        <div style={customDivStyleBase}>
           <Drawer visible>
             <Card>
               <span slot="heading">Drawer from top</span>
@@ -26,7 +37,7 @@ export class Demo extends Component<void> {
             </Card>
           </Drawer>
         </div>
-        <div style="position: relative; height: 200px; overflow: hidden; border: 2px solid black; margin-top: 10px">
+        <div style={customDivStyle}>
           <Drawer visible position="bottom">
             <Card>
               <span slot="heading">Drawer from bottom</span>
@@ -35,7 +46,7 @@ export class Demo extends Component<void> {
             </Card>
           </Drawer>
         </div>
-        <div style="position: relative; height: 200px; overflow: hidden; border: 2px solid black; margin-top: 10px">
+        <div style={customDivStyle}>
           <Drawer visible position="left">
             <Card>
               <span slot="heading">Drawer from left</span>
@@ -44,7 +55,7 @@ export class Demo extends Component<void> {
             </Card>
           </Drawer>
         </div>
-        <div style="position: relative; height: 200px; overflow: hidden; border: 2px solid black; margin-top: 10px">
+        <div style={customDivStyle}>
           <Drawer visible position="right">
             <Card>
               <span slot="heading">Drawer from right</span>

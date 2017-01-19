@@ -3,7 +3,7 @@ import styles from './Abbreviation.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface AbbreviationProps extends JSX.HTMLProps<HTMLElement | any> {
+interface AbbreviationProps {
   title: string,
 }
 

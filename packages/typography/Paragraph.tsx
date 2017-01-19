@@ -3,7 +3,7 @@ import styles from './Paragraph.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface ParagraphProps extends JSX.HTMLProps<HTMLElement | any> {
+interface ParagraphProps {
 }
 
 export class Paragraph extends Component<ParagraphProps> {

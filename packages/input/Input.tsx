@@ -12,7 +12,15 @@ type TypesType = {
   number: string
 };
 
-interface InputProps extends JSX.HTMLProps<HTMLInputElement | any> {
+type InputProps = Props & EventProps;
+type EventProps = {
+  onKeyup?: typeof HTMLElement.prototype.onkeyup,
+  onFocus?: typeof HTMLElement.prototype.onfocus,
+  onBlur?: typeof HTMLElement.prototype.onblur,
+  onInput?: typeof HTMLElement.prototype.oninput,
+  onChange?: (ev:CustomEvent)=>void,
+}
+type Props = {
   value: string,
   valid?: string,
   placeholder?: string,
@@ -22,8 +30,7 @@ interface InputProps extends JSX.HTMLProps<HTMLInputElement | any> {
 }
 
 export class Input extends Component<InputProps> {
-  _props: InputProps;
-  static get is() { return 'bl-input'; }
+  static get is() { return 'bl-input' }
   static get props() {
     return {
       value: prop.string({
@@ -46,6 +53,11 @@ export class Input extends Component<InputProps> {
       }),
     };
   }
+  static get events(){
+    return {
+      change: 'change',
+    }
+  }
 
   valid: string;
   value = '';
@@ -63,6 +75,7 @@ export class Input extends Component<InputProps> {
 
   private setValue() {
     this.value = this.inputElement.value;
+    emit(this,Input.events.change); // emit change event on root element
   }
 
   connectedCallback() {

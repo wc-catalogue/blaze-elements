@@ -5,12 +5,22 @@ import { css } from '../_helpers/css';
 
 
 //public
-interface RangeProps extends JSX.HTMLProps<HTMLInputElement | any> {
-  color?: keyof ColorType,
+type RangeProps = Props & EventProps;
+type Props = {
+  value: number | string,
+  min?: number | string,
+  max?: number | string,
+  disabled?: boolean,
+  color?: ColorType,
+}
+type EventProps = {
+  onKeyup?: typeof HTMLElement.prototype.onkeyup,
+  onFocus?: typeof HTMLElement.prototype.onfocus,
+  onBlur?: typeof HTMLElement.prototype.onblur,
+  onChange?: (ev:CustomEvent)=>void,
 }
 
 export class Range extends Component<RangeProps> {
-  _props: RangeProps;
   static get is() { return 'bl-range' }
   static get props() {
     return {
@@ -31,6 +41,11 @@ export class Range extends Component<RangeProps> {
       }),
     }
   }
+  static get events(){
+    return {
+      change: 'change'
+    }
+  }
 
   color: ColorType;
   value: number;
@@ -43,7 +58,7 @@ export class Range extends Component<RangeProps> {
   private provideValue(event: Event) {
     const oldValue = this.value;
     this.value = this.inputElement.valueAsNumber;
-    emit(this,'change'); // emit change event on root element
+    emit(this,Range.events.change); // emit change event on root element
   }
 
   connectedCallback(){
@@ -59,12 +74,12 @@ export class Range extends Component<RangeProps> {
     return [
       <style>{styles}</style>,
       <input
-        ref={(_ref: HTMLInputElement)=>this.inputElement=_ref}
+        ref={(_ref)=>this.inputElement=_ref}
         className={className}
         type="range"
         value={value ? value.toString() : null}
-        min={min}
-        max={max}
+        min={String(min)}
+        max={String(max)}
         onChange={this.provideValue}
         disabled={disabled}
       />

@@ -27,31 +27,31 @@ export class Demo extends Component<void> {
         <legend>{Progress.is}</legend>
 
         <div>
-          <Progress value="5"
+          <Progress value={5}
                     rounded
           ></Progress>
           <br />
-          <Progress value="10"
+          <Progress value={10}
                     color="brand"
                     displaySize="small"
           ></Progress>
           <br />
-          <Progress value="40"
+          <Progress value={40}
                     color="info"
                     displaySize="medium"
           ></Progress>
           <br />
-          <Progress value="90"
+          <Progress value={90}
                     color="warning"
                     displaySize="large"
           ></Progress>
           <br />
-          <Progress value="99"
+          <Progress value={99}
                     color="error"
                     displaySize="xlarge"
           ></Progress>
           <br />
-          <Progress value="100"
+          <Progress value={100}
                     color="success"
                     displaySize="super"
           >DONE</Progress>

@@ -10,18 +10,17 @@ const LinkTargets = {
   _top: '_top',
 };
 
-interface LinkProps extends JSX.HTMLProps<Link | any> {
+interface LinkProps {
   href?: string,
   download?: string,
   hreflang?: string,
   rel?: string,
   target?: keyof typeof LinkTargets | string,
   type?: string,
-  color?: keyof ColorType,
+  color?: ColorType,
 }
 
 export class Link extends Component<LinkProps> {
-  _props: LinkProps;
 
   static get is() { return 'bl-link' }
 
@@ -74,7 +73,7 @@ export class Link extends Component<LinkProps> {
         className={className}
         href={href}
         download={download}
-        hrefLang={hreflang}
+        hreflang={hreflang}
         rel={rel}
         target={target}
         type={type}

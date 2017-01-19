@@ -6,14 +6,14 @@ import { css } from '../_helpers/css';
 
 
 //public
-interface ProgressProps extends JSX.HTMLProps<HTMLElement | any> {
-  color?: keyof ColorType,
+interface ProgressProps {
+  value: number,
+  color?: ColorType,
   displaySize?: keyof Size,
-  rounded?: boolean
+  rounded?: boolean,
 }
 
 export class Progress extends Component<ProgressProps> {
-  _props: ProgressProps;
   static get is() { return 'bl-progress' }
   static get props() {
     return {
@@ -32,9 +32,9 @@ export class Progress extends Component<ProgressProps> {
     }
   }
 
+  value: number;
   color: ColorType;
   displaySize: Size;
-  value: number;
   rounded: boolean;
 
   renderCallback() {
@@ -55,10 +55,14 @@ export class Progress extends Component<ProgressProps> {
       colorClass
     );
 
+    const cssWidth = {
+      width: `${value}%`
+    } as CSSStyleDeclaration;
+
     return [
       <style>{styles}</style>,
       <div className={className}>
-        <div className={barClassName} style={"width:" + value + "%;"}>
+        <div className={barClassName} style={cssWidth}>
           <slot />
         </div>
       </div>

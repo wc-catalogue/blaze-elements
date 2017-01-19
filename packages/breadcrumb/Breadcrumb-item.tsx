@@ -2,12 +2,11 @@ import styles from './Breadcrumb.scss'
 import { h, Component, prop } from 'skatejs';
 import { css } from '../_helpers/css';
 
-interface BreadcrumbItemProps extends JSX.HTMLProps<HTMLElement | any> {
+interface BreadcrumbItemProps {
   isActive?: boolean,
   href?: string
 }
 export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
-  _props: BreadcrumbItemProps;
 
   static get is() { return 'bl-breadcrumb-item' }
 
@@ -39,9 +38,7 @@ export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
 
     const itemContent = isActive || !href
       ? <slot />
-      : <a class="c-link" href={href}>
-          <slot />
-        </a>;
+      : <a class="c-link" href={href}><slot /></a>;
 
     return [
       <style>{styles}</style>,

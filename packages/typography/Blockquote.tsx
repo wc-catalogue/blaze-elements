@@ -4,8 +4,8 @@ import styles from './Blockquote.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface BlockquoteProps extends JSX.HTMLProps<HTMLElement | any> {
-  color?: keyof ColorType,
+interface BlockquoteProps {
+  color?: ColorType,
 }
 
 export class Blockquote extends Component<BlockquoteProps> {

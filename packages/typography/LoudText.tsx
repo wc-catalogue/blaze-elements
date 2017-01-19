@@ -3,7 +3,7 @@ import styles from './LoudText.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface LoudTextProps extends JSX.HTMLProps<HTMLElement | any> {
+interface LoudTextProps {
 }
 
 export class LoudText extends Component<LoudTextProps> {

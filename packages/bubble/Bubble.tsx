@@ -12,14 +12,13 @@ const BubbleTypes = {
 type BubbleTypesType = typeof BubbleTypes;
 
 // public
-interface BubbleProps extends JSX.HTMLProps<HTMLElement | any> {
+interface BubbleProps {
   type?: keyof BubbleTypesType,
   isDisplayed?: boolean,
   disableAutoShowHide?: boolean
 }
 
 export class Bubble extends Component<BubbleProps> {
-  _props: BubbleProps;
   static get is() { return 'bl-bubble' }
   static get props() {
     return {

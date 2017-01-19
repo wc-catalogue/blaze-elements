@@ -3,7 +3,7 @@ import styles from './HighlightedText.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface HighlightedTextProps extends JSX.HTMLProps<HTMLElement | any> {
+interface HighlightedTextProps {
 }
 
 export class HighlightedText extends Component<HighlightedTextProps> {

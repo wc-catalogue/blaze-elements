@@ -18,7 +18,7 @@ export class Demo extends Component<void> {
     element.parentNode.removeChild( element );
   }
 
-  private tagChange( event ) {
+  private tagChange( event: CustomEvent ) {
     console.log( 'Tag change:', event.detail.tags );
     this.tags = [ ...event.detail.tags ];
   }

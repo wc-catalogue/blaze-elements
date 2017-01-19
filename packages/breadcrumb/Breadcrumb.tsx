@@ -2,7 +2,7 @@ import styles from './Breadcrumb.scss'
 import { h, Component } from 'skatejs';
 import {BreadcrumbItem} from "./Breadcrumb-item";
 
-interface BreadcrumbProps extends JSX.HTMLProps<HTMLElement | any> {}
+interface BreadcrumbProps {}
 
 export class Breadcrumb extends Component<BreadcrumbProps> {
 

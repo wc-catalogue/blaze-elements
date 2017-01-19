@@ -3,7 +3,7 @@ import styles from './KeyboardKeys.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface KeyboardKeysProps extends JSX.HTMLProps<HTMLElement | any> {
+interface KeyboardKeysProps {
 }
 
 export class KeyboardKeys extends Component<KeyboardKeysProps> {

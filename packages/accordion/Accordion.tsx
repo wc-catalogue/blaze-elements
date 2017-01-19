@@ -2,12 +2,8 @@ import { h, Component, prop } from 'skatejs';
 import styles from './Accordion.scss';
 import {Collapsible, StateChangedEvent} from '../collapsible/Collapsible';
 
-// public
-interface AccordionProps extends JSX.HTMLProps<HTMLElement | any> {
-  isOpened?: boolean
-}
 
-export class Accordion extends Component<AccordionProps> {
+export class Accordion extends Component<void> {
   static get is(){ return 'bl-accordion' }
 
   private items = new Array<Collapsible>();

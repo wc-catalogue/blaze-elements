@@ -2,11 +2,10 @@ import styles from './Tree.scss'
 import { h, Component, prop } from 'skatejs';
 import { css } from '../_helpers/css';
 
-interface TreeItemProps extends JSX.HTMLProps<HTMLElement | any> {
+interface TreeItemProps {
   isOpen?: boolean,
 }
 export class TreeItem extends Component<TreeItemProps> {
-  _props: TreeItemProps;
 
   static get is() { return 'bl-tree-item' }
 

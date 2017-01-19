@@ -3,7 +3,7 @@ import styles from './Collapsible.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface CollapsibleProps extends JSX.HTMLProps<HTMLElement | any> {
+interface CollapsibleProps {
   isOpened?: boolean,
   isLast?: boolean,
   onStateChanged?: (this: this, ev: StateChangedEvent) => any,
