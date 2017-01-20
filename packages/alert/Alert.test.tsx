@@ -1,4 +1,4 @@
-import { Alert } from './Alert';
+import { Alert } from './';
 
 import { h, mount } from 'bore';
 import { emit } from 'skatejs';
