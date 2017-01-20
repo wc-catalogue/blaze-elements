@@ -1,6 +1,7 @@
 #!/bin/bash
 
 (
+ yarn build
  cp assets/blaze-elements-logo.svg dist
  cd dist
  git init
