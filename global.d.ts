@@ -22,12 +22,12 @@ declare module 'bore' {
     has<T extends HTMLElement>( query: Query<T> ): boolean,
 
     wait( callback?: ( wrapper: WrappedNode ) => any ): Promise<any>,
-    waitFor( callback: ( wrapper: WrWrappedNode ) => boolean, options?: { delay?: number }): Promise<Wrapper>,
+    waitFor( callback: ( wrapper: WrappedNode ) => boolean, options?: { delay?: number }): Promise<Wrapper>,
   }
   export function mount( htmlOrNode: JSX.Element | JSX.Element[] | string ): Wrapper
   export function h( name: string, attrsOrProps?: Object, ...children: any[] ): JSX.Element | JSX.Element[]
 
-};
+}
 
 
 // Custom Elements
