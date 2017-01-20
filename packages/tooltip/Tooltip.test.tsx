@@ -10,7 +10,7 @@ describe( Tooltip.is, () => {
     console.warn('Missing tests for Tooltip!');
 
     return mount(
-      <Tooltip/>
+      <Tooltip label="hello"/>
     ).wait();
 
   });

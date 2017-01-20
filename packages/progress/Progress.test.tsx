@@ -10,7 +10,7 @@ describe( Progress.is, () => {
     console.warn('Missing tests for Progress!');
 
     return mount(
-      <Progress/>
+      <Progress value={10}/>
     ).wait();
 
   });

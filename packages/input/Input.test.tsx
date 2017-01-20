@@ -11,13 +11,13 @@ describe( Input.is, () => {
 
       element.node.addEventListener('change', () => {
 
-        expect(element.node.value).to.equal('ok');
+        expect((element.node as HTMLInputElement).value).to.equal('ok');
 
         done();
 
       });
 
-      const innerInput = element.one('input').node;
+      const innerInput = element.one('input').node as HTMLInputElement;
       innerInput.value = 'ok';
       emit(innerInput, 'change', {composed: false});
 
@@ -31,13 +31,13 @@ describe( Input.is, () => {
 
       element.node.addEventListener('input', () => {
 
-        expect(element.node.value).to.equal('ok');
+        expect((element.node as HTMLInputElement).value).to.equal('ok');
 
         done();
 
       });
 
-      const innerInput = element.one('input').node;
+      const innerInput = element.one('input').node as HTMLInputElement;
       innerInput.value = 'ok';
       emit(innerInput, 'input', { composed: true });
 
