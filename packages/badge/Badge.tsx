@@ -1,26 +1,41 @@
 import styles from './Badge.scss';
 import { h, Component, prop } from 'skatejs';
-import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
-import { css } from '../_helpers/css';
+import { ColorType, cssClassForColorType, css } from '../_helpers';
 
-interface BadgeProps {
+type BadgeProps = Props;
+type Props = {
   color?: ColorType,
   rounded?: boolean,
   ghost?: boolean,
+};
+
+// extend JSX.IntrinsicElements namespace with our definition
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-badge': BadgeProps & Partial<HTMLElement>
+    }
+  }
 }
 
 export class Badge extends Component<BadgeProps> {
   static get is() { return 'bl-badge'; }
   static get props() {
     return {
-      color: prop.string( {
-        attribute: true
+      color: prop.string({
+        attribute: {
+          source: true
+        }
       }),
-      rounded: prop.boolean( {
-        attribute: true
+      rounded: prop.boolean({
+        attribute: {
+          source: true
+        }
       }),
-      ghost: prop.boolean( {
-        attribute: true
+      ghost: prop.boolean({
+        attribute: {
+          source: true
+        }
       }),
     };
   }
@@ -46,9 +61,7 @@ export class Badge extends Component<BadgeProps> {
 
     return [
       <style>{styles}</style>,
-      <span className={className}><slot /></span>
+      <span className={className}><slot/></span>
     ];
   }
 }
-
-customElements.define( Badge.is, Badge );
