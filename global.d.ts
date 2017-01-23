@@ -21,11 +21,11 @@ declare module 'bore' {
     one<T extends HTMLElement>( query: Query<T> ): WrappedNode,
     has<T extends HTMLElement>( query: Query<T> ): boolean,
 
-    wait( callback?: ( wrapper: WrappedNode ) => any ): Promise<any>,
-    waitFor( callback: ( wrapper: WrappedNode ) => boolean, options?: { delay?: number }): Promise<Wrapper>,
+    wait( callback?: ( wrapper: WrappedNode ) => any ): Promise<WrappedNode>,
+    waitFor( callback: ( wrapper: WrappedNode ) => boolean, options?: { delay?: number }): Promise<WrappedNode>,
   }
-  export function mount( htmlOrNode: JSX.Element | JSX.Element[] | string ): Wrapper
-  export function h( name: string, attrsOrProps?: Object, ...children: any[] ): JSX.Element | JSX.Element[]
+  export function mount( htmlOrNode: JSX.Element | JSX.Element[] | string ): WrappedNode;
+  export function h( name: string, attrsOrProps?: Object, ...children: any[] ): JSX.Element | JSX.Element[];
 
 }
 
