@@ -3,14 +3,19 @@ import styles from './Overlay.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface OverlayProps extends JSX.HTMLProps<HTMLElement | any> {
+type OverlayProps = Props & EventProps;
+type Props = {
   isDismissable?: boolean,
   isTransparent?: boolean,
   isFullpage?: boolean,
+  tabIndex?: number | string,
+}
+type EventProps = {
+  onClick?: typeof HTMLElement.prototype.onclick,
+  onFocus?: typeof HTMLElement.prototype.onfocus,
 }
 
 export class Overlay extends Component<OverlayProps> {
-  _props: OverlayProps;
   static get is() { return 'bl-overlay' }
   static get props() {
     return {

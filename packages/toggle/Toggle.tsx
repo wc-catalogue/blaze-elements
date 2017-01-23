@@ -4,14 +4,13 @@ import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
 import { css } from '../_helpers/css';
 
 
-export interface ToggleProps extends JSX.HTMLProps<HTMLInputElement | any> {
+export interface ToggleProps {
   disabled?: boolean,
   checked?: boolean,
-  color?: keyof ColorType,
+  color?: ColorType,
 }
 
 export class Toggle extends Component<ToggleProps> {
-  _props: ToggleProps;
   static get is(){ return 'bl-toggle'}
   static get props(){
     return {

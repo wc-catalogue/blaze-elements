@@ -1,15 +1,16 @@
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
+import { ColorType, cssClassForColorType } from '../_helpers/colorTypes'
 import styles from './Button.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface ButtonProps extends JSX.HTMLProps<HTMLButtonElement | HTMLAnchorElement | any> {
+interface ButtonProps {
   disabled?: boolean,
   block?: boolean,
   close?: boolean,
   ghost?: boolean,
-  color?: keyof ColorType,
+  color?: ColorType,
+  onClick?: typeof HTMLElement.prototype.onclick,
 }
 
 export class Button extends Component<ButtonProps> {

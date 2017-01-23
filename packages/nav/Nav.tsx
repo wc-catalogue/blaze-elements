@@ -12,7 +12,7 @@ const Positions = {
 
 type PositionsType = typeof Positions;
 
-interface NavProps extends JSX.HTMLProps<HTMLElement | any> {
+interface NavProps {
   inline?: boolean,
   shadow?: boolean,
   position?: keyof PositionsType,

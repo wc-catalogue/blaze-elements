@@ -5,7 +5,7 @@ import { Input } from '../input/Input';
 
 
 // public
-interface TagSelectorProps extends JSX.HTMLProps<HTMLElement | any> {
+interface TagSelectorProps {
   onTagChange?: Function,
   delimiter?: string,
   tags?: any

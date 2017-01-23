@@ -10,7 +10,7 @@ describe( Range.is, () => {
     console.warn('Missing tests for Range!');
 
     return mount(
-      <Range/>
+      <Range value={10}/>
     ).wait();
 
   });

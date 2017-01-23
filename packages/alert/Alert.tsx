@@ -1,18 +1,31 @@
 import { h, Component, prop, emit } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
-import styles from './Alert.scss';
-import { css } from '../_helpers/css';
+
+import { ColorType, cssClassForColorType, css } from '../_helpers';
+
+// @FIXME this needs to be imported from package import {Button} from '@blaze-elements/button'
 import { Button } from '../button/Button';
 
-// public
-interface AlertProps extends JSX.HTMLProps<HTMLElement | any> {
-  color?: keyof ColorType,
+import styles from './Alert.scss';
+
+type AlertProps = Props & EventProps;
+type Props = {
+  color?: ColorType,
   isOpen?: boolean,
-  onAlertClose?: Function,
+}
+type EventProps = {
+  onAlertClose?: ( ev: CustomEvent ) => void,
+}
+
+// extend JSX.IntrinsicElements namepsace with our definition
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-alert': AlertProps,
+    }
+  }
 }
 
 export class Alert extends Component<AlertProps> {
-  _props: AlertProps;
   static get is() { return 'bl-alert' }
   static get props() {
     return {
@@ -24,20 +37,19 @@ export class Alert extends Component<AlertProps> {
       })
     }
   }
-
-
-  isOpen = false;
-  private close() {
-    this.isOpen = false;
-    emit(this, 'alertClose');
+  static get events(){
+    return {
+      alertClose: 'alertClose'
+    }
   }
 
-  connectedCallback(){
-    super.connectedCallback();
-    this.close = this.close.bind(this);
-  }
+  isOpen? = false;
+  color?: ColorType;
 
-  color: ColorType;
+  constructor(){
+    super();
+    this.handleClose = this.handleClose.bind(this);
+  }
 
   renderCallback() {
     const { color, isOpen } = this;
@@ -46,13 +58,17 @@ export class Alert extends Component<AlertProps> {
 
     return [
       <style>{styles}</style>,
-      isOpen && <div className={className}>
-        <Button close onClick={this.close}>×</Button>
-        <slot />
-      </div>
+      isOpen && (
+        <div className={className}>
+          <Button close onClick={this.handleClose}>×</Button>
+          <slot />
+        </div>
+      )
     ]
   }
 
-}
+  private handleClose() {
+    emit(this, Alert.events.alertClose);
+  }
 
-customElements.define( Alert.is, Alert );
+}

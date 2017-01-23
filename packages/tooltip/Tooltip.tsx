@@ -12,12 +12,12 @@ const TooltipTypes = {
 type TooltipTypesType = typeof TooltipTypes;
 
 // public
-interface TooltipProps extends JSX.HTMLProps<HTMLElement | any> {
-  type?: keyof TooltipTypesType
+interface TooltipProps {
+  type?: keyof TooltipTypesType,
+  label: string,
 }
 
 export class Tooltip extends Component<TooltipProps> {
-  _props: TooltipProps;
   static get is() { return 'bl-tooltip' }
   static get props() {
     return {

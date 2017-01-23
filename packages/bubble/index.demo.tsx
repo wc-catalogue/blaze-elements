@@ -10,7 +10,7 @@ export class Demo extends Component<void> {
       <fieldset>
         <legend>{Bubble.is}</legend>
 
-        <div style={"text-align: center;padding: 5em 5em 0 0"}>
+        <div style={{textAlign: 'center',padding: '5em 5em 0 0'} as any}>
           <div>
             There is some
             <Bubble type="top" isDisplayed disableAutoShowHide>

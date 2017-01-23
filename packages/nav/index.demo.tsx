@@ -12,7 +12,7 @@ export class Demo extends Component<void> {
       <fieldset>
         <legend>{Nav.is}</legend>
         <h3>Vertical</h3>
-        <div style="width:200px">
+        <div style={ { width: '200px' } as CSSStyleDeclaration }>
           <Nav>
             <NavItem color="success" active>Create New</NavItem>
             <NavItem>Home</NavItem>
@@ -44,13 +44,19 @@ export class Demo extends Component<void> {
         <h3>Horizontal with images in menu</h3>
         <div>
           <Nav inline>
-            <NavContent><img class="o-image" src="https://www.fillmurray.com/200/300" style="height: 100%" /></NavContent>
+            <NavContent>
+              <img
+                class="o-image"
+                src="https://www.fillmurray.com/200/300"
+                style={{height: '100%' } as CSSStyleDeclaration}
+              />
+            </NavContent>
             <NavItem>News</NavItem>
             <NavItem right>Contact</NavItem>
           </Nav>
         </div>
 
-        <div style="position: relative">
+        <div style={{position: 'relative'} as CSSStyleDeclaration}>
           <h3>Horizontal with shadow and bottom position</h3>
           <h5>Possible positions are:</h5>
           <ul>

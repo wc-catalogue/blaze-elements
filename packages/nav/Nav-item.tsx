@@ -3,14 +3,13 @@ import { h, Component, prop } from 'skatejs';
 import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
 import { css } from '../_helpers/css';
 
-interface NavItemProps extends JSX.HTMLProps<HTMLElement | any> {
-  color?: keyof ColorType,
+interface NavItemProps {
+  color?: ColorType,
   active?: boolean,
   right?: boolean,
   inline?: boolean,
 }
 export class NavItem extends Component<NavItemProps> {
-  _props: NavItemProps;
 
   static get is() { return 'bl-nav-item' }
   static get props() {

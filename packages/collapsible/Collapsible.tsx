@@ -3,7 +3,11 @@ import styles from './Collapsible.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface CollapsibleProps extends JSX.HTMLProps<HTMLElement | any> {
+// @FIXME this needs to be adressed other way ( like Partial<HTMLDivElement) ) or element which is root in renderCallback
+interface NativeDivAttrs {
+  id?: string,
+}
+interface CollapsibleProps extends NativeDivAttrs {
   isOpened?: boolean,
   isLast?: boolean,
   onStateChanged?: (this: this, ev: StateChangedEvent) => any,

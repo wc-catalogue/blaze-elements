@@ -2,7 +2,7 @@ import { h, Component, emit, prop } from 'skatejs';
 import styles from './Tag.scss';
 
 // public
-interface TagProps extends JSX.HTMLProps<HTMLElement | any> {
+interface TagProps {
   onTagClose?: Function,
   label: string,
 }

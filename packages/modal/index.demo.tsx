@@ -28,7 +28,7 @@ export class Demo extends Component<void> {
       <fieldset>
         <legend>{Modal.is}</legend>
 
-        <Button type="info" onClick={this.toggleModal}>Open Modal</Button>
+        <Button color="info" onClick={this.toggleModal}>Open Modal</Button>
         <Modal isOpen={isModalOpen} onModalClose={this.toggleModal} closeTitle="Close me">
           <span slot="title">Modal <em>heading</em></span>
           <span>
@@ -36,7 +36,7 @@ export class Demo extends Component<void> {
             <input type="text"/>
           </span>
           <span slot="footer">
-            <Button onClick={this.toggleModal} type="brand">Close</Button>
+            <Button onClick={this.toggleModal} color="brand">Close</Button>
           </span>
         </Modal>
 

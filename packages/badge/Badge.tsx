@@ -3,14 +3,13 @@ import { h, Component, prop } from 'skatejs';
 import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
 import { css } from '../_helpers/css';
 
-interface BadgeProps extends JSX.HTMLProps<HTMLElement | any> {
-  color?: keyof ColorType,
+interface BadgeProps {
+  color?: ColorType,
   rounded?: boolean,
   ghost?: boolean,
 }
 
 export class Badge extends Component<BadgeProps> {
-  _props: BadgeProps;
   static get is() { return 'bl-badge' }
   static get props() {
     return {

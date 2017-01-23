@@ -2,11 +2,10 @@ import styles from './Nav.scss'
 import { h, Component, prop } from 'skatejs';
 import { css } from '../_helpers/css';
 
-interface NavContentProps extends JSX.HTMLProps<HTMLElement | any> {
+interface NavContentProps {
   inline?: boolean,
 }
 export class NavContent extends Component<NavContentProps> {
-  _props: NavContentProps;
 
   static get is() { return 'bl-nav-content' }
   static get props() {

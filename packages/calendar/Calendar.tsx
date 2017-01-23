@@ -19,15 +19,18 @@ const WEEK_STARTS_ON = 'sunday';
 
 export type CalendarChangeEvent = CustomEvent & {detail: { date: Date } };
 
-interface CalendarProps extends JSX.HTMLProps<HTMLElement | any> {
+type CalendarProps = Props & EventProps
+type Props = {
   selectedDate?: Date,
-  onDateChange?: (ev: CalendarChangeEvent) => void,
   i18n?: {
     monthsFull: string[],
     weekdays2char: string[],
     todayButtonText: string,
   },
-  weekStartsOn?: 'sunday'|'monday',
+  weekStartsOn?: 'sunday' | 'monday',
+}
+type EventProps = {
+  onDateChange?: ( ev: CalendarChangeEvent ) => void,
 }
 
 export class Calendar extends Component<CalendarProps> {
@@ -71,7 +74,7 @@ export class Calendar extends Component<CalendarProps> {
 
   private year: number;
   private month: number;
-  private days = [];
+  private days: Date[] = [];
   private rows = Calendar.range( 6 );
   private cols = Calendar.range( 7 );
 
@@ -104,7 +107,7 @@ export class Calendar extends Component<CalendarProps> {
 
   private initDays() {
     const date = new Date( this.year, this.month );
-    const days = [];
+    const days: Date[] = [];
     let currentDate = startOfWeek( date, { weekStartsOn: this.weekStartsOn === WEEK_STARTS_ON ? 0 : 1 } );
 
     this.rows.forEach( () => {

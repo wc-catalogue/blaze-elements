@@ -4,13 +4,12 @@ import { Button } from '../button/Button';
 import { Card } from '../card/Card';
 import { Overlay } from '../overlay/Overlay';
 
-interface ModalProps extends JSX.HTMLProps<HTMLElement | any> {
+interface ModalProps {
   isOpen?: boolean,
   closeTitle?: string,
   onModalClose?: Function,
 }
 export class Modal extends Component<ModalProps> {
-  _props: ModalProps;
   static get is() { return 'bl-modal' }
   static get props() {
     return {
@@ -80,7 +79,6 @@ export class Modal extends Component<ModalProps> {
           <Button
             slot="dismiss"
             aria-label={closeTitle}
-            type="close"
             onClick={this.handleModalClose}>
             x
           </Button>

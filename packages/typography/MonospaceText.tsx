@@ -3,7 +3,7 @@ import styles from './MonospaceText.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface MonospaceTextProps extends JSX.HTMLProps<HTMLElement | any> {
+interface MonospaceTextProps {
 }
 
 export class MonospaceText extends Component<MonospaceTextProps> {
