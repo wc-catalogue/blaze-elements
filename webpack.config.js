@@ -64,7 +64,7 @@ module.exports = ( env ) => {
      * See: https://webpack.js.org/configuration/devtool/#devtool
      * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
      */
-    devtool: ifProd( 'source-map', 'cheap-module-source-map' ),
+    devtool: 'source-map',
 
     module: {
       rules: [
