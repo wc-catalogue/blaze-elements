@@ -4,13 +4,24 @@ import styles from './Button.scss';
 import { css } from '../_helpers/css';
 
 // public
-interface ButtonProps {
+type ButtonProps = Props & EventProps;
+type Props = {
   disabled?: boolean,
   block?: boolean,
   close?: boolean,
   ghost?: boolean,
   color?: ColorType,
+}
+type EventProps =  {
   onClick?: typeof HTMLElement.prototype.onclick,
+}
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-button': ButtonProps & Partial<HTMLElement>,
+    }
+  }
 }
 
 export class Button extends Component<ButtonProps> {
@@ -64,5 +75,3 @@ export class Button extends Component<ButtonProps> {
     ];
   }
 }
-
-customElements.define( Button.is, Button );

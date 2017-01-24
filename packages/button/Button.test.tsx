@@ -1,4 +1,4 @@
-import { Button } from './Button';
+import { Button } from './';
 
 import { h, mount } from 'bore';
 import { emit } from 'skatejs';
