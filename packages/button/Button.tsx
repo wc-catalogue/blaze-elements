@@ -1,7 +1,8 @@
 import { h, Component, prop } from 'skatejs';
-import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
+
+import { ColorType, cssClassForColorType, css } from '../_helpers';
+
 import styles from './Button.scss';
-import { css } from '../_helpers/css';
 
 // public
 type ButtonProps = Props & EventProps;
