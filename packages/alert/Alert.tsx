@@ -20,7 +20,7 @@ type EventProps = {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'bl-alert': AlertProps,
+      'bl-alert': AlertProps & Partial<HTMLElement>,
     }
   }
 }
@@ -46,9 +46,8 @@ export class Alert extends Component<AlertProps> {
   isOpen? = false;
   color?: ColorType;
 
-  constructor() {
-    super();
-    this.handleClose = this.handleClose.bind(this);
+  private handleClose = () => {
+    emit(this, Alert.events.alertClose);
   }
 
   renderCallback() {
@@ -65,10 +64,6 @@ export class Alert extends Component<AlertProps> {
         </div>
       )
     ];
-  }
-
-  private handleClose() {
-    emit(this, Alert.events.alertClose);
   }
 
 }
