@@ -139,7 +139,7 @@ module.exports = ( env ) => {
            * See: https://github.com/wbuchwalter/tslint-loader
            */
           tslint: {
-            failOnHint: ifProd,
+            failOnHint: ifProd(),
           }
         }
 
@@ -162,7 +162,7 @@ module.exports = ( env ) => {
        * https://github.com/ampedandwired/html-webpack-plugin
        */
       ifDevOrSite(new HtmlWebpackPlugin({
-          template: resolve( 'index.html' ),
+          template: resolve( __dirname, 'index.package.html' ),
           packages: getPackagesForBuild( env.element, require('./package.json').packages ),
           excludeChunks: [ 'index', 'index-with-dependencies' ], // Exclude 'index' & 'index-with-dependencies' as it is included in 'main.demo'
           inject: 'head',
