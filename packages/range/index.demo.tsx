@@ -2,11 +2,11 @@ import { h, Component, prop } from 'skatejs';
 import { Range } from './Range';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-range-demo' }
+  static get is() { return 'bl-range-demo'; }
   static get props() {
     return {
       val: prop.number()
-    }
+    };
   }
 
   val: number;
@@ -15,7 +15,7 @@ export class Demo extends Component<void> {
     this.val = Number.parseInt((event.currentTarget as HTMLInputElement).value);
   }
 
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     this.reflectValue = this.reflectValue.bind(this);
   }
@@ -32,9 +32,9 @@ export class Demo extends Component<void> {
                  value="5"
                  min="1"
                  max="10"
-                 onKeyup={() => { console.log("onKeyUp")}}
-                 onFocus={() => { console.log("onFocus")}}
-                 onBlur={() => { console.log("onBlur")}}
+                 onKeyup={() => { console.log('onKeyUp'); }}
+                 onFocus={() => { console.log('onFocus'); }}
+                 onBlur={() => { console.log('onBlur'); }}
                  onChange={this.reflectValue}
           ></Range>
           Current value: {this.val}
@@ -72,7 +72,7 @@ export class Demo extends Component<void> {
         </div>
 
       </fieldset>
-    ]
+    ];
   }
 }
 

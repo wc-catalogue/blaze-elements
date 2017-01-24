@@ -1,12 +1,12 @@
-import styles from './Breadcrumb.scss'
+import styles from './Breadcrumb.scss';
 import { h, Component } from 'skatejs';
-import {BreadcrumbItem} from "./Breadcrumb-item";
+import {BreadcrumbItem} from './Breadcrumb-item';
 
 interface BreadcrumbProps {}
 
 export class Breadcrumb extends Component<BreadcrumbProps> {
 
-  static get is() { return 'bl-breadcrumb' }
+  static get is() { return 'bl-breadcrumb'; }
 
   renderCallback() {
     const items = this.getElementsByTagName('bl-breadcrumb-item');
@@ -21,7 +21,7 @@ export class Breadcrumb extends Component<BreadcrumbProps> {
       <ol className="c-breadcrumbs">
         <slot />
       </ol>
-    ]
+    ];
   }
 }
 

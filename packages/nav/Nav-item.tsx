@@ -1,6 +1,6 @@
-import styles from './Nav.scss'
+import styles from './Nav.scss';
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
 import { css } from '../_helpers/css';
 
 interface NavItemProps {
@@ -11,7 +11,7 @@ interface NavItemProps {
 }
 export class NavItem extends Component<NavItemProps> {
 
-  static get is() { return 'bl-nav-item' }
+  static get is() { return 'bl-nav-item'; }
   static get props() {
     return {
       color: prop.string({
@@ -26,7 +26,7 @@ export class NavItem extends Component<NavItemProps> {
       inline: prop.boolean({
         attribute: true
       }),
-    }
+    };
   }
 
   color: ColorType;
@@ -52,7 +52,7 @@ export class NavItem extends Component<NavItemProps> {
       <li className={className}>
         <slot></slot>
       </li>
-    ]
+    ];
   }
 }
 

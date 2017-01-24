@@ -7,7 +7,7 @@ interface MonospaceTextProps {
 }
 
 export class MonospaceText extends Component<MonospaceTextProps> {
-  static get is(){ return 'bl-monospace-text' }
+  static get is(){ return 'bl-monospace-text'; }
 
   renderCallback() {
     const className = css(
@@ -18,7 +18,7 @@ export class MonospaceText extends Component<MonospaceTextProps> {
       <span className={className}>
         <slot/>
       </span>
-    ]
+    ];
   }
 }
 

@@ -18,7 +18,7 @@ interface TooltipProps {
 }
 
 export class Tooltip extends Component<TooltipProps> {
-  static get is() { return 'bl-tooltip' }
+  static get is() { return 'bl-tooltip'; }
   static get props() {
     return {
       type: prop.string({
@@ -27,7 +27,7 @@ export class Tooltip extends Component<TooltipProps> {
       label: prop.string({
         attribute: true
       })
-    }
+    };
   }
 
   type = 'right';
@@ -36,7 +36,7 @@ export class Tooltip extends Component<TooltipProps> {
   renderCallback() {
     const { label, type } = this;
     const className = css(
-      'c-badge c-tooltip',{
+      'c-badge c-tooltip', {
         'c-tooltip--right': type === TooltipTypes.right,
         'c-tooltip--left': type === TooltipTypes.left,
         'c-tooltip--top': type === TooltipTypes.top,
@@ -52,7 +52,7 @@ export class Tooltip extends Component<TooltipProps> {
       >
         <slot></slot>
       </span>
-    ]
+    ];
   }
 
 }

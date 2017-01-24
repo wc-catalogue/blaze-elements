@@ -16,9 +16,9 @@ interface DrawerProps {
   visible?: boolean,
 }
 
-export class Drawer extends Component<DrawerProps>{
+export class Drawer extends Component<DrawerProps> {
 
-  static get is() { return 'bl-drawer' }
+  static get is() { return 'bl-drawer'; }
   static get props() {
     return {
       position: prop.string({
@@ -27,7 +27,7 @@ export class Drawer extends Component<DrawerProps>{
       visible: prop.boolean({
         attribute: true
       })
-    }
+    };
   }
 
   position = 'top';
@@ -51,7 +51,7 @@ export class Drawer extends Component<DrawerProps>{
       <div className={className}>
         <slot />
       </div>
-    ]
+    ];
   }
 
 }

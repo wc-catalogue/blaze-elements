@@ -1,5 +1,5 @@
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
 import styles from './Blockquote.scss';
 import { css } from '../_helpers/css';
 
@@ -9,13 +9,13 @@ interface BlockquoteProps {
 }
 
 export class Blockquote extends Component<BlockquoteProps> {
-  static get is(){ return 'bl-blockquote' }
+  static get is(){ return 'bl-blockquote'; }
   static get props() {
     return {
       color: prop.string({
         attribute: true
       })
-    }
+    };
   }
 
   color: ColorType;
@@ -40,7 +40,7 @@ export class Blockquote extends Component<BlockquoteProps> {
           <slot name="footer" />
         </footer>
       </blockquote>
-    ]
+    ];
   }
 }
 

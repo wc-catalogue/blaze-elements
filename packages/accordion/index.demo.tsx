@@ -3,7 +3,7 @@ import { Accordion } from './Accordion';
 import { Collapsible } from '../collapsible/Collapsible';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-accordion-demo'}
+  static get is() { return 'bl-accordion-demo'; }
 
   renderCallback() {
     return [
@@ -32,7 +32,7 @@ export class Demo extends Component<void> {
             </Collapsible>
           </Accordion>
         </fieldset>
-    ]
+    ];
   }
 }
 

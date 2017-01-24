@@ -2,7 +2,7 @@ import { h, Component } from 'skatejs';
 import styles from './Card.scss';
 
 export class Card extends Component<void> {
-  static get is() { return 'bl-card' }
+  static get is() { return 'bl-card'; }
 
   renderCallback() {
     return [
@@ -21,7 +21,7 @@ export class Card extends Component<void> {
           <slot name="footer"></slot>
         </footer>
       </div>
-    ]
+    ];
   }
 }
 

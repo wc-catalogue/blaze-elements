@@ -1,6 +1,6 @@
-import styles from './Badge.scss'
+import styles from './Badge.scss';
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
 import { css } from '../_helpers/css';
 
 interface BadgeProps {
@@ -10,7 +10,7 @@ interface BadgeProps {
 }
 
 export class Badge extends Component<BadgeProps> {
-  static get is() { return 'bl-badge' }
+  static get is() { return 'bl-badge'; }
   static get props() {
     return {
       color: prop.string({
@@ -22,7 +22,7 @@ export class Badge extends Component<BadgeProps> {
       ghost: prop.boolean({
         attribute: true
       }),
-    }
+    };
   }
 
   color: ColorType;
@@ -47,7 +47,7 @@ export class Badge extends Component<BadgeProps> {
     return [
       <style>{styles}</style>,
       <span className={className}><slot></slot></span>
-    ]
+    ];
   }
 }
 

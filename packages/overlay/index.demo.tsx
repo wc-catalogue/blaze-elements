@@ -4,12 +4,12 @@ import { Overlay } from './Overlay';
 import { Button } from '../button/Button';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-overlay-demo' }
+  static get is() { return 'bl-overlay-demo'; }
   static get props() {
     return {
       overlay: prop.boolean(),
       fullPageOverlay: prop.boolean(),
-    }
+    };
   }
 
   private overlay = false;
@@ -29,7 +29,7 @@ export class Demo extends Component<void> {
     this.fullPageOverlay = false;
   }
 
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     this.showOverlay = this.showOverlay.bind(this);
     this.showFullPageOverlay = this.showFullPageOverlay.bind(this);
@@ -56,7 +56,7 @@ export class Demo extends Component<void> {
 
         <div>
           <h3>Normal overlay</h3>
-          <div className={"modal-demo"}>
+          <div className={'modal-demo'}>
             <p>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla non lectus sed nisl molestie malesuada.
               Aliquam id dolor. Quisque porta. Vivamus luctus egestas leo. Ut enim ad minim veniam,
@@ -69,7 +69,7 @@ export class Demo extends Component<void> {
           </div>
 
           <h3>Transparent overlay</h3>
-          <div className={"modal-demo"}>
+          <div className={'modal-demo'}>
             <p>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla non lectus sed nisl molestie malesuada.
               Aliquam id dolor. Quisque porta. Vivamus luctus egestas leo. Ut enim ad minim veniam,
@@ -83,7 +83,7 @@ export class Demo extends Component<void> {
 
           <h3>Dismissable overlay</h3>
           <Button onClick={this.showOverlay}>Show overlay</Button>
-          <div className={"modal-demo"}>
+          <div className={'modal-demo'}>
             <p>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla non lectus sed nisl molestie malesuada.
               Aliquam id dolor. Quisque porta. Vivamus luctus egestas leo. Ut enim ad minim veniam,
@@ -100,7 +100,7 @@ export class Demo extends Component<void> {
           {fullPageOverlayFragment}
         </div>
       </fieldset>,
-    ]
+    ];
   }
 }
 

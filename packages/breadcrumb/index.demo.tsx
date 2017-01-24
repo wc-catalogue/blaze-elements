@@ -1,9 +1,9 @@
 import{ h, Component } from 'skatejs';
 import { Breadcrumb } from './Breadcrumb';
-import { BreadcrumbItem } from './Breadcrumb-item'
+import { BreadcrumbItem } from './Breadcrumb-item';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-breadcrumb-demo'}
+  static get is() { return 'bl-breadcrumb-demo'; }
 
   renderCallback() {
     return [
@@ -20,7 +20,7 @@ export class Demo extends Component<void> {
           </Breadcrumb>
         </div>
       </fieldset>
-    ]
+    ];
   }
 }
 

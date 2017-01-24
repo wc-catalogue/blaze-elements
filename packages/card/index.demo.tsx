@@ -2,7 +2,7 @@ import { h, Component } from 'skatejs';
 import { Card } from './Card';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-card-demo' }
+  static get is() { return 'bl-card-demo'; }
 
   renderCallback() {
     return [
@@ -20,7 +20,7 @@ export class Demo extends Component<void> {
         </div>
 
       </fieldset>
-    ]
+    ];
   }
 }
 

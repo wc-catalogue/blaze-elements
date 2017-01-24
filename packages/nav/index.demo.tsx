@@ -1,10 +1,10 @@
 import{ h, Component } from 'skatejs';
 import { Nav } from './Nav';
-import { NavItem } from './Nav-item'
+import { NavItem } from './Nav-item';
 import { NavContent } from './Nav-content';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-nav-demo'}
+  static get is() { return 'bl-nav-demo'; }
 
   renderCallback() {
     return [
@@ -77,7 +77,7 @@ export class Demo extends Component<void> {
           </div>
         </div>
       </fieldset>
-    ]
+    ];
   }
 }
 

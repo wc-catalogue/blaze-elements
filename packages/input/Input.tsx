@@ -18,8 +18,8 @@ type EventProps = {
   onFocus?: typeof HTMLElement.prototype.onfocus,
   onBlur?: typeof HTMLElement.prototype.onblur,
   onInput?: typeof HTMLElement.prototype.oninput,
-  onChange?: (ev:CustomEvent)=>void,
-}
+  onChange?: (ev: CustomEvent) => void,
+};
 type Props = {
   value: string,
   valid?: string,
@@ -27,10 +27,10 @@ type Props = {
   disabled?: boolean,
   inputSize?: keyof Size,
   type?: keyof TypesType
-}
+};
 
 export class Input extends Component<InputProps> {
-  static get is() { return 'bl-input' }
+  static get is() { return 'bl-input'; }
   static get props() {
     return {
       value: prop.string({
@@ -56,7 +56,7 @@ export class Input extends Component<InputProps> {
   static get events(){
     return {
       change: 'change',
-    }
+    };
   }
 
   valid: string;
@@ -75,7 +75,7 @@ export class Input extends Component<InputProps> {
 
   private setValue() {
     this.value = this.inputElement.value;
-    emit(this,Input.events.change); // emit change event on root element
+    emit(this, Input.events.change); // emit change event on root element
   }
 
   connectedCallback() {

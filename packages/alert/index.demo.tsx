@@ -2,13 +2,13 @@ import { h, Component, prop, props, define } from 'skatejs';
 import { Alert } from './';
 import { Button } from '../button/Button';
 
-type DemoProps = {isOpen?: boolean}
+type DemoProps = {isOpen?: boolean};
 export class Demo extends Component<DemoProps> {
-  static get is() { return 'bl-alert-demo' }
+  static get is() { return 'bl-alert-demo'; }
   static get props(){
     return {
       isOpen: prop.boolean()
-    }
+    };
   }
 
   isOpen = false;
@@ -41,7 +41,7 @@ export class Demo extends Component<DemoProps> {
         </div>
 
       </fieldset>
-    ]
+    ];
   }
 
 }

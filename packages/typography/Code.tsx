@@ -8,14 +8,14 @@ interface CodeProps {
 }
 
 export class Code extends Component<CodeProps> {
-  static get is(){ return 'bl-code' }
+  static get is(){ return 'bl-code'; }
 
   static get props() {
     return {
       isMultiline: prop.boolean({
         attribute: true
       })
-    }
+    };
   }
 
   isMultiline: boolean;
@@ -35,7 +35,7 @@ export class Code extends Component<CodeProps> {
       <code className={className}>
         <slot/>
       </code>
-    ]
+    ];
   }
 }
 

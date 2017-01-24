@@ -19,7 +19,7 @@ const WEEK_STARTS_ON = 'sunday';
 
 export type CalendarChangeEvent = CustomEvent & {detail: { date: Date } };
 
-type CalendarProps = Props & EventProps
+type CalendarProps = Props & EventProps;
 type Props = {
   selectedDate?: Date,
   i18n?: {
@@ -28,10 +28,10 @@ type Props = {
     todayButtonText: string,
   },
   weekStartsOn?: 'sunday' | 'monday',
-}
+};
 type EventProps = {
   onDateChange?: ( ev: CalendarChangeEvent ) => void,
-}
+};
 
 export class Calendar extends Component<CalendarProps> {
 

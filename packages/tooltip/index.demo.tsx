@@ -2,7 +2,7 @@ import { h, Component } from 'skatejs';
 import { Tooltip } from './Tooltip';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-tooltip-demo' }
+  static get is() { return 'bl-tooltip-demo'; }
 
   renderCallback() {
     return [
@@ -18,7 +18,7 @@ export class Demo extends Component<void> {
         </div>
 
       </fieldset>
-    ]
+    ];
   }
 }
 

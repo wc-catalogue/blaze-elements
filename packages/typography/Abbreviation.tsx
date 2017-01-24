@@ -8,14 +8,14 @@ interface AbbreviationProps {
 }
 
 export class Abbreviation extends Component<AbbreviationProps> {
-  static get is(){ return 'bl-abbreviation' }
+  static get is(){ return 'bl-abbreviation'; }
 
   static get props() {
     return {
       title: prop.string({
         attribute: true
       })
-    }
+    };
   }
 
   title: string;
@@ -32,7 +32,7 @@ export class Abbreviation extends Component<AbbreviationProps> {
       <abbr className={className} title={title}>
         <slot/>
       </abbr>
-    ]
+    ];
   }
 }
 

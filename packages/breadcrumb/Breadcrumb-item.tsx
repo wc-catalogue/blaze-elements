@@ -1,4 +1,4 @@
-import styles from './Breadcrumb.scss'
+import styles from './Breadcrumb.scss';
 import { h, Component, prop } from 'skatejs';
 import { css } from '../_helpers/css';
 
@@ -8,7 +8,7 @@ interface BreadcrumbItemProps {
 }
 export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
 
-  static get is() { return 'bl-breadcrumb-item' }
+  static get is() { return 'bl-breadcrumb-item'; }
 
   static get props() {
     return {
@@ -19,7 +19,7 @@ export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
       href: prop.string({
         attribute: true
       }),
-    }
+    };
   }
 
   isActive: boolean;
@@ -45,7 +45,7 @@ export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
       <li className={className}>
         {itemContent}
       </li>
-    ]
+    ];
   }
 }
 

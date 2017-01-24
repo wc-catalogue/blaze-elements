@@ -7,7 +7,7 @@ interface QuietTextProps {
 }
 
 export class QuietText extends Component<QuietTextProps> {
-  static get is(){ return 'bl-quiet-text' }
+  static get is(){ return 'bl-quiet-text'; }
 
   renderCallback() {
     const className = css(
@@ -18,7 +18,7 @@ export class QuietText extends Component<QuietTextProps> {
       <span className={className}>
         <slot/>
       </span>
-    ]
+    ];
   }
 }
 

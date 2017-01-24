@@ -1,5 +1,5 @@
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
 import style from './Link.scss';
 import { css } from '../_helpers/css';
 
@@ -22,7 +22,7 @@ interface LinkProps {
 
 export class Link extends Component<LinkProps> {
 
-  static get is() { return 'bl-link' }
+  static get is() { return 'bl-link'; }
 
   static get props() {
     return {
@@ -50,7 +50,7 @@ export class Link extends Component<LinkProps> {
       color: prop.string( {
         attribute: true
       } )
-    }
+    };
   }
 
   href: string;
@@ -80,7 +80,7 @@ export class Link extends Component<LinkProps> {
       >
         <slot />
       </a>
-    ]
+    ];
 
   }
 

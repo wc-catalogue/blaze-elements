@@ -2,7 +2,7 @@ import { h, Component } from 'skatejs';
 import { Button } from './Button';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-button-demo'}
+  static get is() { return 'bl-button-demo'; }
 
   renderCallback() {
     return [
@@ -21,7 +21,7 @@ export class Demo extends Component<void> {
             color="warning"
           >Click me</Button>
         </fieldset>
-    ]
+    ];
   }
 }
 

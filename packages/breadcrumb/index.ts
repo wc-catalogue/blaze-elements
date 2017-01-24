@@ -1,2 +1,2 @@
-import './Breadcrumb'
-import './Breadcrumb-item'
+import './Breadcrumb';
+import './Breadcrumb-item';

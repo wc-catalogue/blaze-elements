@@ -3,17 +3,17 @@ import { Tag } from './Tag';
 import { TagSelector } from './TagSelector';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-tag-demo' }
+  static get is() { return 'bl-tag-demo'; }
   static get props() {
     return {
       tags: prop.array()
-    }
+    };
   }
 
-  tags = ['milk','bread','chocolate'];
+  tags = ['milk', 'bread', 'chocolate'];
 
   private tagClose() {
-    console.log( 'Tag close emitted', this )
+    console.log( 'Tag close emitted', this );
     const element = this;
     element.parentNode.removeChild( element );
   }
@@ -42,7 +42,7 @@ export class Demo extends Component<void> {
                        tags={this.tags}></TagSelector>
         </fieldset>
       </fieldset>
-    ]
+    ];
   }
 }
 

@@ -15,7 +15,7 @@ const customDivStyle = {
 } as CSSStyleDeclaration;
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-drawer-demo' }
+  static get is() { return 'bl-drawer-demo'; }
 
   renderCallback() {
     return [
@@ -66,7 +66,7 @@ export class Demo extends Component<void> {
         </div>
 
       </fieldset>
-    ]
+    ];
   }
 }
 

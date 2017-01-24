@@ -1,9 +1,9 @@
 import{ h, Component } from 'skatejs';
 import { Tree } from './Tree';
-import { TreeItem } from './Tree-item'
+import { TreeItem } from './Tree-item';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-tree-demo'}
+  static get is() { return 'bl-tree-demo'; }
 
   renderCallback() {
     return [
@@ -44,7 +44,7 @@ export class Demo extends Component<void> {
           </Tree>
         </div>
       </fieldset>
-    ]
+    ];
   }
 }
 

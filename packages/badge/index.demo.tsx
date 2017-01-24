@@ -2,7 +2,7 @@ import{ h, Component } from 'skatejs';
 import { Badge } from './Badge';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-badge-demo'}
+  static get is() { return 'bl-badge-demo'; }
 
   renderCallback() {
     return [
@@ -41,7 +41,7 @@ export class Demo extends Component<void> {
 
       </fieldset>
 
-    ]
+    ];
   }
 }
 

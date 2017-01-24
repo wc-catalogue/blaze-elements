@@ -1,4 +1,4 @@
-import styles from './Tree.scss'
+import styles from './Tree.scss';
 import { h, Component, prop } from 'skatejs';
 import { css } from '../_helpers/css';
 
@@ -7,14 +7,14 @@ interface TreeItemProps {
 }
 export class TreeItem extends Component<TreeItemProps> {
 
-  static get is() { return 'bl-tree-item' }
+  static get is() { return 'bl-tree-item'; }
 
   static get props() {
     return {
       isOpen: prop.boolean({
         attribute: true
       }),
-    }
+    };
   }
 
   isOpen: boolean;
@@ -44,7 +44,7 @@ export class TreeItem extends Component<TreeItemProps> {
         <slot></slot>
         { isOpen ? <slot name="subItems" /> : null }
       </li>
-    ]
+    ];
   }
 }
 
