@@ -7,6 +7,7 @@ declare module '*.css' {
   export default _;
 };
 declare module '*.json';
+declare module '*.gif';
 
 // Skate
 declare module 'core-js';
@@ -169,3 +170,16 @@ interface Document {
 // we are not using Chai anymore. We use Expect which has Jest style assertions
 // @TODO remove this once all test are refactored to use `epxect` instead of chai
 declare var expect: Chai.ExpectStatic;
+
+// TODO: Use proper types
+declare namespace JSX {
+
+  interface IntrinsicElements {
+
+    'svg': any,
+    'g': any,
+    'path': any
+
+  }
+
+}

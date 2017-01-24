@@ -14,6 +14,8 @@ type DrawerPositionsType = typeof DrawerPositions;
 interface DrawerProps {
   position?: keyof DrawerPositionsType,
   visible?: boolean,
+
+  floating?: boolean,
 }
 
 export class Drawer extends Component<DrawerProps> {
@@ -22,28 +24,41 @@ export class Drawer extends Component<DrawerProps> {
   static get props() {
     return {
       position: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       } ),
       visible: prop.boolean( {
-        attribute: true
+        attribute: {
+          source: true
+        }
+      } ),
+      floating: prop.boolean( {
+        attribute: {
+          source: true
+        },
+        initial: true
       } )
     };
   }
 
   position = 'top';
   visible: boolean;
+  floating: boolean;
 
   renderCallback() {
 
-    const { position, visible } = this;
+    const { position, visible, floating } = this;
 
     const className = css(
-      'o-drawer u-highest', {
+      'o-drawer', {
         'o-drawer--top': position === DrawerPositions.top,
         'o-drawer--bottom': position === DrawerPositions.bottom,
         'o-drawer--left': position === DrawerPositions.left,
         'o-drawer--right': position === DrawerPositions.right,
         'o-drawer--visible': visible,
+        'o-drawer--static': !floating,
+        'u-highest': floating,
       } );
 
     return [
@@ -56,4 +71,4 @@ export class Drawer extends Component<DrawerProps> {
 
 }
 
-customElements.define( Drawer.is, Drawer );
+

@@ -56,4 +56,3 @@ export class NavItem extends Component<NavItemProps> {
   }
 }
 
-customElements.define( NavItem.is, NavItem );

@@ -73,5 +73,3 @@ export class Nav extends Component<NavProps> {
     ];
   }
 }
-
-customElements.define( Nav.is, Nav );

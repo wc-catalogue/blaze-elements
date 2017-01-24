@@ -1,4 +1,4 @@
-import { Drawer } from './Drawer';
+import { Drawer } from './index';
 
 import { h, mount } from 'bore';
 

@@ -1,5 +1,5 @@
 import { h, Component } from 'skatejs';
-import { Drawer } from './Drawer';
+import { Drawer } from './index';
 import { Card } from '../card/Card';
 import { Button } from '../button';
 
