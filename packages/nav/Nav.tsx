@@ -1,4 +1,4 @@
-import styles from './Nav.scss'
+import styles from './Nav.scss';
 import { h, Component, prop } from 'skatejs';
 import { css } from '../_helpers/css';
 
@@ -19,7 +19,7 @@ interface NavProps {
 }
 export class Nav extends Component<NavProps> {
 
-  static get is() { return 'bl-nav' }
+  static get is() { return 'bl-nav'; }
   static get props() {
     return {
       inline: prop.boolean({
@@ -31,7 +31,7 @@ export class Nav extends Component<NavProps> {
       position: prop.string({
         attribute: true
       })
-    }
+    };
   }
 
   inline = false;
@@ -49,7 +49,7 @@ export class Nav extends Component<NavProps> {
 
       if ( length ) {
         for ( let i = 0; i < length; i++  ) {
-          items[i].setAttribute('inline','');
+          items[i].setAttribute('inline', '');
         }
       }
 
@@ -70,7 +70,7 @@ export class Nav extends Component<NavProps> {
     return [
       <style>{styles}</style>,
       <ul className={className}><slot /></ul>
-    ]
+    ];
   }
 }
 

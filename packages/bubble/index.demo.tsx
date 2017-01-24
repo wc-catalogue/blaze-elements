@@ -2,7 +2,7 @@ import { h, Component } from 'skatejs';
 import { Bubble } from './Bubble';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-bubble-demo' }
+  static get is() { return 'bl-bubble-demo'; }
 
   renderCallback() {
     return [
@@ -51,7 +51,7 @@ export class Demo extends Component<void> {
         </div>
 
       </fieldset>
-    ]
+    ];
   }
 }
 

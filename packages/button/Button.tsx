@@ -1,5 +1,5 @@
 import { h, Component, prop } from 'skatejs';
-import { ColorType, cssClassForColorType } from '../_helpers/colorTypes'
+import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
 import styles from './Button.scss';
 import { css } from '../_helpers/css';
 
@@ -14,7 +14,7 @@ interface ButtonProps {
 }
 
 export class Button extends Component<ButtonProps> {
-  static get is(){ return 'bl-button' }
+  static get is(){ return 'bl-button'; }
   static get props() {
     return {
       disabled: prop.boolean( {
@@ -32,7 +32,7 @@ export class Button extends Component<ButtonProps> {
       color: prop.string({
         attribute: true
       })
-    }
+    };
   }
 
   disabled: boolean;
@@ -61,7 +61,7 @@ export class Button extends Component<ButtonProps> {
       >
         <slot/>
       </button>
-    ]
+    ];
   }
 }
 

@@ -1,10 +1,10 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Range.scss';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
 import { css } from '../_helpers/css';
 
 
-//public
+// public
 type RangeProps = Props & EventProps;
 type Props = {
   value: number | string,
@@ -12,16 +12,16 @@ type Props = {
   max?: number | string,
   disabled?: boolean,
   color?: ColorType,
-}
+};
 type EventProps = {
   onKeyup?: typeof HTMLElement.prototype.onkeyup,
   onFocus?: typeof HTMLElement.prototype.onfocus,
   onBlur?: typeof HTMLElement.prototype.onblur,
-  onChange?: (ev:CustomEvent)=>void,
-}
+  onChange?: (ev: CustomEvent) => void,
+};
 
 export class Range extends Component<RangeProps> {
-  static get is() { return 'bl-range' }
+  static get is() { return 'bl-range'; }
   static get props() {
     return {
       value: prop.number({
@@ -39,12 +39,12 @@ export class Range extends Component<RangeProps> {
       disabled: prop.boolean({
         attribute: true
       }),
-    }
+    };
   }
-  static get events(){
+  static get events() {
     return {
       change: 'change'
-    }
+    };
   }
 
   color: ColorType;
@@ -58,10 +58,10 @@ export class Range extends Component<RangeProps> {
   private provideValue(event: Event) {
     const oldValue = this.value;
     this.value = this.inputElement.valueAsNumber;
-    emit(this,Range.events.change); // emit change event on root element
+    emit(this, Range.events.change); // emit change event on root element
   }
 
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     this.provideValue = this.provideValue.bind(this);
   }
@@ -74,7 +74,7 @@ export class Range extends Component<RangeProps> {
     return [
       <style>{styles}</style>,
       <input
-        ref={(_ref)=>this.inputElement=_ref}
+        ref={(_ref) => this.inputElement = _ref}
         className={className}
         type="range"
         value={value ? value.toString() : null}
@@ -83,7 +83,7 @@ export class Range extends Component<RangeProps> {
         onChange={this.provideValue}
         disabled={disabled}
       />
-    ]
+    ];
   }
 }
 

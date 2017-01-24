@@ -3,20 +3,20 @@ import { Modal } from './Modal';
 import { Button } from '../button/Button';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-modal-demo' }
+  static get is() { return 'bl-modal-demo'; }
   static get props(){
     return {
       isModalOpen: prop.boolean()
-    }
+    };
   }
 
   isModalOpen = false;
 
-  toggleModal(){
+  toggleModal() {
     console.log( 'toggleModal' );
-    this.isModalOpen = !this.isModalOpen
+    this.isModalOpen = !this.isModalOpen;
   }
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     this.toggleModal = this.toggleModal.bind(this);
   }
@@ -41,7 +41,7 @@ export class Demo extends Component<void> {
         </Modal>
 
       </fieldset>
-    ]
+    ];
   }
 }
 

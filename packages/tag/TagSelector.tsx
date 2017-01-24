@@ -19,11 +19,11 @@ export class TagSelector extends Component<TagSelectorProps> {
     this.handleTagClose = this.handleTagClose.bind( this );
   }
 
-  static get is() { return 'bl-tag-selector' }
+  static get is() { return 'bl-tag-selector'; }
   static get events() {
     return {
       TAG_CHANGE: 'tagChange'
-    }
+    };
   }
   static get props() {
     return {
@@ -33,7 +33,7 @@ export class TagSelector extends Component<TagSelectorProps> {
       delimiter: prop.string({
         attribute: true
       }),
-    }
+    };
   }
 
   tags: string[] = [];
@@ -69,7 +69,7 @@ export class TagSelector extends Component<TagSelectorProps> {
       detail: {
         tags: tags
       }
-    })
+    });
   }
 
   renderCallback() {
@@ -88,7 +88,7 @@ export class TagSelector extends Component<TagSelectorProps> {
           <Input onInput={this.handleInput} value={this.inputValue} />
         </div>
       </div>
-    ]
+    ];
   }
 
 }

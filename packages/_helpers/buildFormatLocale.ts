@@ -28,8 +28,8 @@ type Formatters = {
   'a': FormatterFn,
   // a.m., p.m.
   'aa': FormatterFn,
-}
-type OrdinalFormatterFn = ( date: Date, formatters: {[P in OrdinalFormattersRawKeys]:(date:Date)=>number} ) => string;
+};
+type OrdinalFormatterFn = ( date: Date, formatters: {[P in OrdinalFormattersRawKeys]: (date: Date) => number} ) => string;
 type OrdinalFormattersRawKeys = 'M' | 'D' | 'DDD' | 'd' | 'Q' | 'W';
 type OrdinalFormatters = {
   'Mo': OrdinalFormatterFn,
@@ -38,7 +38,7 @@ type OrdinalFormatters = {
   'do': OrdinalFormatterFn,
   'Qo': OrdinalFormatterFn,
   'Wo': OrdinalFormatterFn,
-}
+};
 
 const defaultLocale: LocaleType = {
   months3char: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],

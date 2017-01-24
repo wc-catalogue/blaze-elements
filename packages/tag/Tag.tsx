@@ -14,18 +14,18 @@ export class Tag extends Component<TagProps> {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  static get is() { return 'bl-tag' }
+  static get is() { return 'bl-tag'; }
   static get events() {
     return {
       TAG_CLOSE: 'tagClose'
-    }
+    };
   }
   static get props() {
     return {
       label: prop.string({
         attribute: true
       })
-    }
+    };
   }
 
   label = '';
@@ -35,7 +35,7 @@ export class Tag extends Component<TagProps> {
       detail: {
         tag: this
       }
-    } )
+    } );
   }
 
   renderCallback() {
@@ -47,7 +47,7 @@ export class Tag extends Component<TagProps> {
         { label }
         <span class="c-tag__close" onClick={this.handleClick}>×</span>
       </button>
-    ]
+    ];
   }
 
 }

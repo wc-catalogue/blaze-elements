@@ -1,17 +1,17 @@
 import { h, Component } from 'skatejs';
-import { Paragraph } from "./Paragraph";
-import { Abbreviation } from "./Abbreviation";
-import { Link } from "./Link";
-import { LoudText } from "./LoudText";
-import { QuietText } from "./QuietText";
-import { HighlightedText } from "./HighlightedText";
-import { KeyboardKeys } from "./KeyboardKeys";
-import { MonospaceText } from "./MonospaceText";
-import { Code } from "./Code";
-import { Blockquote } from "./Blockquote";
+import { Paragraph } from './Paragraph';
+import { Abbreviation } from './Abbreviation';
+import { Link } from './Link';
+import { LoudText } from './LoudText';
+import { QuietText } from './QuietText';
+import { HighlightedText } from './HighlightedText';
+import { KeyboardKeys } from './KeyboardKeys';
+import { MonospaceText } from './MonospaceText';
+import { Code } from './Code';
+import { Blockquote } from './Blockquote';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-typography-demo'}
+  static get is() { return 'bl-typography-demo'; }
 
   renderCallback() {
     return [
@@ -94,7 +94,7 @@ export class Demo extends Component<void> {
           <span slot="footer">Blaze elements demo</span>
         </Blockquote>
       </fieldset>
-    ]
+    ];
   }
 }
 

@@ -19,7 +19,7 @@ interface BubbleProps {
 }
 
 export class Bubble extends Component<BubbleProps> {
-  static get is() { return 'bl-bubble' }
+  static get is() { return 'bl-bubble'; }
   static get props() {
     return {
       type: prop.string(),
@@ -27,7 +27,7 @@ export class Bubble extends Component<BubbleProps> {
         attribute: true
       }),
       disableAutoShowHide: prop.boolean()
-    }
+    };
   }
 
   type = 'right';
@@ -46,7 +46,7 @@ export class Bubble extends Component<BubbleProps> {
     }
   }
 
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
@@ -55,7 +55,7 @@ export class Bubble extends Component<BubbleProps> {
   renderCallback() {
     const { isDisplayed, type } = this;
     const className = css(
-      'c-bubble',{
+      'c-bubble', {
         'c-bubble--right': type === BubbleTypes.right,
         'c-bubble--left': type === BubbleTypes.left,
         'c-bubble--top': type === BubbleTypes.top,
@@ -66,16 +66,16 @@ export class Bubble extends Component<BubbleProps> {
     return [
       <style>{styles}</style>,
       isDisplayed
-        ? <div tabIndex={0} className={"bubble-wrapper"} onMouseleave={this.handleMouseLeave} onBlur={this.handleMouseLeave}>
+        ? <div tabIndex={0} className={'bubble-wrapper'} onMouseleave={this.handleMouseLeave} onBlur={this.handleMouseLeave}>
             <slot name="handle"></slot>
             <div className={className}>
               <slot></slot>
             </div>
           </div>
-        : <div tabIndex={0} className={"bubble-wrapper"} onMouseover={this.handleMouseOver} onFocus={this.handleMouseOver}>
+        : <div tabIndex={0} className={'bubble-wrapper'} onMouseover={this.handleMouseOver} onFocus={this.handleMouseOver}>
             <slot name="handle"></slot>
           </div>
-    ]
+    ];
   }
 
 }

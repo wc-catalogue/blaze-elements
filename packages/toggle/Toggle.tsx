@@ -1,6 +1,6 @@
 import styles from './Toggle.scss';
 import { h, Component, prop, props } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
 import { css } from '../_helpers/css';
 
 
@@ -11,7 +11,7 @@ export interface ToggleProps {
 }
 
 export class Toggle extends Component<ToggleProps> {
-  static get is(){ return 'bl-toggle'}
+  static get is(){ return 'bl-toggle'; }
   static get props(){
     return {
       disabled: prop.boolean({
@@ -23,20 +23,20 @@ export class Toggle extends Component<ToggleProps> {
       color: prop.string({
         attribute: true
       })
-    }
+    };
   }
   disabled = false;
   checked = false;
   color: ColorType;
 
-  private handleChecked(e?:Event){
+  private handleChecked(e?: Event) {
     props( this, { checked: !this.checked } );
   }
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     this.handleChecked = this.handleChecked.bind(this);
   }
-  renderCallback(){
+  renderCallback() {
     const { disabled, checked, color } = this;
     const colorClass = cssClassForColorType('c-toggle', color);
     const className = css('c-toggle', colorClass);
@@ -55,7 +55,7 @@ export class Toggle extends Component<ToggleProps> {
           </div>
           <slot/>
       </label>
-    ]
+    ];
   }
 }
 

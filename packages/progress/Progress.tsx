@@ -1,11 +1,11 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Progress.scss';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes'
-import {Size, cssClassForSize} from '../_helpers/sizes'
+import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
+import {Size, cssClassForSize} from '../_helpers/sizes';
 import { css } from '../_helpers/css';
 
 
-//public
+// public
 interface ProgressProps {
   value: number,
   color?: ColorType,
@@ -14,7 +14,7 @@ interface ProgressProps {
 }
 
 export class Progress extends Component<ProgressProps> {
-  static get is() { return 'bl-progress' }
+  static get is() { return 'bl-progress'; }
   static get props() {
     return {
       value: prop.number({
@@ -29,7 +29,7 @@ export class Progress extends Component<ProgressProps> {
       rounded: prop.boolean({
         attribute: true
       })
-    }
+    };
   }
 
   value: number;
@@ -66,7 +66,7 @@ export class Progress extends Component<ProgressProps> {
           <slot />
         </div>
       </div>
-    ]
+    ];
   }
 }
 

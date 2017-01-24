@@ -2,7 +2,7 @@ import { h, Component } from 'skatejs';
 import { Toggle } from './Toggle';
 
 class Demo extends Component<void> {
-  static get is() {return 'bl-toggle-demo'};
+  static get is() {return 'bl-toggle-demo'; };
 
   renderCallback() {
     return [
@@ -16,7 +16,7 @@ class Demo extends Component<void> {
         </div>
 
       </fieldset>
-    ]
+    ];
   }
 }
 

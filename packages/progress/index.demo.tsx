@@ -2,11 +2,11 @@ import { h, Component, prop } from 'skatejs';
 import { Progress } from './Progress';
 
 export class Demo extends Component<void> {
-  static get is() { return 'bl-progress-demo' }
+  static get is() { return 'bl-progress-demo'; }
   static get props() {
     return {
       val: prop.number()
-    }
+    };
   }
 
   val: number;
@@ -15,7 +15,7 @@ export class Demo extends Component<void> {
     this.val = Number.parseInt((event.currentTarget as HTMLInputElement).value);
   }
 
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     this.reflectValue = this.reflectValue.bind(this);
   }
@@ -58,7 +58,7 @@ export class Demo extends Component<void> {
         </div>
 
       </fieldset>
-    ]
+    ];
   }
 }
 

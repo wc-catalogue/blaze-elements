@@ -10,29 +10,29 @@ interface ModalProps {
   onModalClose?: Function,
 }
 export class Modal extends Component<ModalProps> {
-  static get is() { return 'bl-modal' }
+  static get is() { return 'bl-modal'; }
   static get props() {
     return {
       isOpen: prop.boolean({
         attribute: true
       }),
       closeTitle: prop.string()
-    }
+    };
   }
 
   isOpen = false;
-  private closeTitle = "close";
+  private closeTitle = 'close';
   private modalElement: HTMLDivElement;
   private lastActiveElement: HTMLElement;
 
-  private handleEsc(evt:KeyboardEvent){
+  private handleEsc(evt: KeyboardEvent) {
     if ( evt.which === 27 ) {
-      this.handleModalClose()
+      this.handleModalClose();
     }
   }
-  private handleModalClose(){
+  private handleModalClose() {
     this.isOpen = false;
-    emit(this,'modalClose')
+    emit(this, 'modalClose');
   }
   private focusModal() {
     this.modalElement.focus();
@@ -46,13 +46,13 @@ export class Modal extends Component<ModalProps> {
   }
 
   private preventModalBlur() {
-    document.addEventListener("focus", this.handleDocumentFocus.bind(this), true);
+    document.addEventListener('focus', this.handleDocumentFocus.bind(this), true);
   }
   private allowModalBlur() {
-    document.removeEventListener("focus", this.handleDocumentFocus.bind(this), true);
+    document.removeEventListener('focus', this.handleDocumentFocus.bind(this), true);
   }
 
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     this.handleEsc = this.handleEsc.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
@@ -67,7 +67,7 @@ export class Modal extends Component<ModalProps> {
                tabIndex={-1}
                onFocus={this.focusModal} />,
       isOpen &&
-      <div ref={(_ref: HTMLDivElement)=>this.modalElement=_ref}
+      <div ref={(_ref: HTMLDivElement) => this.modalElement = _ref}
            tabIndex={-1}
            class="o-modal"
            role="dialog"
@@ -93,7 +93,7 @@ export class Modal extends Component<ModalProps> {
           </div>
         </Card>
       </div>
-    ]
+    ];
   }
 
   renderedCallback() {
@@ -123,4 +123,4 @@ export class Modal extends Component<ModalProps> {
 
 }
 
-customElements.define( Modal.is, Modal )
+customElements.define( Modal.is, Modal );
