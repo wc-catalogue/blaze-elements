@@ -1,5 +1,5 @@
 import { h, Component, prop, props, define } from 'skatejs';
-import { Alert } from './';
+import { Alert } from './index';
 import { Button } from '../button/Button';
 
 type DemoProps = {isOpen?: boolean};
