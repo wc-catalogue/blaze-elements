@@ -93,3 +93,108 @@ yarn build
 To release **blaze-elements**, you should perform the following steps:
 
 > @TODO
+
+---
+
+## Packaging
+
+### `bl-button`
+
+#### Installing
+
+`yarn add bl-button`
+
+will contain 2 bundles:
+
+1. `index-with-dependecies.min.js` - minified and bundled all `dependencies` of bl-button + skatejs ( without polyfills )
+2. `index.min.js` - just minified implementation of `bl-button` , skatejs and all dependecies should be loaded via specific `imports` ( without polyfills )
+
+and generated type definitions with JSX.Intrinsic element plugin for specific custom element
+
+So shiped package structure should look like:
+
+```
+bl-button/
+ |-- index.min.js  * compiled Button with customElements.define
+ |-- index.min.js.map
+ |-- index.d.ts
+ |-- index-with-deps.min.js * compiled Button bundled with Skate and all `dependencies` and `customElements.define`
+ |-- index-with-deps.min.js.map
+ |-- Button.js * compiled Button for custom WC registration
+ |-- Button.d.ts
+ |-- README.md
+ |-- package.json
+```
+
+#### Usage:
+
+1. within any app ( PHP, Ruby, JSP, plain HTML, whatever... )
+
+```html
+<html>
+<head>
+  <script src="node_modules/skatejs-web-components/dist/index-with-deps.min.js"></script>
+  <script src="node_modules/bl-button/index-with-deps.min.js"></script>
+  <script src="node_modules/bl-calendar/index-with-deps.min.js"></script>
+</head>
+<body>
+  <bl-button>Hello</bl-button>
+  <bl-calendar></bl-calendar>
+</body>
+</html>
+```
+
+2. within SPA with bundler ( webpack )
+```html
+<html>
+<head>
+  <script src="bundle.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>
+```
+
+```ts
+// CustomButton.tsx
+import {Button, ButtonProps} from 'bl-button/Button';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElement {
+      'my-button': ButtonProps
+    }
+  }
+}
+customElements.define('my-button',Button);
+
+// main.ts
+import 'skatejs-web-components';
+import 'skate';
+
+import 'bl-button';
+import 'bl-calendar';
+import 'bl-input';
+
+import * as React from 'react';
+import {render} from 'react-dom';
+
+// add custom namespaced button button
+import './CustomButton';
+
+const mountPoint = document.getElementById('app');
+const App = () => (
+  <div>
+    <h1>Hello world</h1>
+    <form>
+      <bl-input value="hello" onInput={console.log}></bl-input>
+      <bl-calendar></bl-calendar>
+      <bl-button type="submit">Submit</bl-button>
+      <my-button>Im custom yo!</my-button>
+    </form>
+  </div>
+)
+
+render(<App/>, mountPoint);
+```
