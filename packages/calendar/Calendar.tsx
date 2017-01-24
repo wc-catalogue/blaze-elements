@@ -10,9 +10,11 @@ import * as format from 'date-fns/format';
 import * as isToday from 'date-fns/is_today';
 import * as parse from 'date-fns/parse';
 import * as isSameDay from 'date-fns/is_same_day';
-import { css } from '../_helpers/css';
-import { Button } from '../button/Button';
+import { css } from '../_helpers';
+// @FIXME import from barell
 import { buildFormatLocale, LocaleType } from '../_helpers/buildFormatLocale';
+
+import { CalendarButton } from './components/Button';
 
 const BUTTON_TODAY = 'TODAY';
 const WEEK_STARTS_ON = 'sunday';
@@ -217,7 +219,7 @@ export class Calendar extends Component<CalendarProps> {
         {weekDays}
         {days}
 
-        <Button onClick={this.setDateHandler()} block>{this.i18n.todayButtonText}</Button>
+        <CalendarButton onClick={this.setDateHandler()}>{this.i18n.todayButtonText}</CalendarButton>
       </div>
     ];
   }
