@@ -9,34 +9,43 @@ const TooltipTypes = {
   bottom: 'bottom',
 };
 
-type TooltipTypesType = typeof TooltipTypes;
+type TooltipTypesType = keyof typeof TooltipTypes;
 
 // public
-interface TooltipProps {
-  type?: keyof TooltipTypesType,
+type TooltipProps = {
+  type?: TooltipTypesType,
   label: string,
-}
+};
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-tooltip': TooltipProps & Partial<HTMLElement>,
+    }
+  }
+};
 
 export class Tooltip extends Component<TooltipProps> {
   static get is() { return 'bl-tooltip'; }
   static get props() {
     return {
-      type: prop.string( {
-        attribute: true
+      type: prop.string({
+        attribute: true,
+        default: 'right'
       }),
-      label: prop.string( {
+      label: prop.string({
         attribute: true
       })
     };
   }
 
-  type = 'right';
-  label = '';
+  type: string;
+  label: string;
 
   renderCallback() {
     const { label, type } = this;
     const className = css(
-      'c-badge c-tooltip', {
+      'c-tooltip', {
         'c-tooltip--right': type === TooltipTypes.right,
         'c-tooltip--left': type === TooltipTypes.left,
         'c-tooltip--top': type === TooltipTypes.top,
@@ -50,11 +59,9 @@ export class Tooltip extends Component<TooltipProps> {
         className={className}
         aria-label={label}
       >
-        <slot />
+        <slot></slot>
       </span>
     ];
   }
 
 }
-
-customElements.define( Tooltip.is, Tooltip );
