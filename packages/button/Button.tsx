@@ -12,10 +12,10 @@ type Props = {
   close?: boolean,
   ghost?: boolean,
   color?: ColorType,
-}
+};
 type EventProps =  {
   onClick?: typeof HTMLElement.prototype.onclick,
-}
+};
 
 declare global {
   namespace JSX {
