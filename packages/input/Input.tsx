@@ -70,12 +70,11 @@ export class Input extends Component<InputProps> {
 
   private propagateOnChange(event: Event) {
     this.setValue();
-    emit(this, 'change'); // emit change event on root element
+    emit(this, Input.events.change); // emit change event on root element
   }
 
   private setValue() {
     this.value = this.inputElement.value;
-    emit(this, Input.events.change); // emit change event on root element
   }
 
   connectedCallback() {
