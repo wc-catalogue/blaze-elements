@@ -30,11 +30,15 @@ export class Tooltip extends Component<TooltipProps> {
   static get props() {
     return {
       type: prop.string({
-        attribute: true,
+        attribute: {
+          source: true
+        },
         default: 'right'
       }),
       label: prop.string({
-        attribute: true
+        attribute: {
+          source: true
+        }
       })
     };
   }
