@@ -143,6 +143,6 @@
     "no-angle-bracket-type-assertion": true,
     "object-literal-shorthand": true,
     "typeof-compare": true,
-    "arrow-return-shorthand": [true,"multiline"]
+    "arrow-return-shorthand": [true]
   }
 }

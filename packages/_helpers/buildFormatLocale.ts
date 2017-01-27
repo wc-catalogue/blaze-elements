@@ -92,22 +92,25 @@ export function buildFormatLocale( customLocale?: LocaleType ) {
     'dddd': ( date: Date ) => mergedLocale.weekdaysFull[ date.getDay() ],
 
     // AM, PM
-    'A': ( date: Date ) =>
+    'A': ( date: Date ) => (
       ( date.getHours() / 12 ) >= 1
         ? mergedLocale.meridiemUppercase[ 1 ]
-        : mergedLocale.meridiemUppercase[ 0 ],
+        : mergedLocale.meridiemUppercase[ 0 ]
+    ),
 
     // am, pm
-    'a': ( date: Date ) =>
+    'a': ( date: Date ) => (
       ( date.getHours() / 12 ) >= 1
         ? mergedLocale.meridiemLowercase[ 1 ]
-        : mergedLocale.meridiemLowercase[ 0 ],
+        : mergedLocale.meridiemLowercase[ 0 ]
+    ),
 
     // a.m., p.m.
-    'aa': ( date: Date ) =>
+    'aa': ( date: Date ) => (
       ( date.getHours() / 12 ) >= 1
-      ? mergedLocale.meridiemFull[ 1 ]
-      : mergedLocale.meridiemFull[ 0 ]
+        ? mergedLocale.meridiemFull[ 1 ]
+        : mergedLocale.meridiemFull[ 0 ]
+    )
   };
 
   // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
