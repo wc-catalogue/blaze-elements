@@ -29,7 +29,10 @@ type Formatters = {
   // a.m., p.m.
   'aa': FormatterFn,
 };
-type OrdinalFormatterFn = ( date: Date, formatters: {[ P in OrdinalFormattersRawKeys ]: ( date: Date ) => number}) => string;
+type OrdinalFormatterFn = (
+  date: Date,
+  formatters: {[ P in OrdinalFormattersRawKeys ]: ( date: Date ) => number}
+) => string;
 type OrdinalFormattersRawKeys = 'M' | 'D' | 'DDD' | 'd' | 'Q' | 'W';
 type OrdinalFormatters = {
   'Mo': OrdinalFormatterFn,
@@ -101,7 +104,10 @@ export function buildFormatLocale( customLocale?: LocaleType ) {
         : mergedLocale.meridiemLowercase[ 0 ],
 
     // a.m., p.m.
-    'aa': ( date: Date ) => ( date.getHours() / 12 ) >= 1 ? mergedLocale.meridiemFull[ 1 ] : mergedLocale.meridiemFull[ 0 ]
+    'aa': ( date: Date ) =>
+      ( date.getHours() / 12 ) >= 1
+      ? mergedLocale.meridiemFull[ 1 ]
+      : mergedLocale.meridiemFull[ 0 ]
   };
 
   // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
