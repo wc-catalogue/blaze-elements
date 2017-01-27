@@ -2,11 +2,11 @@ import { Breadcrumb } from './Breadcrumb';
 
 import { h, mount } from 'bore';
 
-describe(Breadcrumb.is, () => {
+describe( Breadcrumb.is, () => {
 
-  it('should render', () => {
+  it( 'should render', () => {
 
-    console.warn('Missing tests for Breadcrumb!');
+    console.warn( 'Missing tests for Breadcrumb!' );
 
     return mount(
       <Breadcrumb />

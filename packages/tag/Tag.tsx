@@ -17,7 +17,7 @@ export class Tag extends Component<TagProps> {
   }
   static get props() {
     return {
-      label: prop.string({
+      label: prop.string( {
         attribute: true
       })
     };
@@ -27,7 +27,7 @@ export class Tag extends Component<TagProps> {
 
   constructor() {
     super();
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind( this );
   }
 
   renderCallback() {
@@ -43,7 +43,7 @@ export class Tag extends Component<TagProps> {
   }
 
   private handleClick() {
-    emit(this, Tag.events.TAG_CLOSE, {
+    emit( this, Tag.events.TAG_CLOSE, {
       detail: {
         tag: this
       }
@@ -53,4 +53,4 @@ export class Tag extends Component<TagProps> {
 
 }
 
-customElements.define(Tag.is, Tag);
+customElements.define( Tag.is, Tag );

@@ -2,11 +2,11 @@ import { Calendar } from './Calendar';
 
 import { h, mount } from 'bore';
 
-describe(Calendar.is, () => {
+describe( Calendar.is, () => {
 
-  it('should render', () => {
+  it( 'should render', () => {
 
-    console.warn('Missing tests for Calendar!');
+    console.warn( 'Missing tests for Calendar!' );
 
     return mount(
       <Calendar />

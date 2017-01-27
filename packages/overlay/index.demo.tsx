@@ -17,10 +17,10 @@ export class Demo extends Component<void> {
 
   connectedCallback() {
     super.connectedCallback();
-    this.showOverlay = this.showOverlay.bind(this);
-    this.showFullPageOverlay = this.showFullPageOverlay.bind(this);
-    this.dismissOverlay = this.dismissOverlay.bind(this);
-    this.dismissFullPageOverlay = this.dismissFullPageOverlay.bind(this);
+    this.showOverlay = this.showOverlay.bind( this );
+    this.showFullPageOverlay = this.showFullPageOverlay.bind( this );
+    this.dismissOverlay = this.dismissOverlay.bind( this );
+    this.dismissFullPageOverlay = this.dismissFullPageOverlay.bind( this );
   }
 
   renderCallback() {
@@ -105,4 +105,4 @@ export class Demo extends Component<void> {
   }
 }
 
-customElements.define(Demo.is, Demo);
+customElements.define( Demo.is, Demo );

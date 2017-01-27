@@ -2,11 +2,11 @@ import { Alert } from './';
 
 import { h, mount } from 'bore';
 
-describe(Alert.is, () => {
+describe( Alert.is, () => {
 
-  it('should render', () => {
+  it( 'should render', () => {
 
-    console.warn('Missing tests for Alert!');
+    console.warn( 'Missing tests for Alert!' );
 
     return mount(
       <Alert />

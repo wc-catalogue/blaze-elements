@@ -10,20 +10,20 @@ export class Accordion extends Component<void> {
 
   connectedCallback() {
     super.connectedCallback();
-    this.handleStateChanged = this.handleStateChanged.bind(this);
+    this.handleStateChanged = this.handleStateChanged.bind( this );
   }
 
   renderCallback() {
-    const collapsibleItems = this.getElementsByTagName('bl-collapsible');
+    const collapsibleItems = this.getElementsByTagName( 'bl-collapsible' );
     const numberOfItems = collapsibleItems.length;
 
-    for (let i = 0; i < numberOfItems; i++) {
-      const collapsibleItem = collapsibleItems.item(i) as Collapsible;
-      collapsibleItem.addEventListener('stateChanged', this.handleStateChanged);
+    for ( let i = 0; i < numberOfItems; i++ ) {
+      const collapsibleItem = collapsibleItems.item( i ) as Collapsible;
+      collapsibleItem.addEventListener( 'stateChanged', this.handleStateChanged );
       collapsibleItem.isNotStandAlone = true;
-      this.items.push(collapsibleItem);
+      this.items.push( collapsibleItem );
 
-      if (i === collapsibleItems.length - 1) {
+      if ( i === collapsibleItems.length - 1 ) {
         collapsibleItem.isLast = true;
       }
     }
@@ -36,13 +36,13 @@ export class Accordion extends Component<void> {
     ];
   }
 
-  private handleStateChanged(event: StateChangedEvent) {
-    this.items.forEach(function(item) {
-      if (event.target !== item) {
+  private handleStateChanged( event: StateChangedEvent ) {
+    this.items.forEach( function( item ) {
+      if ( event.target !== item ) {
         item.isOpened = false;
       }
     });
   }
 }
 
-customElements.define(Accordion.is, Accordion);
+customElements.define( Accordion.is, Accordion );

@@ -12,7 +12,7 @@ export class Blockquote extends Component<BlockquoteProps> {
   static get is() { return 'bl-blockquote'; }
   static get props() {
     return {
-      color: prop.string({
+      color: prop.string( {
         attribute: true
       })
     };
@@ -24,7 +24,7 @@ export class Blockquote extends Component<BlockquoteProps> {
 
     const { color } = this;
 
-    const colorClass = cssClassForColorType('c-blockquote', color);
+    const colorClass = cssClassForColorType( 'c-blockquote', color );
     const className = css(
       'c-blockquote',
       colorClass
@@ -44,4 +44,4 @@ export class Blockquote extends Component<BlockquoteProps> {
   }
 }
 
-customElements.define(Blockquote.is, Blockquote);
+customElements.define( Blockquote.is, Blockquote );

@@ -9,6 +9,6 @@ const Sizes = {
 
 export type Size = typeof Sizes;
 
-export function cssClassForSize(size: Size) {
+export function cssClassForSize( size: Size ) {
   return size ? `u-${size}` : null;
 }

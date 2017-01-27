@@ -20,25 +20,25 @@ export class Demo extends Component<DemoProps> {
       <fieldset>
         <legend>{Button.is}</legend>
 
-        <bl-button color="brand" onClick={this.addLogEntry('Clicked! bl-button')}>Click me</bl-button>
+        <bl-button color="brand" onClick={this.addLogEntry( 'Clicked! bl-button' )}>Click me</bl-button>
 
         <Button
           disabled
           color="brand"
-          onClick={this.addLogEntry('Im Disabled!')}
+          onClick={this.addLogEntry( 'Im Disabled!' )}
         >
           Click me
         </Button>
         <Button
           color="brand"
-          onClick={this.addLogEntry('Clicked Button!')}
+          onClick={this.addLogEntry( 'Clicked Button!' )}
         >
           Click me
         </Button>
         <Button
           ghost
           color="warning"
-          onClick={this.addLogEntry('Clicked Button ghost!')}
+          onClick={this.addLogEntry( 'Clicked Button ghost!' )}
         >
           Click me
         </Button>
@@ -47,19 +47,19 @@ export class Demo extends Component<DemoProps> {
         <h4>Logs:</h4>
         <ul>
           {
-            logger.map((log) => (<li>{log}</li>))
+            logger.map(( log ) => ( <li>{log}</li> ) )
           }
         </ul>
       </div>
     ];
   }
 
-  private addLogEntry(entry: string) {
-    return (ev: Event) => {
-      props(this, { logger: [...this.logger, `${entry} - ${this.logger.length}`] });
+  private addLogEntry( entry: string ) {
+    return ( ev: Event ) => {
+      props( this, { logger: [ ...this.logger, `${entry} - ${this.logger.length}` ] });
     };
   }
 }
 
-customElements.define(Demo.is, Demo);
+customElements.define( Demo.is, Demo );
 

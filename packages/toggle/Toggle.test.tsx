@@ -2,11 +2,11 @@ import { Toggle } from './Toggle';
 
 import { h, mount } from 'bore';
 
-describe(Toggle.is, () => {
+describe( Toggle.is, () => {
 
-  it('should render', () => {
+  it( 'should render', () => {
 
-    console.warn('Missing tests for Toggle!');
+    console.warn( 'Missing tests for Toggle!' );
 
     return mount(
       <Toggle />

@@ -12,7 +12,7 @@ export class Demo extends Component<void> {
     };
   }
 
-  selectedDate = new Date('1987-12-22');
+  selectedDate = new Date( '1987-12-22' );
   i18n = {
     cs: {
       monthsFull: [
@@ -30,13 +30,13 @@ export class Demo extends Component<void> {
         'Prosinec'
       ],
       todayButtonText: 'DNES',
-      weekdays2char: ['Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So']
+      weekdays2char: [ 'Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So' ]
     }
   };
 
   constructor() {
     super();
-    this.dateChangeHandler = this.dateChangeHandler.bind(this);
+    this.dateChangeHandler = this.dateChangeHandler.bind( this );
   }
 
   renderCallback() {
@@ -56,9 +56,9 @@ export class Demo extends Component<void> {
       </fieldset>
     ];
   }
-  private dateChangeHandler(event: CalendarChangeEvent) {
+  private dateChangeHandler( event: CalendarChangeEvent ) {
     this.selectedDate = event.detail.date;
   }
 }
 
-customElements.define(Demo.is, Demo);
+customElements.define( Demo.is, Demo );

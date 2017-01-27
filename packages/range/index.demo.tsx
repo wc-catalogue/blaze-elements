@@ -13,7 +13,7 @@ export class Demo extends Component<void> {
 
   connectedCallback() {
     super.connectedCallback();
-    this.reflectValue = this.reflectValue.bind(this);
+    this.reflectValue = this.reflectValue.bind( this );
   }
 
   renderCallback() {
@@ -29,9 +29,9 @@ export class Demo extends Component<void> {
             value="5"
             min="1"
             max="10"
-            onKeyup={this.log('onKeyUp')}
-            onFocus={this.log('onFocus')}
-            onBlur={this.log('onBlur')}
+            onKeyup={this.log( 'onKeyUp' )}
+            onFocus={this.log( 'onFocus' )}
+            onBlur={this.log( 'onBlur' )}
             onChange={this.reflectValue}
           />
           Current value: {this.val}
@@ -76,13 +76,13 @@ export class Demo extends Component<void> {
     ];
   }
 
-  private log = (message: string): any => {
-    console.log(message);
+  private log = ( message: string ): any => {
+    console.log( message );
   }
 
-  private reflectValue(event: Event) {
-    this.val = Number.parseInt((event.currentTarget as HTMLInputElement).value);
+  private reflectValue( event: Event ) {
+    this.val = Number.parseInt(( event.currentTarget as HTMLInputElement ).value );
   }
 }
 
-customElements.define(Demo.is, Demo);
+customElements.define( Demo.is, Demo );

@@ -13,7 +13,7 @@ type Props = {
   isOpen?: boolean,
 };
 type EventProps = {
-  onAlertClose?: (ev: CustomEvent) => void,
+  onAlertClose?: ( ev: CustomEvent ) => void,
 };
 
 // extend JSX.IntrinsicElements namepsace with our definition
@@ -29,10 +29,10 @@ export class Alert extends Component<AlertProps> {
   static get is() { return 'bl-alert'; }
   static get props() {
     return {
-      color: prop.string({
+      color: prop.string( {
         attribute: true
       }),
-      isOpen: prop.boolean({
+      isOpen: prop.boolean( {
         attribute: true
       })
     };
@@ -48,8 +48,8 @@ export class Alert extends Component<AlertProps> {
 
   renderCallback() {
     const { color, isOpen } = this;
-    const colorClass = cssClassForColorType('c-alert', color);
-    const className = css('c-alert', colorClass);
+    const colorClass = cssClassForColorType( 'c-alert', color );
+    const className = css( 'c-alert', colorClass );
 
     return [
       <style>{styles}</style>,
@@ -63,7 +63,7 @@ export class Alert extends Component<AlertProps> {
   }
 
   private handleClose = () => {
-    emit(this, Alert.events.alertClose);
+    emit( this, Alert.events.alertClose );
   }
 
 }

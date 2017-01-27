@@ -2,11 +2,11 @@ import { Modal } from './Modal';
 
 import { h, mount } from 'bore';
 
-describe(Modal.is, () => {
+describe( Modal.is, () => {
 
-  it('should render', () => {
+  it( 'should render', () => {
 
-    console.warn('Missing tests for Modal!');
+    console.warn( 'Missing tests for Modal!' );
 
     return mount(
       <Modal />

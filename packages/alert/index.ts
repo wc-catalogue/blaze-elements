@@ -6,4 +6,4 @@ import { Alert } from './Alert';
 export { Alert } from './Alert';
 
 // register WebComponent by our name
-define(Alert);
+define( Alert );

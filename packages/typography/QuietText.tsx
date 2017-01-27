@@ -22,4 +22,4 @@ export class QuietText extends Component<QuietTextProps> {
   }
 }
 
-customElements.define(QuietText.is, QuietText);
+customElements.define( QuietText.is, QuietText );

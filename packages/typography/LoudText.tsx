@@ -22,4 +22,4 @@ export class LoudText extends Component<LoudTextProps> {
   }
 }
 
-customElements.define(LoudText.is, LoudText);
+customElements.define( LoudText.is, LoudText );

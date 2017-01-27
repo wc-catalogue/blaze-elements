@@ -2,11 +2,11 @@ import { Bubble } from './Bubble';
 
 import { h, mount } from 'bore';
 
-describe(Bubble.is, () => {
+describe( Bubble.is, () => {
 
-  it('should render', () => {
+  it( 'should render', () => {
 
-    console.warn('Missing tests for Bubble!');
+    console.warn( 'Missing tests for Bubble!' );
 
     return mount(
       <Bubble />

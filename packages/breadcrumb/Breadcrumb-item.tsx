@@ -12,11 +12,11 @@ export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
 
   static get props() {
     return {
-      isActive: prop.boolean({
+      isActive: prop.boolean( {
         attribute: true
       }),
       isLast: prop.boolean(),
-      href: prop.string({
+      href: prop.string( {
         attribute: true
       }),
     };
@@ -49,4 +49,4 @@ export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
   }
 }
 
-customElements.define(BreadcrumbItem.is, BreadcrumbItem);
+customElements.define( BreadcrumbItem.is, BreadcrumbItem );

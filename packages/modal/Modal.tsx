@@ -13,7 +13,7 @@ export class Modal extends Component<ModalProps> {
   static get is() { return 'bl-modal'; }
   static get props() {
     return {
-      isOpen: prop.boolean({
+      isOpen: prop.boolean( {
         attribute: true
       }),
       closeTitle: prop.string()
@@ -27,9 +27,9 @@ export class Modal extends Component<ModalProps> {
 
   connectedCallback() {
     super.connectedCallback();
-    this.handleEsc = this.handleEsc.bind(this);
-    this.handleModalClose = this.handleModalClose.bind(this);
-    this.focusModal = this.focusModal.bind(this);
+    this.handleEsc = this.handleEsc.bind( this );
+    this.handleModalClose = this.handleModalClose.bind( this );
+    this.focusModal = this.focusModal.bind( this );
   }
   renderCallback() {
     const {isOpen, closeTitle} = this;
@@ -74,7 +74,7 @@ export class Modal extends Component<ModalProps> {
   }
 
   renderedCallback() {
-    if (this.isOpen) {
+    if ( this.isOpen ) {
       this.lastActiveElement = this.deepActiveElement();
 
       this.focusModal();
@@ -83,7 +83,7 @@ export class Modal extends Component<ModalProps> {
     } else {
       this.allowModalBlur();
 
-      if (this.lastActiveElement) {
+      if ( this.lastActiveElement ) {
         this.lastActiveElement.focus();
       }
     }
@@ -91,43 +91,43 @@ export class Modal extends Component<ModalProps> {
 
   private deepActiveElement(): HTMLElement {
     let activeElement = document.activeElement;
-    while (activeElement && activeElement.shadowRoot && activeElement.shadowRoot.activeElement) {
+    while ( activeElement && activeElement.shadowRoot && activeElement.shadowRoot.activeElement ) {
       activeElement = activeElement.shadowRoot.activeElement;
     }
 
     return activeElement as HTMLElement;
   }
 
-  private handleEsc(evt: KeyboardEvent) {
-    if (evt.which === 27) {
+  private handleEsc( evt: KeyboardEvent ) {
+    if ( evt.which === 27 ) {
       this.handleModalClose();
     }
   }
   private handleModalClose() {
     this.isOpen = false;
-    emit(this, 'modalClose');
+    emit( this, 'modalClose' );
   }
   private focusModal() {
     this.modalElement.focus();
   }
 
-  private handleDocumentFocus(event: FocusEvent) {
-    if (this.modalElement && !this.modalElement.contains(event.target as Node)) {
+  private handleDocumentFocus( event: FocusEvent ) {
+    if ( this.modalElement && !this.modalElement.contains( event.target as Node ) ) {
       event.stopImmediatePropagation();
       this.focusModal();
     }
   }
 
   private preventModalBlur() {
-    document.addEventListener('focus', this.handleDocumentFocus.bind(this), true);
+    document.addEventListener( 'focus', this.handleDocumentFocus.bind( this ), true );
   }
   private allowModalBlur() {
-    document.removeEventListener('focus', this.handleDocumentFocus.bind(this), true);
+    document.removeEventListener( 'focus', this.handleDocumentFocus.bind( this ), true );
   }
-  private setModalElementRef(ref: HTMLDivElement) {
+  private setModalElementRef( ref: HTMLDivElement ) {
     this.modalElement = ref;
   }
 
 }
 
-customElements.define(Modal.is, Modal);
+customElements.define( Modal.is, Modal );

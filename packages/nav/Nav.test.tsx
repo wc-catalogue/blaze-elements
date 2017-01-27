@@ -2,11 +2,11 @@ import { Nav } from './Nav';
 
 import { h, mount } from 'bore';
 
-describe(Nav.is, () => {
+describe( Nav.is, () => {
 
-  it('should render', () => {
+  it( 'should render', () => {
 
-    console.warn('Missing tests for Nav!');
+    console.warn( 'Missing tests for Nav!' );
 
     return mount(
       <Nav />

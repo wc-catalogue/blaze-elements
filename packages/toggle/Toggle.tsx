@@ -14,13 +14,13 @@ export class Toggle extends Component<ToggleProps> {
   static get is() { return 'bl-toggle'; }
   static get props() {
     return {
-      disabled: prop.boolean({
+      disabled: prop.boolean( {
         attribute: true
       }),
-      checked: prop.boolean({
+      checked: prop.boolean( {
         attribute: true
       }),
-      color: prop.string({
+      color: prop.string( {
         attribute: true
       })
     };
@@ -31,12 +31,12 @@ export class Toggle extends Component<ToggleProps> {
 
   connectedCallback() {
     super.connectedCallback();
-    this.handleChecked = this.handleChecked.bind(this);
+    this.handleChecked = this.handleChecked.bind( this );
   }
   renderCallback() {
     const { disabled, checked, color } = this;
-    const colorClass = cssClassForColorType('c-toggle', color);
-    const className = css('c-toggle', colorClass);
+    const colorClass = cssClassForColorType( 'c-toggle', color );
+    const className = css( 'c-toggle', colorClass );
 
     return [
       <style>{styles}</style>,
@@ -54,10 +54,10 @@ export class Toggle extends Component<ToggleProps> {
       </label>
     ];
   }
-  private handleChecked(e?: Event) {
-    props(this, { checked: !this.checked });
+  private handleChecked( e?: Event ) {
+    props( this, { checked: !this.checked });
   }
 }
 
 
-customElements.define(Toggle.is, Toggle);
+customElements.define( Toggle.is, Toggle );

@@ -12,7 +12,7 @@ export class Abbreviation extends Component<AbbreviationProps> {
 
   static get props() {
     return {
-      title: prop.string({
+      title: prop.string( {
         attribute: true
       })
     };
@@ -36,4 +36,4 @@ export class Abbreviation extends Component<AbbreviationProps> {
   }
 }
 
-customElements.define(Abbreviation.is, Abbreviation);
+customElements.define( Abbreviation.is, Abbreviation );

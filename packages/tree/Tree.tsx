@@ -16,4 +16,4 @@ export class Tree extends Component<TreeProps> {
   }
 }
 
-customElements.define(Tree.is, Tree);
+customElements.define( Tree.is, Tree );

@@ -21,10 +21,10 @@ export class Tooltip extends Component<TooltipProps> {
   static get is() { return 'bl-tooltip'; }
   static get props() {
     return {
-      type: prop.string({
+      type: prop.string( {
         attribute: true
       }),
-      label: prop.string({
+      label: prop.string( {
         attribute: true
       })
     };
@@ -57,4 +57,4 @@ export class Tooltip extends Component<TooltipProps> {
 
 }
 
-customElements.define(Tooltip.is, Tooltip);
+customElements.define( Tooltip.is, Tooltip );

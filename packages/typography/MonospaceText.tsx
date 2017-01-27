@@ -22,4 +22,4 @@ export class MonospaceText extends Component<MonospaceTextProps> {
   }
 }
 
-customElements.define(MonospaceText.is, MonospaceText);
+customElements.define( MonospaceText.is, MonospaceText );

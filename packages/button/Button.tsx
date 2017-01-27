@@ -29,7 +29,7 @@ export class Button extends Component<ButtonProps> {
   static get is() { return 'bl-button'; }
   static get props() {
     return {
-      disabled: prop.boolean({
+      disabled: prop.boolean( {
         attribute: true
       }),
       block: prop.boolean({
@@ -63,7 +63,7 @@ export class Button extends Component<ButtonProps> {
 
   renderCallback() {
     const {color, ghost, close, block} = this;
-    const colorClass = cssClassForColorType(ghost ? 'c-button--ghost' : 'c-button', color, ghost);
+    const colorClass = cssClassForColorType( ghost ? 'c-button--ghost' : 'c-button', color, ghost );
     const className = css(
       'c-button',
       colorClass,

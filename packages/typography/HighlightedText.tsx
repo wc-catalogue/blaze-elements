@@ -22,4 +22,4 @@ export class HighlightedText extends Component<HighlightedTextProps> {
   }
 }
 
-customElements.define(HighlightedText.is, HighlightedText);
+customElements.define( HighlightedText.is, HighlightedText );

@@ -14,16 +14,16 @@ export class NavItem extends Component<NavItemProps> {
   static get is() { return 'bl-nav-item'; }
   static get props() {
     return {
-      color: prop.string({
+      color: prop.string( {
         attribute: true
       }),
-      active: prop.boolean({
+      active: prop.boolean( {
         attribute: true
       }),
-      right: prop.boolean({
+      right: prop.boolean( {
         attribute: true
       }),
-      inline: prop.boolean({
+      inline: prop.boolean( {
         attribute: true
       }),
     };
@@ -36,7 +36,7 @@ export class NavItem extends Component<NavItemProps> {
 
   renderCallback() {
     const { color, active, right, inline } = this;
-    const colorClass = cssClassForColorType('c-nav__item', color);
+    const colorClass = cssClassForColorType( 'c-nav__item', color );
     const className = css(
       'c-nav__item',
       colorClass,
@@ -56,4 +56,4 @@ export class NavItem extends Component<NavItemProps> {
   }
 }
 
-customElements.define(NavItem.is, NavItem);
+customElements.define( NavItem.is, NavItem );

@@ -47,4 +47,4 @@ export class Overlay extends Component<OverlayProps> {
 
 }
 
-customElements.define(Overlay.is, Overlay);
+customElements.define( Overlay.is, Overlay );

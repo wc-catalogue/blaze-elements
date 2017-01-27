@@ -2,11 +2,11 @@ import { Tag } from './Tag';
 
 import { h, mount } from 'bore';
 
-describe(Tag.is, () => {
+describe( Tag.is, () => {
 
-  it('should render', () => {
+  it( 'should render', () => {
 
-    console.warn('Missing tests for Tag!');
+    console.warn( 'Missing tests for Tag!' );
 
     return mount(
       <Tag label="" />

@@ -25,4 +25,4 @@ export class Card extends Component<void> {
   }
 }
 
-customElements.define(Card.is, Card);
+customElements.define( Card.is, Card );

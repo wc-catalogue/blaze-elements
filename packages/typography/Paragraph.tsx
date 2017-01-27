@@ -22,4 +22,4 @@ export class Paragraph extends Component<ParagraphProps> {
   }
 }
 
-customElements.define(Paragraph.is, Paragraph);
+customElements.define( Paragraph.is, Paragraph );

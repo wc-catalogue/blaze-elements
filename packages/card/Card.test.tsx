@@ -2,11 +2,11 @@ import { Card } from './Card';
 
 import { h, mount } from 'bore';
 
-describe(Card.is, () => {
+describe( Card.is, () => {
 
-  it('should render', () => {
+  it( 'should render', () => {
 
-    console.warn('Missing tests for Card!');
+    console.warn( 'Missing tests for Card!' );
 
     return mount(
       <Card />

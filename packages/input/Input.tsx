@@ -18,7 +18,7 @@ type EventProps = {
   onFocus?: typeof HTMLElement.prototype.onfocus,
   onBlur?: typeof HTMLElement.prototype.onblur,
   onInput?: typeof HTMLElement.prototype.oninput,
-  onChange?: (ev: CustomEvent) => void,
+  onChange?: ( ev: CustomEvent ) => void,
 };
 type Props = {
   value: string,
@@ -33,22 +33,22 @@ export class Input extends Component<InputProps> {
   static get is() { return 'bl-input'; }
   static get props() {
     return {
-      value: prop.string({
+      value: prop.string( {
         attribute: true
       }),
-      valid: prop.string({
+      valid: prop.string( {
         attribute: true
       }),
-      placeholder: prop.string({
+      placeholder: prop.string( {
         attribute: true
       }),
-      disabled: prop.boolean({
+      disabled: prop.boolean( {
         attribute: true
       }),
-      type: prop.string({
+      type: prop.string( {
         attribute: true
       }),
-      inputSize: prop.string({
+      inputSize: prop.string( {
         attribute: true
       }),
     };
@@ -71,13 +71,13 @@ export class Input extends Component<InputProps> {
 
   connectedCallback() {
     super.connectedCallback();
-    this.propagateOnChange = this.propagateOnChange.bind(this);
-    this.setValue = this.setValue.bind(this);
+    this.propagateOnChange = this.propagateOnChange.bind( this );
+    this.setValue = this.setValue.bind( this );
   }
 
   renderCallback() {
     const { valid, value, placeholder, disabled, inputSize, type } = this;
-    const sizeClass = cssClassForSize(inputSize);
+    const sizeClass = cssClassForSize( inputSize );
     const className = css(
       'c-field',
       sizeClass,
@@ -102,18 +102,18 @@ export class Input extends Component<InputProps> {
     ];
   }
 
-  private propagateOnChange(event: Event) {
+  private propagateOnChange( event: Event ) {
     this.setValue();
-    emit(this, Input.events.change); // emit change event on root element
+    emit( this, Input.events.change ); // emit change event on root element
   }
 
   private setValue() {
     this.value = this.inputElement.value;
   }
-  private setInerInputRef(ref: HTMLInputElement) {
+  private setInerInputRef( ref: HTMLInputElement ) {
     this.inputElement = ref;
   }
 }
 
 
-customElements.define(Input.is, Input);
+customElements.define( Input.is, Input );

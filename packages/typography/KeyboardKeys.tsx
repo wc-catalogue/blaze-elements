@@ -22,4 +22,4 @@ export class KeyboardKeys extends Component<KeyboardKeysProps> {
   }
 }
 
-customElements.define(KeyboardKeys.is, KeyboardKeys);
+customElements.define( KeyboardKeys.is, KeyboardKeys );

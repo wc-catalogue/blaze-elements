@@ -9,10 +9,10 @@ export class Breadcrumb extends Component<BreadcrumbProps> {
   static get is() { return 'bl-breadcrumb'; }
 
   renderCallback() {
-    const items = this.getElementsByTagName('bl-breadcrumb-item');
+    const items = this.getElementsByTagName( 'bl-breadcrumb-item' );
 
-    if (items.length > 0) {
-      const lastItem = items.item(items.length - 1) as BreadcrumbItem;
+    if ( items.length > 0 ) {
+      const lastItem = items.item( items.length - 1 ) as BreadcrumbItem;
       lastItem.isLast = true;
     }
 
@@ -25,4 +25,4 @@ export class Breadcrumb extends Component<BreadcrumbProps> {
   }
 }
 
-customElements.define(Breadcrumb.is, Breadcrumb);
+customElements.define( Breadcrumb.is, Breadcrumb );

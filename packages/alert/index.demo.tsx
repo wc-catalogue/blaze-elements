@@ -39,12 +39,12 @@ export class Demo extends Component<DemoProps> {
   }
 
   private handleAlertOpen = () => {
-    props(this, { isOpen: true });
+    props( this, { isOpen: true });
   }
   private handleAlertClose = () => {
-    props(this, { isOpen: false });
+    props( this, { isOpen: false });
   }
 
 }
 
-define(Demo);
+define( Demo );

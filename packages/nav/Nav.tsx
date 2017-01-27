@@ -22,13 +22,13 @@ export class Nav extends Component<NavProps> {
   static get is() { return 'bl-nav'; }
   static get props() {
     return {
-      inline: prop.boolean({
+      inline: prop.boolean( {
         attribute: true
       }),
-      shadow: prop.boolean({
+      shadow: prop.boolean( {
         attribute: true
       }),
-      position: prop.string({
+      position: prop.string( {
         attribute: true
       })
     };
@@ -42,14 +42,14 @@ export class Nav extends Component<NavProps> {
 
     const { inline, shadow, position } = this;
 
-    if (inline) {
+    if ( inline ) {
 
-      const items = this.querySelectorAll('bl-nav-item, bl-nav-content');
+      const items = this.querySelectorAll( 'bl-nav-item, bl-nav-content' );
       const length = items.length;
 
-      if (length) {
-        for (let i = 0; i < length; i++) {
-          items[i].setAttribute('inline', '');
+      if ( length ) {
+        for ( let i = 0; i < length; i++ ) {
+          items[ i ].setAttribute( 'inline', '' );
         }
       }
 
@@ -74,4 +74,4 @@ export class Nav extends Component<NavProps> {
   }
 }
 
-customElements.define(Nav.is, Nav);
+customElements.define( Nav.is, Nav );

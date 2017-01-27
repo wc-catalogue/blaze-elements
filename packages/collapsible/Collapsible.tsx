@@ -10,7 +10,7 @@ interface NativeDivAttrs {
 interface CollapsibleProps extends NativeDivAttrs {
   isOpened?: boolean,
   isLast?: boolean,
-  onStateChanged?: (this: this, ev: StateChangedEvent) => any,
+  onStateChanged?: ( this: this, ev: StateChangedEvent ) => any,
 }
 
 interface StateChangedEventDetail {
@@ -25,7 +25,7 @@ export class Collapsible extends Component<CollapsibleProps> {
   static get is() { return 'bl-collapsible'; }
   static get props() {
     return {
-      isOpened: prop.boolean({
+      isOpened: prop.boolean( {
         attribute: true
       }),
       isNotStandAlone: prop.boolean(),
@@ -44,7 +44,7 @@ export class Collapsible extends Component<CollapsibleProps> {
 
   connectedCallback() {
     super.connectedCallback();
-    this.handleStateChange = this.handleStateChange.bind(this);
+    this.handleStateChange = this.handleStateChange.bind( this );
   }
 
   renderCallback() {
@@ -89,10 +89,10 @@ export class Collapsible extends Component<CollapsibleProps> {
     ];
   }
 
-  private handleStateChange(event: Event) {
+  private handleStateChange( event: Event ) {
     this.isOpened = !this.isOpened;
 
-    emit(this, 'stateChanged', {
+    emit( this, 'stateChanged', {
       detail: {
         opened: this.isOpened,
         collapsed: !this.isOpened
@@ -101,4 +101,4 @@ export class Collapsible extends Component<CollapsibleProps> {
   }
 }
 
-customElements.define(Collapsible.is, Collapsible);
+customElements.define( Collapsible.is, Collapsible );

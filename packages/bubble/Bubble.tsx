@@ -23,7 +23,7 @@ export class Bubble extends Component<BubbleProps> {
   static get props() {
     return {
       type: prop.string(),
-      isDisplayed: prop.boolean({
+      isDisplayed: prop.boolean( {
         attribute: true
       }),
       disableAutoShowHide: prop.boolean()
@@ -36,8 +36,8 @@ export class Bubble extends Component<BubbleProps> {
 
   connectedCallback() {
     super.connectedCallback();
-    this.handleMouseOver = this.handleMouseOver.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleMouseOver = this.handleMouseOver.bind( this );
+    this.handleMouseLeave = this.handleMouseLeave.bind( this );
   }
 
   renderCallback() {
@@ -65,7 +65,7 @@ export class Bubble extends Component<BubbleProps> {
             <div className={className}>
               <slot />
             </div>
-          </div>)
+          </div> )
         : (
           <div
             tabIndex={0}
@@ -80,17 +80,17 @@ export class Bubble extends Component<BubbleProps> {
   }
 
   private handleMouseOver() {
-    if (!this.disableAutoShowHide) {
+    if ( !this.disableAutoShowHide ) {
       this.isDisplayed = true;
     }
   }
 
   private handleMouseLeave() {
-    if (!this.disableAutoShowHide) {
+    if ( !this.disableAutoShowHide ) {
       this.isDisplayed = false;
     }
   }
 
 }
 
-customElements.define(Bubble.is, Bubble);
+customElements.define( Bubble.is, Bubble );

@@ -12,7 +12,7 @@ export class Code extends Component<CodeProps> {
 
   static get props() {
     return {
-      isMultiline: prop.boolean({
+      isMultiline: prop.boolean( {
         attribute: true
       })
     };
@@ -39,4 +39,4 @@ export class Code extends Component<CodeProps> {
   }
 }
 
-customElements.define(Code.is, Code);
+customElements.define( Code.is, Code );

@@ -1,10 +1,10 @@
 
 
-describe('Typography', () => {
+describe( 'Typography', () => {
 
-  it('should render', () => {
+  it( 'should render', () => {
 
-    console.warn('Missing tests for Typography!');
+    console.warn( 'Missing tests for Typography!' );
 
   });
 

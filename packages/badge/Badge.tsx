@@ -13,13 +13,13 @@ export class Badge extends Component<BadgeProps> {
   static get is() { return 'bl-badge'; }
   static get props() {
     return {
-      color: prop.string({
+      color: prop.string( {
         attribute: true
       }),
-      rounded: prop.boolean({
+      rounded: prop.boolean( {
         attribute: true
       }),
-      ghost: prop.boolean({
+      ghost: prop.boolean( {
         attribute: true
       }),
     };
@@ -33,7 +33,7 @@ export class Badge extends Component<BadgeProps> {
 
     const { color, rounded, ghost } = this;
 
-    const colorClass = cssClassForColorType('c-badge', color);
+    const colorClass = cssClassForColorType( 'c-badge', color );
     const className = css(
       'c-badge',
       colorClass,
@@ -51,4 +51,4 @@ export class Badge extends Component<BadgeProps> {
   }
 }
 
-customElements.define(Badge.is, Badge);
+customElements.define( Badge.is, Badge );

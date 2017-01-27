@@ -10,7 +10,7 @@ export class Demo extends Component<void> {
     };
   }
 
-  tags = ['milk', 'bread', 'chocolate'];
+  tags = [ 'milk', 'bread', 'chocolate' ];
 
   renderCallback() {
 
@@ -37,15 +37,15 @@ export class Demo extends Component<void> {
   }
 
   private tagClose() {
-    console.log('Tag close emitted', this);
+    console.log( 'Tag close emitted', this );
     const element = this;
-    element.parentNode.removeChild(element);
+    element.parentNode.removeChild( element );
   }
 
-  private tagChange(event: CustomEvent) {
-    console.log('Tag change:', event.detail.tags);
-    this.tags = [...event.detail.tags];
+  private tagChange( event: CustomEvent ) {
+    console.log( 'Tag change:', event.detail.tags );
+    this.tags = [ ...event.detail.tags ];
   }
 }
 
-customElements.define(Demo.is, Demo);
+customElements.define( Demo.is, Demo );

@@ -4,7 +4,7 @@ import { mount } from 'bore';
 
 import { Button } from './index';
 
-describe(Button.is, () => {
+describe( Button.is, () => {
 
 describe( `Custom element`, () => {
   it( `should be registered`, () => {

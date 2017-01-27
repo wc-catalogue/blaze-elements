@@ -13,7 +13,7 @@ export class Demo extends Component<void> {
 
   connectedCallback() {
     super.connectedCallback();
-    this.reflectValue = this.reflectValue.bind(this);
+    this.reflectValue = this.reflectValue.bind( this );
   }
 
   renderCallback() {
@@ -65,9 +65,9 @@ export class Demo extends Component<void> {
     ];
   }
 
-  private reflectValue(event: Event) {
-    this.val = Number.parseInt((event.currentTarget as HTMLInputElement).value);
+  private reflectValue( event: Event ) {
+    this.val = Number.parseInt(( event.currentTarget as HTMLInputElement ).value );
   }
 }
 
-customElements.define(Demo.is, Demo);
+customElements.define( Demo.is, Demo );

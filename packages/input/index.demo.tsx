@@ -15,20 +15,20 @@ export class Demo extends Component<void> {
             valid="false"
             value="error state"
             placeholder="placeholder"
-            onKeyup={this.log('onKeyUp')}
-            onFocus={this.log('onFocus')}
-            onBlur={this.log('onBlur')}
-            onChange={this.log('onChange')}
+            onKeyup={this.log( 'onKeyUp' )}
+            onFocus={this.log( 'onFocus' )}
+            onBlur={this.log( 'onBlur' )}
+            onChange={this.log( 'onChange' )}
           />
           <Input
             valid="true"
             value="success state"
-            onChange={this.log('onChange')}
+            onChange={this.log( 'onChange' )}
             inputSize="xlarge"
           />
           <Input
             value="default state"
-            onChange={this.log('onChange')}
+            onChange={this.log( 'onChange' )}
             inputSize="super"
           />
           <Input
@@ -50,9 +50,9 @@ export class Demo extends Component<void> {
     ];
   }
 
-  private log = (message: string): any => {
-    console.log(message);
+  private log = ( message: string ): any => {
+    console.log( message );
   }
 }
 
-customElements.define(Demo.is, Demo);
+customElements.define( Demo.is, Demo );

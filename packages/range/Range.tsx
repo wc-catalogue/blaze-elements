@@ -17,26 +17,26 @@ type EventProps = {
   onKeyup?: typeof HTMLElement.prototype.onkeyup,
   onFocus?: typeof HTMLElement.prototype.onfocus,
   onBlur?: typeof HTMLElement.prototype.onblur,
-  onChange?: (ev: CustomEvent) => void,
+  onChange?: ( ev: CustomEvent ) => void,
 };
 
 export class Range extends Component<RangeProps> {
   static get is() { return 'bl-range'; }
   static get props() {
     return {
-      value: prop.number({
+      value: prop.number( {
         attribute: true
       }),
-      min: prop.number({
+      min: prop.number( {
         attribute: true
       }),
-      max: prop.number({
+      max: prop.number( {
         attribute: true
       }),
-      color: prop.string({
+      color: prop.string( {
         attribute: true
       }),
-      disabled: prop.boolean({
+      disabled: prop.boolean( {
         attribute: true
       }),
     };
@@ -57,13 +57,13 @@ export class Range extends Component<RangeProps> {
 
   connectedCallback() {
     super.connectedCallback();
-    this.provideValue = this.provideValue.bind(this);
+    this.provideValue = this.provideValue.bind( this );
   }
 
   renderCallback() {
     const { color, value, min, max, disabled } = this;
-    const colorClass = cssClassForColorType('c-range', color);
-    const className = css('c-range', colorClass);
+    const colorClass = cssClassForColorType( 'c-range', color );
+    const className = css( 'c-range', colorClass );
 
     return [
       <style>{styles}</style>,
@@ -72,24 +72,24 @@ export class Range extends Component<RangeProps> {
         className={className}
         type="range"
         value={value ? value.toString() : null}
-        min={String(min)}
-        max={String(max)}
+        min={String( min )}
+        max={String( max )}
         onChange={this.provideValue}
         disabled={disabled}
       />
     ];
   }
 
-  private provideValue(event: Event) {
+  private provideValue( event: Event ) {
     this.value = this.inputElement.valueAsNumber;
-    emit(this, Range.events.change); // emit change event on root element
+    emit( this, Range.events.change ); // emit change event on root element
   }
-  private setInputElementRef(ref: HTMLInputElement) {
+  private setInputElementRef( ref: HTMLInputElement ) {
     this.inputElement = ref;
   }
 }
 
 
-customElements.define(Range.is, Range);
+customElements.define( Range.is, Range );
 
 

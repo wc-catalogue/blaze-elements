@@ -49,4 +49,4 @@ export class Demo extends Component<void> {
 }
 
 
-customElements.define(Demo.is, Demo);
+customElements.define( Demo.is, Demo );

@@ -13,12 +13,12 @@ export class Demo extends Component<void> {
   isModalOpen = false;
 
   toggleModal() {
-    console.log('toggleModal');
+    console.log( 'toggleModal' );
     this.isModalOpen = !this.isModalOpen;
   }
   connectedCallback() {
     super.connectedCallback();
-    this.toggleModal = this.toggleModal.bind(this);
+    this.toggleModal = this.toggleModal.bind( this );
   }
 
   renderCallback() {
@@ -45,4 +45,4 @@ export class Demo extends Component<void> {
   }
 }
 
-customElements.define(Demo.is, Demo);
+customElements.define( Demo.is, Demo );
