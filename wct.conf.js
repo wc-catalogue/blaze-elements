@@ -1,6 +1,18 @@
 const packageJson = require( './package.json' );
 
 const config = {
+  extraScripts: [
+
+  ],
+  "environmentScripts": [
+    'stacky/browser.js',
+    'async/lib/async.js',
+    'lodash/lodash.js',
+    'mocha/mocha.js',
+    "expect/umd/expect.js",
+    'sinonjs/sinon.js',
+    'accessibility-developer-tools/dist/js/axs_testing.js'
+  ],
   "suites": [
     ( process.env.WCT_INDEX ? process.env.WCT_INDEX : './index.test.html' )
   ],
