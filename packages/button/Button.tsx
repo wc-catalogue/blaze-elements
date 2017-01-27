@@ -33,16 +33,24 @@ export class Button extends Component<ButtonProps> {
         attribute: true
       }),
       block: prop.boolean({
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       close: prop.boolean({
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       ghost: prop.boolean({
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       color: prop.string({
-        attribute: true
+        attribute: {
+          source: true
+        }
       })
     };
   }
