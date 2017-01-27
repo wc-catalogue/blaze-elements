@@ -4893,9 +4893,9 @@ skatejs-web-components@^5.0.1:
     "@webcomponents/shadycss" "https://github.com/webcomponents/shadycss/archive/f2d02d5.tar.gz"
     "@webcomponents/shadydom" "https://github.com/webcomponents/shadydom/archive/d88a9ae.tar.gz"
 
-skatejs@^4.6.2:
-  version "4.6.2"
-  resolved "https://registry.yarnpkg.com/skatejs/-/skatejs-4.6.2.tgz#46f31b163fd9d7e03e6f77052279118cf2cf00b0"
+skatejs@^4.6.5:
+  version "4.6.5"
+  resolved "https://registry.yarnpkg.com/skatejs/-/skatejs-4.6.5.tgz#3ad9ef175928256371abd02a882cbd8dc0924409"
   dependencies:
     incremental-dom "0.4.1"
 
@@ -5266,6 +5266,10 @@ temp@^0.8.1:
     os-tmpdir "^1.0.0"
     rimraf "~2.2.6"
 
+test-fixture@PolymerElements/test-fixture:
+  version "2.0.1"
+  resolved "https://codeload.github.com/PolymerElements/test-fixture/tar.gz/f72f0ff4e83b83b0157afed664f560da91d20f31"
+
 test-fixture@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/test-fixture/-/test-fixture-1.0.2.tgz#7f156322a3e2cf2bf7b9470f405cf2785d2e59be"
@@ -5273,10 +5277,6 @@ test-fixture@^1.0.2:
     fs-extra "^0.10.0"
     tmp "^0.0.23"
     underscore "^1.6.0"
-
-"test-fixture@github:polymerelements/test-fixture":
-  version "2.0.1"
-  resolved "https://codeload.github.com/polymerelements/test-fixture/tar.gz/f72f0ff4e83b83b0157afed664f560da91d20f31"
 
 throttleit@^1.0.0:
   version "1.0.0"
