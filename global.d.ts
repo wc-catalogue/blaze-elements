@@ -17,6 +17,7 @@ declare module 'bore' {
   type Query<T> = string | JSX.Element | T | ( ( node: BoreNode ) => boolean ) | Object;
 
   interface Wrapper {
+    readonly shadowRoot: ShadowRoot;
     all<T extends HTMLElement>( query: Query<T> ): WrappedNode[],
     one<T extends HTMLElement>( query: Query<T> ): WrappedNode,
     has<T extends HTMLElement>( query: Query<T> ): boolean,
@@ -39,6 +40,7 @@ interface CustomElementRegistry {
       options?: ElementDefinitionOptions): void;
   get(name: string): any;
   whenDefined(name: string): Promise<void>;
+  flush(): void;
 }
 
 interface ElementDefinitionOptions {
@@ -149,4 +151,5 @@ interface Document {
 }
 
 // Tests
-declare var expect: Chai.ExpectStatic;
+// we are not using Chai anymore. We use Expect which has Jest style assertions
+// declare var expect: Chai.ExpectStatic;
