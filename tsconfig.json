@@ -5,8 +5,8 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
     "noEmitHelpers": true,
-    // with this __extends cannot be overriden
     "importHelpers": true,
     "moduleResolution": "node",
     "outDir": "ts-output",
