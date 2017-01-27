@@ -56,4 +56,4 @@ export class Drawer extends Component<DrawerProps> {
 
 }
 
-customElements.define( Drawer.is, Drawer );
+customElements.define(Drawer.is, Drawer);

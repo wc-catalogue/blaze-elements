@@ -1,4 +1,4 @@
-import{ h, Component } from 'skatejs';
+import { h, Component } from 'skatejs';
 import { Badge } from './Badge';
 
 export class Demo extends Component<void> {
@@ -6,7 +6,7 @@ export class Demo extends Component<void> {
 
   renderCallback() {
     return [
-      <style></style>,
+      <style />,
       <fieldset>
         <legend>{Badge.is}</legend>
 
@@ -46,4 +46,4 @@ export class Demo extends Component<void> {
 }
 
 
-customElements.define( Demo.is, Demo );
+customElements.define(Demo.is, Demo);

@@ -4,7 +4,7 @@ import { Button } from '../button/Button';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-modal-demo'; }
-  static get props(){
+  static get props() {
     return {
       isModalOpen: prop.boolean()
     };
@@ -13,7 +13,7 @@ export class Demo extends Component<void> {
   isModalOpen = false;
 
   toggleModal() {
-    console.log( 'toggleModal' );
+    console.log('toggleModal');
     this.isModalOpen = !this.isModalOpen;
   }
   connectedCallback() {
@@ -24,7 +24,7 @@ export class Demo extends Component<void> {
   renderCallback() {
     const {isModalOpen} = this;
     return [
-      <style></style>,
+      <style />,
       <fieldset>
         <legend>{Modal.is}</legend>
 
@@ -33,7 +33,7 @@ export class Demo extends Component<void> {
           <span slot="title">Modal <em>heading</em></span>
           <span>
             This is the modal body
-            <input type="text"/>
+            <input type="text" />
           </span>
           <span slot="footer">
             <Button onClick={this.toggleModal} color="brand">Close</Button>
@@ -45,4 +45,4 @@ export class Demo extends Component<void> {
   }
 }
 
-customElements.define( Demo.is, Demo );
+customElements.define(Demo.is, Demo);

@@ -12,21 +12,10 @@ export class Demo extends Component<void> {
 
   tags = ['milk', 'bread', 'chocolate'];
 
-  private tagClose() {
-    console.log( 'Tag close emitted', this );
-    const element = this;
-    element.parentNode.removeChild( element );
-  }
-
-  private tagChange( event: CustomEvent ) {
-    console.log( 'Tag change:', event.detail.tags );
-    this.tags = [ ...event.detail.tags ];
-  }
-
   renderCallback() {
 
     return [
-      <style></style>,
+      <style />,
       <fieldset>
         <legend>{Tag.is}</legend>
 
@@ -38,12 +27,25 @@ export class Demo extends Component<void> {
         </div>
         <fieldset>
           <legend>Tag Selector</legend>
-          <TagSelector onTagChange={this.tagChange}
-                       tags={this.tags}></TagSelector>
+          <TagSelector
+            onTagChange={this.tagChange}
+            tags={this.tags}
+          />
         </fieldset>
       </fieldset>
     ];
   }
+
+  private tagClose() {
+    console.log('Tag close emitted', this);
+    const element = this;
+    element.parentNode.removeChild(element);
+  }
+
+  private tagChange(event: CustomEvent) {
+    console.log('Tag change:', event.detail.tags);
+    this.tags = [...event.detail.tags];
+  }
 }
 
-customElements.define( Demo.is, Demo );
+customElements.define(Demo.is, Demo);

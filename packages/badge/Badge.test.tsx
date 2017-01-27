@@ -1,16 +1,15 @@
 import { Badge } from './Badge';
 
 import { h, mount } from 'bore';
-import { emit } from 'skatejs';
 
-describe( Badge.is, () => {
+describe(Badge.is, () => {
 
-  it( 'should render', () => {
+  it('should render', () => {
 
     console.warn('Missing tests for Badge!');
 
     return mount(
-      <Badge/>
+      <Badge />
     ).wait();
 
   });

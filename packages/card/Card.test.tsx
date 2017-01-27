@@ -1,16 +1,15 @@
 import { Card } from './Card';
 
 import { h, mount } from 'bore';
-import { emit } from 'skatejs';
 
-describe( Card.is, () => {
+describe(Card.is, () => {
 
-  it( 'should render', () => {
+  it('should render', () => {
 
     console.warn('Missing tests for Card!');
 
     return mount(
-      <Card/>
+      <Card />
     ).wait();
 
   });

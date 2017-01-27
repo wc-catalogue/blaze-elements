@@ -9,20 +9,20 @@ export class Card extends Component<void> {
       <style>{styles}</style>,
       <div class="c-card">
         <header class="c-card__header">
-          <slot name="dismiss"></slot>
+          <slot name="dismiss" />
           <h2 class="c-heading">
-            <slot name="heading"></slot>
+            <slot name="heading" />
           </h2>
         </header>
         <div class="c-card__body">
-          <slot name="body"></slot>
+          <slot name="body" />
         </div>
         <footer class="c-card__footer">
-          <slot name="footer"></slot>
+          <slot name="footer" />
         </footer>
       </div>
     ];
   }
 }
 
-customElements.define( Card.is, Card );
+customElements.define(Card.is, Card);

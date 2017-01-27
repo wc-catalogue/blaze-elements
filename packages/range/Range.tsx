@@ -1,6 +1,6 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Range.scss';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
+import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
 import { css } from '../_helpers/css';
 
 
@@ -55,12 +55,6 @@ export class Range extends Component<RangeProps> {
 
   inputElement: HTMLInputElement;
 
-  private provideValue(event: Event) {
-    const oldValue = this.value;
-    this.value = this.inputElement.valueAsNumber;
-    emit(this, Range.events.change); // emit change event on root element
-  }
-
   connectedCallback() {
     super.connectedCallback();
     this.provideValue = this.provideValue.bind(this);
@@ -74,7 +68,7 @@ export class Range extends Component<RangeProps> {
     return [
       <style>{styles}</style>,
       <input
-        ref={(_ref) => this.inputElement = _ref}
+        ref={this.setInputElementRef}
         className={className}
         type="range"
         value={value ? value.toString() : null}
@@ -85,9 +79,17 @@ export class Range extends Component<RangeProps> {
       />
     ];
   }
+
+  private provideValue(event: Event) {
+    this.value = this.inputElement.valueAsNumber;
+    emit(this, Range.events.change); // emit change event on root element
+  }
+  private setInputElementRef(ref: HTMLInputElement) {
+    this.inputElement = ref;
+  }
 }
 
 
-customElements.define( Range.is, Range );
+customElements.define(Range.is, Range);
 
 

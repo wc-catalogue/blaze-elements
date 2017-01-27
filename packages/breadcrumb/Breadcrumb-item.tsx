@@ -49,4 +49,4 @@ export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
   }
 }
 
-customElements.define( BreadcrumbItem.is, BreadcrumbItem );
+customElements.define(BreadcrumbItem.is, BreadcrumbItem);

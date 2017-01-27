@@ -41,10 +41,10 @@ export class Overlay extends Component<OverlayProps> {
 
     return [
       <style>{styles}</style>,
-      <div className={className}></div>
+      <div className={className} />
     ];
   }
 
 }
 
-customElements.define( Overlay.is, Overlay );
+customElements.define(Overlay.is, Overlay);

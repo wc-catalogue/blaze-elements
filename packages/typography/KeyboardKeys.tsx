@@ -7,7 +7,7 @@ interface KeyboardKeysProps {
 }
 
 export class KeyboardKeys extends Component<KeyboardKeysProps> {
-  static get is(){ return 'bl-keyboard-keys'; }
+  static get is() { return 'bl-keyboard-keys'; }
 
   renderCallback() {
     const className = css(
@@ -16,10 +16,10 @@ export class KeyboardKeys extends Component<KeyboardKeysProps> {
     return [
       <style>{styles}</style>,
       <kbd className={className}>
-        <slot/>
+        <slot />
       </kbd>
     ];
   }
 }
 
-customElements.define( KeyboardKeys.is, KeyboardKeys );
+customElements.define(KeyboardKeys.is, KeyboardKeys);

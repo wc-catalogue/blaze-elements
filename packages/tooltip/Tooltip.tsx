@@ -50,11 +50,11 @@ export class Tooltip extends Component<TooltipProps> {
         className={className}
         aria-label={label}
       >
-        <slot></slot>
+        <slot />
       </span>
     ];
   }
 
 }
 
-customElements.define( Tooltip.is, Tooltip );
+customElements.define(Tooltip.is, Tooltip);

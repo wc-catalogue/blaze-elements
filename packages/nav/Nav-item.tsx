@@ -1,6 +1,6 @@
 import styles from './Nav.scss';
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
+import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
 import { css } from '../_helpers/css';
 
 interface NavItemProps {
@@ -50,10 +50,10 @@ export class NavItem extends Component<NavItemProps> {
     return [
       <style>{styles}</style>,
       <li className={className}>
-        <slot></slot>
+        <slot />
       </li>
     ];
   }
 }
 
-customElements.define( NavItem.is, NavItem );
+customElements.define(NavItem.is, NavItem);

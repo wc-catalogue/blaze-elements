@@ -1,20 +1,12 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
 import styles from './Accordion.scss';
-import {Collapsible, StateChangedEvent} from '../collapsible/Collapsible';
+import { Collapsible, StateChangedEvent } from '../collapsible/Collapsible';
 
 
 export class Accordion extends Component<void> {
-  static get is(){ return 'bl-accordion'; }
+  static get is() { return 'bl-accordion'; }
 
   private items = new Array<Collapsible>();
-
-  private handleStateChanged(event: StateChangedEvent) {
-    this.items.forEach(function(item) {
-      if ( event.target !== item ) {
-        item.isOpened = false;
-      }
-    });
-  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -43,6 +35,14 @@ export class Accordion extends Component<void> {
       </div>
     ];
   }
+
+  private handleStateChanged(event: StateChangedEvent) {
+    this.items.forEach(function(item) {
+      if (event.target !== item) {
+        item.isOpened = false;
+      }
+    });
+  }
 }
 
-customElements.define( Accordion.is, Accordion );
+customElements.define(Accordion.is, Accordion);

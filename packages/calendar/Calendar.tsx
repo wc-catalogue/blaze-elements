@@ -19,7 +19,7 @@ import { CalendarButton } from './components/Button';
 const BUTTON_TODAY = 'TODAY';
 const WEEK_STARTS_ON = 'sunday';
 
-export type CalendarChangeEvent = CustomEvent & {detail: { date: Date } };
+export type CalendarChangeEvent = CustomEvent & { detail: { date: Date } };
 
 type CalendarProps = Props & EventProps;
 type Props = {
@@ -32,20 +32,10 @@ type Props = {
   weekStartsOn?: 'sunday' | 'monday',
 };
 type EventProps = {
-  onDateChange?: ( ev: CalendarChangeEvent ) => void,
+  onDateChange?: (ev: CalendarChangeEvent) => void,
 };
 
 export class Calendar extends Component<CalendarProps> {
-
-  constructor() {
-    super();
-
-    this.prevYear = this.prevYear.bind( this );
-    this.nextYear = this.nextYear.bind( this );
-    this.prevMonth = this.prevMonth.bind( this );
-    this.nextMonth = this.nextMonth.bind( this );
-    this.setDate = this.setDate.bind( this );
-  }
 
   static get is() { return 'bl-calendar'; }
 
@@ -54,9 +44,9 @@ export class Calendar extends Component<CalendarProps> {
       days: prop.array(),
       month: prop.number(),
       year: prop.number(),
-      selectedDate: prop.string( {
+      selectedDate: prop.string({
         attribute: true
-      } ),
+      }),
       weekStartsOn: prop.string({
         attribute: true
       }),
@@ -70,15 +60,9 @@ export class Calendar extends Component<CalendarProps> {
     };
   }
 
-  static range( n: Number ) {
-    return Array.from( Array( n ).keys() );
+  static range(n: Number) {
+    return Array.from(Array(n).keys());
   }
-
-  private year: number;
-  private month: number;
-  private days: Date[] = [];
-  private rows = Calendar.range( 6 );
-  private cols = Calendar.range( 7 );
 
   weekStartsOn = WEEK_STARTS_ON; // default is sunday
   selectedDate: Date;
@@ -86,48 +70,26 @@ export class Calendar extends Component<CalendarProps> {
     todayButtonText: BUTTON_TODAY
   };
 
+  private year: number;
+  private month: number;
+  private days: Date[] = [];
+  private rows = Calendar.range(6);
+  private cols = Calendar.range(7);
+
+  constructor() {
+    super();
+
+    this.prevYear = this.prevYear.bind(this);
+    this.nextYear = this.nextYear.bind(this);
+    this.prevMonth = this.prevMonth.bind(this);
+    this.nextMonth = this.nextMonth.bind(this);
+    this.setDate = this.setDate.bind(this);
+  }
+
   attributeChangedCallback() {
     this.initSelectedDay();
     this.initDays();
   }
-
-  private format( date: Date, formatStr: string ) {
-    const formatLocale = buildFormatLocale( this.i18n );
-    const options = {
-      locale: {
-        format: formatLocale
-      }
-    };
-    return format( date, formatStr, options );
-  }
-
-  private initSelectedDay() {
-    this.selectedDate = parse( this.selectedDate );
-    this.year = getYear( this.selectedDate );
-    this.month = getMonth( this.selectedDate );
-  }
-
-  private initDays() {
-    const date = new Date( this.year, this.month );
-    const days: Date[] = [];
-    let currentDate = startOfWeek( date, { weekStartsOn: this.weekStartsOn === WEEK_STARTS_ON ? 0 : 1 } );
-
-    this.rows.forEach( () => {
-      this.cols.forEach( () => {
-        days.push( currentDate );
-        currentDate = addDays( currentDate, 1 );
-      } );
-    } );
-
-    this.days = [ ...Array().concat( days ) ];
-
-  }
-
-  private setDateHandler = (newDate = new Date()) => {
-    return () => {
-      this.setDate(newDate);
-    };
-  };
 
   prevYear() {
     this.year--;
@@ -141,7 +103,7 @@ export class Calendar extends Component<CalendarProps> {
 
   prevMonth() {
     this.month--;
-    if ( this.month < 0 ) {
+    if (this.month < 0) {
       this.month = 11;
       this.year--;
     }
@@ -150,22 +112,22 @@ export class Calendar extends Component<CalendarProps> {
 
   nextMonth() {
     this.month++;
-    if ( this.month > 11 ) {
+    if (this.month > 11) {
       this.month = 0;
       this.year++;
     }
     this.initDays();
   }
 
-  setDate( toDate: Date ) {
-    const date = parse( toDate );
+  setDate(toDate: Date) {
+    const date = parse(toDate);
 
     // reset hours, minutes and second to prevent set date from "new Date()"
-    this.resetHoursMinutesSeconds( toDate );
+    this.resetHoursMinutesSeconds(toDate);
 
     this.selectedDate = date;
-    this.month = getMonth( date );
-    this.year = getYear( date );
+    this.month = getMonth(date);
+    this.year = getYear(date);
     this.initDays();
 
     emit(this, Calendar.events.DATE_CHANGE, {
@@ -175,35 +137,27 @@ export class Calendar extends Component<CalendarProps> {
     });
   }
 
-  private resetHoursMinutesSeconds( date: Date ) {
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setSeconds(0);
-  };
-
   renderCallback() {
 
     const { year, month, selectedDate } = this;
 
     // create date elements
-    const days = this.days.map( ( day ) => {
+    const days = this.days.map((day) => {
       const className = css(
         'c-calendar__date',
         {
-          'c-calendar__date--in-month': getMonth( day ) === month,
-          'c-calendar__date--today': isToday( day ),
-          'c-calendar__date--selected': isSameDay( day, selectedDate ),
+          'c-calendar__date--in-month': getMonth(day) === month,
+          'c-calendar__date--today': isToday(day),
+          'c-calendar__date--selected': isSameDay(day, selectedDate),
         }
       );
-      return <button className={className} onClick={this.setDateHandler(day)}>{getDate( day )}</button>;
-    } );
+      return <button className={className} onClick={this.setDateHandler(day)}>{getDate(day)}</button>;
+    });
 
     // create weekDays elements
-    const weekDays = this.days.filter( ( day, index ) => {
-      return index < 7;
-    } ).map( ( day ) => {
-      return <div class="c-calendar__day">{this.format( day, 'dd' )}</div>;
-    } );
+    const weekDays = this.days.filter((day, index) =>
+      index < 7).map((day) =>
+        <div class="c-calendar__day">{this.format(day, 'dd')}</div>);
 
     return [
       <style>{styles}</style>,
@@ -213,7 +167,7 @@ export class Calendar extends Component<CalendarProps> {
         <button class="c-calendar__control" onClick={this.nextYear}>›</button>
 
         <button class="c-calendar__control" onClick={this.prevMonth}>‹</button>
-        <div class="c-calendar__header">{this.format( new Date( year, month ), 'MMMM' )}</div>
+        <div class="c-calendar__header">{this.format(new Date(year, month), 'MMMM')}</div>
         <button class="c-calendar__control" onClick={this.nextMonth}>›</button>
 
         {weekDays}
@@ -224,6 +178,47 @@ export class Calendar extends Component<CalendarProps> {
     ];
   }
 
+  private setDateHandler = (newDate = new Date()) =>
+    () => {
+      this.setDate(newDate);
+    }
+  private format(date: Date, formatStr: string) {
+    const formatLocale = buildFormatLocale(this.i18n);
+    const options = {
+      locale: {
+        format: formatLocale
+      }
+    };
+    return format(date, formatStr, options);
+  }
+
+  private initSelectedDay() {
+    this.selectedDate = parse(this.selectedDate);
+    this.year = getYear(this.selectedDate);
+    this.month = getMonth(this.selectedDate);
+  }
+
+  private initDays() {
+    const date = new Date(this.year, this.month);
+    const days: Date[] = [];
+    let currentDate = startOfWeek(date, { weekStartsOn: this.weekStartsOn === WEEK_STARTS_ON ? 0 : 1 });
+
+    this.rows.forEach(() => {
+      this.cols.forEach(() => {
+        days.push(currentDate);
+        currentDate = addDays(currentDate, 1);
+      });
+    });
+
+    this.days = [...Array().concat(days)];
+
+  }
+  private resetHoursMinutesSeconds(date: Date) {
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+  };
+
 }
 
-customElements.define( Calendar.is, Calendar );
+customElements.define(Calendar.is, Calendar);

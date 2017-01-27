@@ -15,20 +15,6 @@ export class Demo extends Component<void> {
   private overlay = false;
   private fullPageOverlay = false;
 
-  private showOverlay() {
-    this.overlay = true;
-  }
-  private showFullPageOverlay() {
-    this.fullPageOverlay = true;
-  }
-
-  private dismissOverlay() {
-    this.overlay = false;
-  }
-  private dismissFullPageOverlay() {
-    this.fullPageOverlay = false;
-  }
-
   connectedCallback() {
     super.connectedCallback();
     this.showOverlay = this.showOverlay.bind(this);
@@ -41,11 +27,11 @@ export class Demo extends Component<void> {
     const { overlay, fullPageOverlay } = this;
 
     const overlayFragment = overlay
-      ? <Overlay isDismissable onClick={this.dismissOverlay}></Overlay>
+      ? <Overlay isDismissable onClick={this.dismissOverlay} />
       : null;
 
     const fullPageOverlayFragment = fullPageOverlay
-      ? <Overlay isFullpage isDismissable onClick={this.dismissFullPageOverlay}></Overlay>
+      ? <Overlay isFullpage isDismissable onClick={this.dismissFullPageOverlay} />
       : null;
 
 
@@ -62,10 +48,10 @@ export class Demo extends Component<void> {
               Aliquam id dolor. Quisque porta. Vivamus luctus egestas leo. Ut enim ad minim veniam,
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               Etiam egestas wisi a erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-              ac turpis egestas. Proin mattis lacinia justo. Aliquam ante. Praesent id justo in neque elementum ultrices.
+              ac turpis egestas. Proin mattis lacinia justo. Aliquam ante. Praesent id justo in neque elementum ultrices
               Fusce aliquam vestibulum ipsum.
             </p>
-            <Overlay></Overlay>
+            <Overlay />
           </div>
 
           <h3>Transparent overlay</h3>
@@ -75,10 +61,10 @@ export class Demo extends Component<void> {
               Aliquam id dolor. Quisque porta. Vivamus luctus egestas leo. Ut enim ad minim veniam,
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               Etiam egestas wisi a erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-              ac turpis egestas. Proin mattis lacinia justo. Aliquam ante. Praesent id justo in neque elementum ultrices.
+              ac turpis egestas. Proin mattis lacinia justo. Aliquam ante. Praesent id justo in neque elementum ultrices
               Fusce aliquam vestibulum ipsum.
             </p>
-            <Overlay isTransparent></Overlay>
+            <Overlay isTransparent />
           </div>
 
           <h3>Dismissable overlay</h3>
@@ -89,7 +75,7 @@ export class Demo extends Component<void> {
               Aliquam id dolor. Quisque porta. Vivamus luctus egestas leo. Ut enim ad minim veniam,
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               Etiam egestas wisi a erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-              ac turpis egestas. Proin mattis lacinia justo. Aliquam ante. Praesent id justo in neque elementum ultrices.
+              ac turpis egestas. Proin mattis lacinia justo. Aliquam ante. Praesent id justo in neque elementum ultrices
               Fusce aliquam vestibulum ipsum.
             </p>
             {overlayFragment}
@@ -102,6 +88,21 @@ export class Demo extends Component<void> {
       </fieldset>,
     ];
   }
+
+
+  private showOverlay() {
+    this.overlay = true;
+  }
+  private showFullPageOverlay() {
+    this.fullPageOverlay = true;
+  }
+
+  private dismissOverlay() {
+    this.overlay = false;
+  }
+  private dismissFullPageOverlay() {
+    this.fullPageOverlay = false;
+  }
 }
 
-customElements.define( Demo.is, Demo );
+customElements.define(Demo.is, Demo);

@@ -14,19 +14,19 @@ declare module 'bore' {
   interface WrappedNode extends Wrapper {
     node: BoreNode,
   }
-  type Query<T> = string | JSX.Element | T | ( ( node: BoreNode ) => boolean ) | Object;
+  type Query<T> = string | JSX.Element | T | ((node: BoreNode) => boolean) | Object;
 
   interface Wrapper {
     readonly shadowRoot: ShadowRoot;
-    all<T extends HTMLElement>( query: Query<T> ): WrappedNode[],
-    one<T extends HTMLElement>( query: Query<T> ): WrappedNode,
-    has<T extends HTMLElement>( query: Query<T> ): boolean,
+    all<T extends HTMLElement>(query: Query<T>): WrappedNode[],
+    one<T extends HTMLElement>(query: Query<T>): WrappedNode,
+    has<T extends HTMLElement>(query: Query<T>): boolean,
 
-    wait( callback?: ( wrapper: WrappedNode ) => any ): Promise<WrappedNode>,
-    waitFor( callback: ( wrapper: WrappedNode ) => boolean, options?: { delay?: number }): Promise<WrappedNode>,
+    wait(callback?: (wrapper: WrappedNode) => any): Promise<WrappedNode>,
+    waitFor(callback: (wrapper: WrappedNode) => boolean, options?: { delay?: number }): Promise<WrappedNode>,
   }
-  export function mount( htmlOrNode: JSX.Element | JSX.Element[] | string ): WrappedNode;
-  export function h( name: string, attrsOrProps?: Object, ...children: any[] ): JSX.Element | JSX.Element[];
+  export function mount(htmlOrNode: JSX.Element | JSX.Element[] | string): WrappedNode;
+  export function h(name: string, attrsOrProps?: Object, ...children: any[]): JSX.Element | JSX.Element[];
 
 }
 
@@ -36,8 +36,8 @@ declare const customElements: CustomElementRegistry;
 
 interface CustomElementRegistry {
   define(
-      name: string, constructor: Function,
-      options?: ElementDefinitionOptions): void;
+    name: string, constructor: Function,
+    options?: ElementDefinitionOptions): void;
   get(name: string): any;
   whenDefined(name: string): Promise<void>;
   flush(): void;
@@ -60,17 +60,17 @@ interface Document {
 }
 
 interface HTMLElement extends OnConnectedCallback, OnDisconnectedCallback, OnAdoptedCallback, OnAttributeChangedCallback {
-//   // shadow DOM API
-//   shadowRoot: HTMLElement,
-//   attachShadow( { mode:string } ): HTMLElement,
-//   assignedNodes( { flatten }?:{flatten?: boolean} ): NodeList,
-//   assignedSlot: string|void,
+  //   // shadow DOM API
+  //   shadowRoot: HTMLElement,
+  //   attachShadow( { mode:string } ): HTMLElement,
+  //   assignedNodes( { flatten }?:{flatten?: boolean} ): NodeList,
+  //   assignedSlot: string|void,
   // @FIXME remove this once https://github.com/skatejs/skatejs/pull/1022 is merged
   role?: string,
 }
 
 interface HasAttributes {
-  readonly observedAttributes: string[]|void;
+  readonly observedAttributes: string[] | void;
 }
 
 interface OnConnectedCallback {
@@ -100,10 +100,10 @@ interface DocumentOrShadowRoot {
   readonly styleSheets: StyleSheetList | null;
 }
 
-interface Document extends DocumentOrShadowRoot {}
-interface ShadowRoot extends DocumentOrShadowRoot {}
+interface Document extends DocumentOrShadowRoot { }
+interface ShadowRoot extends DocumentOrShadowRoot { }
 
-interface CaretPosition {}
+interface CaretPosition { }
 
 interface ShadowRoot extends DocumentFragment {
   readonly host: Element;

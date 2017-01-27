@@ -3,10 +3,10 @@ import { Alert } from './index';
 
 import { Button } from '../button';
 
-type DemoProps = {isOpen?: boolean};
+type DemoProps = { isOpen?: boolean };
 export class Demo extends Component<DemoProps> {
   static get is() { return 'bl-alert-demo'; }
-  static get props(){
+  static get props() {
     return {
       isOpen: prop.boolean()
     };
@@ -14,17 +14,10 @@ export class Demo extends Component<DemoProps> {
 
   isOpen = false;
 
-  private handleAlertOpen = () => {
-    props( this, { isOpen: true });
-  }
-  private handleAlertClose = () => {
-    props( this, { isOpen: false });
-  }
-
   renderCallback() {
     const {isOpen} = this;
     return [
-      <style></style>,
+      <style />,
 
       <fieldset>
         <legend>{Alert.is}</legend>
@@ -45,6 +38,13 @@ export class Demo extends Component<DemoProps> {
     ];
   }
 
+  private handleAlertOpen = () => {
+    props(this, { isOpen: true });
+  }
+  private handleAlertClose = () => {
+    props(this, { isOpen: false });
+  }
+
 }
 
-define( Demo );
+define(Demo);

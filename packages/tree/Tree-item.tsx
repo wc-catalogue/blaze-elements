@@ -19,10 +19,6 @@ export class TreeItem extends Component<TreeItemProps> {
 
   isOpen: boolean;
 
-  private handleClick() {
-    this.isOpen = !this.isOpen;
-  }
-
   connectedCallback() {
     super.connectedCallback();
     this.handleClick = this.handleClick.bind(this);
@@ -41,11 +37,16 @@ export class TreeItem extends Component<TreeItemProps> {
     return [
       <style>{styles}</style>,
       <li className={className} onClick={this.handleClick}>
-        <slot></slot>
-        { isOpen ? <slot name="subItems" /> : null }
+        <slot />
+        {isOpen ? <slot name="subItems" /> : null}
       </li>
     ];
   }
+
+  private handleClick() {
+    this.isOpen = !this.isOpen;
+  }
+
 }
 
-customElements.define( TreeItem.is, TreeItem );
+customElements.define(TreeItem.is, TreeItem);

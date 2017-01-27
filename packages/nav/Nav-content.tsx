@@ -35,4 +35,4 @@ export class NavContent extends Component<NavContentProps> {
   }
 }
 
-customElements.define( NavContent.is, NavContent );
+customElements.define(NavContent.is, NavContent);

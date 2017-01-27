@@ -1,4 +1,5 @@
-import { h, Component } from 'skatejs';
+import { h } from 'skatejs';
+import { Component } from 'skatejs';
 import { Paragraph } from './Paragraph';
 import { Abbreviation } from './Abbreviation';
 import { Link } from './Link';
@@ -25,7 +26,10 @@ export class Demo extends Component<void> {
       </fieldset>,
       <fieldset>
         <legend>{Link.is}</legend>
-        <p>Link API is the same as: <Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">MDN specification</Link></p>
+        <p>
+          Link API is the same as:
+          <Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">MDN specification</Link>
+        </p>
         <div>
           <Link href="http://www.seznam.cz">Czech search engine</Link><br />
           <Link href="http://www.seznam.cz" target="_blank">Czech search engine with target blank</Link><br />
@@ -63,7 +67,7 @@ export class Demo extends Component<void> {
         <br />
         And here:
         <Code isMultiline>
-          // There is some multi-line code <br />
+          > There is some multi-line code <br />
           if ( true ) <br />
           &nbsp;&nbsp;return 'YEAH';
         </Code>
@@ -98,4 +102,4 @@ export class Demo extends Component<void> {
   }
 }
 
-customElements.define( Demo.is, Demo );
+customElements.define(Demo.is, Demo);

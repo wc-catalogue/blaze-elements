@@ -53,7 +53,7 @@ export class Input extends Component<InputProps> {
       }),
     };
   }
-  static get events(){
+  static get events() {
     return {
       change: 'change',
     };
@@ -66,16 +66,8 @@ export class Input extends Component<InputProps> {
   type = 'text';
   disabled: boolean;
 
+  // @FIXME this should be private
   inputElement: HTMLInputElement;
-
-  private propagateOnChange(event: Event) {
-    this.setValue();
-    emit(this, Input.events.change); // emit change event on root element
-  }
-
-  private setValue() {
-    this.value = this.inputElement.value;
-  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -98,7 +90,7 @@ export class Input extends Component<InputProps> {
     return [
       <style>{styles}</style>,
       <input
-        ref={(_ref: HTMLInputElement) => this.inputElement = _ref}
+        ref={this.setInerInputRef}
         className={className}
         type={type}
         value={value}
@@ -109,7 +101,19 @@ export class Input extends Component<InputProps> {
       />
     ];
   }
+
+  private propagateOnChange(event: Event) {
+    this.setValue();
+    emit(this, Input.events.change); // emit change event on root element
+  }
+
+  private setValue() {
+    this.value = this.inputElement.value;
+  }
+  private setInerInputRef(ref: HTMLInputElement) {
+    this.inputElement = ref;
+  }
 }
 
 
-customElements.define( Input.is, Input );
+customElements.define(Input.is, Input);

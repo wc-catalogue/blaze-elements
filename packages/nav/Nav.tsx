@@ -42,13 +42,13 @@ export class Nav extends Component<NavProps> {
 
     const { inline, shadow, position } = this;
 
-    if ( inline ) {
+    if (inline) {
 
       const items = this.querySelectorAll('bl-nav-item, bl-nav-content');
       const length = items.length;
 
-      if ( length ) {
-        for ( let i = 0; i < length; i++  ) {
+      if (length) {
+        for (let i = 0; i < length; i++) {
           items[i].setAttribute('inline', '');
         }
       }
@@ -74,4 +74,4 @@ export class Nav extends Component<NavProps> {
   }
 }
 
-customElements.define( Nav.is, Nav );
+customElements.define(Nav.is, Nav);

@@ -8,7 +8,7 @@ interface CodeProps {
 }
 
 export class Code extends Component<CodeProps> {
-  static get is(){ return 'bl-code'; }
+  static get is() { return 'bl-code'; }
 
   static get props() {
     return {
@@ -33,10 +33,10 @@ export class Code extends Component<CodeProps> {
     return [
       <style>{styles}</style>,
       <code className={className}>
-        <slot/>
+        <slot />
       </code>
     ];
   }
 }
 
-customElements.define( Code.is, Code );
+customElements.define(Code.is, Code);

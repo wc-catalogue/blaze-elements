@@ -1,4 +1,4 @@
-import{ h, Component } from 'skatejs';
+import { h, Component } from 'skatejs';
 import { Tree } from './Tree';
 import { TreeItem } from './Tree-item';
 
@@ -7,7 +7,7 @@ export class Demo extends Component<void> {
 
   renderCallback() {
     return [
-      <style></style>,
+      <style />,
       <fieldset>
         <legend>{Tree.is}</legend>
         <div>
@@ -49,4 +49,4 @@ export class Demo extends Component<void> {
 }
 
 
-customElements.define( Demo.is, Demo );
+customElements.define(Demo.is, Demo);

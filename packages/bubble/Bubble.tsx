@@ -34,18 +34,6 @@ export class Bubble extends Component<BubbleProps> {
   isDisplayed = false;
   disableAutoShowHide = false;
 
-  private handleMouseOver() {
-    if ( !this.disableAutoShowHide ) {
-      this.isDisplayed = true;
-    }
-  }
-
-  private handleMouseLeave() {
-    if ( !this.disableAutoShowHide ) {
-      this.isDisplayed = false;
-    }
-  }
-
   connectedCallback() {
     super.connectedCallback();
     this.handleMouseOver = this.handleMouseOver.bind(this);
@@ -66,18 +54,43 @@ export class Bubble extends Component<BubbleProps> {
     return [
       <style>{styles}</style>,
       isDisplayed
-        ? <div tabIndex={0} className={'bubble-wrapper'} onMouseleave={this.handleMouseLeave} onBlur={this.handleMouseLeave}>
-            <slot name="handle"></slot>
+        ? (
+          <div
+            tabIndex={0}
+            className={'bubble-wrapper'}
+            onMouseleave={this.handleMouseLeave}
+            onBlur={this.handleMouseLeave}
+          >
+            <slot name="handle" />
             <div className={className}>
-              <slot></slot>
+              <slot />
             </div>
+          </div>)
+        : (
+          <div
+            tabIndex={0}
+            className={'bubble-wrapper'}
+            onMouseover={this.handleMouseOver}
+            onFocus={this.handleMouseOver}
+          >
+            <slot name="handle" />
           </div>
-        : <div tabIndex={0} className={'bubble-wrapper'} onMouseover={this.handleMouseOver} onFocus={this.handleMouseOver}>
-            <slot name="handle"></slot>
-          </div>
+        )
     ];
+  }
+
+  private handleMouseOver() {
+    if (!this.disableAutoShowHide) {
+      this.isDisplayed = true;
+    }
+  }
+
+  private handleMouseLeave() {
+    if (!this.disableAutoShowHide) {
+      this.isDisplayed = false;
+    }
   }
 
 }
 
-customElements.define( Bubble.is, Bubble );
+customElements.define(Bubble.is, Bubble);

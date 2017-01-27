@@ -3,11 +3,11 @@ import { Input } from './Input';
 import { h, mount } from 'bore';
 import { emit } from 'skatejs';
 
-describe( Input.is, () => {
+describe(Input.is, () => {
 
-  it( 'should set value and emit on change', ( done ) => {
+  it('should set value and emit on change', (done) => {
 
-    mount(<Input value="initial"/>).wait((element) => {
+    mount(<Input value="initial" />).wait((element) => {
 
       element.node.addEventListener('change', () => {
 
@@ -19,15 +19,15 @@ describe( Input.is, () => {
 
       const innerInput = element.one('input').node as HTMLInputElement;
       innerInput.value = 'ok';
-      emit(innerInput, 'change', {composed: false});
+      emit(innerInput, 'change', { composed: false });
 
     });
 
   });
 
-  it( 'should set value and emit on input', ( done ) => {
+  it('should set value and emit on input', (done) => {
 
-    mount(<Input value="initial"/>).wait((element) => {
+    mount(<Input value="initial" />).wait((element) => {
 
       element.node.addEventListener('input', () => {
 

@@ -7,7 +7,7 @@ interface HighlightedTextProps {
 }
 
 export class HighlightedText extends Component<HighlightedTextProps> {
-  static get is(){ return 'bl-highlighted-text'; }
+  static get is() { return 'bl-highlighted-text'; }
 
   renderCallback() {
     const className = css(
@@ -16,10 +16,10 @@ export class HighlightedText extends Component<HighlightedTextProps> {
     return [
       <style>{styles}</style>,
       <span className={className}>
-        <slot/>
+        <slot />
       </span>
     ];
   }
 }
 
-customElements.define( HighlightedText.is, HighlightedText );
+customElements.define(HighlightedText.is, HighlightedText);

@@ -1,5 +1,5 @@
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
+import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
 import style from './Link.scss';
 import { css } from '../_helpers/css';
 
@@ -26,30 +26,30 @@ export class Link extends Component<LinkProps> {
 
   static get props() {
     return {
-      href: prop.string( {
+      href: prop.string({
         attribute: true
-      } ),
-      download: prop.string( {
+      }),
+      download: prop.string({
         attribute: true
-      } ),
-      hreflang: prop.string( {
+      }),
+      hreflang: prop.string({
         attribute: true
-      } ),
-      referrerpolicy: prop.string( {
+      }),
+      referrerpolicy: prop.string({
         attribute: true
-      } ),
-      rel: prop.string( {
+      }),
+      rel: prop.string({
         attribute: true
-      } ),
-      target: prop.string( {
+      }),
+      target: prop.string({
         attribute: true
-      } ),
-      type: prop.string( {
+      }),
+      type: prop.string({
         attribute: true
-      } ),
-      color: prop.string( {
+      }),
+      color: prop.string({
         attribute: true
-      } )
+      })
     };
   }
 
@@ -85,4 +85,4 @@ export class Link extends Component<LinkProps> {
   }
 
 }
-customElements.define( Link.is, Link );
+customElements.define(Link.is, Link);

@@ -1,7 +1,7 @@
-import { h, Component, prop, emit } from 'skatejs';
+import { h, Component, prop } from 'skatejs';
 import styles from './Progress.scss';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
-import {Size, cssClassForSize} from '../_helpers/sizes';
+import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
+import { Size, cssClassForSize } from '../_helpers/sizes';
 import { css } from '../_helpers/css';
 
 
@@ -71,6 +71,6 @@ export class Progress extends Component<ProgressProps> {
 }
 
 
-customElements.define( Progress.is, Progress );
+customElements.define(Progress.is, Progress);
 
 

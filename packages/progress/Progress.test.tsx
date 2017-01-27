@@ -1,16 +1,15 @@
 import { Progress } from './Progress';
 
 import { h, mount } from 'bore';
-import { emit } from 'skatejs';
 
-describe( Progress.is, () => {
+describe(Progress.is, () => {
 
-  it( 'should render', () => {
+  it('should render', () => {
 
     console.warn('Missing tests for Progress!');
 
     return mount(
-      <Progress value={10}/>
+      <Progress value={10} />
     ).wait();
 
   });

@@ -2,11 +2,11 @@ import { h, Component } from 'skatejs';
 import { Toggle } from './Toggle';
 
 class Demo extends Component<void> {
-  static get is() {return 'bl-toggle-demo'; };
+  static get is() { return 'bl-toggle-demo'; };
 
   renderCallback() {
     return [
-      <style></style>,
+      <style />,
       <fieldset>
         <legend>{Toggle.is}</legend>
 
@@ -21,4 +21,4 @@ class Demo extends Component<void> {
 }
 
 
-customElements.define( Demo.is, Demo );
+customElements.define(Demo.is, Demo);

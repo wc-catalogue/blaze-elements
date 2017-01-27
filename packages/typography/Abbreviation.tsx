@@ -8,7 +8,7 @@ interface AbbreviationProps {
 }
 
 export class Abbreviation extends Component<AbbreviationProps> {
-  static get is(){ return 'bl-abbreviation'; }
+  static get is() { return 'bl-abbreviation'; }
 
   static get props() {
     return {
@@ -30,10 +30,10 @@ export class Abbreviation extends Component<AbbreviationProps> {
     return [
       <style>{styles}</style>,
       <abbr className={className} title={title}>
-        <slot/>
+        <slot />
       </abbr>
     ];
   }
 }
 
-customElements.define( Abbreviation.is, Abbreviation );
+customElements.define(Abbreviation.is, Abbreviation);

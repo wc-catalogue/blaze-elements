@@ -3,7 +3,7 @@ import styles from './Collapsible.scss';
 import { css } from '../_helpers/css';
 
 // public
-// @FIXME this needs to be adressed other way ( like Partial<HTMLDivElement) ) or element which is root in renderCallback
+// @FIXME this needs to be adressed other way (like Partial<HTMLDivElement)) or element which is root in renderCallback
 interface NativeDivAttrs {
   id?: string,
 }
@@ -22,7 +22,7 @@ export interface StateChangedEvent extends Event {
 }
 
 export class Collapsible extends Component<CollapsibleProps> {
-  static get is(){ return 'bl-collapsible'; }
+  static get is() { return 'bl-collapsible'; }
   static get props() {
     return {
       isOpened: prop.boolean({
@@ -41,17 +41,6 @@ export class Collapsible extends Component<CollapsibleProps> {
 
   // internal property to be used from other components, when there is collection of collapsible items
   isNotStandAlone: boolean;
-
-  private handleStateChange(event: Event) {
-    this.isOpened = !this.isOpened;
-
-    emit( this, 'stateChanged', {
-      detail: {
-        opened: this.isOpened,
-        collapsed: !this.isOpened
-      }
-    }); // emit state changed event on root element
-  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -85,8 +74,8 @@ export class Collapsible extends Component<CollapsibleProps> {
 
     const content = isOpened
       ? <div className={className}>
-          <slot />
-        </div>
+        <slot />
+      </div>
       : null;
 
     return [
@@ -99,6 +88,17 @@ export class Collapsible extends Component<CollapsibleProps> {
       </div>
     ];
   }
+
+  private handleStateChange(event: Event) {
+    this.isOpened = !this.isOpened;
+
+    emit(this, 'stateChanged', {
+      detail: {
+        opened: this.isOpened,
+        collapsed: !this.isOpened
+      }
+    }); // emit state changed event on root element
+  }
 }
 
-customElements.define( Collapsible.is, Collapsible );
+customElements.define(Collapsible.is, Collapsible);

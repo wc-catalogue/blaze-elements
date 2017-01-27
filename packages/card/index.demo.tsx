@@ -6,7 +6,7 @@ export class Demo extends Component<void> {
 
   renderCallback() {
     return [
-      <style></style>,
+      <style />,
 
       <fieldset>
         <legend>{Card.is}</legend>
@@ -24,4 +24,4 @@ export class Demo extends Component<void> {
   }
 }
 
-customElements.define( Demo.is, Demo );
+customElements.define(Demo.is, Demo);

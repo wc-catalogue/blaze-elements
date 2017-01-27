@@ -10,7 +10,7 @@ export type LocaleType = {
   todayButtonText?: string,
 };
 
-type FormatterFn = ( date: Date ) => string;
+type FormatterFn = (date: Date) => string;
 type Formatters = {
   // Month: Jan, Feb, ..., Dec
   'MMM': FormatterFn,
@@ -29,7 +29,7 @@ type Formatters = {
   // a.m., p.m.
   'aa': FormatterFn,
 };
-type OrdinalFormatterFn = ( date: Date, formatters: {[P in OrdinalFormattersRawKeys]: (date: Date) => number} ) => string;
+type OrdinalFormatterFn = (date: Date, formatters: {[P in OrdinalFormattersRawKeys]: (date: Date) => number}) => string;
 type OrdinalFormattersRawKeys = 'M' | 'D' | 'DDD' | 'd' | 'Q' | 'W';
 type OrdinalFormatters = {
   'Mo': OrdinalFormatterFn,
@@ -42,7 +42,20 @@ type OrdinalFormatters = {
 
 const defaultLocale: LocaleType = {
   months3char: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  monthsFull: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  monthsFull: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ],
   weekdays2char: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
   weekdays3char: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
   weekdaysFull: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -51,13 +64,13 @@ const defaultLocale: LocaleType = {
   meridiemFull: ['a.m.', 'p.m.'],
 };
 
-export function buildFormatLocale ( customLocale?: LocaleType ) {
+export function buildFormatLocale(customLocale?: LocaleType) {
   // Note: in English, the names of days of the week and months are capitalized.
   // If you are making a new locale based on this one, check if the same is true for the language you're working on.
   // Generally, formatted dates should look like they are in the middle of a sentence,
   // e.g. in Spanish language the weekdays and months should be in the lowercase.
 
-  let mergedLocale: LocaleType = Object.assign( {}, defaultLocale, customLocale );
+  let mergedLocale: LocaleType = Object.assign({}, defaultLocale, customLocale);
 
   const formatters: Formatters & Partial<OrdinalFormatters> = {
     // Month: Jan, Feb, ..., Dec
@@ -76,10 +89,16 @@ export function buildFormatLocale ( customLocale?: LocaleType ) {
     'dddd': (date: Date) => mergedLocale.weekdaysFull[date.getDay()],
 
     // AM, PM
-    'A': (date: Date) => (date.getHours() / 12) >= 1 ? mergedLocale.meridiemUppercase[1] : mergedLocale.meridiemUppercase[0],
+    'A': (date: Date) =>
+      (date.getHours() / 12) >= 1
+        ? mergedLocale.meridiemUppercase[1]
+        : mergedLocale.meridiemUppercase[0],
 
     // am, pm
-    'a': (date: Date) => (date.getHours() / 12) >= 1 ? mergedLocale.meridiemLowercase[1] : mergedLocale.meridiemLowercase[0],
+    'a': (date: Date) =>
+      (date.getHours() / 12) >= 1
+        ? mergedLocale.meridiemLowercase[1]
+        : mergedLocale.meridiemLowercase[0],
 
     // a.m., p.m.
     'aa': (date: Date) => (date.getHours() / 12) >= 1 ? mergedLocale.meridiemFull[1] : mergedLocale.meridiemFull[0]
@@ -87,17 +106,17 @@ export function buildFormatLocale ( customLocale?: LocaleType ) {
 
   // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
   const ordinalFormatters: OrdinalFormattersRawKeys[] = ['M', 'D', 'DDD', 'd', 'Q', 'W'];
-  ordinalFormatters.forEach(function (formatterToken) {
+  ordinalFormatters.forEach(function(formatterToken) {
     const ordinalFormatterToken = `${formatterToken}o` as keyof OrdinalFormatters;
-    formatters[ordinalFormatterToken] = function (date, formatters) {
-      return ordinal(formatters[formatterToken](date));
+    formatters[ordinalFormatterToken] = function(date, _formatters) {
+      return ordinal(_formatters[formatterToken](date));
     };
   });
 
   return { formatters };
 }
 
-function ordinal (num: number): string {
+function ordinal(num: number): string {
   const rem100 = num % 100;
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {

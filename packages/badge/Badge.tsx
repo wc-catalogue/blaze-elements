@@ -1,6 +1,6 @@
 import styles from './Badge.scss';
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
+import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
 import { css } from '../_helpers/css';
 
 interface BadgeProps {
@@ -46,9 +46,9 @@ export class Badge extends Component<BadgeProps> {
 
     return [
       <style>{styles}</style>,
-      <span className={className}><slot></slot></span>
+      <span className={className}><slot /></span>
     ];
   }
 }
 
-customElements.define( Badge.is, Badge );
+customElements.define(Badge.is, Badge);
