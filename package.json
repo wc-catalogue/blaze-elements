@@ -11,6 +11,9 @@
   "scripts": {
     "postinstall": "lerna bootstrap",
     "packagelist": "node toolbelt/generate-packages-list.js",
+    "ts:lint":"tslint \"packages/**/*.tsx\" \"packages/**/*.ts\"",
+    "ts:lint:fix":"yarn ts:lint -- --fix",
+    "ts:format": "tsfmt --replace packages/**/*.ts packages/**/*.tsx",
     "start": "npm run packagelist && webpack-dev-server --env.dev --hot --host 0.0.0.0",
     "start:prod": "pushstate-server dist/",
     "test": "npm run build:test && toolbelt/test.sh -l firefox",
@@ -52,13 +55,15 @@
     "style-loader": "^0.13.1",
     "test-fixture": "^1.0.2",
     "to-string-loader": "^1.1.5",
-    "tslint": "^4.3.1",
+    "tslint": "^4.4.2",
     "tslint-loader": "^3.3.0",
+    "tslint-react": "^2.3.0",
     "typescript": "^2.1.4",
+    "typescript-formatter": "^4.0.1",
     "wct-sauce": "2.0.0-pre.1",
     "web-component-tester": "^5.0.0",
     "webpack": "beta",
-    "webpack-config-utils": "^2.1.0",
+    "webpack-config-utils": "^2.3.0",
     "webpack-dev-server": "beta"
   },
   "packages": [
