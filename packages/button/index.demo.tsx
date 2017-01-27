@@ -1,20 +1,21 @@
 import { h, Component, prop, props } from 'skatejs';
-import { Button } from './';
+import { Button } from './index';
 
-export class Demo extends Component<void> {
+type DemoProps = { logger: string[] };
+export class Demo extends Component<DemoProps> {
   static get is() { return 'bl-button-demo'; }
 
   static get props(){
     return {
       logger: prop.array()
-    }
+    };
   }
 
   private logger: string[];
   private addLogEntry( entry: string ) {
     return ( ev: Event ) => {
       props( this, { logger: [ ...this.logger, `${entry} - ${this.logger.length}` ] });
-    }
+    };
   }
 
   renderCallback() {
