@@ -55,8 +55,9 @@ export class Range extends Component<RangeProps> {
 
   inputElement: HTMLInputElement;
 
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
+    this.setInputElementRef = this.setInputElementRef.bind( this );
     this.provideValue = this.provideValue.bind( this );
   }
 

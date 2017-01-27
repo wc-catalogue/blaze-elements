@@ -69,10 +69,11 @@ export class Input extends Component<InputProps> {
   // @FIXME this should be private
   inputElement: HTMLInputElement;
 
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
     this.propagateOnChange = this.propagateOnChange.bind( this );
     this.setValue = this.setValue.bind( this );
+    this.setInerInputRef = this.setInerInputRef.bind( this );
   }
 
   renderCallback() {
