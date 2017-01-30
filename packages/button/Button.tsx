@@ -13,7 +13,7 @@ type Props = {
   ghost?: boolean,
   color?: ColorType,
 };
-type EventProps =  {
+type EventProps = {
   onClick?: typeof HTMLElement.prototype.onclick,
 };
 
@@ -26,7 +26,7 @@ declare global {
 }
 
 export class Button extends Component<ButtonProps> {
-  static get is(){ return 'bl-button'; }
+  static get is() { return 'bl-button'; }
   static get props() {
     return {
       disabled: prop.boolean( {
@@ -63,7 +63,7 @@ export class Button extends Component<ButtonProps> {
 
   renderCallback() {
     const {color, ghost, close, block} = this;
-    const colorClass = cssClassForColorType(ghost ? 'c-button--ghost' : 'c-button', color, ghost);
+    const colorClass = cssClassForColorType( ghost ? 'c-button--ghost' : 'c-button', color, ghost );
     const className = css(
       'c-button',
       colorClass,
@@ -79,7 +79,7 @@ export class Button extends Component<ButtonProps> {
         className={className}
         disabled={this.disabled}
       >
-        <slot/>
+        <slot />
       </button>
     ];
   }

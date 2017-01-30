@@ -1,37 +1,29 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
 import styles from './Accordion.scss';
-import {Collapsible, StateChangedEvent} from '../collapsible/Collapsible';
+import { Collapsible, StateChangedEvent } from '../collapsible/Collapsible';
 
 
 export class Accordion extends Component<void> {
-  static get is(){ return 'bl-accordion'; }
+  static get is() { return 'bl-accordion'; }
 
   private items = new Array<Collapsible>();
 
-  private handleStateChanged(event: StateChangedEvent) {
-    this.items.forEach(function(item) {
-      if ( event.target !== item ) {
-        item.isOpened = false;
-      }
-    });
-  }
-
   connectedCallback() {
     super.connectedCallback();
-    this.handleStateChanged = this.handleStateChanged.bind(this);
+    this.handleStateChanged = this.handleStateChanged.bind( this );
   }
 
   renderCallback() {
-    const collapsibleItems = this.getElementsByTagName('bl-collapsible');
+    const collapsibleItems = this.getElementsByTagName( 'bl-collapsible' );
     const numberOfItems = collapsibleItems.length;
 
-    for (let i = 0; i < numberOfItems; i++) {
-      const collapsibleItem = collapsibleItems.item(i) as Collapsible;
-      collapsibleItem.addEventListener('stateChanged', this.handleStateChanged);
+    for ( let i = 0; i < numberOfItems; i++ ) {
+      const collapsibleItem = collapsibleItems.item( i ) as Collapsible;
+      collapsibleItem.addEventListener( 'stateChanged', this.handleStateChanged );
       collapsibleItem.isNotStandAlone = true;
-      this.items.push(collapsibleItem);
+      this.items.push( collapsibleItem );
 
-      if (i === collapsibleItems.length - 1) {
+      if ( i === collapsibleItems.length - 1 ) {
         collapsibleItem.isLast = true;
       }
     }
@@ -42,6 +34,14 @@ export class Accordion extends Component<void> {
         <slot />
       </div>
     ];
+  }
+
+  private handleStateChanged( event: StateChangedEvent ) {
+    this.items.forEach( function( item ) {
+      if ( event.target !== item ) {
+        item.isOpened = false;
+      }
+    });
   }
 }
 

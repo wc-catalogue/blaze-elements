@@ -6,7 +6,7 @@ export class Demo extends Component<void> {
 
   renderCallback() {
     return [
-      <style></style>,
+      <style />,
       <fieldset>
         <legend>{Tooltip.is}</legend>
 

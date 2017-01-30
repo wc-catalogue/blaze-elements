@@ -13,7 +13,7 @@ export class Modal extends Component<ModalProps> {
   static get is() { return 'bl-modal'; }
   static get props() {
     return {
-      isOpen: prop.boolean({
+      isOpen: prop.boolean( {
         attribute: true
       }),
       closeTitle: prop.string()
@@ -25,71 +25,48 @@ export class Modal extends Component<ModalProps> {
   private modalElement: HTMLDivElement;
   private lastActiveElement: HTMLElement;
 
-  private handleEsc(evt: KeyboardEvent) {
-    if ( evt.which === 27 ) {
-      this.handleModalClose();
-    }
-  }
-  private handleModalClose() {
-    this.isOpen = false;
-    emit(this, 'modalClose');
-  }
-  private focusModal() {
-    this.modalElement.focus();
-  }
-
-  private handleDocumentFocus(event: FocusEvent) {
-    if (this.modalElement && !this.modalElement.contains(event.target as Node)) {
-      event.stopImmediatePropagation();
-      this.focusModal();
-    }
-  }
-
-  private preventModalBlur() {
-    document.addEventListener('focus', this.handleDocumentFocus.bind(this), true);
-  }
-  private allowModalBlur() {
-    document.removeEventListener('focus', this.handleDocumentFocus.bind(this), true);
-  }
-
   connectedCallback() {
     super.connectedCallback();
-    this.handleEsc = this.handleEsc.bind(this);
-    this.handleModalClose = this.handleModalClose.bind(this);
-    this.focusModal = this.focusModal.bind(this);
+    this.handleEsc = this.handleEsc.bind( this );
+    this.handleModalClose = this.handleModalClose.bind( this );
+    this.focusModal = this.focusModal.bind( this );
   }
   renderCallback() {
     const {isOpen, closeTitle} = this;
     return [
       <style>{styles}</style>,
       isOpen &&
-      <Overlay isFullpage
-               tabIndex={-1}
-               onFocus={this.focusModal} />,
+      <Overlay
+        isFullpage
+        tabIndex={-1}
+        onFocus={this.focusModal}
+      />,
       isOpen &&
-      <div ref={(_ref: HTMLDivElement) => this.modalElement = _ref}
-           tabIndex={-1}
-           class="o-modal"
-           role="dialog"
-           aria-labelledby="modal-heading"
-           aria-describedby="modal-body"
-           onKeydown={this.handleEsc}
+      <div
+        ref={this.setModalElementRef}
+        tabIndex={-1}
+        class="o-modal"
+        role="dialog"
+        aria-labelledby="modal-heading"
+        aria-describedby="modal-body"
+        onKeydown={this.handleEsc}
       >
         <Card>
           <Button
             slot="dismiss"
             aria-label={closeTitle}
-            onClick={this.handleModalClose}>
+            onClick={this.handleModalClose}
+          >
             x
           </Button>
           <div slot="heading" id="modal-heading">
-            <slot name="title"></slot>
+            <slot name="title" />
           </div>
           <div slot="body" id="modal-body">
-            <slot></slot>
+            <slot />
           </div>
           <div slot="footer">
-            <slot name="footer"></slot>
+            <slot name="footer" />
           </div>
         </Card>
       </div>
@@ -106,7 +83,7 @@ export class Modal extends Component<ModalProps> {
     } else {
       this.allowModalBlur();
 
-      if (this.lastActiveElement) {
+      if ( this.lastActiveElement ) {
         this.lastActiveElement.focus();
       }
     }
@@ -114,11 +91,41 @@ export class Modal extends Component<ModalProps> {
 
   private deepActiveElement(): HTMLElement {
     let activeElement = document.activeElement;
-    while (activeElement && activeElement.shadowRoot && activeElement.shadowRoot.activeElement) {
+    while ( activeElement && activeElement.shadowRoot && activeElement.shadowRoot.activeElement ) {
       activeElement = activeElement.shadowRoot.activeElement;
     }
 
     return activeElement as HTMLElement;
+  }
+
+  private handleEsc( evt: KeyboardEvent ) {
+    if ( evt.which === 27 ) {
+      this.handleModalClose();
+    }
+  }
+  private handleModalClose() {
+    this.isOpen = false;
+    emit( this, 'modalClose' );
+  }
+  private focusModal() {
+    this.modalElement.focus();
+  }
+
+  private handleDocumentFocus( event: FocusEvent ) {
+    if ( this.modalElement && !this.modalElement.contains( event.target as Node ) ) {
+      event.stopImmediatePropagation();
+      this.focusModal();
+    }
+  }
+
+  private preventModalBlur() {
+    document.addEventListener( 'focus', this.handleDocumentFocus.bind( this ), true );
+  }
+  private allowModalBlur() {
+    document.removeEventListener( 'focus', this.handleDocumentFocus.bind( this ), true );
+  }
+  private setModalElementRef( ref: HTMLDivElement ) {
+    this.modalElement = ref;
   }
 
 }

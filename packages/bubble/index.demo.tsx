@@ -6,11 +6,11 @@ export class Demo extends Component<void> {
 
   renderCallback() {
     return [
-      <style></style>,
+      <style />,
       <fieldset>
         <legend>{Bubble.is}</legend>
 
-        <div style={{textAlign: 'center',padding: '5em 5em 0 0'} as any}>
+        <div style={{ textAlign: 'center', padding: '5em 5em 0 0' } as any}>
           <div>
             There is some
             <Bubble type="top" isDisplayed disableAutoShowHide>
@@ -23,9 +23,9 @@ export class Demo extends Component<void> {
 
           <div>
             There is some <Bubble type="top">
-            <strong slot="handle">Bubble top</strong>
-            <div>Some text with bubble on the top<br /><code>AAAA</code></div>
-          </Bubble> with some other text
+              <strong slot="handle">Bubble top</strong>
+              <div>Some text with bubble on the top<br /><code>AAAA</code></div>
+            </Bubble> with some other text
           </div>
 
           <div>

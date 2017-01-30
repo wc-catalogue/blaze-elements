@@ -1,7 +1,7 @@
 
-import {define} from 'skatejs';
+import { define } from 'skatejs';
 
-import {Button} from './Button';
-export {Button} from './Button';
+import { Button } from './Button';
+export { Button } from './Button';
 
-define(Button);
+define( Button );

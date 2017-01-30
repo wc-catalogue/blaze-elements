@@ -18,7 +18,7 @@ type EventProps = {
   onFocus?: typeof HTMLElement.prototype.onfocus,
   onBlur?: typeof HTMLElement.prototype.onblur,
   onInput?: typeof HTMLElement.prototype.oninput,
-  onChange?: (ev: CustomEvent) => void,
+  onChange?: ( ev: CustomEvent ) => void,
 };
 type Props = {
   value: string,
@@ -33,27 +33,27 @@ export class Input extends Component<InputProps> {
   static get is() { return 'bl-input'; }
   static get props() {
     return {
-      value: prop.string({
+      value: prop.string( {
         attribute: true
       }),
-      valid: prop.string({
+      valid: prop.string( {
         attribute: true
       }),
-      placeholder: prop.string({
+      placeholder: prop.string( {
         attribute: true
       }),
-      disabled: prop.boolean({
+      disabled: prop.boolean( {
         attribute: true
       }),
-      type: prop.string({
+      type: prop.string( {
         attribute: true
       }),
-      inputSize: prop.string({
+      inputSize: prop.string( {
         attribute: true
       }),
     };
   }
-  static get events(){
+  static get events() {
     return {
       change: 'change',
     };
@@ -66,26 +66,19 @@ export class Input extends Component<InputProps> {
   type = 'text';
   disabled: boolean;
 
+  // @FIXME this should be private
   inputElement: HTMLInputElement;
 
-  private propagateOnChange(event: Event) {
-    this.setValue();
-    emit(this, Input.events.change); // emit change event on root element
-  }
-
-  private setValue() {
-    this.value = this.inputElement.value;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.propagateOnChange = this.propagateOnChange.bind(this);
-    this.setValue = this.setValue.bind(this);
+  constructor() {
+    super();
+    this.propagateOnChange = this.propagateOnChange.bind( this );
+    this.setValue = this.setValue.bind( this );
+    this.setInerInputRef = this.setInerInputRef.bind( this );
   }
 
   renderCallback() {
     const { valid, value, placeholder, disabled, inputSize, type } = this;
-    const sizeClass = cssClassForSize(inputSize);
+    const sizeClass = cssClassForSize( inputSize );
     const className = css(
       'c-field',
       sizeClass,
@@ -98,7 +91,7 @@ export class Input extends Component<InputProps> {
     return [
       <style>{styles}</style>,
       <input
-        ref={(_ref: HTMLInputElement) => this.inputElement = _ref}
+        ref={this.setInerInputRef}
         className={className}
         type={type}
         value={value}
@@ -108,6 +101,18 @@ export class Input extends Component<InputProps> {
         disabled={disabled}
       />
     ];
+  }
+
+  private propagateOnChange( event: Event ) {
+    this.setValue();
+    emit( this, Input.events.change ); // emit change event on root element
+  }
+
+  private setValue() {
+    this.value = this.inputElement.value;
+  }
+  private setInerInputRef( ref: HTMLInputElement ) {
+    this.inputElement = ref;
   }
 }
 

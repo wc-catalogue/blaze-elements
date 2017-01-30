@@ -10,7 +10,7 @@ export class NavContent extends Component<NavContentProps> {
   static get is() { return 'bl-nav-content'; }
   static get props() {
     return {
-      inline: prop.boolean({
+      inline: prop.boolean( {
         attribute: true
       }),
     };

@@ -21,10 +21,10 @@ export class Drawer extends Component<DrawerProps> {
   static get is() { return 'bl-drawer'; }
   static get props() {
     return {
-      position: prop.string({
+      position: prop.string( {
         attribute: true
       }),
-      visible: prop.boolean({
+      visible: prop.boolean( {
         attribute: true
       })
     };

@@ -5,31 +5,27 @@ import { emit } from 'skatejs';
 
 describe( Collapsible.is, () => {
 
-  it( 'should render closed', () => {
+  it( 'should render closed', () =>
 
-    return mount(
+    mount(
       <Collapsible>
         <span slot="title">Some <strong>Name</strong></span>
         <div>
           Some first content <strong>!!!</strong>
         </div>
       </Collapsible>
-    ).wait((element) => !element.has( 'div.c-card__item' ));
+    ).wait(( element ) => !element.has( 'div.c-card__item' ) ) );
 
-  });
+  it( 'should open when isOpened present', () =>
 
-  it( 'should open when isOpened present', () => {
-
-    return mount(
+    mount(
       <Collapsible isOpened>
         <span slot="title">Some <strong>Name</strong></span>
         <div>
           Some first content <strong>!!!</strong>
         </div>
       </Collapsible>
-    ).wait((element) => element.has( 'div.c-card__item' ));
-
-  });
+    ).wait(( element ) => element.has( 'div.c-card__item' ) ) );
 
   it( 'should open proper collapsible', ( done ) => {
 
@@ -48,39 +44,38 @@ describe( Collapsible.is, () => {
           </div>
         </Collapsible>
       </div>
-    ).waitFor((element) => {
-      return (
-        !!element.one('#firstCollapsible').node.shadowRoot &&
-        !!element.one('#secondCollapsible').node.shadowRoot
-      );
-    }).then((element) => {
+    ).waitFor(( element ) =>
+      (
+        !!element.one( '#firstCollapsible' ).node.shadowRoot &&
+        !!element.one( '#secondCollapsible' ).node.shadowRoot
+      ) ).then(( element ) => {
 
-      const firstCollapsible = element.one('#firstCollapsible');
-      const secondCollapsible = element.one('#secondCollapsible');
+        const firstCollapsible = element.one( '#firstCollapsible' );
+        const secondCollapsible = element.one( '#secondCollapsible' );
 
-      expect(firstCollapsible.has('div.c-card__item')).to.be.false;
-      expect(secondCollapsible.has('div.c-card__item')).to.be.false;
+        expect( firstCollapsible.has( 'div.c-card__item' ) ).to.be.false;
+        expect( secondCollapsible.has( 'div.c-card__item' ) ).to.be.false;
 
-      secondCollapsible.node.addEventListener('stateChanged', function() {
+        secondCollapsible.node.addEventListener( 'stateChanged', function() {
 
-        setTimeout(function () {
+          setTimeout( function() {
 
-          expect(firstCollapsible.has('div.c-card__item')).to.be.false;
-          expect(secondCollapsible.has('div.c-card__item')).to.be.true;
+            expect( firstCollapsible.has( 'div.c-card__item' ) ).to.be.false;
+            expect( secondCollapsible.has( 'div.c-card__item' ) ).to.be.true;
 
-          done();
+            done();
+
+          });
 
         });
 
+        emit(
+          secondCollapsible.one( 'label.c-card__item' ).node,
+          'click',
+          { composed: false }
+        );
+
       });
-
-      emit(
-        secondCollapsible.one('label.c-card__item').node,
-        'click',
-        {composed: false}
-      );
-
-    });
 
   });
 

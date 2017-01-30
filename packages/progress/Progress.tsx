@@ -1,7 +1,7 @@
-import { h, Component, prop, emit } from 'skatejs';
+import { h, Component, prop } from 'skatejs';
 import styles from './Progress.scss';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
-import {Size, cssClassForSize} from '../_helpers/sizes';
+import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
+import { Size, cssClassForSize } from '../_helpers/sizes';
 import { css } from '../_helpers/css';
 
 
@@ -17,16 +17,16 @@ export class Progress extends Component<ProgressProps> {
   static get is() { return 'bl-progress'; }
   static get props() {
     return {
-      value: prop.number({
+      value: prop.number( {
         attribute: true
       }),
-      color: prop.string({
+      color: prop.string( {
         attribute: true
       }),
-      displaySize: prop.string({
+      displaySize: prop.string( {
         attribute: true
       }),
-      rounded: prop.boolean({
+      rounded: prop.boolean( {
         attribute: true
       })
     };
@@ -40,7 +40,7 @@ export class Progress extends Component<ProgressProps> {
   renderCallback() {
     const { color, displaySize, value, rounded } = this;
 
-    const sizeClass = cssClassForSize(displaySize);
+    const sizeClass = cssClassForSize( displaySize );
     const className = css(
       'c-progress',
       sizeClass,
@@ -49,7 +49,7 @@ export class Progress extends Component<ProgressProps> {
       }
     );
 
-    const colorClass = cssClassForColorType('c-progress__bar', color);
+    const colorClass = cssClassForColorType( 'c-progress__bar', color );
     const barClassName = css(
       'c-progress__bar',
       colorClass

@@ -23,7 +23,7 @@ export class Bubble extends Component<BubbleProps> {
   static get props() {
     return {
       type: prop.string(),
-      isDisplayed: prop.boolean({
+      isDisplayed: prop.boolean( {
         attribute: true
       }),
       disableAutoShowHide: prop.boolean()
@@ -34,22 +34,10 @@ export class Bubble extends Component<BubbleProps> {
   isDisplayed = false;
   disableAutoShowHide = false;
 
-  private handleMouseOver() {
-    if ( !this.disableAutoShowHide ) {
-      this.isDisplayed = true;
-    }
-  }
-
-  private handleMouseLeave() {
-    if ( !this.disableAutoShowHide ) {
-      this.isDisplayed = false;
-    }
-  }
-
   connectedCallback() {
     super.connectedCallback();
-    this.handleMouseOver = this.handleMouseOver.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleMouseOver = this.handleMouseOver.bind( this );
+    this.handleMouseLeave = this.handleMouseLeave.bind( this );
   }
 
   renderCallback() {
@@ -66,16 +54,41 @@ export class Bubble extends Component<BubbleProps> {
     return [
       <style>{styles}</style>,
       isDisplayed
-        ? <div tabIndex={0} className={'bubble-wrapper'} onMouseleave={this.handleMouseLeave} onBlur={this.handleMouseLeave}>
-            <slot name="handle"></slot>
+        ? (
+          <div
+            tabIndex={0}
+            className={'bubble-wrapper'}
+            onMouseleave={this.handleMouseLeave}
+            onBlur={this.handleMouseLeave}
+          >
+            <slot name="handle" />
             <div className={className}>
-              <slot></slot>
+              <slot />
             </div>
+          </div> )
+        : (
+          <div
+            tabIndex={0}
+            className={'bubble-wrapper'}
+            onMouseover={this.handleMouseOver}
+            onFocus={this.handleMouseOver}
+          >
+            <slot name="handle" />
           </div>
-        : <div tabIndex={0} className={'bubble-wrapper'} onMouseover={this.handleMouseOver} onFocus={this.handleMouseOver}>
-            <slot name="handle"></slot>
-          </div>
+        )
     ];
+  }
+
+  private handleMouseOver() {
+    if ( !this.disableAutoShowHide ) {
+      this.isDisplayed = true;
+    }
+  }
+
+  private handleMouseLeave() {
+    if ( !this.disableAutoShowHide ) {
+      this.isDisplayed = false;
+    }
   }
 
 }

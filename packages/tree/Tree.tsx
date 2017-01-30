@@ -1,7 +1,7 @@
 import styles from './Tree.scss';
 import { h, Component } from 'skatejs';
 
-interface TreeProps {}
+interface TreeProps { }
 
 export class Tree extends Component<TreeProps> {
 

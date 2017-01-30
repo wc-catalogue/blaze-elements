@@ -29,7 +29,10 @@ type Formatters = {
   // a.m., p.m.
   'aa': FormatterFn,
 };
-type OrdinalFormatterFn = ( date: Date, formatters: {[P in OrdinalFormattersRawKeys]: (date: Date) => number} ) => string;
+type OrdinalFormatterFn = (
+  date: Date,
+  formatters: {[ P in OrdinalFormattersRawKeys ]: ( date: Date ) => number}
+) => string;
 type OrdinalFormattersRawKeys = 'M' | 'D' | 'DDD' | 'd' | 'Q' | 'W';
 type OrdinalFormatters = {
   'Mo': OrdinalFormatterFn,
@@ -41,17 +44,30 @@ type OrdinalFormatters = {
 };
 
 const defaultLocale: LocaleType = {
-  months3char: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  monthsFull: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  weekdays2char: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-  weekdays3char: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  weekdaysFull: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  meridiemUppercase: ['AM', 'PM'],
-  meridiemLowercase: ['am', 'pm'],
-  meridiemFull: ['a.m.', 'p.m.'],
+  months3char: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+  monthsFull: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ],
+  weekdays2char: [ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
+  weekdays3char: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
+  weekdaysFull: [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
+  meridiemUppercase: [ 'AM', 'PM' ],
+  meridiemLowercase: [ 'am', 'pm' ],
+  meridiemFull: [ 'a.m.', 'p.m.' ],
 };
 
-export function buildFormatLocale ( customLocale?: LocaleType ) {
+export function buildFormatLocale( customLocale?: LocaleType ) {
   // Note: in English, the names of days of the week and months are capitalized.
   // If you are making a new locale based on this one, check if the same is true for the language you're working on.
   // Generally, formatted dates should look like they are in the middle of a sentence,
@@ -61,46 +77,58 @@ export function buildFormatLocale ( customLocale?: LocaleType ) {
 
   const formatters: Formatters & Partial<OrdinalFormatters> = {
     // Month: Jan, Feb, ..., Dec
-    'MMM': (date: Date) => mergedLocale.months3char[date.getMonth()],
+    'MMM': ( date: Date ) => mergedLocale.months3char[ date.getMonth() ],
 
     // Month: January, February, ..., December
-    'MMMM': (date: Date) => mergedLocale.monthsFull[date.getMonth()],
+    'MMMM': ( date: Date ) => mergedLocale.monthsFull[ date.getMonth() ],
 
     // Day of week: Su, Mo, ..., Sa
-    'dd': (date: Date) => mergedLocale.weekdays2char[date.getDay()],
+    'dd': ( date: Date ) => mergedLocale.weekdays2char[ date.getDay() ],
 
     // Day of week: Sun, Mon, ..., Sat
-    'ddd': (date: Date) => mergedLocale.weekdays3char[date.getDay()],
+    'ddd': ( date: Date ) => mergedLocale.weekdays3char[ date.getDay() ],
 
     // Day of week: Sunday, Monday, ..., Saturday
-    'dddd': (date: Date) => mergedLocale.weekdaysFull[date.getDay()],
+    'dddd': ( date: Date ) => mergedLocale.weekdaysFull[ date.getDay() ],
 
     // AM, PM
-    'A': (date: Date) => (date.getHours() / 12) >= 1 ? mergedLocale.meridiemUppercase[1] : mergedLocale.meridiemUppercase[0],
+    'A': ( date: Date ) => (
+      ( date.getHours() / 12 ) >= 1
+        ? mergedLocale.meridiemUppercase[ 1 ]
+        : mergedLocale.meridiemUppercase[ 0 ]
+    ),
 
     // am, pm
-    'a': (date: Date) => (date.getHours() / 12) >= 1 ? mergedLocale.meridiemLowercase[1] : mergedLocale.meridiemLowercase[0],
+    'a': ( date: Date ) => (
+      ( date.getHours() / 12 ) >= 1
+        ? mergedLocale.meridiemLowercase[ 1 ]
+        : mergedLocale.meridiemLowercase[ 0 ]
+    ),
 
     // a.m., p.m.
-    'aa': (date: Date) => (date.getHours() / 12) >= 1 ? mergedLocale.meridiemFull[1] : mergedLocale.meridiemFull[0]
+    'aa': ( date: Date ) => (
+      ( date.getHours() / 12 ) >= 1
+        ? mergedLocale.meridiemFull[ 1 ]
+        : mergedLocale.meridiemFull[ 0 ]
+    )
   };
 
   // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
-  const ordinalFormatters: OrdinalFormattersRawKeys[] = ['M', 'D', 'DDD', 'd', 'Q', 'W'];
-  ordinalFormatters.forEach(function (formatterToken) {
+  const ordinalFormatters: OrdinalFormattersRawKeys[] = [ 'M', 'D', 'DDD', 'd', 'Q', 'W' ];
+  ordinalFormatters.forEach( function( formatterToken ) {
     const ordinalFormatterToken = `${formatterToken}o` as keyof OrdinalFormatters;
-    formatters[ordinalFormatterToken] = function (date, formatters) {
-      return ordinal(formatters[formatterToken](date));
+    formatters[ ordinalFormatterToken ] = function( date, _formatters ) {
+      return ordinal( _formatters[ formatterToken ]( date ) );
     };
   });
 
   return { formatters };
 }
 
-function ordinal (num: number): string {
+function ordinal( num: number ): string {
   const rem100 = num % 100;
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
+  if ( rem100 > 20 || rem100 < 10 ) {
+    switch ( rem100 % 10 ) {
       case 1:
         return num + 'st';
       case 2:

@@ -7,31 +7,31 @@ export class Demo extends Component<void> {
 
   renderCallback() {
     return [
-      <style></style>,
-        <fieldset>
-          <legend>{Accordion.is}</legend>
+      <style />,
+      <fieldset>
+        <legend>{Accordion.is}</legend>
 
-          <Accordion>
-            <Collapsible>
-              <span slot="title">Some <strong>Name</strong></span>
-              <div>
-                Some content <strong>!!!</strong>
-              </div>
-            </Collapsible>
-            <Collapsible isOpened>
-              <span slot="title">Some <strong>Name</strong></span>
-              <div>
-                Some content <strong>!!!</strong>
-              </div>
-            </Collapsible>
-            <Collapsible>
-              <span slot="title">Some <strong>Name</strong></span>
-              <div>
-                Some content <strong>!!!</strong>
-              </div>
-            </Collapsible>
-          </Accordion>
-        </fieldset>
+        <Accordion>
+          <Collapsible>
+            <span slot="title">Some <strong>Name</strong></span>
+            <div>
+              Some content <strong>!!!</strong>
+            </div>
+          </Collapsible>
+          <Collapsible isOpened>
+            <span slot="title">Some <strong>Name</strong></span>
+            <div>
+              Some content <strong>!!!</strong>
+            </div>
+          </Collapsible>
+          <Collapsible>
+            <span slot="title">Some <strong>Name</strong></span>
+            <div>
+              Some content <strong>!!!</strong>
+            </div>
+          </Collapsible>
+        </Accordion>
+      </fieldset>
     ];
   }
 }

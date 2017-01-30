@@ -19,11 +19,12 @@ export class Demo extends Component<void> {
 
   renderCallback() {
     return [
-      <style type="text/css"></style>,
+      <style />,
       <fieldset>
         <legend>{Drawer.is}</legend>
         <p>
-          Your basic drawer will appear from the selected position of the container. The container should have overflow:hidden or you'll see the drawer sliding around.
+          Your basic drawer will appear from the selected position of the container.
+          The container should have overflow:hidden or you'll see the drawer sliding around.
         </p>
         <p>
           To hide drawer remove flag 'visible'

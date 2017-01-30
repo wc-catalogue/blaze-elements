@@ -9,11 +9,6 @@ interface TagProps {
 
 export class Tag extends Component<TagProps> {
 
-  constructor() {
-    super();
-    this.handleClick = this.handleClick.bind(this);
-  }
-
   static get is() { return 'bl-tag'; }
   static get events() {
     return {
@@ -22,7 +17,7 @@ export class Tag extends Component<TagProps> {
   }
   static get props() {
     return {
-      label: prop.string({
+      label: prop.string( {
         attribute: true
       })
     };
@@ -30,12 +25,9 @@ export class Tag extends Component<TagProps> {
 
   label = '';
 
-  private handleClick() {
-    emit( this, Tag.events.TAG_CLOSE, {
-      detail: {
-        tag: this
-      }
-    } );
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind( this );
   }
 
   renderCallback() {
@@ -44,11 +36,20 @@ export class Tag extends Component<TagProps> {
     return [
       <style>{styles}</style>,
       <button type="button" class="c-button c-tag">
-        { label }
+        {label}
         <span class="c-tag__close" onClick={this.handleClick}>×</span>
       </button>
     ];
   }
+
+  private handleClick() {
+    emit( this, Tag.events.TAG_CLOSE, {
+      detail: {
+        tag: this
+      }
+    });
+  }
+
 
 }
 

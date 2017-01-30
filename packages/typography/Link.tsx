@@ -1,5 +1,5 @@
 import { h, Component, prop } from 'skatejs';
-import {ColorType, cssClassForColorType} from '../_helpers/colorTypes';
+import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
 import style from './Link.scss';
 import { css } from '../_helpers/css';
 
@@ -28,28 +28,28 @@ export class Link extends Component<LinkProps> {
     return {
       href: prop.string( {
         attribute: true
-      } ),
+      }),
       download: prop.string( {
         attribute: true
-      } ),
+      }),
       hreflang: prop.string( {
         attribute: true
-      } ),
+      }),
       referrerpolicy: prop.string( {
         attribute: true
-      } ),
+      }),
       rel: prop.string( {
         attribute: true
-      } ),
+      }),
       target: prop.string( {
         attribute: true
-      } ),
+      }),
       type: prop.string( {
         attribute: true
-      } ),
+      }),
       color: prop.string( {
         attribute: true
-      } )
+      })
     };
   }
 
@@ -64,8 +64,8 @@ export class Link extends Component<LinkProps> {
   renderCallback() {
 
     const { href, download, hreflang, rel, target, type, color } = this;
-    const colorClass = cssClassForColorType('c-link', color);
-    const className = css('c-link', colorClass);
+    const colorClass = cssClassForColorType( 'c-link', color );
+    const className = css( 'c-link', colorClass );
 
     return [
       <style>{style}</style>,

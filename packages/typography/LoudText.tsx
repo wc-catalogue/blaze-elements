@@ -7,7 +7,7 @@ interface LoudTextProps {
 }
 
 export class LoudText extends Component<LoudTextProps> {
-  static get is(){ return 'bl-loud-text'; }
+  static get is() { return 'bl-loud-text'; }
 
   renderCallback() {
     const className = css(
@@ -16,7 +16,7 @@ export class LoudText extends Component<LoudTextProps> {
     return [
       <style>{styles}</style>,
       <span className={className}>
-        <slot/>
+        <slot />
       </span>
     ];
   }

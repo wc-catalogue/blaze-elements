@@ -7,7 +7,7 @@ interface ParagraphProps {
 }
 
 export class Paragraph extends Component<ParagraphProps> {
-  static get is(){ return 'bl-paragraph'; }
+  static get is() { return 'bl-paragraph'; }
 
   renderCallback() {
     const className = css(
@@ -16,7 +16,7 @@ export class Paragraph extends Component<ParagraphProps> {
     return [
       <style>{styles}</style>,
       <p className={className}>
-        <slot/>
+        <slot />
       </p>
     ];
   }

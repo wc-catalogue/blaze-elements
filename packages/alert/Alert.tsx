@@ -29,31 +29,27 @@ export class Alert extends Component<AlertProps> {
   static get is() { return 'bl-alert'; }
   static get props() {
     return {
-      color: prop.string({
+      color: prop.string( {
         attribute: true
       }),
-      isOpen: prop.boolean({
+      isOpen: prop.boolean( {
         attribute: true
       })
     };
   }
-  static get events(){
+  static get events() {
     return {
       alertClose: 'alertClose'
     };
   }
 
-  isOpen? = false;
+  isOpen?= false;
   color?: ColorType;
-
-  private handleClose = () => {
-    emit(this, Alert.events.alertClose);
-  }
 
   renderCallback() {
     const { color, isOpen } = this;
-    const colorClass = cssClassForColorType('c-alert', color);
-    const className = css('c-alert', colorClass);
+    const colorClass = cssClassForColorType( 'c-alert', color );
+    const className = css( 'c-alert', colorClass );
 
     return [
       <style>{styles}</style>,
@@ -64,6 +60,10 @@ export class Alert extends Component<AlertProps> {
         </div>
       )
     ];
+  }
+
+  private handleClose = () => {
+    emit( this, Alert.events.alertClose );
   }
 
 }

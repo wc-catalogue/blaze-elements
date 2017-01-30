@@ -11,6 +11,9 @@
   "scripts": {
     "postinstall": "lerna bootstrap",
     "packagelist": "node toolbelt/generate-packages-list.js",
+    "ts:lint": "tslint \"packages/**/*.tsx\" \"packages/**/*.ts\"",
+    "ts:lint:fix": "yarn ts:lint -- --fix",
+    "ts:format": "tsfmt --replace packages/**/*.ts packages/**/*.tsx",
     "start": "npm run packagelist && webpack-dev-server --env.dev --hot --host 0.0.0.0",
     "start:prod": "pushstate-server dist/",
     "test": "npm run build:test && toolbelt/test.sh -l firefox",
@@ -18,7 +21,10 @@
     "test:watch:firefox": "concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html toolbelt/test.sh -p -l firefox\"",
     "build": "rimraf dist && npm run packagelist && webpack --env.prod",
     "build:test": "rimraf dist && npm run packagelist && webpack --env.test",
-    "build:test:watch": "npm run packagelist && webpack-dev-server --env.test"
+    "build:test:watch": "npm run packagelist && webpack-dev-server --env.test",
+    "commit": "git-cz",
+    "commitmsg": "validate-commit-msg",
+    "precommit": "yarn ts:lint && yarn test"
   },
   "dependencies": {
     "blaze": "^3.2.0",
@@ -34,13 +40,16 @@
     "@types/sinon-chai": "^2.7.27",
     "awesome-typescript-loader": "^3.0.0-beta.18",
     "bore": "^1.1.1",
+    "commitizen": "^2.9.5",
     "concurrently": "^3.1.0",
     "css-loader": "^0.26.1",
     "expect": "^1.20.2",
+    "cz-lerna-changelog": "1.0.0",
     "favicons-webpack-plugin": "^0.0.7",
     "file-loader": "^0.10.0",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.26.0",
+    "husky": "^0.13.1",
     "json-loader": "^0.5.4",
     "lerna": "2.0.0-beta.32",
     "lodash.capitalize": "^4.2.1",
@@ -52,13 +61,16 @@
     "style-loader": "^0.13.1",
     "test-fixture": "^1.0.2",
     "to-string-loader": "^1.1.5",
-    "tslint": "^4.3.1",
+    "tslint": "^4.4.2",
     "tslint-loader": "^3.3.0",
+    "tslint-react": "^2.3.0",
     "typescript": "^2.1.4",
+    "typescript-formatter": "^4.0.1",
+    "validate-commit-msg": "^2.11.1",
     "wct-sauce": "2.0.0-pre.1",
     "web-component-tester": "^5.0.0",
     "webpack": "beta",
-    "webpack-config-utils": "^2.1.0",
+    "webpack-config-utils": "^2.3.0",
     "webpack-dev-server": "beta"
   },
   "packages": [
@@ -83,5 +95,14 @@
     "tooltip",
     "tree",
     "typography"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "maxSubjectLength": 120
+    }
+  }
 }

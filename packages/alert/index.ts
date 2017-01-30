@@ -1,9 +1,9 @@
-import {define} from 'skatejs';
+import { define } from 'skatejs';
 
-import {Alert} from './Alert';
+import { Alert } from './Alert';
 
 // export for public access to Skate Class
-export {Alert} from './Alert';
+export { Alert } from './Alert';
 
 // register WebComponent by our name
-define(Alert);
+define( Alert );

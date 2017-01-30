@@ -1,4 +1,4 @@
-import{ h, Component } from 'skatejs';
+import { h, Component } from 'skatejs';
 import { Breadcrumb } from './Breadcrumb';
 import { BreadcrumbItem } from './Breadcrumb-item';
 
@@ -7,7 +7,7 @@ export class Demo extends Component<void> {
 
   renderCallback() {
     return [
-      <style></style>,
+      <style />,
       <fieldset>
         <legend>{Breadcrumb.is}</legend>
         <div>

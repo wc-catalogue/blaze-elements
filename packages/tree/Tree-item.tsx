@@ -11,7 +11,7 @@ export class TreeItem extends Component<TreeItemProps> {
 
   static get props() {
     return {
-      isOpen: prop.boolean({
+      isOpen: prop.boolean( {
         attribute: true
       }),
     };
@@ -19,18 +19,14 @@ export class TreeItem extends Component<TreeItemProps> {
 
   isOpen: boolean;
 
-  private handleClick() {
-    this.isOpen = !this.isOpen;
-  }
-
   connectedCallback() {
     super.connectedCallback();
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind( this );
   }
 
   renderCallback() {
     const { isOpen } = this;
-    const hasSubItem = this.getElementsByTagName('bl-tree').length > 0;
+    const hasSubItem = this.getElementsByTagName( 'bl-tree' ).length > 0;
 
     const className = css(
       'c-tree__item', {
@@ -41,11 +37,16 @@ export class TreeItem extends Component<TreeItemProps> {
     return [
       <style>{styles}</style>,
       <li className={className} onClick={this.handleClick}>
-        <slot></slot>
-        { isOpen ? <slot name="subItems" /> : null }
+        <slot />
+        {isOpen ? <slot name="subItems" /> : null}
       </li>
     ];
   }
+
+  private handleClick() {
+    this.isOpen = !this.isOpen;
+  }
+
 }
 
 customElements.define( TreeItem.is, TreeItem );

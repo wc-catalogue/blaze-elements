@@ -1,18 +1,18 @@
 import styles from './Breadcrumb.scss';
 import { h, Component } from 'skatejs';
-import {BreadcrumbItem} from './Breadcrumb-item';
+import { BreadcrumbItem } from './Breadcrumb-item';
 
-interface BreadcrumbProps {}
+interface BreadcrumbProps { }
 
 export class Breadcrumb extends Component<BreadcrumbProps> {
 
   static get is() { return 'bl-breadcrumb'; }
 
   renderCallback() {
-    const items = this.getElementsByTagName('bl-breadcrumb-item');
+    const items = this.getElementsByTagName( 'bl-breadcrumb-item' );
 
     if ( items.length > 0 ) {
-      const lastItem = items.item(items.length - 1) as BreadcrumbItem;
+      const lastItem = items.item( items.length - 1 ) as BreadcrumbItem;
       lastItem.isLast = true;
     }
 
