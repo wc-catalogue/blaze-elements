@@ -3,7 +3,7 @@ import { define } from 'skatejs';
 import { Button } from '../../button/Button';
 
 export class CalendarButton extends Button {
-  static get is() { return 'bl-calendar-button' }
+  static get is() { return 'bl-calendar-button'; }
   block = true;
 }
-define( CalendarButton )
+define( CalendarButton );
