@@ -508,9 +508,9 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-bore@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/bore/-/bore-1.1.1.tgz#3a3f65ef5481d16acd3c7562ba7657845c8d8160"
+"bore@https://github.com/hopkins-tk/bore.git#wrapper-fix-build":
+  version ""
+  resolved "https://github.com/hopkins-tk/bore.git#614465687e0f570806b51a49ca34b2db3cace2da"
   dependencies:
     skatejs-dom-diff "^0.4.2"
 
