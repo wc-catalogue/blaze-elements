@@ -1,5 +1,5 @@
 import * as expect from 'expect';
-import { h } from '../utils';
+import { h } from '../_helpers';
 import { mount } from 'bore';
 
 import { Button } from './index';
