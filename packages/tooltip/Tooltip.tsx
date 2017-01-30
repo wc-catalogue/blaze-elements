@@ -9,12 +9,10 @@ const TooltipTypes = {
   bottom: 'bottom',
 };
 
-type TooltipTypesType = keyof typeof TooltipTypes;
-
 // public
 type TooltipProps = {
-  type?: TooltipTypesType,
-  label: string,
+  type?: keyof typeof TooltipTypes,
+  label?: string,
 };
 
 declare global {
@@ -63,7 +61,7 @@ export class Tooltip extends Component<TooltipProps> {
         className={className}
         aria-label={label}
       >
-        <slot></slot>
+        <slot />
       </span>
     ];
   }

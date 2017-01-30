@@ -1,4 +1,6 @@
-import { h, mount } from 'bore';
+import { h } from '../_helpers';
+import { mount } from 'bore';
+import * as expect from 'expect';
 import { Tooltip } from './index';
 
 describe( Tooltip.is, () => {
@@ -6,7 +8,7 @@ describe( Tooltip.is, () => {
   describe( `Custom element`, () => {
     it( `should be registered`, () => {
 
-      expect( customElements.get( Tooltip.is ) ).to.equal( Tooltip );
+      expect( customElements.get( Tooltip.is ) ).toBe( Tooltip );
 
     });
 
@@ -14,9 +16,9 @@ describe( Tooltip.is, () => {
 
       return mount(
         <bl-tooltip label="hello"/>
-      ).wait( element => {
+      ).wait( ( element ) => {
 
-        expect( element.node.localName ).to.equal( Tooltip.is );
+        expect( element.node.localName ).toBe( Tooltip.is );
 
       });
 
@@ -28,46 +30,66 @@ describe( Tooltip.is, () => {
         <Tooltip label="hello" />
       ).wait(( element ) => {
 
-        expect( element.has('.c-tooltip') ).to.equal( true );
+        expect( element.has('.c-tooltip') ).toBe( true );
 
       });
 
     });
   });
 
-  describe( 'API', () => {
+  describe( `API`, () => {
 
-    it( 'should render with correct label', () => {
+    describe( `[label]`, () => {
 
-      return mount(
-        '<bl-tooltip label="hello <> Hi"></bl-tooltip>'
-      ).wait(( element ) => {
+      it( `should render with correct label`, () => {
 
-        expect( element.one('span').node.getAttribute('aria-label') ).to.equal( 'hello <> Hi' );
+        return mount(
+          <bl-tooltip label="hello <&> Hi" />
+        ).wait(( element ) => {
+
+          expect( element.one('span').node.getAttribute('aria-label') ).toBe( 'hello <&> Hi' );
+
+        });
+
+      });
+
+      it( `should render with correct label using property`, () => {
+
+        return mount(
+          <bl-tooltip label="hello <&> Hi" />
+        ).wait( ( element ) => {
+
+          expect( element.one('span').node.getAttribute('aria-label') ).toBe( 'hello <&> Hi' );
+
+        });
 
       });
 
     });
 
-    it( 'should render with default position', () => {
+    describe( `[color]`, () => {
 
-      return mount(
-        <Tooltip label="hello" />
-      ).wait(( element ) => {
+      it( `should render with default position`, () => {
 
-        expect( element.has('.c-tooltip--right') ).to.equal( true );
+        return mount(
+          <bl-tooltip label="hello" />
+        ).wait( ( element ) => {
+
+          expect( element.has('.c-tooltip--right') ).toBe( true );
+
+        });
 
       });
 
-    });
+      it( 'should render with top position', () => {
 
-    it( 'should render with top position', () => {
+        return mount(
+          <bl-tooltip label="hello" type="top" />
+        ).wait( ( element ) => {
 
-      return mount(
-        '<bl-tooltip label="hello" type="top"></bl-tooltip>'
-      ).wait((element) => {
+          expect( element.has('.c-tooltip--top') ).toBe( true );
 
-        expect( element.has('.c-tooltip--top') ).to.equal( true );
+        });
 
       });
 
