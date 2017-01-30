@@ -152,4 +152,5 @@ interface Document {
 
 // Tests
 // we are not using Chai anymore. We use Expect which has Jest style assertions
-// declare var expect: Chai.ExpectStatic;
+// @TODO remove this once all test are refactored to use `epxect` instead of chai
+declare var expect: Chai.ExpectStatic;
