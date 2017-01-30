@@ -1,9 +1,6 @@
 const packageJson = require( './package.json' );
 
 const config = {
-  extraScripts: [
-
-  ],
   "environmentScripts": [
     'stacky/browser.js',
     'async/lib/async.js',

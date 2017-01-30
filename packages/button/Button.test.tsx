@@ -10,12 +10,12 @@ describe( `Custom element`, () => {
   it( `should be registered`, () => {
     expect( customElements.get( Button.is ) ).toBe( Button );
   });
-  it( `should render via JSX IntrinsicElement `, () => {
+  it( `should render via JSX IntrinsicElement`, () => {
     return mount( <bl-button>Hello</bl-button> ).wait( element => {
       expect( element.node.localName ).toBe( Button.is );
     });
   });
-  it( `should render `, () => {
+  it( `should render`, () => {
     return mount( <Button /> ).wait(( element ) => {
       expect( element.has( '.c-button' ) ).toBe( true );
     });
