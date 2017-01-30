@@ -1,5 +1,6 @@
 import * as expect from 'expect';
-import { h, mount } from 'bore';
+import { h } from '../utils';
+import { mount } from 'bore';
 
 import { Button } from './index';
 
@@ -26,13 +27,13 @@ describe( `API`, () => {
   describe( `[color]`, () => {
 
     it( `should render no color class on button by default`, () => {
-      return mount( `<bl-button>huhuhu</bl-button>` ).wait(( element ) => {
-        expect( element.one( 'button' ).node.className ).toBe( 'c-button' );
+      return mount(<bl-button attributes={{color:'brand'} as any}>huhuh</bl-button>).wait(( element ) => {
+        expect( element.one( 'button' ).node.className ).toContain( 'c-button' );
       });
     });
 
     it( `should render color class on button`, () => {
-      return mount( `<bl-button color="info"></bl-button>` ).wait(( element ) => {
+      return mount( <bl-button attributes={ { color: 'info' } as any }></bl-button> ).wait(( element ) => {
         expect( element.has( '.c-button--info' ) ).toBe( true );
       });
     });
