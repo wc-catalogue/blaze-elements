@@ -9,10 +9,10 @@ export function h( name: any, attrs: { [ key: string ]: any }, ...chren: any[] )
   return node;
 }
 
-function startsWith (key:string, val:string) {
+function startsWith (key: string, val: string) {
   return key.indexOf(val) === 0;
 }
-function shouldBeAttr (key:string, val:string) {
+function shouldBeAttr (key: string, val: string) {
   return startsWith(key, 'aria-') || startsWith(key, 'data-') || isAttribute(key);
 }
 function isAttribute( key: string ) {
