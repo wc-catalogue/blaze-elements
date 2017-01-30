@@ -3,7 +3,7 @@
 What should be tested and how:
 
 1. Component registration to `customElements` registry and initial render
-2. API - primarily props. attributes if we support it. ( if we use attributes reflection jsut test string html version for that API)
+2. API - primarily props. attributes if we support it. ( if we use attributes reflection just test string html version for that API)
 
 ## Example ( Button ):
 
@@ -20,11 +20,13 @@ describe( Button.is, () => {
     it( `should be registered`, () => {
       expect( customElements.get( Button.is ) ).toBe( Button );
     });
+
     it( `should render via JSX IntrinsicElement `, () => {
       return mount( <bl-button>Hello</bl-button> ).wait( element => {
         expect( element.node.localName ).toBe( Button.is );
       });
     });
+
     it( `should render `, () => {
       return mount( <Button /> ).wait(( element ) => {
         expect( element.has( '.c-button' ) ).toBe( true );
@@ -49,11 +51,8 @@ describe( Button.is, () => {
           expect( element.has( '.c-button--info' ) ).toBe( true );
         });
       });
-
     });
-
   });
-
 });
 ```
 
