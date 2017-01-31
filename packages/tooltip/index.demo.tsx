@@ -1,5 +1,5 @@
 import { h, Component } from 'skatejs';
-import { Tooltip } from './Tooltip';
+import { Tooltip } from './index';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-tooltip-demo'; }

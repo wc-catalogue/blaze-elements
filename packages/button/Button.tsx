@@ -32,22 +32,22 @@ export class Button extends Component<ButtonProps> {
       disabled: prop.boolean( {
         attribute: true
       }),
-      block: prop.boolean({
+      block: prop.boolean( {
         attribute: {
           source: true
         }
       }),
-      close: prop.boolean({
+      close: prop.boolean( {
         attribute: {
           source: true
         }
       }),
-      ghost: prop.boolean({
+      ghost: prop.boolean( {
         attribute: {
           source: true
         }
       }),
-      color: prop.string({
+      color: prop.string( {
         attribute: {
           source: true
         }
