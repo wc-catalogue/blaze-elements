@@ -81,7 +81,7 @@ describe( Tooltip.is, () => {
 
       });
 
-      it( 'should render with top position', () => {
+      it( `should render with top position`, () => {
 
         return mount(
           <bl-tooltip label="hello" type="top" />
