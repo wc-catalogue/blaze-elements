@@ -10,73 +10,85 @@ describe( Badge.is, () => {
 
       expect( customElements.get( Badge.is ) ).toBe( Badge );
 
-    } );
+    });
 
     it( `should render via JSX IntrinsicElement`, () => {
 
       return mount(
-        <bl-badge/>
-      ).wait( element => {
+        <bl-badge />
+      ).wait(( element ) => {
 
         expect( element.node.localName ).toBe( Badge.is );
 
-      } );
+      });
 
-    } );
+    });
 
     it( `should render via JSX class`, () => {
 
       return mount(
-        <Badge/>
-      ).wait( ( element ) => {
+        <Badge />
+      ).wait(( element ) => {
 
         expect( element.has( '.c-badge' ) ).toBe( true );
 
-      } );
+      });
 
-    } );
-  } );
+    });
+  });
 
   describe( 'API', () => {
 
-    it( 'should render with correct color', () => {
+    describe( `[color]`, () => {
 
-      return mount(
-        <bl-badge attributes={{color:'warning'} as any}></bl-badge>
-      ).wait( ( element ) => {
+      it( 'should render with correct color', () => {
 
-        expect( element.has( '.c-badge--warning' ) ).toBe( true );
+        return mount(
+          <bl-badge color="warning" />
+        ).wait(( element ) => {
 
-      } );
+          expect( element.has( '.c-badge--warning' ) ).toBe( true );
 
-    } );
+        });
 
-    it( 'should render ghosted', () => {
+      });
 
-      return mount(
-        <bl-badge ghost></bl-badge>
-      ).wait( ( element ) => {
+    });
 
-        expect( element.has( '.c-badge--ghost' ) ).toBe( true );
+    describe( `[ghost]`, () => {
 
-      } );
+      it( 'should render ghosted', () => {
 
-    } );
+        return mount(
+          <bl-badge ghost />
+        ).wait(( element ) => {
 
-    it( 'should render rounded', () => {
+          expect( element.has( '.c-badge--ghost' ) ).toBe( true );
 
-      return mount(
-        <bl-badge rounded></bl-badge>
-      ).wait( ( element ) => {
+        });
 
-        expect( element.has( '.c-badge--rounded' ) ).toBe( true );
+      });
 
-      } );
+    });
 
-    } );
+    describe( `[rounded]`, () => {
 
-  } );
+      it( 'should render rounded', () => {
 
-} );
+        return mount(
+          <bl-badge rounded />
+        ).wait(( element ) => {
+
+          expect( element.has( '.c-badge--rounded' ) ).toBe( true );
+
+        });
+
+      });
+
+    });
+
+  });
+
+});
 
 

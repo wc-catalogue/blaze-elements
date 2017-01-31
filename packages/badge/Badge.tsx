@@ -22,17 +22,17 @@ export class Badge extends Component<BadgeProps> {
   static get is() { return 'bl-badge'; }
   static get props() {
     return {
-      color: prop.string({
+      color: prop.string( {
         attribute: {
           source: true
         }
       }),
-      rounded: prop.boolean({
+      rounded: prop.boolean( {
         attribute: {
           source: true
         }
       }),
-      ghost: prop.boolean({
+      ghost: prop.boolean( {
         attribute: {
           source: true
         }
@@ -61,7 +61,7 @@ export class Badge extends Component<BadgeProps> {
 
     return [
       <style>{styles}</style>,
-      <span className={className}><slot/></span>
+      <span className={className}><slot /></span>
     ];
   }
 }
