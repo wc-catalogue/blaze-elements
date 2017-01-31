@@ -90,5 +90,3 @@ describe( Badge.is, () => {
   });
 
 });
-
-
