@@ -14,89 +14,216 @@
 
 ## Quick start
 
+You can install whole blaze-elements suite or just specific component/packages.
+
+Install the library
+
+`yarn add blaze-elements`.
+
+From user perspective you can use whole lib or separate packages in 2 modes:
+
+1. traditional widget style ( standalone web component )
+2. in SPA ( raw Web component with peerDependency on Skate )
+
+### 1. Widget Style ( pure Web Component + all dependecies bundled )
+
+Then simply include the correct files, write some HTML, and you are done!
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blaze Elements for the web</title>
+    <script src="node_modules/blaze-elements/dist/index-with-deps.min.js"></script>
+  </head>
+  <body>
+    <bl-app-layout>
+
+      <div slot="app-drawer">
+        <bl-nav>
+          <bl-nav-content><h2>Blaze App</h2></bl-nav-content>
+          <bl-nav-item>Home</bl-nav-item>
+          <bl-nav-item>About</bl-nav-item>
+        </bl-nav>
+      </div>
+
+      <div slot="app-toolbar"></div>
+
+      <main>
+        <div>
+          <label for="demo-input">Tell us how you feel!</label>
+          <bl-input id="demo-input" value="">
+        </div>
+      </main>
+    </bl-app-layout>
+
+  </body>
+</html>
+```
+
+### 2. SPA
+
 > @TODO
 
 ## Installing individual components
 
-> @TODO
+Blaze-elements is modular by design. Each component lives within its own packages
 
-## Including components
+`yarn add bl-button bl-card bl-textfield bl-typography`
 
-> @TODO
+All our components can be found in the [packages](https://github.com/wc-catalogue/blaze-elements/tree/master/packages) directory.
+Each component has a *README* documenting installation and usage.
+
+So let's say you just want to use blaze buttons
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blaze Elements for the web</title>
+    <script src="node_modules/bl-button/dist/index-with-deps.min.js"></script>
+  </head>
+  <body>
+    <bl-button color="brand">Click me</bl-button>
+  </body>
+</html>
+```
 
 ---
 
-## Usage within frameworks
+## Frameworks interop
+
+**NOTE:**
+`<Button.is></Button.is>` is the same as `<bl-button></bl-button>`
 
 ### React
 
-> @TODO
+```ts
+import {Button} from 'bl-button';
+import {Input} from 'bl-input';
 
-### Preact
+import * as React from 'react';
+import {Component} from 'react';
+import {render} from 'react-dom';
 
-> @TODO
+const mountPoint = document.getElementById('app');
 
-### Angular >=2
+type AppState = {name:string, color: string}
+class App extends Component<void,AppState> {
+  state = {
+    name: 'Jim Raynor',
+    color: 'brand'
+  }
 
-> @TODO
+  private blInputRef: Input;
+  private blButtonRef: Button;
+
+  render(){
+    return (
+      <form onSubmit={e=>console.log('submitted')}>
+        <Input.is ref={node=>this.blInputRef=node}></Input.is>
+        <Button.is ref={node=>this.blButtonRef=node} type="submit" >Submit</Button.is>
+      </form>
+    )
+  }
+  componentDidMount(){
+     this.setRefsProps();
+     this.setRefsListeners();
+  }
+  componentDidUpdate(){
+    this.setRefsProps();
+  }
+
+  private setRefsProps(){
+    this.blButtonRef.color = this.state.color;
+    this.blInputRef.value = this.state.name;
+  }
+  private setRefsListeners(){
+    this.blInputRef.addEventListener(Button.events.change, (event: CustomEvent)=>{
+        this.setState({
+          name: event.target.detail.value
+        })
+    })
+  }
+}
+
+render(<App/>,mountPoint)
+```
+
+### Preact >= 7
+
+```ts
+import {Button} from 'bl-button';
+import {Input} from 'bl-input';
+import {h,render,Component} from 'preact';
+
+const mountPoint = document.getElementById('app');
+
+type AppState = {name:string, color: string}
+class App extends Component<void,AppState> {
+  state = {
+    name: 'Jim Raynor',
+    color: 'brand'
+  }
+  render(){
+    return (
+      <form onSubmit={e=>console.log('submitted')}>
+        <Input.is
+          value={this.state.name}
+          on-change={(event:CustomEvent)=>this.setState({name:event.target.detail.value})}
+        ></Input.is>
+        <Button.is type="submit" color={this.state.color}>Submit</Button.is>
+      </form>
+    )
+  }
+}
+
+render(<App/>,mountPoint)
+```
+
+### Angular >= 2
+
+```ts
+import { Component, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+@Component({
+  selector: 'my-app',
+  template: `
+    <${Input.is}
+      [value]="name"
+      (change)="name=$event.target.detail.value"
+    ></${Input.is}>
+    <${Button.is} type="submit" [color]="color">Submit</${Button.is}>
+  `
+})
+class AppComponent {
+  name = 'Jim Raynor';
+  color = 'brand';
+}
+
+@NgModule({
+  imports: [
+    BrowserModule
+  ],
+  declarations: [
+    AppComponent
+  ],
+  bootstrap: [ AppComponent ]
+})
+
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+```
 
 ---
 
-## Development
-
-### Setup the repo:
-
-```bash
-git clone https://github.com/wc-catalogue/blaze-elements && cd $_ && yarn
-```
-
-### Run the development server for all packages:
-
-```bash
-yarn start
-
-open http://localhost:8080
-```
-
-### Run the development server for particular package:
-
-```bash
-cd packages/<elemenet-directory>
-
-yarn start
-
-open http://localhost:8080
-```
-
-### Test all packages:
-
-```bash
-# for running test once
-yarn test
-
-# for running tests in watch mode
-yarn test:watch
-
-# for running tests in watch mode for firefox only
-yarn test:watch:firefox
-```
-
-### Production Build
-```bash
-yarn build
-```
-
-### Publish to npm
-
-> NOTE: This section is for collaborators only. Contributors without repo write access can ignore this section.
-
-To release **blaze-elements**, you should perform the following steps:
-
-> @TODO
+## [Development](docs/DEVELOPER.md)
 
 ---
 
-## Packaging
+## Packaging and Usage
 
 ### `bl-button`
 
@@ -163,7 +290,7 @@ import {Button, ButtonProps} from 'bl-button/Button';
 declare global {
   namespace JSX {
     interface IntrinsicElement {
-      'my-button': ButtonProps
+      'my-button': ButtonProps & Partial<HTMLElement>
     }
   }
 }
