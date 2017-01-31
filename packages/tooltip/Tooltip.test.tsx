@@ -53,18 +53,6 @@ describe( Tooltip.is, () => {
 
       });
 
-      it( `should render with correct label using property`, () => {
-
-        return mount(
-          <bl-tooltip label="hello <&> Hi" />
-        ).wait(( element ) => {
-
-          expect( element.one( 'span' ).node.getAttribute( 'aria-label' ) ).toBe( 'hello <&> Hi' );
-
-        });
-
-      });
-
     });
 
     describe( `[color]`, () => {

@@ -12,7 +12,7 @@ const TooltipTypes = {
 // public
 type TooltipProps = {
   type?: keyof typeof TooltipTypes,
-  label?: string,
+  label: string,
 };
 
 declare global {
