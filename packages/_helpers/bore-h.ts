@@ -5,7 +5,7 @@ export function h( name: any, attrs: { [ key: string ]: any }, ...chren: any[] )
       ? ( attr( node, attrName, attrs[ attrName ] ) )
       : ( node[ attrName ] = attrs[ attrName ] )
   );
-  chren.forEach( child => node.appendChild( child instanceof Node ? child : document.createTextNode( child ) ) );
+  chren.forEach( (child) => node.appendChild( child instanceof Node ? child : document.createTextNode( child ) ) );
   return node;
 }
 
