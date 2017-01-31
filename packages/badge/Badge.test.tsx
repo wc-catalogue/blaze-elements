@@ -1,7 +1,7 @@
-import { Badge } from './index';
+import * as expect from 'expect';
 import { mount } from 'bore';
 import { h } from '../_helpers';
-import * as expect from 'expect';
+import { Badge } from './index';
 
 describe( Badge.is, () => {
 
@@ -37,11 +37,11 @@ describe( Badge.is, () => {
     });
   });
 
-  describe( 'API', () => {
+  describe( `API`, () => {
 
     describe( `[color]`, () => {
 
-      it( 'should render with correct color', () => {
+      it( `should render with correct color`, () => {
 
         return mount(
           <bl-badge color="warning" />
@@ -57,7 +57,7 @@ describe( Badge.is, () => {
 
     describe( `[ghost]`, () => {
 
-      it( 'should render ghosted', () => {
+      it( `should render ghosted`, () => {
 
         return mount(
           <bl-badge ghost />
@@ -73,7 +73,7 @@ describe( Badge.is, () => {
 
     describe( `[rounded]`, () => {
 
-      it( 'should render rounded', () => {
+      it( `should render rounded`, () => {
 
         return mount(
           <bl-badge rounded />
