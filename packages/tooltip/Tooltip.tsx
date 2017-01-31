@@ -27,13 +27,13 @@ export class Tooltip extends Component<TooltipProps> {
   static get is() { return 'bl-tooltip'; }
   static get props() {
     return {
-      type: prop.string({
+      type: prop.string( {
         attribute: {
           source: true
         },
         default: 'right'
       }),
-      label: prop.string({
+      label: prop.string( {
         attribute: {
           source: true
         }

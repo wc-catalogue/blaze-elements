@@ -1,9 +1,9 @@
-import {define} from 'skatejs';
+import { define } from 'skatejs';
 
-import {Tooltip} from './Tooltip';
+import { Tooltip } from './Tooltip';
 
 // export for public access to Skate Class
-export {Tooltip} from './Tooltip';
+export { Tooltip } from './Tooltip';
 
 // register WebComponent by our name
-define(Tooltip);
+define( Tooltip );

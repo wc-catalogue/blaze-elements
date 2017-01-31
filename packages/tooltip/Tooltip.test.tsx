@@ -15,8 +15,8 @@ describe( Tooltip.is, () => {
     it( `should render via JSX IntrinsicElement`, () => {
 
       return mount(
-        <bl-tooltip label="hello"/>
-      ).wait( ( element ) => {
+        <bl-tooltip label="hello" />
+      ).wait(( element ) => {
 
         expect( element.node.localName ).toBe( Tooltip.is );
 
@@ -30,7 +30,7 @@ describe( Tooltip.is, () => {
         <Tooltip label="hello" />
       ).wait(( element ) => {
 
-        expect( element.has('.c-tooltip') ).toBe( true );
+        expect( element.has( '.c-tooltip' ) ).toBe( true );
 
       });
 
@@ -47,7 +47,7 @@ describe( Tooltip.is, () => {
           <bl-tooltip label="hello <&> Hi" />
         ).wait(( element ) => {
 
-          expect( element.one('span').node.getAttribute('aria-label') ).toBe( 'hello <&> Hi' );
+          expect( element.one( 'span' ).node.getAttribute( 'aria-label' ) ).toBe( 'hello <&> Hi' );
 
         });
 
@@ -57,9 +57,9 @@ describe( Tooltip.is, () => {
 
         return mount(
           <bl-tooltip label="hello <&> Hi" />
-        ).wait( ( element ) => {
+        ).wait(( element ) => {
 
-          expect( element.one('span').node.getAttribute('aria-label') ).toBe( 'hello <&> Hi' );
+          expect( element.one( 'span' ).node.getAttribute( 'aria-label' ) ).toBe( 'hello <&> Hi' );
 
         });
 
@@ -73,9 +73,9 @@ describe( Tooltip.is, () => {
 
         return mount(
           <bl-tooltip label="hello" />
-        ).wait( ( element ) => {
+        ).wait(( element ) => {
 
-          expect( element.has('.c-tooltip--right') ).toBe( true );
+          expect( element.has( '.c-tooltip--right' ) ).toBe( true );
 
         });
 
@@ -85,9 +85,9 @@ describe( Tooltip.is, () => {
 
         return mount(
           <bl-tooltip label="hello" type="top" />
-        ).wait( ( element ) => {
+        ).wait(( element ) => {
 
-          expect( element.has('.c-tooltip--top') ).toBe( true );
+          expect( element.has( '.c-tooltip--top' ) ).toBe( true );
 
         });
 
