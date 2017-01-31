@@ -11,7 +11,7 @@ describe( `Custom element`, () => {
     expect( customElements.get( Button.is ) ).toBe( Button );
   });
   it( `should render via JSX IntrinsicElement`, () => {
-    return mount( <bl-button>Hello</bl-button> ).wait( element => {
+    return mount( <bl-button>Hello</bl-button> ).wait( (element) => {
       expect( element.node.localName ).toBe( Button.is );
     });
   });
@@ -27,13 +27,13 @@ describe( `API`, () => {
   describe( `[color]`, () => {
 
     it( `should render no color class on button by default`, () => {
-      return mount(<bl-button attributes={{color:'brand'} as any}>huhuh</bl-button>).wait(( element ) => {
+      return mount(<bl-button attributes={{color: 'brand'} as any}>huhuh</bl-button>).wait(( element ) => {
         expect( element.one( 'button' ).node.className ).toContain( 'c-button' );
       });
     });
 
     it( `should render color class on button`, () => {
-      return mount( <bl-button attributes={ { color: 'info' } as any }></bl-button> ).wait(( element ) => {
+      return mount( <bl-button attributes={ { color: 'info' } as any }>hello</bl-button> ).wait(( element ) => {
         expect( element.has( '.c-button--info' ) ).toBe( true );
       });
     });
