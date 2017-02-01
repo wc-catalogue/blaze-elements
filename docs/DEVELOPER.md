@@ -43,7 +43,7 @@ Fork and clone the Blaze-elements repository:
 
 ```shell
 # Clone your GitHub repository:
-git clone git@github.com:<github username>/angular.git
+git clone git@github.com:<github username>/blaze-elements.git
 
 # Go to the blaze directory:
 cd blaze-elements
