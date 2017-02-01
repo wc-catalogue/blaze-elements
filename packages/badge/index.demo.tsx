@@ -6,7 +6,6 @@ export class Demo extends Component<void> {
 
   renderCallback() {
     return [
-      <style />,
       <fieldset>
         <legend>{Badge.is}</legend>
 

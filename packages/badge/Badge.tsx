@@ -1,12 +1,21 @@
 import styles from './Badge.scss';
 import { h, Component, prop } from 'skatejs';
-import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
-import { css } from '../_helpers/css';
+import { ColorType, cssClassForColorType, css } from '../_helpers';
 
-interface BadgeProps {
+type BadgeProps = Props;
+type Props = {
   color?: ColorType,
   rounded?: boolean,
   ghost?: boolean,
+};
+
+// extend JSX.IntrinsicElements namespace with our definition
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-badge': BadgeProps & Partial<HTMLElement>
+    }
+  }
 }
 
 export class Badge extends Component<BadgeProps> {
@@ -14,13 +23,19 @@ export class Badge extends Component<BadgeProps> {
   static get props() {
     return {
       color: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       rounded: prop.boolean( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       ghost: prop.boolean( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
     };
   }
@@ -50,5 +65,3 @@ export class Badge extends Component<BadgeProps> {
     ];
   }
 }
-
-customElements.define( Badge.is, Badge );
