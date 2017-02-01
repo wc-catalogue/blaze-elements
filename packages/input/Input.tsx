@@ -1,7 +1,6 @@
 import { h, Component, prop, emit } from 'skatejs';
-import { Size, cssClassForSize } from '../_helpers/sizes';
 import styles from './Input.scss';
-import { css } from '../_helpers/css';
+import { Size, cssClassForSize, css } from '../_helpers';
 
 
 type TypesType = {
@@ -29,30 +28,52 @@ type Props = {
   type?: keyof TypesType
 };
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-input': InputProps & Partial<HTMLInputElement>
+    }
+  }
+}
+
 export class Input extends Component<InputProps> {
   static get is() { return 'bl-input'; }
+
   static get props() {
     return {
       value: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       valid: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       placeholder: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       disabled: prop.boolean( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       type: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       inputSize: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
     };
   }
+
   static get events() {
     return {
       change: 'change',
@@ -60,7 +81,7 @@ export class Input extends Component<InputProps> {
   }
 
   valid: string;
-  value = '';
+  value: string;
   inputSize: Size;
   placeholder: string;
   type = 'text';
@@ -72,8 +93,6 @@ export class Input extends Component<InputProps> {
   constructor() {
     super();
     this.propagateOnChange = this.propagateOnChange.bind( this );
-    this.setValue = this.setValue.bind( this );
-    this.setInerInputRef = this.setInerInputRef.bind( this );
   }
 
   renderCallback() {
@@ -91,12 +110,11 @@ export class Input extends Component<InputProps> {
     return [
       <style>{styles}</style>,
       <input
-        ref={this.setInerInputRef}
         className={className}
         type={type}
         value={value}
+        onInput={this.propagateOnChange}
         onChange={this.propagateOnChange}
-        onInput={this.setValue}
         placeholder={placeholder}
         disabled={disabled}
       />
@@ -104,17 +122,9 @@ export class Input extends Component<InputProps> {
   }
 
   private propagateOnChange( event: Event ) {
-    this.setValue();
-    emit( this, Input.events.change ); // emit change event on root element
+    // emit change event on root element
+    const input: Partial<HTMLInputElement> = event.target;
+    emit( this, Input.events.change, { detail: { data: input.value } });
   }
 
-  private setValue() {
-    this.value = this.inputElement.value;
-  }
-  private setInerInputRef( ref: HTMLInputElement ) {
-    this.inputElement = ref;
-  }
 }
-
-
-customElements.define( Input.is, Input );
