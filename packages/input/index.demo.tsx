@@ -27,18 +27,15 @@ export class Demo extends Component<void> {
     const { errorValue } = this;
 
     return [
-      <style />,
       <fieldset>
         <legend>{Input.is}</legend>
 
         <div>
+          <pre>value: {errorValue}</pre>
           <Input
             valid="false"
             value={errorValue}
             placeholder="placeholder"
-            onKeyup={this.log( 'onKeyUp' )}
-            onFocus={this.log( 'onFocus' )}
-            onBlur={this.log( 'onBlur' )}
             onChange={this.propagateValue}
           />
           <Input

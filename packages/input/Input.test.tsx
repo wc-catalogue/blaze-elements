@@ -1,47 +1,154 @@
-import { Input } from './Input';
-
-import { h, mount } from 'bore';
-import { emit } from 'skatejs';
+import { h } from '../_helpers';
+import { mount } from 'bore';
+import * as expect from 'expect';
+import { Input } from './index';
 
 describe( Input.is, () => {
 
-  it( 'should set value and emit on change', ( done ) => {
+  describe( `Custom element`, () => {
+    it( `should be registered`, () => {
 
-    mount( <Input value="initial" /> ).wait(( element ) => {
-
-      element.node.addEventListener( 'change', () => {
-
-        expect(( element.node as HTMLInputElement ).value ).to.equal( 'ok' );
-
-        done();
-
-      });
-
-      const innerInput = element.one( 'input' ).node as HTMLInputElement;
-      innerInput.value = 'ok';
-      emit( innerInput, 'change', { composed: false });
+      expect( customElements.get( Input.is ) ).toBe( Input );
 
     });
 
+    it( `should render via JSX IntrinsicElement`, () => {
+
+      return mount(
+        <bl-input value="inputValue" />
+      ).wait(( element ) => {
+
+        expect( element.node.localName ).toBe( Input.is );
+
+      });
+
+    });
+
+    it( `should render via JSX class`, () => {
+
+      return mount(
+        <Input value="inputValue" />
+      ).wait(( element ) => {
+
+        expect( element.has( '.c-field' ) ).toBe( true );
+
+      });
+
+    });
   });
 
-  it( 'should set value and emit on input', ( done ) => {
+  describe( `API`, () => {
 
-    mount( <Input value="initial" /> ).wait(( element ) => {
+    describe( `[value]`, () => {
 
-      element.node.addEventListener( 'input', () => {
+      it( `should render with setted value`, () => {
 
-        expect(( element.node as HTMLInputElement ).value ).to.equal( 'ok' );
+        return mount(
+          <bl-input value="inputValue" />
+        ).wait(( element ) => {
 
-        done();
+          const input: Partial<HTMLInputElement> = element.one( 'input' ).node;
+          expect( input.value ).toBe( 'inputValue' );
+
+        });
 
       });
 
-      const innerInput = element.one( 'input' ).node as HTMLInputElement;
-      innerInput.value = 'ok';
-      emit( innerInput, 'input', { composed: true });
+    });
+
+    describe( `[placeholder]`, () => {
+
+      it( `should render with placeholder`, () => {
+
+        return mount(
+          <bl-input placeholder="placeholder value" value="" />
+        ).wait(( element ) => {
+
+          const input: Partial<HTMLInputElement> = element.one( 'input' ).node;
+          expect( input.getAttribute( 'placeholder' ) ).toBe( 'placeholder value' );
+
+        });
+
+      });
 
     });
+
+    describe( `[inputSize]`, () => {
+
+      it( `should render with inputSize`, () => {
+
+        return mount(
+          <bl-input inputSize="medium" value="" />
+        ).wait(( element ) => {
+
+          expect( element.has( '.u-medium' ) ).toBe( true );
+
+        });
+
+      });
+
+    });
+
+    describe( `[valid]`, () => {
+
+      it( `should be valid`, () => {
+
+        return mount(
+          <bl-input valid="true" value="" />
+        ).wait(( element ) => {
+
+          expect( element.has( '.c-field--success' ) ).toBe( true );
+
+        });
+
+      });
+
+      it( `should be invalid`, () => {
+
+        return mount(
+          <bl-input valid="false" value="" />
+        ).wait(( element ) => {
+
+          expect( element.has( '.c-field--error' ) ).toBe( true );
+
+        });
+
+      });
+
+    });
+
+    describe( `[disabled]`, () => {
+
+      it( `should render disabled`, () => {
+
+        return mount(
+          <bl-input disabled value="" />
+        ).wait(( element ) => {
+
+          expect( element.one( 'input' ).node.hasAttribute( 'disabled' ) ).toBe( true );
+
+        });
+
+      });
+
+    });
+
+    describe( `[type]`, () => {
+
+      it( `should have correct type (password)`, () => {
+
+        return mount(
+          <bl-input type="password" value="" />
+        ).wait(( element ) => {
+
+          expect( element.one( 'input' ).node.getAttribute( 'type' ) ).toBe( 'password' );
+
+        });
+
+      });
+
+    });
+
 
   });
 
