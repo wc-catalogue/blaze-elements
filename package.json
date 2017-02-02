@@ -51,7 +51,7 @@
     "html-webpack-plugin": "^2.26.0",
     "husky": "^0.13.1",
     "json-loader": "^0.5.4",
-    "lerna": "2.0.0-beta.32",
+    "lerna": "2.0.0-beta.36",
     "lodash.capitalize": "^4.2.1",
     "markdown-loader": "^0.1.7",
     "node-sass": "^4.1.1",
