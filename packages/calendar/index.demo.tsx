@@ -43,7 +43,7 @@ export class Demo extends Component<void> {
       <fieldset>
         <legend>{Calendar.is}</legend>
         <span>Selected date: {this.selectedDate}</span>
-        {/*<Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler} />*/}
+        <Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler} />
         <h4>Internationalized calendar (Czech)</h4>
         <Calendar
           selectedDate={this.selectedDate}
