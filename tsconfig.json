@@ -8,6 +8,7 @@
     "noUnusedLocals": true,
     "noEmitHelpers": true,
     "importHelpers": true,
+    "stripInternal": true,
     "moduleResolution": "node",
     "outDir": "ts-output",
     "rootDir": "./",
