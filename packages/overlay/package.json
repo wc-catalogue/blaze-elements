@@ -10,6 +10,6 @@
     "test:watch:firefox": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p -l firefox\"",
     "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.prod --env.element=overlay",
     "build:test": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.test --env.element=overlay",
-    "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=overlay"
+    "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --host 0.0.0.0 --env.element=overlay"
   }
 }

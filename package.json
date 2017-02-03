@@ -21,7 +21,7 @@
     "test:watch:firefox": "concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html toolbelt/test.sh -p -l firefox\"",
     "build": "rimraf dist && npm run packagelist && webpack --env.prod",
     "build:test": "rimraf dist && npm run packagelist && webpack --env.test",
-    "build:test:watch": "npm run packagelist && webpack-dev-server --env.test",
+    "build:test:watch": "npm run packagelist && webpack-dev-server --env.test --host 0.0.0.0",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
     "precommit": "yarn ts:lint && yarn test"
