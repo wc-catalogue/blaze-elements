@@ -1,4 +1,4 @@
-const ColorTypes = {
+export const ColorTypes = {
   brand: 'brand',
   info: 'info',
   warning: 'warning',
