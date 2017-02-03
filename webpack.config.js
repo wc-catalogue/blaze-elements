@@ -34,21 +34,21 @@ module.exports = ( env ) => {
         'test-helpers': './test-helpers.ts'
       },
       (env.element ? {
-        'main': `./packages/${ env.element }/index.ts`,
+        'index': `./packages/${ env.element }/index.ts`,
+        'index-with-dependencies': `./packages/${ env.element }/index.with.dependencies.ts`,
         'main.demo': `./packages/${ env.element }/index.demo.tsx`,
-        'vendors': './vendors.ts',
         'polyfills': './polyfills.ts',
         'styles': './styles.ts'
       } : {
-        'main': './packages/index.ts',
+        'index': './packages/index.ts',
+        'index-with-dependencies': './packages/index.with.dependencies.ts',
         'main.demo': './packages/index.demo.ts',
-        'vendors': './vendors.ts',
         'polyfills': './polyfills.ts',
         'styles': './styles.ts'
       })
     ),
     output: {
-      filename: '[name].js',
+      filename: '[name].min.js',
       path: env.element ? resolve( __dirname, 'packages', env.element, 'dist' ) : resolve( __dirname, 'dist' ),
       // Include comments with information about the modules.
       pathinfo: ifNotProd()
@@ -163,9 +163,9 @@ module.exports = ( env ) => {
       ifNotTest(new HtmlWebpackPlugin({
           template: resolve( 'index.html' ),
           packages: env.element ? env.element : require('./package.json').packages,
-          excludeChunks: [ 'main' ], // Exclude 'main' as it is included in 'main.demo'
+          excludeChunks: [ 'index', 'index-with-dependencies' ], // Exclude 'index' & 'index-with-dependencies' as it is included in 'main.demo'
           inject: 'head',
-          chunksSortMode: buildChunksSort([ 'polyfills', 'vendors', 'styles', 'main', 'main.demo', 'test-helpers', 'test' ])
+          chunksSortMode: buildChunksSort([ 'polyfills', 'styles', 'index', 'index-with-dependencies', 'main.demo', 'test-helpers', 'test' ])
       }))
 
     ]),
