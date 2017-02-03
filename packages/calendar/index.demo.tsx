@@ -1,7 +1,5 @@
 import { h, Component, prop } from 'skatejs';
-import { Calendar, CalendarChangeEvent } from './Calendar';
-
-
+import { Calendar, CalendarChangeEvent } from './index';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-calendar-demo'; }
@@ -18,7 +16,7 @@ export class Demo extends Component<void> {
       monthsFull: [
         'Leden',
         'Únor',
-        'Březěn',
+        'Březen',
         'Duben',
         'Květen',
         'Červen',
@@ -45,13 +43,12 @@ export class Demo extends Component<void> {
       <fieldset>
         <legend>{Calendar.is}</legend>
         <span>Selected date: {this.selectedDate}</span>
-        <Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler} />
+        {/*<Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler} />*/}
         <h4>Internationalized calendar (Czech)</h4>
         <Calendar
           selectedDate={this.selectedDate}
           onDateChange={this.dateChangeHandler}
           i18n={this.i18n.cs}
-          weekStartsOn={'monday'}
         />
       </fieldset>
     ];
