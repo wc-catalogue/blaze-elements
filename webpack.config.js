@@ -48,7 +48,7 @@ module.exports = ( env ) => {
       })
     ),
     output: {
-      filename: '[name].min.js',
+      filename: ifProd('[name].min.js', '[name].js'),
       path: env.element ? resolve( __dirname, 'packages', env.element, 'dist' ) : resolve( __dirname, 'dist' ),
       // Include comments with information about the modules.
       pathinfo: ifNotProd()
