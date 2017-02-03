@@ -1,5 +1,5 @@
 {
-  "name": "bl-typography",
+  "name": "@blaze-elements/bl-typography",
   "version": "1.2.0",
   "main": "dist/main.js",
   "license": "MIT",

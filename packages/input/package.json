@@ -1,5 +1,5 @@
 {
-  "name": "bl-input",
+  "name": "@blaze-elements/bl-input",
   "version": "1.2.0",
   "main": "dist/main.js",
   "license": "MIT",

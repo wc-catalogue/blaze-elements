@@ -1,5 +1,5 @@
 {
-  "name": "bl-modal",
+  "name": "@blaze-elements/bl-modal",
   "version": "1.2.0",
   "main": "dist/main.js",
   "license": "MIT",

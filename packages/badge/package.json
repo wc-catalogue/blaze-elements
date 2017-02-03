@@ -1,5 +1,5 @@
 {
-  "name": "bl-badge",
+  "name": "@blaze-elements/bl-badge",
   "version": "1.2.0",
   "main": "dist/main.js",
   "license": "MIT",
