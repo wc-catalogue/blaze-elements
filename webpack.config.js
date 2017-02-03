@@ -33,19 +33,23 @@ module.exports = ( env ) => {
         ),
         'test-helpers': './test-helpers.ts'
       },
-      (env.element ? {
+      (env.element ? ifProd({
         'index': `./packages/${ env.element }/index.ts`,
         'index-with-dependencies': `./packages/${ env.element }/index.with.dependencies.ts`,
+        'styles': './styles.ts'
+      }, {
         'main.demo': `./packages/${ env.element }/index.demo.tsx`,
         'polyfills': './polyfills.ts',
         'styles': './styles.ts'
-      } : {
+      }) : ifProd({
         'index': './packages/index.ts',
         'index-with-dependencies': './packages/index.with.dependencies.ts',
+        'styles': './styles.ts'
+      }, {
         'main.demo': './packages/index.demo.ts',
         'polyfills': './polyfills.ts',
         'styles': './styles.ts'
-      })
+      }))
     ),
     output: {
       filename: ifProd('[name].min.js', '[name].js'),
