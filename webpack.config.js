@@ -20,37 +20,54 @@ const { getIfUtils, removeEmpty } = require( 'webpack-config-utils' );
 module.exports = ( env ) => {
   const { ifProd, ifNotProd, ifTest, ifNotTest } = getIfUtils( env );
 
+  function _packagePrefix() {
+    return './packages' + ( env.element ? env.element : '' );
+  }
+
+  function _testModules() {
+    return {
+      'test': _packagePrefix() + '/index.test.ts',
+      'test-helpers' : './test-helpers.ts'
+    };
+  }
+
+  function _prodModules() {
+    return {
+      'index': _packagePrefix() + '/index.ts',
+      'index-with-dependencies': _packagePrefix() + '/index.with.dependencies.ts',
+      'styles': './styles.ts'
+    };
+  }
+
+  function _devModules() {
+    return {
+      'main.demo': _packagePrefix() + '/index.demo.ts',
+      'polyfills': './polyfills.ts',
+      'styles': './styles.ts'
+    };
+  }
+
+  function _entryPoint() {
+    if ( ifTest() ) {
+
+      return _testModules();
+
+    }
+
+    if ( ifProd() ) {
+
+      return _prodModules();
+
+    }
+
+    return _devModules();
+  }
+
   return {
     // The base directory, an absolute path, for resolving entry points and loaders from configuration.
     context: resolve( __dirname ),
     // The point or points to enter the application.
-    entry: ifTest(
-      {
-        'test': (
-          env.element ?
-            `./packages/${env.element}/index.test.ts` :
-            './packages/index.test.ts'
-        ),
-        'test-helpers': './test-helpers.ts'
-      },
-      (env.element ? ifProd({
-        'index': `./packages/${ env.element }/index.ts`,
-        'index-with-dependencies': `./packages/${ env.element }/index.with.dependencies.ts`,
-        'styles': './styles.ts'
-      }, {
-        'main.demo': `./packages/${ env.element }/index.demo.tsx`,
-        'polyfills': './polyfills.ts',
-        'styles': './styles.ts'
-      }) : ifProd({
-        'index': './packages/index.ts',
-        'index-with-dependencies': './packages/index.with.dependencies.ts',
-        'styles': './styles.ts'
-      }, {
-        'main.demo': './packages/index.demo.ts',
-        'polyfills': './polyfills.ts',
-        'styles': './styles.ts'
-      }))
-    ),
+    entry: _entryPoint(),
     output: {
       filename: ifProd('[name].min.js', '[name].js'),
       path: env.element ? resolve( __dirname, 'packages', env.element, 'dist' ) : resolve( __dirname, 'dist' ),
@@ -61,6 +78,9 @@ module.exports = ( env ) => {
       extensions: [ '.js', '.ts', '.tsx' ]
     },
 
+    devServer: {
+      host: '0.0.0.0'
+    },
 
     /**
      * Developer tool to enhance debugging
