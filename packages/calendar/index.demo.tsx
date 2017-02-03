@@ -49,6 +49,7 @@ export class Demo extends Component<void> {
           selectedDate={this.selectedDate}
           onDateChange={this.dateChangeHandler}
           i18n={this.i18n.cs}
+          weekStartsOn={'monday'}
         />
       </fieldset>
     ];
