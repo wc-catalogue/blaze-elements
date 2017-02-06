@@ -3,32 +3,7 @@ declare module '*.css';
 declare module '*.json';
 
 // Skate
-declare module 'skatejs-web-components';
 declare module 'core-js';
-
-// Bore
-declare module 'bore' {
-
-  interface BoreNode extends HTMLElement {
-  }
-  interface WrappedNode extends Wrapper {
-    node: BoreNode,
-  }
-  type Query<T> = string | JSX.Element | T | ((node: BoreNode) => boolean) | Object;
-
-  interface Wrapper {
-    readonly shadowRoot: ShadowRoot;
-    all<T extends HTMLElement>(query: Query<T>): WrappedNode[],
-    one<T extends HTMLElement>(query: Query<T>): WrappedNode,
-    has<T extends HTMLElement>(query: Query<T>): boolean,
-
-    wait(callback?: (wrapper: WrappedNode) => any): Promise<WrappedNode>,
-    waitFor(callback: (wrapper: WrappedNode) => boolean, options?: { delay?: number }): Promise<WrappedNode>,
-  }
-  export function mount(htmlOrNode: JSX.Element | JSX.Element[] | string): WrappedNode;
-  export function h(name: string, attrsOrProps?: Object, ...children: any[]): JSX.Element | JSX.Element[];
-
-}
 
 
 // Custom Elements
