@@ -18,7 +18,7 @@ const { getIfUtils, removeEmpty } = require( 'webpack-config-utils' );
 
 
 module.exports = ( env ) => {
-  const { ifProd, ifNotProd, ifTest, ifNotTest } = getIfUtils( env );
+  const { ifProd, ifNotProd, ifTest, ifDev, ifSite } = getIfUtils( env, ['prod', 'test', 'dev', 'site'] );
 
   function _packagePrefix() {
     return './packages' + ( env.element ? `/${env.element}` : '' );
@@ -38,8 +38,7 @@ module.exports = ( env ) => {
 
       return {
         'index': _packagePrefix() + '/index.ts',
-        'index-with-dependencies': _packagePrefix() + '/index.with.dependencies.ts',
-        'styles': './styles.ts'
+        'index-with-dependencies': _packagePrefix() + '/index.with.dependencies.ts'
       };
 
     }
@@ -157,7 +156,7 @@ module.exports = ( env ) => {
       }),
 
       // Uglify bundles
-      ifProd( new webpack.optimize.UglifyJsPlugin( {
+      ifProdOrSite(new webpack.optimize.UglifyJsPlugin( {
         compress: {
           screw_ie8: true,
           warnings: false
@@ -165,14 +164,14 @@ module.exports = ( env ) => {
         output: { comments: false }
       } ) ),
 
-      ifProd( new FaviconsWebpackPlugin( './assets/blaze-elements-logo.svg' ) ),
+      ifDevOrSite( new FaviconsWebpackPlugin( './assets/blaze-elements-logo.svg' ) ),
 
       /**
        * Use the HtmlWebpackPlugin plugin to make index.html a template so css and js can dynamically be added to the page.
        * This will also take care of moving the index.html file to the build directory using the index.html in src as a template.
        * https://github.com/ampedandwired/html-webpack-plugin
        */
-      ifNotTest(new HtmlWebpackPlugin({
+      ifDevOrSite(new HtmlWebpackPlugin({
           template: resolve( 'index.html' ),
           packages: env.element ? env.element : require('./package.json').packages,
           excludeChunks: [ 'index', 'index-with-dependencies' ], // Exclude 'index' & 'index-with-dependencies' as it is included in 'main.demo'
@@ -185,6 +184,16 @@ module.exports = ( env ) => {
       hints: ifTest() ? false : 'warning'
     }
   }
+
+
+  function ifProdOrSite( callback ) {
+    return ifProd( callback, ifSite( callback ) );
+  }
+
+  function ifDevOrSite( callback ) {
+    return ifDev( callback, ifSite( callback ) );
+  }
+
 };
 
 /**

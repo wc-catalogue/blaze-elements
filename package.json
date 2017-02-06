@@ -22,6 +22,7 @@
     "build": "rimraf dist && npm run packagelist && webpack --env.prod",
     "build:test": "rimraf dist && npm run packagelist && webpack --env.test",
     "build:test:watch": "npm run packagelist && webpack-dev-server --env.test",
+    "site": "rimraf dist && npm run packagelist && webpack --env.site",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
     "precommit": "yarn ts:lint && yarn test"
