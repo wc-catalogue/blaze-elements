@@ -117,10 +117,6 @@ module.exports = ( env ) => {
           test: /\.svg$/,
           use: [ 'file-loader' ]
         },
-        {
-          test: /\.json$/,
-          use: 'json-loader'
-        }
       ]
     },
 
