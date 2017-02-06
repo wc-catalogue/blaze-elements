@@ -4,41 +4,40 @@ import {
   ColorType,
   cssClassForColorType,
   css,
-  IntrinsicCustomElement,
-  IntrinsicBoreElement,
-  ClickEvent
+  GenericTypes,
+  GenericEvents
 } from '../_helpers';
 
 import styles from './Button.scss';
 
-export type ButtonProps = Props & Attrs & EventHandlers;
-export type Attrs = {
+export type ButtonProps = Props & EventHandlers;
+
+export type Props = {
   disabled?: boolean,
   block?: boolean,
   close?: boolean,
   ghost?: boolean,
   color?: ColorType,
 };
-export type Props = {
-};
+
 export type Events = {
-  click?: ClickEvent,
+  click?: GenericEvents.ClickEvent,
 };
 export type EventHandlers = {
-  onClick?: ClickEvent,
+  onClick?: GenericEvents.ClickEvent,
 };
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'bl-button': IntrinsicCustomElement<ButtonProps> & IntrinsicBoreElement<Attrs, Events>
+      'bl-button': GenericTypes.IntrinsicCustomElement<ButtonProps> & GenericTypes.IntrinsicBoreElement<Props, Events>
     }
   }
 }
 
 export class Button extends Component<ButtonProps> {
   static get is() { return 'bl-button'; }
-  static get props(): ComponentProps<Button, Attrs> {
+  static get props(): ComponentProps<Button, Props> {
     return {
       disabled: prop.boolean( {
         attribute: true
