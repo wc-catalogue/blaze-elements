@@ -21,7 +21,7 @@ module.exports = ( env ) => {
   const { ifProd, ifNotProd, ifTest, ifNotTest } = getIfUtils( env );
 
   function _packagePrefix() {
-    return './packages' + ( env.element ? env.element : '' );
+    return './packages' + ( env.element ? `/${env.element}` : '' );
   }
 
   function _entryPoint() {
