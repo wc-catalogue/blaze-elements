@@ -11,13 +11,21 @@ type TypesType = {
   number: string
 };
 
+type IntrinsicCustomElement<P> = P & Partial<HTMLElement>;
+type IntrinsicBoreElement<A, E> = { attrs?: Partial<A> } & { events?: E };
+
 type InputProps = Props & EventProps;
 type EventProps = {
   onKeyup?: typeof HTMLElement.prototype.onkeyup,
   onFocus?: typeof HTMLElement.prototype.onfocus,
   onBlur?: typeof HTMLElement.prototype.onblur,
-  onInput?: typeof HTMLElement.prototype.oninput,
   onChange?: ( ev: CustomEvent ) => void,
+};
+type Events = {
+  change?: ( ev: CustomEvent ) => void,
+  keyup?: typeof HTMLElement.prototype.onkeyup,
+  focus?: typeof HTMLElement.prototype.onfocus,
+  blur?: typeof HTMLElement.prototype.onblur,
 };
 type Props = {
   value: string,
@@ -31,7 +39,7 @@ type Props = {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'bl-input': InputProps & Partial<HTMLInputElement>
+      'bl-input': IntrinsicCustomElement<InputProps> & IntrinsicBoreElement<Props, Events>
     }
   }
 }
