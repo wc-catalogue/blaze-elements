@@ -1,11 +1,14 @@
 import { h, Component, prop, ComponentProps } from 'skatejs';
 
 import {
-  ColorType,
   cssClassForColorType,
   css,
   GenericTypes,
-  GenericEvents
+  GenericEvents,
+  Colored,
+  ColoredProps,
+  Disabled,
+  DisabledProps
 } from '../_helpers';
 
 import styles from './Button.scss';
@@ -13,12 +16,12 @@ import styles from './Button.scss';
 export type ButtonProps = Props & EventHandlers;
 
 export type Props = {
-  disabled?: boolean,
   block?: boolean,
   close?: boolean,
   ghost?: boolean,
-  color?: ColorType,
-};
+}
+& ColoredProps
+& DisabledProps;
 
 export type Events = {
   click?: GenericEvents.ClickHandler,
@@ -35,13 +38,10 @@ declare global {
   }
 }
 
-export class Button extends Component<ButtonProps> {
+export class Button extends Colored(Disabled(Component))<ButtonProps> {
   static get is() { return 'bl-button'; }
   static get props(): ComponentProps<Button, Props> {
     return {
-      disabled: prop.boolean( {
-        attribute: true
-      } ),
       block: prop.boolean( {
         attribute: {
           source: true
@@ -57,22 +57,15 @@ export class Button extends Component<ButtonProps> {
           source: true
         }
       } ),
-      color: prop.string<Button, ColorType>( {
-        attribute: {
-          source: true
-        }
-      } )
     };
   }
 
-  disabled: boolean;
-  block: boolean;
-  close: boolean;
-  ghost: boolean;
-  color: ColorType;
+  block?: boolean;
+  close?: boolean;
+  ghost?: boolean;
 
   renderCallback() {
-    const { color, ghost, close, block } = this;
+    const { color, ghost, close, block, disabled } = this;
     const colorClass = cssClassForColorType( ghost ? 'c-button--ghost' : 'c-button', color, ghost );
     const className = css(
       'c-button',
@@ -86,11 +79,13 @@ export class Button extends Component<ButtonProps> {
     return [
       <style>{styles}</style>,
       <button
-        className={className}
-        disabled={this.disabled}
+        class={className}
+        disabled={disabled}
       >
         <slot />
       </button>
     ];
   }
 }
+
+console.dir(Button)
