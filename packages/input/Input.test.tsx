@@ -1,5 +1,4 @@
-import { h } from '../_helpers';
-import { mount } from 'bore';
+import { h, mount } from 'bore';
 import * as expect from 'expect';
 import { Input } from './index';
 
@@ -39,6 +38,29 @@ describe( Input.is, () => {
 
   describe( `API`, () => {
 
+    describe( `(change)`, () => {
+
+      it( 'should emit change on input value mutation', () => {
+
+        let changeCalled = false;
+
+        const changeHandler = ( e: CustomEvent ) => {
+          changeCalled = true;
+        };
+
+        return mount(
+          <bl-input value="hello" events={ { change: changeHandler } } />
+        ).wait(( element ) => {
+          const innerInput = element.one( 'input' ).node as HTMLInputElement;
+          innerInput.value = 'World';
+          innerInput.dispatchEvent( new Event( 'input' ) );
+          expect( changeCalled ).toBe( true );
+        });
+
+      });
+
+    });
+
     describe( `[value]`, () => {
 
       it( `should render with setted value`, () => {
@@ -61,7 +83,10 @@ describe( Input.is, () => {
       it( `should render with placeholder`, () => {
 
         return mount(
-          <bl-input placeholder="placeholder value" value="" />
+          <bl-input
+            attrs={{placeholder: 'placeholder value'}}
+            value=""
+          />
         ).wait(( element ) => {
 
           const input: Partial<HTMLInputElement> = element.one( 'input' ).node;
