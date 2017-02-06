@@ -1,5 +1,5 @@
 {
-  "name": "@blaze-elements/bl-generic",
+  "name": "@blaze-elements/generic",
   "version": "1.0.0",
   "main": "dist/main.js",
   "typings": "definitions/index.d.ts",

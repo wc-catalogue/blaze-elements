@@ -1,5 +1,5 @@
 {
-  "name": "@blaze-elements/bl-drawer",
+  "name": "@blaze-elements/drawer",
   "version": "1.2.0",
   "main": "dist/main.js",
   "license": "MIT",

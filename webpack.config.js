@@ -24,43 +24,31 @@ module.exports = ( env ) => {
     return './packages' + ( env.element ? env.element : '' );
   }
 
-  function _testModules() {
-    return {
-      'test': _packagePrefix() + '/index.test.ts',
-      'test-helpers' : './test-helpers.ts'
-    };
-  }
-
-  function _prodModules() {
-    return {
-      'index': _packagePrefix() + '/index.ts',
-      'index-with-dependencies': _packagePrefix() + '/index.with.dependencies.ts',
-      'styles': './styles.ts'
-    };
-  }
-
-  function _devModules() {
-    return {
-      'main.demo': _packagePrefix() + '/index.demo.ts',
-      'polyfills': './polyfills.ts',
-      'styles': './styles.ts'
-    };
-  }
-
   function _entryPoint() {
     if ( ifTest() ) {
 
-      return _testModules();
+      return {
+        'test': _packagePrefix() + '/index.test.ts',
+        'test-helpers' : './test-helpers.ts'
+      };
 
     }
 
     if ( ifProd() ) {
 
-      return _prodModules();
+      return {
+        'index': _packagePrefix() + '/index.ts',
+        'index-with-dependencies': _packagePrefix() + '/index.with.dependencies.ts',
+        'styles': './styles.ts'
+      };
 
     }
 
-    return _devModules();
+    return {
+      'main.demo': _packagePrefix() + '/index.demo.ts',
+      'polyfills': './polyfills.ts',
+      'styles': './styles.ts'
+    };
   }
 
   return {

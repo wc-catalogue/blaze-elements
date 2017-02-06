@@ -1,5 +1,5 @@
 {
-  "name": "@blaze-elements/bl-progress",
+  "name": "@blaze-elements/progress",
   "version": "1.2.0",
   "main": "dist/main.js",
   "license": "MIT",

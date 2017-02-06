@@ -1,5 +1,5 @@
 {
-  "name": "@blaze-elements/bl-breadcrumb",
+  "name": "@blaze-elements/breadcrumb",
   "version": "1.2.0",
   "main": "dist/main.js",
   "license": "MIT",
