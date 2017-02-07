@@ -1,7 +1,6 @@
 import { mount, h } from 'bore';
 import * as expect from 'expect';
 import { Input } from './index';
-import { emit } from 'skatejs';
 
 describe( Input.is, () => {
 
@@ -159,12 +158,12 @@ describe( Input.is, () => {
           changeTriggered = true;
         };
 
-        return mount( <bl-input value="water" events={{ huh: handleChange, change: handleChange } as any} /> )
+        return mount( <bl-input value="water" events={{ change: handleChange }} /> )
           .wait(( element ) => {
 
             const input = element.one( 'input' ).node as HTMLInputElement;
             input.value = 'splash';
-            emit( input, 'input' );
+            input.dispatchEvent( new Event( 'input' ) );
             expect( changeTriggered ).toBe( true );
 
           });

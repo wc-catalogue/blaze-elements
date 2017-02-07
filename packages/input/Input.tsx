@@ -1,6 +1,10 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Input.scss';
-import { Size, cssClassForSize, css } from '../_helpers';
+import {
+  Size, cssClassForSize, css,
+  GenericTypes,
+  GenericEvents
+} from '../_helpers';
 
 
 type TypesType = {
@@ -13,10 +17,16 @@ type TypesType = {
 
 type InputProps = Props & EventProps;
 type EventProps = {
-  onKeyup?: typeof HTMLElement.prototype.onkeyup,
-  onFocus?: typeof HTMLElement.prototype.onfocus,
-  onBlur?: typeof HTMLElement.prototype.onblur,
+  onKeyup?: GenericEvents.KeyupEvent,
+  onFocus?: GenericEvents.FocusEvent,
+  onBlur?: GenericEvents.BlurEvent,
   onChange?: ( ev: CustomEvent ) => void,
+};
+type Events = {
+  keyup?: GenericEvents.KeyupEvent,
+  focus?: GenericEvents.FocusEvent,
+  blur?: GenericEvents.BlurEvent,
+  change?: ( ev: CustomEvent ) => void,
 };
 type Props = {
   value: string,
@@ -30,7 +40,7 @@ type Props = {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'bl-input': InputProps & Partial<HTMLInputElement> & { events?: any }
+      'bl-input': GenericTypes.IntrinsicCustomElement<InputProps> & GenericTypes.IntrinsicBoreElement<Props, Events>
     }
   }
 }
@@ -85,9 +95,6 @@ export class Input extends Component<InputProps> {
   placeholder: string;
   type = 'text';
   disabled: boolean;
-
-  // @FIXME this should be private
-  inputElement: HTMLInputElement;
 
   constructor() {
     super();
