@@ -10,18 +10,21 @@ import * as format from 'date-fns/format';
 import * as isToday from 'date-fns/is_today';
 import * as parse from 'date-fns/parse';
 import * as isSameDay from 'date-fns/is_same_day';
-import { css } from '../_helpers';
-
-// @FIXME import from barell
-import { buildFormatLocale, LocaleType } from '../_helpers/buildFormatLocale';
+import { css, buildFormatLocale, LocaleType, GenericEvents, GenericTypes } from '../_helpers';
 import { CalendarButton } from './components/Button';
 
 const BUTTON_TODAY = 'TODAY';
 const WEEK_STARTS_ON = 'sunday';
 
-export type CalendarChangeEvent = CustomEvent & { detail: { date: Date } };
+type WeekStart = 'sunday' | 'monday';
 
 type CalendarProps = Props & EventProps;
+
+type Attrs = {
+  'selected-date'?: string,
+  'week-starts-on'?: WeekStart,
+};
+
 type Props = {
   selectedDate?: Date,
   i18n?: {
@@ -29,17 +32,22 @@ type Props = {
     weekdays2char: string[],
     todayButtonText: string,
   },
-  weekStartsOn?: 'sunday' | 'monday',
+  weekStartsOn?: WeekStart,
 };
 
 type EventProps = {
-  onDateChange?: ( ev: CalendarChangeEvent ) => void,
+  onDateChange?: GenericEvents.CustomChangeHandler<Date>,
+};
+
+type Events = {
+  dateChange?: GenericEvents.CustomChangeHandler<Date>,
 };
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'bl-calendar': CalendarProps & Partial<HTMLElement>
+      'bl-calendar': GenericTypes.IntrinsicCustomElement<CalendarProps>
+      & GenericTypes.IntrinsicBoreElement<Attrs, Events>
     }
   }
 }
@@ -52,11 +60,14 @@ export class Calendar extends Component<CalendarProps> {
     return {
       year: prop.number(),
       month: prop.number(),
-      selectedDate: prop.string( {
+      selectedDate: prop.object<Calendar, Date>( {
         attribute: {
           source: true
         },
-        default: new Date().toDateString()
+        default: new Date(),
+        deserialize( value: string ) {
+          return parse( value );
+        }
       }),
       weekStartsOn: prop.string( {
         attribute: {
@@ -154,7 +165,7 @@ export class Calendar extends Component<CalendarProps> {
 
     emit( this, Calendar.events.DATE_CHANGE, {
       detail: {
-        date: this.selectedDate
+        value: this.selectedDate
       }
     });
   }
@@ -173,7 +184,7 @@ export class Calendar extends Component<CalendarProps> {
           'c-calendar__date--selected': isSameDay( day, selectedDate ),
         }
       );
-      return <button className={className} onClick={this.setDateHandler( day )}>{getDate( day )}</button>;
+      return <button class={className} onClick={this.setDateHandler( day )}>{getDate( day )}</button>;
     });
 
     // create weekDays elements
@@ -216,12 +227,8 @@ export class Calendar extends Component<CalendarProps> {
   }
 
   private initSelectedDay() {
-    const parsedDate = parse( this.selectedDate );
-    this.year = getYear( parsedDate );
-    this.month = getMonth( parsedDate );
-    props( this, {
-      selectedDate: parsedDate
-    });
+    this.year = getYear( this.selectedDate );
+    this.month = getMonth( this.selectedDate );
   }
 
   private initDays() {

@@ -1,5 +1,6 @@
 import { h, Component, prop } from 'skatejs';
-import { Calendar, CalendarChangeEvent } from './index';
+import { Calendar } from './index';
+import { CustomChangeEvent } from '../_helpers/definitions/events';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-calendar-demo'; }
@@ -54,8 +55,8 @@ export class Demo extends Component<void> {
       </fieldset>
     ];
   }
-  private dateChangeHandler( event: CalendarChangeEvent ) {
-    this.selectedDate = event.detail.date;
+  private dateChangeHandler( event: CustomChangeEvent<Date> ) {
+    this.selectedDate = event.detail.value;
   }
 }
 
