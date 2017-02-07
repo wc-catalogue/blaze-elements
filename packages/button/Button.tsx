@@ -1,33 +1,43 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component, prop, ComponentProps } from 'skatejs';
 
-import { ColorType, cssClassForColorType, css } from '../_helpers';
+import {
+  ColorType,
+  cssClassForColorType,
+  css,
+  GenericTypes,
+  GenericEvents
+} from '../_helpers';
 
 import styles from './Button.scss';
 
-// public
-type ButtonProps = Props & EventProps;
-type Props = {
+export type ButtonProps = Props & EventHandlers;
+
+export type Props = {
   disabled?: boolean,
   block?: boolean,
   close?: boolean,
   ghost?: boolean,
   color?: ColorType,
 };
-type EventProps = {
-  onClick?: typeof HTMLElement.prototype.onclick,
+
+export type Events = {
+  click?: GenericEvents.ClickEvent,
+};
+export type EventHandlers = {
+  onClick?: GenericEvents.ClickEvent,
 };
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'bl-button': ButtonProps & Partial<HTMLElement>,
+      'bl-button': GenericTypes.IntrinsicCustomElement<ButtonProps> & GenericTypes.IntrinsicBoreElement<Props, Events>
     }
   }
 }
 
 export class Button extends Component<ButtonProps> {
   static get is() { return 'bl-button'; }
-  static get props() {
+  static get props(): ComponentProps<Button, Props> {
     return {
       disabled: prop.boolean( {
         attribute: true
@@ -47,7 +57,7 @@ export class Button extends Component<ButtonProps> {
           source: true
         }
       }),
-      color: prop.string( {
+      color: prop.string<Button, ColorType>( {
         attribute: {
           source: true
         }

@@ -1,7 +1,10 @@
 import { h, Component, prop, emit } from 'skatejs';
-import { Size, cssClassForSize } from '../_helpers/sizes';
 import styles from './Input.scss';
-import { css } from '../_helpers/css';
+import {
+  Size, cssClassForSize, css,
+  GenericTypes,
+  GenericEvents
+} from '../_helpers';
 
 
 type TypesType = {
@@ -14,11 +17,16 @@ type TypesType = {
 
 type InputProps = Props & EventProps;
 type EventProps = {
-  onKeyup?: typeof HTMLElement.prototype.onkeyup,
-  onFocus?: typeof HTMLElement.prototype.onfocus,
-  onBlur?: typeof HTMLElement.prototype.onblur,
-  onInput?: typeof HTMLElement.prototype.oninput,
+  onKeyup?: GenericEvents.KeyupEvent,
+  onFocus?: GenericEvents.FocusEvent,
+  onBlur?: GenericEvents.BlurEvent,
   onChange?: ( ev: CustomEvent ) => void,
+};
+type Events = {
+  keyup?: GenericEvents.KeyupEvent,
+  focus?: GenericEvents.FocusEvent,
+  blur?: GenericEvents.BlurEvent,
+  change?: ( ev: CustomEvent ) => void,
 };
 type Props = {
   value: string,
@@ -29,30 +37,52 @@ type Props = {
   type?: keyof TypesType
 };
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-input': GenericTypes.IntrinsicCustomElement<InputProps> & GenericTypes.IntrinsicBoreElement<Props, Events>
+    }
+  }
+}
+
 export class Input extends Component<InputProps> {
   static get is() { return 'bl-input'; }
+
   static get props() {
     return {
       value: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       valid: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       placeholder: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       disabled: prop.boolean( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       type: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
       inputSize: prop.string( {
-        attribute: true
+        attribute: {
+          source: true
+        }
       }),
     };
   }
+
   static get events() {
     return {
       change: 'change',
@@ -60,20 +90,15 @@ export class Input extends Component<InputProps> {
   }
 
   valid: string;
-  value = '';
+  value: string;
   inputSize: Size;
   placeholder: string;
   type = 'text';
   disabled: boolean;
 
-  // @FIXME this should be private
-  inputElement: HTMLInputElement;
-
   constructor() {
     super();
     this.propagateOnChange = this.propagateOnChange.bind( this );
-    this.setValue = this.setValue.bind( this );
-    this.setInerInputRef = this.setInerInputRef.bind( this );
   }
 
   renderCallback() {
@@ -91,12 +116,11 @@ export class Input extends Component<InputProps> {
     return [
       <style>{styles}</style>,
       <input
-        ref={this.setInerInputRef}
         className={className}
         type={type}
         value={value}
+        onInput={this.propagateOnChange}
         onChange={this.propagateOnChange}
-        onInput={this.setValue}
         placeholder={placeholder}
         disabled={disabled}
       />
@@ -104,17 +128,12 @@ export class Input extends Component<InputProps> {
   }
 
   private propagateOnChange( event: Event ) {
-    this.setValue();
-    emit( this, Input.events.change ); // emit change event on root element
+    // stop propagation native event to prevent leaky api
+    event.stopImmediatePropagation();
+
+    // emit change event on root element
+    const input: Partial<HTMLInputElement> = event.target;
+    emit( this, Input.events.change, { detail: { data: input.value } });
   }
 
-  private setValue() {
-    this.value = this.inputElement.value;
-  }
-  private setInerInputRef( ref: HTMLInputElement ) {
-    this.inputElement = ref;
-  }
 }
-
-
-customElements.define( Input.is, Input );

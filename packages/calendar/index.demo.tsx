@@ -1,7 +1,6 @@
 import { h, Component, prop } from 'skatejs';
-import { Calendar, CalendarChangeEvent } from './Calendar';
-
-
+import { Calendar } from './index';
+import { GenericEvents } from '../_helpers';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-calendar-demo'; }
@@ -18,7 +17,7 @@ export class Demo extends Component<void> {
       monthsFull: [
         'Leden',
         'Únor',
-        'Březěn',
+        'Březen',
         'Duben',
         'Květen',
         'Červen',
@@ -56,8 +55,8 @@ export class Demo extends Component<void> {
       </fieldset>
     ];
   }
-  private dateChangeHandler( event: CalendarChangeEvent ) {
-    this.selectedDate = event.detail.date;
+  private dateChangeHandler( event: GenericEvents.CustomChangeEvent<Date> ) {
+    this.selectedDate = event.detail.value;
   }
 }
 

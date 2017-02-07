@@ -3,6 +3,7 @@
   "version": "1.2.0",
   "main": "dist/main.js",
   "license": "MIT",
+  "typings": "definitions/index.d.ts",
   "scripts": {
     "start": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.dev --hot --host 0.0.0.0 --env.element=button",
     "test": "npm run build:test && ../../node_modules/.bin/wct -l firefox",
