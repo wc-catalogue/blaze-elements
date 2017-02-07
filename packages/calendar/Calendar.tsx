@@ -76,7 +76,8 @@ export class Calendar extends Component<CalendarProps> {
         },
         default: WEEK_STARTS_ON
       } ),
-      todayButtonText: prop.string()
+      todayButtonText: prop.string(),
+      i18n: prop.object(),
     };
   }
 
