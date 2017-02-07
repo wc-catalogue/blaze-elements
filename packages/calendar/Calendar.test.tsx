@@ -207,10 +207,12 @@ describe( Calendar.is, () => {
 
           // existing day in month
           const oneDay = element.all( 'button:not(.c-calendar__control)' )[ 10 ].node as HTMLButtonElement;
-          emit( oneDay, 'click' );
-          expect( changeTriggered ).toBe( true );
           console.log( 'expectedDate', expectedDate );
           console.log( 'selectedDate', selectedDate);
+          emit( oneDay, 'click' );
+          console.log( 'expectedDate', expectedDate );
+          console.log( 'selectedDate', selectedDate);
+          expect( changeTriggered ).toBe( true );
           expect( isSameDay( expectedDate, selectedDate ) ).toBe( true );
 
         } );
