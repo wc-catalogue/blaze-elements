@@ -1,13 +1,13 @@
-import { h, Component, prop, props } from 'skatejs';
+import { h, Component, prop, props, ComponentProps } from 'skatejs';
 import { Button } from './index';
 
-type DemoProps = { logger: string[] };
+export type DemoProps = { logger: string[] };
 export class Demo extends Component<DemoProps> {
   static get is() { return 'bl-button-demo'; }
 
-  static get props() {
+  static get props(): ComponentProps<Demo, DemoProps> {
     return {
-      logger: prop.array()
+      logger: prop.array<Demo, string>()
     };
   }
 
