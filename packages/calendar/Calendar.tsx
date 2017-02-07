@@ -15,6 +15,7 @@ import { CalendarButton } from './components/Button';
 
 const BUTTON_TODAY = 'TODAY';
 const WEEK_STARTS_ON = 'sunday';
+const DAYS_IN_MATRIX = 41;
 
 type WeekStart = 'sunday' | 'monday';
 
@@ -47,7 +48,7 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       'bl-calendar': GenericTypes.IntrinsicCustomElement<CalendarProps>
-      & GenericTypes.IntrinsicBoreElement<Attrs, Events>
+        & GenericTypes.IntrinsicBoreElement<Attrs, Events>
     }
   }
 }
@@ -68,13 +69,13 @@ export class Calendar extends Component<CalendarProps> {
         deserialize( value: string ) {
           return parse( value );
         }
-      }),
+      } ),
       weekStartsOn: prop.string( {
         attribute: {
           source: true
         },
         default: WEEK_STARTS_ON
-      }),
+      } ),
       todayButtonText: prop.string()
     };
   }
@@ -85,8 +86,8 @@ export class Calendar extends Component<CalendarProps> {
     };
   }
 
-  static range( n: Number ) {
-    return Array.from( { length: n } as any, ( value: number, key: number ) => key );
+  static range( count: number ): number[] {
+    return Array.from( { length: count }, ( value: number, key: number ) => key );
   }
 
   selectedDate: Date;
@@ -98,8 +99,7 @@ export class Calendar extends Component<CalendarProps> {
   private year: number;
   private month: number;
   private days: Date[] = [];
-  private rows = Calendar.range( 6 );
-  private cols = Calendar.range( 7 );
+  private daysMatrix = Calendar.range( DAYS_IN_MATRIX );
 
   constructor() {
     super();
@@ -161,13 +161,13 @@ export class Calendar extends Component<CalendarProps> {
 
     props( this, {
       selectedDate: date
-    });
+    } );
 
     emit( this, Calendar.events.DATE_CHANGE, {
       detail: {
         value: this.selectedDate
       }
-    });
+    } );
   }
 
   renderCallback() {
@@ -175,7 +175,7 @@ export class Calendar extends Component<CalendarProps> {
     const { year, month, selectedDate } = this;
 
     // create date elements
-    const days = this.days.map(( day ) => {
+    const days = this.days.map( ( day ) => {
       const className = css(
         'c-calendar__date',
         {
@@ -185,12 +185,12 @@ export class Calendar extends Component<CalendarProps> {
         }
       );
       return <button class={className} onClick={this.setDateHandler( day )}>{getDate( day )}</button>;
-    });
+    } );
 
     // create weekDays elements
-    const weekDays = this.days.filter(( day, index ) =>
-      index < 7 ).map(( day ) =>
-        <div class="c-calendar__day">{this.format( day, 'dd' )}</div> );
+    const weekDays = this.days.filter( ( day, index ) =>
+    index < 7 ).map( ( day ) =>
+      <div class="c-calendar__day">{this.format( day, 'dd' )}</div> );
 
     return [
       <style>{styles}</style>,
@@ -233,22 +233,20 @@ export class Calendar extends Component<CalendarProps> {
 
   private initDays() {
     const date = new Date( this.year, this.month );
-    const days: Date[] = [];
-    let currentDate = startOfWeek( date,
+    const firstDay = startOfWeek( date,
       {
         weekStartsOn: this.weekStartsOn === WEEK_STARTS_ON
           ? 0
           : 1
-      });
+      } );
 
-    this.rows.forEach(() => {
-      this.cols.forEach(() => {
-        days.push( currentDate );
-        currentDate = addDays( currentDate, 1 );
-      });
-    });
+    const days: Date[] = this.daysMatrix.reduce( ( acc: Date[] ) => {
+      const lastDate = acc[ acc.length - 1 ];
+      const nextDate = addDays( lastDate, 1 );
+      return [ ...acc, nextDate ];
+    }, [ firstDay ] );
 
-    this.days = [ ...Array().concat( days ) ];
+    this.days = [ ...days ];
 
   }
 

@@ -1,11 +1,12 @@
 import * as expect from 'expect';
 import * as isSameDay from 'date-fns/is_same_day';
 import * as parse from 'date-fns/parse';
-import { Calendar } from './';
+import { Calendar } from './index';
 import { CalendarButton } from './components/Button';
 
 import { h, mount, WrappedNode } from 'bore';
 import { emit } from 'skatejs';
+import { GenericEvents } from '../_helpers';
 
 describe( Calendar.is, () => {
 
@@ -194,7 +195,7 @@ describe( Calendar.is, () => {
 
         let changeTriggered = false;
         let selectedDate: Date;
-        const handleChange = ( e: CustomEvent ) => {
+        const handleChange = ( e: GenericEvents.CustomChangeEvent<Date> ) => {
           changeTriggered = true;
           selectedDate = e.detail.value;
         };
