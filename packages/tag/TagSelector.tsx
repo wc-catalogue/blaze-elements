@@ -1,7 +1,7 @@
 import { h, Component, emit, prop } from 'skatejs';
 import styles from './Tag.scss';
 import { Tag } from './Tag';
-import { Input } from '../input/Input';
+import { Input } from '../input/index';
 
 
 // public
@@ -32,7 +32,6 @@ export class TagSelector extends Component<TagSelectorProps> {
 
   tags: string[] = [];
   delimiter = ' '; // default value is space ' '
-  inputValue = '';
 
   constructor() {
     super();
@@ -56,22 +55,24 @@ export class TagSelector extends Component<TagSelectorProps> {
           {tags}
         </div>
         <div class="c-tags__field-container">
-          <Input onInput={this.handleInput} value={this.inputValue} />
+          <Input onChange={this.handleInput} value="" />
         </div>
       </div>
     ];
   }
 
-  private handleInput( event: KeyboardEvent ) {
+  private handleInput( event: CustomEvent ) {
     const input = event.target as Input;
-    const { value } = input.inputElement;
+    const value = event.detail.data;
     const lastChar = value.substr( -1 );
     const newValue = value.slice( 0, -1 ).trim();
     const isDelimiter = lastChar === this.delimiter;
 
     if ( newValue && isDelimiter ) {
       this.addTag( newValue );
-      input.inputElement.value = '';
+      input.value = '';
+    } else {
+      input.value = value;
     }
   }
 

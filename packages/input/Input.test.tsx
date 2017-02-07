@@ -1,11 +1,12 @@
-import { h } from '../_helpers';
-import { mount } from 'bore';
+import { mount, h } from 'bore';
 import * as expect from 'expect';
 import { Input } from './index';
+import { emit } from 'skatejs';
 
 describe( Input.is, () => {
 
   describe( `Custom element`, () => {
+
     it( `should be registered`, () => {
 
       expect( customElements.get( Input.is ) ).toBe( Input );
@@ -149,6 +150,28 @@ describe( Input.is, () => {
 
     });
 
+    describe( `(change)`, () => {
+
+      it( `should emit onChange event`, () => {
+
+        let changeTriggered = false;
+        const handleChange = ( e: CustomEvent ) => {
+          changeTriggered = true;
+        };
+
+        return mount( <bl-input value="water" events={{ huh: handleChange, change: handleChange } as any} /> )
+          .wait(( element ) => {
+
+            const input = element.one( 'input' ).node as HTMLInputElement;
+            input.value = 'splash';
+            emit( input, 'input' );
+            expect( changeTriggered ).toBe( true );
+
+          });
+
+      });
+
+    });
 
   });
 

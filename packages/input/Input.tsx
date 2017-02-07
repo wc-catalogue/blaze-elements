@@ -16,7 +16,6 @@ type EventProps = {
   onKeyup?: typeof HTMLElement.prototype.onkeyup,
   onFocus?: typeof HTMLElement.prototype.onfocus,
   onBlur?: typeof HTMLElement.prototype.onblur,
-  onInput?: typeof HTMLElement.prototype.oninput,
   onChange?: ( ev: CustomEvent ) => void,
 };
 type Props = {
@@ -31,7 +30,7 @@ type Props = {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'bl-input': InputProps & Partial<HTMLInputElement>
+      'bl-input': InputProps & Partial<HTMLInputElement> & { events?: any }
     }
   }
 }
@@ -122,6 +121,9 @@ export class Input extends Component<InputProps> {
   }
 
   private propagateOnChange( event: Event ) {
+    // stop propagation native event to prevent leaky api
+    event.stopImmediatePropagation();
+
     // emit change event on root element
     const input: Partial<HTMLInputElement> = event.target;
     emit( this, Input.events.change, { detail: { data: input.value } });
