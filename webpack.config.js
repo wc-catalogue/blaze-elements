@@ -66,6 +66,10 @@ module.exports = ( env ) => {
      */
     devtool: 'source-map',
 
+    devServer: {
+      port: ifTest(8090,false)
+    },
+
     module: {
       rules: [
 

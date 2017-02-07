@@ -1,24 +1,42 @@
-import { h, Component } from 'skatejs';
-import { Input } from './Input';
+import { h, Component, prop } from 'skatejs';
+import { Input } from './index';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-input-demo'; }
 
+  static get props() {
+    return {
+      errorValue: prop.string()
+    };
+  }
+
+  errorValue = 'error state';
+
+  constructor() {
+    super();
+
+    this.propagateValue = this.propagateValue.bind( this );
+  }
+
+  propagateValue( event: CustomEvent ) {
+    this.errorValue = event.detail.data;
+  }
+
   renderCallback() {
+
+    const { errorValue } = this;
+
     return [
-      <style />,
       <fieldset>
         <legend>{Input.is}</legend>
 
         <div>
+          <pre>value: {errorValue}</pre>
           <Input
             valid="false"
-            value="error state"
+            value={errorValue}
             placeholder="placeholder"
-            onKeyup={this.log( 'onKeyUp' )}
-            onFocus={this.log( 'onFocus' )}
-            onBlur={this.log( 'onBlur' )}
-            onChange={this.log( 'onChange' )}
+            onChange={this.propagateValue}
           />
           <Input
             valid="true"
