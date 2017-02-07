@@ -1,5 +1,6 @@
 import * as expect from 'expect';
 import * as isSameDay from 'date-fns/is_same_day';
+import * as parse from 'date-fns/parse';
 import { Calendar } from './';
 import { CalendarButton } from './components/Button';
 
@@ -189,7 +190,7 @@ describe( Calendar.is, () => {
 
       it( `should emit onChange event with selected day value`, () => {
 
-        const expectedDate = new Date( '1987-12-09' );
+        const expectedDate = parse( '1987-12-09' );
 
         let changeTriggered = false;
         let selectedDate: Date;
@@ -201,17 +202,13 @@ describe( Calendar.is, () => {
         return mount(
           <bl-calendar
             events={{ dateChange: handleChange }}
-            selectedDate={new Date( '1987-12-22' )}
+            selectedDate={parse( '1987-12-22' )}
           />
         ).wait( ( element ) => {
 
           // existing day in month
           const oneDay = element.all( 'button:not(.c-calendar__control)' )[ 10 ].node as HTMLButtonElement;
-          console.log( 'expectedDate', expectedDate );
-          console.log( 'selectedDate', selectedDate);
           emit( oneDay, 'click' );
-          console.log( 'expectedDate', expectedDate );
-          console.log( 'selectedDate', selectedDate);
           expect( changeTriggered ).toBe( true );
           expect( isSameDay( expectedDate, selectedDate ) ).toBe( true );
 
