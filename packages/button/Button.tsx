@@ -38,10 +38,11 @@ declare global {
   }
 }
 
-export class Button extends Colored(Disabled(Component))<ButtonProps> {
+export class Button extends Colored( Disabled( Component ) )<ButtonProps> {
   static get is() { return 'bl-button'; }
   static get props(): ComponentProps<Button, Props> {
     return {
+      ...super.props,
       block: prop.boolean( {
         attribute: {
           source: true
@@ -87,5 +88,3 @@ export class Button extends Colored(Disabled(Component))<ButtonProps> {
     ];
   }
 }
-
-console.dir(Button)
