@@ -220,4 +220,3 @@ describe( Calendar.is, () => {
   } );
 
 } );
-
