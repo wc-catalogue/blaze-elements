@@ -209,6 +209,8 @@ describe( Calendar.is, () => {
           const oneDay = element.all( 'button:not(.c-calendar__control)' )[ 10 ].node as HTMLButtonElement;
           emit( oneDay, 'click' );
           expect( changeTriggered ).toBe( true );
+          console.log( 'expectedDate', expectedDate );
+          console.log( 'selectedDate', selectedDate);
           expect( isSameDay( expectedDate, selectedDate ) ).toBe( true );
 
         } );
