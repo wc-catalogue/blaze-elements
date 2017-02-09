@@ -20,41 +20,16 @@ const { getIfUtils, removeEmpty } = require( 'webpack-config-utils' );
 module.exports = ( env ) => {
   const { ifProd, ifNotProd, ifTest, ifDev, ifSite } = getIfUtils( env, ['prod', 'test', 'dev', 'site'] );
 
-  function _packagePrefix() {
-    return './packages' + ( env.element ? `/${env.element}` : '' );
-  }
-
-  function _entryPoint() {
-    if ( ifTest() ) {
-
-      return {
-        'test': _packagePrefix() + '/index.test.ts',
-        'test-helpers' : './test-helpers.ts'
-      };
-
-    }
-
-    if ( ifProd() ) {
-
-      return {
-        'index': _packagePrefix() + '/index.ts',
-        'index-with-dependencies': _packagePrefix() + '/index.with.dependencies.ts'
-      };
-
-    }
-
-    return {
-      'main.demo': _packagePrefix() + '/index.demo.ts',
-      'polyfills': './polyfills.ts',
-      'styles': './styles.ts'
-    };
-  }
+  const packagePath = resolve( './packages', env.element || '' );
 
   return {
     // The base directory, an absolute path, for resolving entry points and loaders from configuration.
     context: resolve( __dirname ),
     // The point or points to enter the application.
-    entry: _entryPoint(),
+    entry: getEntryPointConfig( packagePath, {
+      isTest: ifTest(),
+      isProd: ifProd(),
+    } ),
     output: {
       filename: ifProd('[name].min.js', '[name].js'),
       path: env.element ? resolve( __dirname, 'packages', env.element, 'dist' ) : resolve( __dirname, 'dist' ),
@@ -181,32 +156,58 @@ module.exports = ( env ) => {
 
     ]),
     performance: {
-      hints: ifTest() ? false : 'warning'
+      hints: ifProd() && 'warning'
     }
   }
 
 
-  function ifProdOrSite( callback = true ) {
+  function ifProdOrSite( returnValue = true ) {
 
     if ( ifProd() || ifSite() ) {
 
-      return callback;
+      return returnValue;
 
     }
 
   }
 
-  function ifDevOrSite( callback = true ) {
+  function ifDevOrSite( returnValue = true ) {
 
     if ( ifDev() || ifSite() ) {
 
-      return callback;
+      return returnValue;
 
     }
 
   }
 
 };
+
+function getEntryPointConfig( basePath, { isTest, isProd } = {} ) {
+  if ( isTest ) {
+
+    return {
+      'test': resolve( basePath, 'index.test.ts' ),
+      'test-helpers' : './test-helpers.ts'
+    };
+
+  }
+
+  if ( isProd ) {
+
+    return {
+      'index': resolve( basePath, 'index.ts' ),
+      'index-with-dependencies': resolve( basePath, 'index.with.dependencies.ts' )
+    };
+
+  }
+
+  return {
+    'main.demo': resolve( basePath, 'index.demo.ts' ),
+    'polyfills': './polyfills.ts',
+    'styles': './styles.ts'
+  };
+}
 
 /**
  * Build sort function for chunksSortMode from array

@@ -1,7 +1,7 @@
 {
   "name": "blaze-elements",
   "version": "1.2.0",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:wc-catalogue/blaze-elements.git",
   "author": "elemementor",
   "license": "MIT",

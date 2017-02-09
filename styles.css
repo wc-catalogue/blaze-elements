@@ -1,3 +1,6 @@
+@import "~blaze/scss/generics.global.scss";
+@import "~blaze/scss/components.typography.scss";
+
 header {
   text-align: center
 }
