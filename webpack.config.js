@@ -163,69 +163,48 @@ module.exports = ( env ) => {
     }
   }
 
-  function getCustomIfUtils( { ifDev, ifProd, ifSite } = {} ) {
-
+  function getCustomIfUtils( { ifDev, ifProd, ifSite } = {} ){
     return {
-
       ifProdOrSite: function( value, alternate ) {
-
-        return getByEnvValue(ifProd() || ifSite(), value, alternate );
-
+        return getByEnvValue( ifProd() || ifSite(), value, alternate );
       },
-
       ifDevOrSite: function( value, alternate ) {
-
-        return getByEnvValue(ifDev() || ifSite(), value, alternate );
-
+        return getByEnvValue( ifDev() || ifSite(), value, alternate );
       }
-
     }
 
     function getByEnvValue( envValue, value, alternate ) {
-
-      return isUndefined(value) ? envValue : propIf(envValue, value, alternate )
-
+      return isUndefined( value ) ? envValue : propIf( envValue, value, alternate )
     }
 
     function isUndefined( val ) {
-
       return typeof val === "undefined"
-
     }
 
     function getValue( val ) {
-
       return JSON.parse( val );
-
     }
 
     function propIf( add, value, alternate ) {
-
       return getValue( add ) ? value : alternate
-
     }
-
   }
 
 };
 
 function getEntryPointConfig( basePath, { isTest, isProd } = {} ) {
   if ( isTest ) {
-
     return {
       'test': resolve( basePath, 'index.test.ts' ),
       'test-helpers' : './test-helpers.ts'
     };
-
   }
 
   if ( isProd ) {
-
     return {
       'index': resolve( basePath, 'index.ts' ),
       'index-with-dependencies': resolve( basePath, 'index.ts' )
     };
-
   }
 
   return {
