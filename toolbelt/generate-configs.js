@@ -18,7 +18,7 @@ for (let packageName of packageList) {
   const originalPackageJson = require(`../packages/${packageName}/package.json`);
 
   const packageJson = Object.assign({}, packageJsonTemplate, {
-    name: `bl-${packageName}`,
+    name: `@blaze-elements/${packageName}`,
     version: originalPackageJson.version || '1.0.0'
   });
 

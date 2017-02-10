@@ -2,9 +2,10 @@
   "name": "@blaze-elements/drawer",
   "version": "1.2.0",
   "main": "dist/index.min.js",
+  "typings": "definitions/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "start": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.dev --hot --env.element=drawer",
+    "start": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.dev --env.element=drawer --hot",
     "test": "npm run build:test && ../../node_modules/.bin/wct -l firefox",
     "test:watch": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p\"",
     "test:watch:firefox": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p -l firefox\"",
