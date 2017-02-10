@@ -152,9 +152,9 @@ module.exports = ( env ) => {
       ifDevOrSite(new HtmlWebpackPlugin({
           template: resolve( 'index.html' ),
           packages: env.element ? env.element : require('./package.json').packages,
-          excludeChunks: [ 'index' ], // Exclude 'index' & 'index-with-dependencies' as it is included in 'main.demo'
+          excludeChunks: [ 'index', 'index-with-dependencies' ], // Exclude 'index' & 'index-with-dependencies' as it is included in 'main.demo'
           inject: 'head',
-          chunksSortMode: buildChunksSort([ 'polyfills', 'styles', 'index', 'main.demo', 'test-helpers', 'test' ])
+          chunksSortMode: buildChunksSort([ 'polyfills', 'styles', 'index', 'index-with-dependencies', 'main.demo', 'test-helpers', 'test' ])
       }))
 
     ]),
