@@ -1,7 +1,7 @@
 {
   "name": "@blaze-elements/<component-name>",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "dist/index.min.js",
   "typings": "definitions/index.d.ts",
   "license": "MIT",
   "scripts": {

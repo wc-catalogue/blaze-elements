@@ -18,13 +18,15 @@ const { getIfUtils, removeEmpty } = require( 'webpack-config-utils' );
 
 
 module.exports = ( env ) => {
+  const context = resolve( __dirname );
   const { ifProd, ifNotProd, ifTest, ifDev, ifSite } = getIfUtils( env, ['prod', 'test', 'dev', 'site'] );
+  const { ifProdOrSite, ifDevOrSite } = getCustomIfUtils( { ifDev, ifProd, ifSite } );
 
-  const packagePath = resolve( './packages', env.element || '' );
+  const packagePath = resolve( context, './packages', env.element || '' );
 
   return {
     // The base directory, an absolute path, for resolving entry points and loaders from configuration.
-    context: resolve( __dirname ),
+    context,
     // The point or points to enter the application.
     entry: getEntryPointConfig( packagePath, {
       isTest: ifTest(),
@@ -40,6 +42,7 @@ module.exports = ( env ) => {
       extensions: [ '.js', '.ts', '.tsx' ]
     },
 
+    // Allow connection from any IP, so that it is accessible from VMs/external devices
     devServer: {
       host: '0.0.0.0'
     },
@@ -149,9 +152,9 @@ module.exports = ( env ) => {
       ifDevOrSite(new HtmlWebpackPlugin({
           template: resolve( 'index.html' ),
           packages: env.element ? env.element : require('./package.json').packages,
-          excludeChunks: [ 'index', 'index-with-dependencies' ], // Exclude 'index' & 'index-with-dependencies' as it is included in 'main.demo'
+          excludeChunks: [ 'index' ], // Exclude 'index' & 'index-with-dependencies' as it is included in 'main.demo'
           inject: 'head',
-          chunksSortMode: buildChunksSort([ 'polyfills', 'styles', 'index', 'index-with-dependencies', 'main.demo', 'test-helpers', 'test' ])
+          chunksSortMode: buildChunksSort([ 'polyfills', 'styles', 'index', 'main.demo', 'test-helpers', 'test' ])
       }))
 
     ]),
@@ -160,22 +163,45 @@ module.exports = ( env ) => {
     }
   }
 
+  function getCustomIfUtils( { ifDev, ifProd, ifSite } = {} ) {
 
-  function ifProdOrSite( returnValue = true ) {
+    return {
 
-    if ( ifProd() || ifSite() ) {
+      ifProdOrSite: function( value, alternate ) {
 
-      return returnValue;
+        return getByEnvValue(ifProd() || ifSite(), value, alternate );
+
+      },
+
+      ifDevOrSite: function( value, alternate ) {
+
+        return getByEnvValue(ifDev() || ifSite(), value, alternate );
+
+      }
 
     }
 
-  }
+    function getByEnvValue( envValue, value, alternate ) {
 
-  function ifDevOrSite( returnValue = true ) {
+      return isUndefined(value) ? envValue : propIf(envValue, value, alternate )
 
-    if ( ifDev() || ifSite() ) {
+    }
 
-      return returnValue;
+    function isUndefined( val ) {
+
+      return typeof val === "undefined"
+
+    }
+
+    function getValue( val ) {
+
+      return JSON.parse( val );
+
+    }
+
+    function propIf( add, value, alternate ) {
+
+      return getValue( add ) ? value : alternate
 
     }
 
@@ -197,7 +223,7 @@ function getEntryPointConfig( basePath, { isTest, isProd } = {} ) {
 
     return {
       'index': resolve( basePath, 'index.ts' ),
-      'index-with-dependencies': resolve( basePath, 'index.with.dependencies.ts' )
+      'index-with-dependencies': resolve( basePath, 'index.ts' )
     };
 
   }

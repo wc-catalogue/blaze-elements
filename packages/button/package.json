@@ -1,7 +1,7 @@
 {
   "name": "@blaze-elements/button",
   "version": "1.2.0",
-  "main": "dist/index.js",
+  "main": "dist/index.min.js",
   "license": "MIT",
   "typings": "definitions/index.d.ts",
   "scripts": {
