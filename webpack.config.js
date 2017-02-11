@@ -208,7 +208,7 @@ function getEntryPointConfig( basePath, { isTest, isProd } = {} ) {
   }
 
   return {
-    'main.demo': resolve( basePath, 'index.demo.ts' ),
+    'main.demo': resolve( basePath, 'index.demo.tsx' ),
     'polyfills': './polyfills.ts',
     'styles': './styles.ts'
   };

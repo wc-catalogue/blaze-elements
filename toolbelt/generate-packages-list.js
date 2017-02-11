@@ -14,5 +14,5 @@ const indexDemoFile = packageJson.packages.map( ( packageName ) => `import './${
 const indexTestFile = packageJson.packages.map( ( packageName ) => `import './${ packageName }/index.test';` ).join( "\n" );
 
 fs.writeFileSync( './packages/index.ts', indexFile + "\n" );
-fs.writeFileSync( './packages/index.demo.ts', indexDemoFile + "\n" );
+fs.writeFileSync( './packages/index.demo.tsx', indexDemoFile + "\n" );
 fs.writeFileSync( './packages/index.test.ts', indexTestFile + "\n" );
