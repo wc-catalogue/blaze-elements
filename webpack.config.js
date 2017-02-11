@@ -18,37 +18,22 @@ const { getIfUtils, removeEmpty } = require( 'webpack-config-utils' );
 
 
 module.exports = ( env ) => {
-  const { ifProd, ifNotProd, ifTest, ifNotTest } = getIfUtils( env );
+  const context = resolve( __dirname );
+  const { ifProd, ifNotProd, ifTest, ifDev, ifSite } = getIfUtils( env, ['prod', 'test', 'dev', 'site'] );
+  const { ifProdOrSite, ifDevOrSite } = getCustomIfUtils( { ifDev, ifProd, ifSite } );
+
+  const packagePath = resolve( context, './packages', env.element || '' );
 
   return {
     // The base directory, an absolute path, for resolving entry points and loaders from configuration.
-    context: resolve( __dirname ),
+    context,
     // The point or points to enter the application.
-    entry: ifTest(
-      {
-        'test': (
-          env.element ?
-            `./packages/${env.element}/index.test.ts` :
-            './packages/index.test.ts'
-        ),
-        'test-helpers': './test-helpers.ts'
-      },
-      (env.element ? {
-        'main': `./packages/${ env.element }/index.ts`,
-        'main.demo': `./packages/${ env.element }/index.demo.tsx`,
-        'vendors': './vendors.ts',
-        'polyfills': './polyfills.ts',
-        'styles': './styles.ts'
-      } : {
-        'main': './packages/index.ts',
-        'main.demo': './packages/index.demo.ts',
-        'vendors': './vendors.ts',
-        'polyfills': './polyfills.ts',
-        'styles': './styles.ts'
-      })
-    ),
+    entry: getEntryPointConfig( packagePath, {
+      isTest: ifTest(),
+      isProd: ifProd(),
+    } ),
     output: {
-      filename: '[name].js',
+      filename: ifProd('[name].min.js', '[name].js'),
       path: env.element ? resolve( __dirname, 'packages', env.element, 'dist' ) : resolve( __dirname, 'dist' ),
       // Include comments with information about the modules.
       pathinfo: ifNotProd()
@@ -57,6 +42,10 @@ module.exports = ( env ) => {
       extensions: [ '.js', '.ts', '.tsx' ]
     },
 
+    // Allow connection from any IP, so that it is accessible from VMs/external devices
+    devServer: {
+      host: '0.0.0.0'
+    },
 
     /**
      * Developer tool to enhance debugging
@@ -138,14 +127,14 @@ module.exports = ( env ) => {
         // The UglifyJsPlugin will no longer put loaders into minimize mode, and the debug option has been deprecated.
         // These options are simply moved into a new plugin, LoaderOptionsPlugin, for separation of concerns reasons.
         // Default webpack build options saves a couple of kBs
-        minimize: ifProd( true ),
-        debug: ifProd( false ),
-        quiet: ifProd( true )
+        minimize: ifProdOrSite(),
+        debug: ifDev(),
+        quiet: ifProdOrSite()
 
       }),
 
       // Uglify bundles
-      ifProd( new webpack.optimize.UglifyJsPlugin( {
+      ifProdOrSite(new webpack.optimize.UglifyJsPlugin( {
         compress: {
           screw_ie8: true,
           warnings: false
@@ -153,27 +142,77 @@ module.exports = ( env ) => {
         output: { comments: false }
       } ) ),
 
-      ifProd( new FaviconsWebpackPlugin( './assets/blaze-elements-logo.svg' ) ),
+      ifDevOrSite( new FaviconsWebpackPlugin( './assets/blaze-elements-logo.svg' ) ),
 
       /**
        * Use the HtmlWebpackPlugin plugin to make index.html a template so css and js can dynamically be added to the page.
        * This will also take care of moving the index.html file to the build directory using the index.html in src as a template.
        * https://github.com/ampedandwired/html-webpack-plugin
        */
-      ifNotTest(new HtmlWebpackPlugin({
+      ifDevOrSite(new HtmlWebpackPlugin({
           template: resolve( 'index.html' ),
           packages: env.element ? env.element : require('./package.json').packages,
-          excludeChunks: [ 'main' ], // Exclude 'main' as it is included in 'main.demo'
+          excludeChunks: [ 'index', 'index-with-dependencies' ], // Exclude 'index' & 'index-with-dependencies' as it is included in 'main.demo'
           inject: 'head',
-          chunksSortMode: buildChunksSort([ 'polyfills', 'vendors', 'styles', 'main', 'main.demo', 'test-helpers', 'test' ])
+          chunksSortMode: buildChunksSort([ 'polyfills', 'styles', 'index', 'index-with-dependencies', 'main.demo', 'test-helpers', 'test' ])
       }))
 
     ]),
     performance: {
-      hints: ifTest() ? false : 'warning'
+      hints: ifProd() && 'warning'
     }
   }
+
+  function getCustomIfUtils( { ifDev, ifProd, ifSite } = {} ){
+    return {
+      ifProdOrSite: function( value, alternate ) {
+        return getByEnvValue( ifProd() || ifSite(), value, alternate );
+      },
+      ifDevOrSite: function( value, alternate ) {
+        return getByEnvValue( ifDev() || ifSite(), value, alternate );
+      }
+    }
+
+    function getByEnvValue( envValue, value, alternate ) {
+      return isUndefined( value ) ? envValue : propIf( envValue, value, alternate )
+    }
+
+    function isUndefined( val ) {
+      return typeof val === "undefined"
+    }
+
+    function getValue( val ) {
+      return JSON.parse( val );
+    }
+
+    function propIf( add, value, alternate ) {
+      return getValue( add ) ? value : alternate
+    }
+  }
+
 };
+
+function getEntryPointConfig( basePath, { isTest, isProd } = {} ) {
+  if ( isTest ) {
+    return {
+      'test': resolve( basePath, 'index.test.ts' ),
+      'test-helpers' : './test-helpers.ts'
+    };
+  }
+
+  if ( isProd ) {
+    return {
+      'index': resolve( basePath, 'index.ts' ),
+      'index-with-dependencies': resolve( basePath, 'index.ts' )
+    };
+  }
+
+  return {
+    'main.demo': resolve( basePath, 'index.demo.ts' ),
+    'polyfills': './polyfills.ts',
+    'styles': './styles.ts'
+  };
+}
 
 /**
  * Build sort function for chunksSortMode from array
