@@ -25,7 +25,8 @@
     "site": "rimraf dist && npm run packagelist && webpack --env.site",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
-    "precommit": "yarn ts:lint && yarn test"
+    "precommit": "yarn ts:lint && yarn test",
+    "toolbelt:generate:configs": "node toolbelt/generate-configs.js"
   },
   "dependencies": {
     "blaze": "^3.2.0",
