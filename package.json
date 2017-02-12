@@ -26,6 +26,7 @@
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
     "precommit": "yarn ts:lint && yarn test",
+    "toolbelt:generate:configs": "node toolbelt/generate-configs.js"
     "cleanup": "rimraf dist && rimraf packages/**/dist"
   },
   "dependencies": {

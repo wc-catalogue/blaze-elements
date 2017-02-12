@@ -81,6 +81,18 @@ yarn start
 open http://localhost:8080
 ```
 
+## Generating new package using template
+
+```bash
+# Create empty folder for desired package
+mkdir packages/somepackagename
+
+# Run config generation task
+yarn toolbelt:generate:configs
+```
+
+NOTE: templates are stored under `toolbelt/templates`
+
 ## Running Tests Locally
 
 To run tests:
