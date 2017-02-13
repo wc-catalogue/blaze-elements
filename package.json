@@ -19,13 +19,14 @@
     "test": "npm run build:test && toolbelt/test.sh -l firefox",
     "test:watch": "concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html toolbelt/test.sh -p\"",
     "test:watch:firefox": "concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html toolbelt/test.sh -p -l firefox\"",
-    "build": "rimraf dist && npm run packagelist && webpack --env.prod",
-    "build:test": "rimraf dist && npm run packagelist && webpack --env.test",
-    "build:test:watch": "npm run packagelist && webpack-dev-server --env.test",
-    "site": "rimraf dist && npm run packagelist && webpack --env.site",
+    "build": "npm run cleanup && npm run packagelist && webpack --env.prod",
+    "build:test": "npm run cleanup && npm run packagelist && webpack --env.test",
+    "build:test:watch": "npm run cleanup && npm run packagelist && webpack-dev-server --env.test",
+    "site": "npm run cleanup && npm run packagelist && webpack --env.site",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
-    "precommit": "yarn ts:lint && yarn test"
+    "precommit": "yarn ts:lint && yarn test",
+    "cleanup": "rimraf dist && rimraf packages/**/dist"
   },
   "dependencies": {
     "blaze": "^3.2.0",
