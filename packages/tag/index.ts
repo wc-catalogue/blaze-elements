@@ -1,1 +1,1 @@
-import './Tag';
+import './TagSelector';
