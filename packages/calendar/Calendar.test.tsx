@@ -16,33 +16,33 @@ describe( Calendar.is, () => {
 
       expect( customElements.get( Calendar.is ) ).toBe( Calendar );
 
-    } );
+    });
 
     it( `should render via JSX IntrinsicElement`, () => {
 
       return mount(
         <bl-calendar />
-      ).wait( ( element ) => {
+      ).wait(( element ) => {
 
         expect( element.node.localName ).toBe( Calendar.is );
 
-      } );
+      });
 
-    } );
+    });
 
     it( `should render via JSX class`, () => {
 
       return mount(
         <Calendar />
-      ).wait( ( element ) => {
+      ).wait(( element ) => {
 
         expect( element.has( '.c-calendar' ) ).toBe( true );
 
-      } );
+      });
 
-    } );
+    });
 
-  } );
+  });
 
   describe( `API`, () => {
 
@@ -52,31 +52,31 @@ describe( Calendar.is, () => {
 
         return mount(
           <bl-calendar />
-        ).wait( ( element ) => {
+        ).wait(( element ) => {
 
           const today = new Date();
           const calendar = element.node as Calendar;
           expect( isSameDay( calendar.selectedDate, today ) ).toBe( true );
 
-        } );
+        });
 
-      } );
+      });
 
       it( `should set selectedDate via attribute`, () => {
 
         return mount(
-          <bl-calendar attrs={{'selected-date': '1987-12-22'}}/>
+          <bl-calendar attrs={{ 'selected-date': '1987-12-22' }} />
         ).wait( checkCorrectlySetDateFromProps );
 
-      } );
+      });
 
       it( `should set year and month based on selectedDay`, () => {
 
         return mount(
-          <bl-calendar selectedDate={new Date( '1987-12-22' )}/>
+          <bl-calendar selectedDate={new Date( '1987-12-22' )} />
         ).wait( checkCorrectlySetDateFromProps );
 
-      } );
+      });
 
       function checkCorrectlySetDateFromProps( element: WrappedNode ) {
         const yearMonth = element.all( '.c-calendar__header' );
@@ -84,7 +84,7 @@ describe( Calendar.is, () => {
         expect( yearMonth[ 1 ].node.innerHTML ).toBe( 'December' );
       }
 
-    } );
+    });
 
     describe( `[weekStartsOn]`, () => {
 
@@ -94,38 +94,38 @@ describe( Calendar.is, () => {
           <bl-calendar />
         ).wait( checkWeekStarts.bind( null, 'Su' ) );
 
-      } );
+      });
 
       it( `should set monday`, () => {
 
         return mount(
-          <bl-calendar weekStartsOn="monday"/>
+          <bl-calendar weekStartsOn="monday" />
         ).wait( checkWeekStarts.bind( null, 'Mo' ) );
 
-      } );
+      });
 
       it( `should set monday via attribute`, () => {
 
         return mount(
-          <bl-calendar attrs={{'week-starts-on': 'monday'}}/>
+          <bl-calendar attrs={{ 'week-starts-on': 'monday' }} />
         ).wait( checkWeekStarts.bind( null, 'Mo' ) );
 
-      } );
+      });
 
       it( `should set sunday`, () => {
 
         return mount(
-          <bl-calendar weekStartsOn="sunday"/>
+          <bl-calendar weekStartsOn="sunday" />
         ).wait( checkWeekStarts.bind( null, 'Su' ) );
 
-      } );
+      });
 
       function checkWeekStarts( startDay: string, element: WrappedNode ) {
         const headDays = element.all( '.c-calendar__day' );
         expect( headDays[ 0 ].node.innerHTML ).toBe( startDay );
       }
 
-    } );
+    });
 
     describe( `[i18n]`, () => {
 
@@ -152,40 +152,40 @@ describe( Calendar.is, () => {
       it( `should set months internationalized`, () => {
 
         return mount(
-          <bl-calendar i18n={i18n} selectedDate={new Date( '1987-12-22' )}/>
-        ).wait( ( element ) => {
+          <bl-calendar i18n={i18n} selectedDate={new Date( '1987-12-22' )} />
+        ).wait(( element ) => {
 
           expect( element.all( '.c-calendar__header' )[ 1 ].node.innerHTML ).toBe( 'Prosinec' );
 
-        } );
+        });
 
-      } );
+      });
 
       it( `should set weekdays internationalized`, () => {
 
         return mount(
-          <bl-calendar i18n={i18n}/>
-        ).wait( ( element ) => {
+          <bl-calendar i18n={i18n} />
+        ).wait(( element ) => {
 
           expect( element.all( '.c-calendar__day' )[ 0 ].node.innerHTML ).toBe( 'Ne' );
 
-        } );
+        });
 
-      } );
+      });
 
       it( `should set button text internationalized`, () => {
 
         return mount(
-          <bl-calendar i18n={i18n}/>
-        ).wait( ( element ) => {
+          <bl-calendar i18n={i18n} />
+        ).wait(( element ) => {
 
           expect( element.one( CalendarButton.is ).node.innerHTML ).toBe( 'DNES' );
 
-        } );
+        });
 
-      } );
+      });
 
-    } );
+    });
 
     describe( `(dateChange)`, () => {
 
@@ -205,7 +205,7 @@ describe( Calendar.is, () => {
             events={{ dateChange: handleChange }}
             selectedDate={parse( '1987-12-22' )}
           />
-        ).wait( ( element ) => {
+        ).wait(( element ) => {
 
           // existing day in month
           const oneDay = element.all( 'button:not(.c-calendar__control)' )[ 10 ].node as HTMLButtonElement;
@@ -213,12 +213,12 @@ describe( Calendar.is, () => {
           expect( changeTriggered ).toBe( true );
           expect( isSameDay( expectedDate, selectedDate ) ).toBe( true );
 
-        } );
+        });
 
-      } );
+      });
 
-    } );
+    });
 
-  } );
+  });
 
-} );
+});

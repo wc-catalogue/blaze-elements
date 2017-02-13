@@ -48,7 +48,7 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       'bl-calendar': GenericTypes.IntrinsicCustomElement<CalendarProps>
-        & GenericTypes.IntrinsicBoreElement<Attrs, Events>
+      & GenericTypes.IntrinsicBoreElement<Attrs, Events>
     }
   }
 }
@@ -69,13 +69,13 @@ export class Calendar extends Component<CalendarProps> {
         deserialize( value: string ) {
           return parse( value );
         }
-      } ),
+      }),
       weekStartsOn: prop.string( {
         attribute: {
           source: true
         },
         default: WEEK_STARTS_ON
-      } ),
+      }),
       todayButtonText: prop.string(),
       i18n: prop.object(),
     };
@@ -162,13 +162,13 @@ export class Calendar extends Component<CalendarProps> {
 
     props( this, {
       selectedDate: date
-    } );
+    });
 
     emit( this, Calendar.events.DATE_CHANGE, {
       detail: {
         value: this.selectedDate
       }
-    } );
+    });
   }
 
   renderCallback() {
@@ -176,7 +176,7 @@ export class Calendar extends Component<CalendarProps> {
     const { year, month, selectedDate } = this;
 
     // create date elements
-    const days = this.days.map( ( day ) => {
+    const days = this.days.map(( day ) => {
       const className = css(
         'c-calendar__date',
         {
@@ -186,12 +186,12 @@ export class Calendar extends Component<CalendarProps> {
         }
       );
       return <button class={className} onClick={this.setDateHandler( day )}>{getDate( day )}</button>;
-    } );
+    });
 
     // create weekDays elements
-    const weekDays = this.days.filter( ( day, index ) =>
-    index < 7 ).map( ( day ) =>
-      <div class="c-calendar__day">{this.format( day, 'dd' )}</div> );
+    const weekDays = this.days.filter(( day, index ) =>
+      index < 7 ).map(( day ) =>
+        <div class="c-calendar__day">{this.format( day, 'dd' )}</div> );
 
     return [
       <style>{styles}</style>,
@@ -239,9 +239,9 @@ export class Calendar extends Component<CalendarProps> {
         weekStartsOn: this.weekStartsOn === WEEK_STARTS_ON
           ? 0
           : 1
-      } );
+      });
 
-    const days: Date[] = this.daysMatrix.reduce( ( acc: Date[] ) => {
+    const days: Date[] = this.daysMatrix.reduce(( acc: Date[] ) => {
       const lastDate = acc[ acc.length - 1 ];
       const nextDate = addDays( lastDate, 1 );
       return [ ...acc, nextDate ];
