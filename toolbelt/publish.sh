@@ -5,7 +5,5 @@
   git config user.name "Travis-CI"
   git config user.email "travis@nodemeatspace.com"
   echo "//registry.npmjs.org/:_authToken=$NPM_KEY" >> ~/.npmrc
-  npm version patch
-  npm publish
   lerna publish --canary --yes
 )
