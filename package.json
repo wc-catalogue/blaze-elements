@@ -1,28 +1,21 @@
 {
-  "name": "blaze-elements",
-  "version": "1.2.0",
-  "main": "dist/index.min.js",
-  "repository": "git@github.com:wc-catalogue/blaze-elements.git",
-  "author": "elemementor",
+  "private": true,
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "postinstall": "lerna bootstrap",
     "packagelist": "node toolbelt/generate-packages-list.js",
     "ts:lint": "tslint \"packages/**/*.tsx\" \"packages/**/*.ts\"",
     "ts:lint:fix": "yarn ts:lint -- --fix",
     "ts:format": "tsfmt --replace packages/**/*.ts packages/**/*.tsx",
-    "start": "npm run packagelist && webpack-dev-server --env.dev --hot",
+    "start": "npm run packagelist && webpack-dev-server --env.dev --env.element=blaze-elements --hot",
     "start:prod": "pushstate-server dist/",
-    "test": "npm run build:test && toolbelt/test.sh -l firefox",
+    "test": "npm run build:test && toolbelt/test.sh",
     "test:watch": "concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html toolbelt/test.sh -p\"",
     "test:watch:firefox": "concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html toolbelt/test.sh -p -l firefox\"",
-    "build": "npm run cleanup && npm run packagelist && webpack --env.prod",
-    "build:test": "npm run cleanup && npm run packagelist && webpack --env.test",
-    "build:test:watch": "npm run cleanup && npm run packagelist && webpack-dev-server --env.test",
-    "site": "npm run cleanup && npm run packagelist && webpack --env.site",
+    "build": "npm run cleanup && npm run packagelist && webpack --env.prod --env.element=blaze-elements",
+    "build:test": "npm run cleanup && npm run packagelist && webpack --env.test --env.element=blaze-elements",
+    "build:test:watch": "npm run cleanup && npm run packagelist && webpack-dev-server --env.test --env.element=blaze-elements",
+    "site": "npm run cleanup && npm run packagelist && webpack --env.site --env.element=blaze-elements",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
     "precommit": "yarn ts:lint && yarn test",
@@ -75,6 +68,15 @@
     "webpack-config-utils": "^2.3.0",
     "webpack-dev-server": "^2.3.0"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "maxSubjectLength": 120
+    }
+  },
   "packages": [
     "accordion",
     "alert",
@@ -97,14 +99,5 @@
     "tooltip",
     "tree",
     "typography"
-  ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-lerna-changelog"
-    },
-    "validate-commit-msg": {
-      "types": "conventional-commit-types",
-      "maxSubjectLength": 120
-    }
-  }
+  ]
 }
