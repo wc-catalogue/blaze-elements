@@ -1,4 +1,4 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component, prop, define } from 'skatejs';
 import { ColorType } from './colorTypes';
 export function renderCss(): MethodDecorator {
   return function<T extends Function>(
@@ -11,6 +11,13 @@ export function renderCss(): MethodDecorator {
         return [h('style', this.css)].concat(descriptor.value.call(this, this));
       }
     };
+  };
+}
+
+export function customElement(name: string): ClassDecorator {
+  return function<T extends typeof Component>(Target: T) {
+    Object.defineProperty(Target, 'is', {get() { return name; }});
+    return define(Target);
   };
 }
 
