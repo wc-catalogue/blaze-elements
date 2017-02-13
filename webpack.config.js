@@ -142,7 +142,7 @@ module.exports = ( env ) => {
         output: { comments: false }
       } ) ),
 
-      ifDevOrSite( new FaviconsWebpackPlugin( './assets/blaze-elements-logo.svg' ) ),
+      ifSite( new FaviconsWebpackPlugin( './assets/blaze-elements-logo.svg' ) ),
 
       /**
        * Use the HtmlWebpackPlugin plugin to make index.html a template so css and js can dynamically be added to the page.
@@ -151,7 +151,7 @@ module.exports = ( env ) => {
        */
       ifDevOrSite(new HtmlWebpackPlugin({
           template: resolve( 'index.html' ),
-          packages: env.element ? env.element : require('./package.json').packages,
+          packages: getPackagesForBuild( env.element, require('./package.json').packages ),
           excludeChunks: [ 'index', 'index-with-dependencies' ], // Exclude 'index' & 'index-with-dependencies' as it is included in 'main.demo'
           inject: 'head',
           chunksSortMode: buildChunksSort([ 'polyfills', 'styles', 'index', 'index-with-dependencies', 'main.demo', 'test-helpers', 'test' ])
@@ -196,7 +196,7 @@ function getEntryPointConfig( basePath, { isTest, isProd } = {} ) {
   if ( isTest ) {
     return {
       'test': resolve( basePath, 'index.test.ts' ),
-      'test-helpers' : './test-helpers.ts'
+      'test-helpers' : resolve( __dirname, 'test-helpers.ts' )
     };
   }
 
@@ -208,9 +208,9 @@ function getEntryPointConfig( basePath, { isTest, isProd } = {} ) {
   }
 
   return {
-    'main.demo': resolve( basePath, 'index.demo.tsx' ),
-    'polyfills': './polyfills.ts',
-    'styles': './styles.ts'
+    'main.demo': resolve( basePath, 'index.demo.tsx'),
+    'polyfills': resolve( __dirname, 'polyfills.ts'),
+    'styles': resolve( __dirname, 'styles.ts')
   };
 }
 
@@ -220,5 +220,15 @@ function getEntryPointConfig( basePath, { isTest, isProd } = {} ) {
 function buildChunksSort( order ) {
 
   return (a, b) => order.indexOf(a.names[0]) - order.indexOf(b.names[0]);
+
+}
+
+function getPackagesForBuild( element, allPackages ) {
+
+  if ( element === 'blaze-elements' ) {
+    return allPackages;
+  }
+
+  return element;
 
 }

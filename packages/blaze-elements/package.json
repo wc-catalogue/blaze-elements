@@ -1,0 +1,39 @@
+{
+  "name": "blaze-elements",
+  "version": "1.0.0",
+  "main": "dist/index.min.js",
+  "typings": "definitions/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "start": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.dev --env.element=blaze-elements --hot",
+    "test": "npm run build:test && ../../node_modules/.bin/wct -l firefox",
+    "test:watch": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p\"",
+    "test:watch:firefox": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p -l firefox\"",
+    "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.prod --env.element=blaze-elements",
+    "build:test": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.test --env.element=blaze-elements",
+    "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=blaze-elements"
+  },
+  "dependencies": {
+    "@blaze-elements/accordion": "1.2.0",
+    "@blaze-elements/alert": "1.2.0",
+    "@blaze-elements/badge": "1.2.0",
+    "@blaze-elements/breadcrumb": "1.2.0",
+    "@blaze-elements/bubble": "1.2.0",
+    "@blaze-elements/button": "1.2.0",
+    "@blaze-elements/calendar": "1.2.0",
+    "@blaze-elements/card": "1.2.0",
+    "@blaze-elements/collapsible": "1.2.0",
+    "@blaze-elements/drawer": "1.2.0",
+    "@blaze-elements/input": "1.2.0",
+    "@blaze-elements/modal": "1.2.0",
+    "@blaze-elements/nav": "1.2.0",
+    "@blaze-elements/overlay": "1.2.0",
+    "@blaze-elements/progress": "1.2.0",
+    "@blaze-elements/range": "1.2.0",
+    "@blaze-elements/tag": "1.2.0",
+    "@blaze-elements/toggle": "1.2.0",
+    "@blaze-elements/tooltip": "1.2.0",
+    "@blaze-elements/tree": "1.2.0",
+    "@blaze-elements/typography": "1.2.0"
+  }
+}
