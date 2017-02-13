@@ -8,7 +8,8 @@ import {
   Colored,
   ColoredProps,
   Disabled,
-  DisabledProps
+  DisabledProps,
+  renderCss
 } from '../_helpers';
 
 import styles from './Button.scss';
@@ -65,6 +66,11 @@ export class Button extends Colored( Disabled( Component ) )<ButtonProps> {
   close?: boolean;
   ghost?: boolean;
 
+  get css() {
+    return styles;
+  }
+
+  @renderCss()
   renderCallback() {
     const { color, ghost, close, block, disabled } = this;
     const colorClass = cssClassForColorType( ghost ? 'c-button--ghost' : 'c-button', color, ghost );
@@ -77,14 +83,13 @@ export class Button extends Colored( Disabled( Component ) )<ButtonProps> {
         'c-button--block': block,
       }
     );
-    return [
-      <style>{styles}</style>,
+    return (
       <button
         class={className}
         disabled={disabled}
       >
         <slot />
       </button>
-    ];
+    );
   }
 }
