@@ -23,9 +23,9 @@ type EventProps = {
   onChange?: ( ev: CustomEvent ) => void,
 };
 type Events = {
-  keyup?: GenericEvents.KeyupEvent,
-  focus?: GenericEvents.FocusEvent,
-  blur?: GenericEvents.BlurEvent,
+  keyup?: GenericEvents.KeyupHandler,
+  focus?: GenericEvents.FocusHandler,
+  blur?: GenericEvents.BlurHandler,
   change?: ( ev: CustomEvent ) => void,
 };
 type Props = {

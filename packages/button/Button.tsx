@@ -21,7 +21,7 @@ export type Props = {
 };
 
 export type Events = {
-  click?: GenericEvents.ClickEvent,
+  click?: GenericEvents.ClickHandler,
 };
 export type EventHandlers = {
   onClick?: GenericEvents.ClickEvent,
