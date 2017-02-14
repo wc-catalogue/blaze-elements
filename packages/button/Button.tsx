@@ -9,7 +9,8 @@ import {
   ColoredProps,
   Disabled,
   DisabledProps,
-  renderCss
+  Css,
+  renderCss,
 } from '../_helpers';
 
 import styles from './Button.scss';
@@ -39,7 +40,7 @@ declare global {
   }
 }
 
-export class Button extends Colored( Disabled( Component ) )<ButtonProps> {
+export class Button extends Colored( Disabled( Css( Component ) ) )<ButtonProps> {
   static get is() { return 'bl-button'; }
   static get props(): ComponentProps<Button, Props> {
     return {
