@@ -1,10 +1,10 @@
 import { h, Component, prop } from 'skatejs';
+import { bind } from 'decko';
+import { GenericEvents, customElement } from '../_helpers';
 import { Calendar } from './index';
-import { GenericEvents } from '../_helpers';
 
+@customElement( 'bl-calendar-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-calendar-demo'; }
-
   static get props() {
     return {
       selectedDate: prop.string()
@@ -33,18 +33,15 @@ export class Demo extends Component<void> {
     }
   };
 
-  constructor() {
-    super();
-    this.dateChangeHandler = this.dateChangeHandler.bind( this );
-  }
-
   renderCallback() {
-    return [
-      <style />,
+    return (
       <fieldset>
         <legend>{Calendar.is}</legend>
         <span>Selected date: {this.selectedDate}</span>
-        <Calendar selectedDate={this.selectedDate} onDateChange={this.dateChangeHandler} />
+        <Calendar
+          selectedDate={this.selectedDate}
+          onDateChange={this.dateChangeHandler}
+        />
         <h4>Internationalized calendar (Czech)</h4>
         <Calendar
           selectedDate={this.selectedDate}
@@ -53,11 +50,11 @@ export class Demo extends Component<void> {
           weekStartsOn={'monday'}
         />
       </fieldset>
-    ];
+    );
   }
+
+  @bind
   private dateChangeHandler( event: GenericEvents.CustomChangeEvent<Date> ) {
     this.selectedDate = event.detail.value;
   }
 }
-
-customElements.define( Demo.is, Demo );
