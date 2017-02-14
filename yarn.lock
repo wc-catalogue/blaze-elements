@@ -76,11 +76,7 @@
   version "2.2.39"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.39.tgz#f68d63db8b69c38e9558b4073525cf96c4f7a829"
 
-"@types/node@*", "@types/node@^6.0.31":
-  version "6.0.63"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.63.tgz#e08acbbd5946e0e95990b1c76f3ce5b7882a48eb"
-
-"@types/node@^7.0.5":
+"@types/node@*", "@types/node@^7.0.5":
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.5.tgz#96a0f0a618b7b606f1ec547403c00650210bfbb7"
 
@@ -118,6 +114,7 @@
   version "0.0.1"
   resolved "https://github.com/webcomponents/shadydom/archive/a8b4c4c.tar.gz#a89b55258362664724315a44b1d5967668f7ceb1"
 
+<<<<<<< 85807ad5f15c75ce90b17f5137472a687785fbe1
 JSONStream@^1.0.4:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.0.tgz#680ab9ac6572a8a1a207e0b38721db1c77b215e5"
@@ -125,6 +122,13 @@ JSONStream@^1.0.4:
     jsonparse "^1.2.0"
     through ">=2.2.7 <3"
 
+||||||| merged common ancestors
+=======
+"@webcomponents/template@https://github.com/webcomponents/template/archive/0973368.tar.gz":
+  version "0.0.1"
+  resolved "https://github.com/webcomponents/template/archive/0973368.tar.gz#d82e08cf132542bd088204fadcc6996ac30ab9ab"
+
+>>>>>>> fix: add template polyfill to make shadyCss work in IE11
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
