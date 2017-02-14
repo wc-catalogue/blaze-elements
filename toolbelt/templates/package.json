@@ -1,5 +1,5 @@
 {
-  "name": "@blaze-elements/<component-name>",
+  "name": "@blaze-elements/packageName",
   "version": "1.0.0",
   "main": "dist/index.min.js",
   "typings": "definitions/index.d.ts",
@@ -12,6 +12,6 @@
     "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.prod --env.element=packageName",
     "build:test": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.test --env.element=packageName",
     "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=packageName",
-    "prepublish": "rimraf dist && yarn build"
+    "prepublish": "../../node_modules/.bin/rimraf dist && yarn build"
   }
 }
