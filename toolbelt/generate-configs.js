@@ -5,6 +5,10 @@
 const fs = require( 'fs' );
 const path = require( 'path' );
 
+const PACKAGE_JSON_NAME = 'package.json';
+const TSCONFIG_JSON_NAME = 'tsconfig.json';
+
+
 const packageList = require('./packages-list.js').packageList();
 
 console.log('Generating package.json and tsconfig.json for:');
@@ -12,34 +16,56 @@ console.log('Generating package.json and tsconfig.json for:');
 const packagesRootDir = path.resolve(__dirname, '..', 'packages');
 const templatesRootDir = path.resolve(__dirname, 'templates');
 
-const packageJsonTemplate = require( path.resolve(templatesRootDir, 'package.json') );
-const tsconfigJsonTemplate = require( path.resolve(templatesRootDir, 'tsconfig.json') );
+const packageTemplate = require( path.resolve(templatesRootDir, PACKAGE_JSON_NAME) );
+const tsconfigTemplate = require( path.resolve(templatesRootDir, TSCONFIG_JSON_NAME) );
 
-for (let packageName of packageList) {
 
-  console.log(packageName);
+packageList.forEach( generateConfigs );
+
+function generateConfigs( packageName ) {
+
+  console.log(`Generating package: ${packageName}`);
 
   const packageRootDir = path.resolve(packagesRootDir, packageName);
 
-  // Copy tsconfig.json template to each package folder
-  fs.writeFileSync(path.resolve(packageRootDir, 'tsconfig.json'), JSON.stringify(tsconfigJsonTemplate, null, 2) + "\n")
-
   // Generate package.json file base on package package.json file and template
-  const packagePackageJsonPath = path.resolve(packageRootDir, 'package.json');
+  const packagePackageJsonPath = path.resolve(packageRootDir, PACKAGE_JSON_NAME);
 
-  const originalPackageJson = (
-    fs.existsSync( packagePackageJsonPath ) ? require( packagePackageJsonPath ) : {}
+  const originalPackageConfig = fs.existsSync( packagePackageJsonPath )
+    ? require( packagePackageJsonPath )
+    : {};
+
+  const packageConfig = Object.assign(
+    {},
+    packageTemplate,
+    {
+      name: originalPackageConfig.name || packageTemplate.name,
+      version: originalPackageConfig.version || packageTemplate.version,
+      dependencies: originalPackageConfig.dependencies
+    }
   );
 
-  const packageJson = Object.assign({}, packageJsonTemplate, {
-    name: originalPackageJson.name || `@blaze-elements/${packageName}`,
-    version: originalPackageJson.version || '1.0.0',
-    dependencies: originalPackageJson.dependencies || undefined
-  });
+  saveConfigTo(
+    path.resolve(packageRootDir, TSCONFIG_JSON_NAME),
+    tsconfigTemplate
+  );
 
-  const packageJsonString = (JSON.stringify(packageJson, null, 2) + "\n").replace(/packageName/g, packageName);
+  saveConfigTo(
+    path.resolve(packageRootDir, PACKAGE_JSON_NAME),
+    packageConfig,
+    ( str ) => str.replace( /packageName/g, packageName )
+  );
 
-  fs.writeFileSync( path.resolve(packageRootDir, 'package.json'), packageJsonString );
 }
 
-console.log('done');
+function saveConfigTo( where, config, transformCallback = (_) => _ ) {
+
+  fs.writeFileSync( where, transformCallback( serializeConfig( config ) ) );
+
+}
+
+function serializeConfig( config ) {
+  return `${JSON.stringify( config, null, 2 )}\n`;
+}
+
+console.log('Generating packages done');
