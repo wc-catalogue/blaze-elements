@@ -5,6 +5,23 @@ declare module '*.json';
 // Skate
 declare module 'core-js';
 
+// Decko
+declare module 'decko' {
+  /**
+   *
+   */
+  export const bind: MethodDecorator
+  /**
+   * @param caseSensitive Makes cache keys case-insensitive
+   * @param cache Presupply cache storage, for seeding or sharing entries
+   */
+  export function memoize(caseSensitive?: boolean, cache: Object): MethodDecorator
+  /**
+   * @param delay number
+   */
+  export function debounce(delay?: number): MethodDecorator
+}
+
 
 // Custom Elements
 declare const customElements: CustomElementRegistry;
