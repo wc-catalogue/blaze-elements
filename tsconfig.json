@@ -24,7 +24,8 @@
     ],
     "types": [
       "mocha",
-      "sinon-chai"
+      "sinon-chai",
+      "node"
     ],
     "lib": [
       "dom",
