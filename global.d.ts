@@ -1,5 +1,11 @@
-declare module '*.scss';
-declare module '*.css';
+declare module '*.scss' {
+  const _:string;
+  export default _;
+};
+declare module '*.css' {
+  const _:string;
+  export default _;
+};
 declare module '*.json';
 
 // Skate
@@ -20,6 +26,22 @@ declare module 'decko' {
    * @param delay number
    */
   export function debounce(delay?: number): MethodDecorator
+}
+
+declare namespace JSX {
+  interface IntrinsicElement extends ShadyCSS.IntrinsicElements {
+  }
+}
+declare namespace ShadyCSS {
+    interface IntrinsicElements {
+      'custom-style': HTMLElement,
+    }
+
+    interface ShadyCssStatic {
+      prepareTemplate( template: HTMLTemplateElement, elementName: string, typeExtension?: string),
+      applyStyle( host: HTMLElement, overrideProps?: {[propName: string]: string}),
+      updateStyles(properties?: {[propName: string]: string}),
+    }
 }
 
 
@@ -45,6 +67,7 @@ interface ElementCreationOptions {
 
 interface Window {
   customElements: CustomElementRegistry;
+  ShadyCSS: ShadyCSS.ShadyCssStatic,
 }
 
 interface Document {
