@@ -1,5 +1,6 @@
 const { resolve } = require( 'path' );
 const capitalize = require( 'lodash.capitalize' );
+const merge = require( 'webpack-merge' );
 
 const webpack = require( 'webpack' );
 
@@ -24,7 +25,7 @@ module.exports = ( env ) => {
 
   const packagePath = resolve( context, './packages', env.element || '' );
 
-  return {
+  const baseConfig = {
     // The base directory, an absolute path, for resolving entry points and loaders from configuration.
     context,
     // The point or points to enter the application.
@@ -34,7 +35,10 @@ module.exports = ( env ) => {
     } ),
     output: {
       filename: ifProd('[name].min.js', '[name].js'),
-      path: env.element ? resolve( __dirname, 'packages', env.element, 'dist' ) : resolve( __dirname, 'dist' ),
+      path: ifTest(
+        resolve( context, 'tmp', 'tests' ),
+        resolve( context, 'packages', env.element, 'dist' )
+      ),
       // Include comments with information about the modules.
       pathinfo: ifNotProd()
     },
@@ -44,7 +48,8 @@ module.exports = ( env ) => {
 
     // Allow connection from any IP, so that it is accessible from VMs/external devices
     devServer: {
-      host: '0.0.0.0'
+      host: '0.0.0.0',
+      port: ifTest(8090,false)
     },
 
     /**
@@ -54,10 +59,6 @@ module.exports = ( env ) => {
      * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
      */
     devtool: 'source-map',
-
-    devServer: {
-      port: ifTest(8090,false)
-    },
 
     module: {
       rules: [
@@ -163,6 +164,32 @@ module.exports = ( env ) => {
     }
   }
 
+  const withDependenciesConfig =  merge(
+    baseConfig,
+    {
+      output: {
+        filename: ifProd('index-with-dependencies.min.js', 'index-with-dependencies.js')
+      }
+    }
+  );
+
+  const withoutDependenciesConfig = merge(
+    baseConfig,
+    {
+      output: {
+        filename: ifProd('index.min.js', 'index.js')
+      },
+      externals: {
+        skatejs: 'skatejs'
+      }
+    }
+  );
+
+  return ifProd(
+    [ withDependenciesConfig, withoutDependenciesConfig ],
+    baseConfig
+  );
+
   function getCustomIfUtils( { ifDev, ifProd, ifSite } = {} ){
     return {
       ifProdOrSite: function( value, alternate ) {
@@ -202,8 +229,7 @@ function getEntryPointConfig( basePath, { isTest, isProd } = {} ) {
 
   if ( isProd ) {
     return {
-      'index': resolve( basePath, 'index.ts' ),
-      'index-with-dependencies': resolve( basePath, 'index.ts' )
+      'index': resolve( basePath, 'index.ts' )
     };
   }
 
