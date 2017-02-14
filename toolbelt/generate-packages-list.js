@@ -1,6 +1,12 @@
+/**
+ * Generate index files to blaze-elements package
+ */
+
 const fs = require( 'fs' );
 const packageJson = require( '../package.json' );
 const path = require( 'path' );
+
+const PACKAGE_JSON_NAME = 'package.json';
 
 const packageList = require('./packages-list.js').packageList();
 
@@ -33,7 +39,7 @@ generateDependencies();
 function generatePackageList( packageJson, packageList ) {
   packageJson.packages = packageList;
 
-  fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2) + "\n");
+  fs.writeFileSync('./package.json', `${JSON.stringify(packageJson, null, 2)}\n`);
 }
 
 function generateIndex( filename, packageList, callback ) {
@@ -45,12 +51,12 @@ function generateIndex( filename, packageList, callback ) {
 
 function generateDependencies() {
 
-  const blazeElementPackageJson = require(path.resolve(blazeElementPackagePath, 'package.json'));
+  const blazeElementPackageJson = require(path.resolve(blazeElementPackagePath, PACKAGE_JSON_NAME));
   blazeElementPackageJson.dependencies = packageList.reduce(
     (accumulator, packageName) => {
 
       const packageJson = require(
-        path.resolve(__dirname, '..', 'packages', packageName, 'package.json')
+        path.resolve(__dirname, '..', 'packages', packageName, PACKAGE_JSON_NAME)
       );
 
       if (packageJson.name === 'blaze-elements') {
@@ -63,6 +69,6 @@ function generateDependencies() {
     }, {}
   );
 
-  fs.writeFileSync( path.resolve(blazeElementPackagePath, 'package.json'), JSON.stringify(blazeElementPackageJson, null, 2) + "\n" );
+  fs.writeFileSync( path.resolve(blazeElementPackagePath, PACKAGE_JSON_NAME), JSON.stringify(blazeElementPackageJson, null, 2) + "\n" );
 }
 

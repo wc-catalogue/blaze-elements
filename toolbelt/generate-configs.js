@@ -1,5 +1,5 @@
 /**
- * Generate tsconfig.json and package.json
+ * Generate tsconfig.json and package.json for packages
  */
 
 const fs = require( 'fs' );
