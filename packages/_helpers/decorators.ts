@@ -6,9 +6,12 @@ export function renderCss(): MethodDecorator {
       propertyKey: string | symbol,
       descriptor: TypedPropertyDescriptor<T>) {
     return {
-      value(this: { css: string}) {
+      value(this: { css?: string, shadyCss?: string | void } & Object) {
+        // we preffer shadyCss which is present if Css Mixin is used, otherwise fallback to css property
         // tslint:disable-next-line:no-invalid-this
-        return [h('style', this.css)].concat(descriptor.value.call(this, this));
+        const css = 'shadyCss' in this ? this.shadyCss : this.css;
+        // tslint:disable-next-line:no-invalid-this
+        return [h('style', css)].concat(descriptor.value.call(this, this));
       }
     };
   };
