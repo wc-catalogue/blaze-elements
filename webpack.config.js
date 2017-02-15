@@ -162,7 +162,7 @@ module.exports = ( env ) => {
        * https://github.com/ampedandwired/html-webpack-plugin
        */
       ifDevOrSite(new HtmlWebpackPlugin({
-          template: resolve( __dirname, 'index.package.html' ),
+          template: resolve( __dirname, isBlazeElementsMainPackage( env.element ) ? 'index.html' : 'index.package.html' ),
           packages: getPackagesForBuild( env.element, require('./package.json').packages ),
           excludeChunks: [ 'index', 'index-with-dependencies' ], // Exclude 'index' & 'index-with-dependencies' as it is included in 'main.demo'
           inject: 'head',
@@ -262,10 +262,16 @@ function buildChunksSort( order ) {
 
 function getPackagesForBuild( element, allPackages ) {
 
-  if ( element === 'blaze-elements' ) {
+  if ( isBlazeElementsMainPackage( element ) ) {
     return allPackages;
   }
 
   return element;
+
+}
+
+function isBlazeElementsMainPackage(packageName) {
+
+  return packageName === 'blaze-elements';
 
 }
