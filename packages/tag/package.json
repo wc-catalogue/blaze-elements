@@ -4,6 +4,9 @@
   "main": "dist/index.min.js",
   "typings": "definitions/index.d.ts",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.dev --env.element=tag --hot",
     "test": "npm run build:test && ../../node_modules/.bin/wct",
