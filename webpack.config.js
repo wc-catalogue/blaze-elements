@@ -122,9 +122,9 @@ module.exports = ( env ) => {
         // The UglifyJsPlugin will no longer put loaders into minimize mode, and the debug option has been deprecated.
         // These options are simply moved into a new plugin, LoaderOptionsPlugin, for separation of concerns reasons.
         // Default webpack build options saves a couple of kBs
-        minimize: ifProdOrSite( true ),
-        debug: ifDev( false ),
-        quiet: ifProdOrSite( true ),
+        minimize: ifProdOrSite(),
+        debug: ifDev(),
+        quiet: ifProdOrSite(),
 
       }),
 
