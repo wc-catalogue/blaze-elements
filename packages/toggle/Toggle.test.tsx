@@ -12,6 +12,6 @@ describe( Toggle.is, () => {
       <Toggle />
     ).wait();
 
-  });
+  } );
 
-});
+} );

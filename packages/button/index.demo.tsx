@@ -14,7 +14,7 @@ export class Demo extends Component<DemoProps> {
   private logger: string[];
 
   renderCallback() {
-    const {logger} = this;
+    const { logger } = this;
     return [
       <style />,
       <fieldset>

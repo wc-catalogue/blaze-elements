@@ -31,7 +31,7 @@ function attr( node: any, attrName: string, attrValue: any ): void {
   if ( isAttribute( attrName ) ) {
     Object.keys( attrValue ).forEach(( key ) => {
       node.setAttribute( key, attrValue[ key ] );
-    });
+    } );
     return;
   }
   node.setAttribute( attrName, attrValue );

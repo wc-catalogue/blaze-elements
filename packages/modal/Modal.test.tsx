@@ -12,6 +12,6 @@ describe( Modal.is, () => {
       <Modal />
     ).wait();
 
-  });
+  } );
 
-});
+} );

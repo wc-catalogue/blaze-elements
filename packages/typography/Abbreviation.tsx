@@ -14,14 +14,14 @@ export class Abbreviation extends Component<AbbreviationProps> {
     return {
       title: prop.string( {
         attribute: true
-      })
+      } )
     };
   }
 
   title: string;
 
   renderCallback() {
-    const {title} = this;
+    const { title } = this;
 
     const className = css(
       'c-text--help'

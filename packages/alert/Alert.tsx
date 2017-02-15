@@ -31,10 +31,10 @@ export class Alert extends Component<AlertProps> {
     return {
       color: prop.string( {
         attribute: true
-      }),
+      } ),
       isOpen: prop.boolean( {
         attribute: true
-      })
+      } )
     };
   }
   static get events() {

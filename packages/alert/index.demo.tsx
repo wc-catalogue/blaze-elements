@@ -15,7 +15,7 @@ export class Demo extends Component<DemoProps> {
   isOpen = false;
 
   renderCallback() {
-    const {isOpen} = this;
+    const { isOpen } = this;
     return [
       <style />,
 
@@ -39,10 +39,10 @@ export class Demo extends Component<DemoProps> {
   }
 
   private handleAlertOpen = () => {
-    props( this, { isOpen: true });
+    props( this, { isOpen: true } );
   }
   private handleAlertClose = () => {
-    props( this, { isOpen: false });
+    props( this, { isOpen: false } );
   }
 
 }

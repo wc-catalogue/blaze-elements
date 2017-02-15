@@ -32,12 +32,12 @@ export class Tooltip extends Component<TooltipProps> {
           source: true
         },
         default: 'right'
-      }),
+      } ),
       label: prop.string( {
         attribute: {
           source: true
         }
-      })
+      } )
     };
   }
 

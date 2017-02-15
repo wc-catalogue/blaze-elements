@@ -14,7 +14,7 @@ export class Blockquote extends Component<BlockquoteProps> {
     return {
       color: prop.string( {
         attribute: true
-      })
+      } )
     };
   }
 

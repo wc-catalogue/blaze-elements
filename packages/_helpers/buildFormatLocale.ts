@@ -120,7 +120,7 @@ export function buildFormatLocale( customLocale?: LocaleType ) {
     formatters[ ordinalFormatterToken ] = function( date, _formatters ) {
       return ordinal( _formatters[ formatterToken ]( date ) );
     };
-  });
+  } );
 
   return { formatters };
 }

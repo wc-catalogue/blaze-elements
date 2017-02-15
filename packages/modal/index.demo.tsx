@@ -22,7 +22,7 @@ export class Demo extends Component<void> {
   }
 
   renderCallback() {
-    const {isModalOpen} = this;
+    const { isModalOpen } = this;
     return [
       <style />,
       <fieldset>

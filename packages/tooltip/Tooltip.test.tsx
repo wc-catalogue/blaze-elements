@@ -10,7 +10,7 @@ describe( Tooltip.is, () => {
 
       expect( customElements.get( Tooltip.is ) ).toBe( Tooltip );
 
-    });
+    } );
 
     it( `should render via JSX IntrinsicElement`, () => {
 
@@ -20,9 +20,9 @@ describe( Tooltip.is, () => {
 
         expect( element.node.localName ).toBe( Tooltip.is );
 
-      });
+      } );
 
-    });
+    } );
 
     it( `should render via JSX class`, () => {
 
@@ -32,10 +32,10 @@ describe( Tooltip.is, () => {
 
         expect( element.has( '.c-tooltip' ) ).toBe( true );
 
-      });
+      } );
 
-    });
-  });
+    } );
+  } );
 
   describe( `API`, () => {
 
@@ -49,11 +49,11 @@ describe( Tooltip.is, () => {
 
           expect( element.one( 'span' ).node.getAttribute( 'aria-label' ) ).toBe( 'hello <&> Hi' );
 
-        });
+        } );
 
-      });
+      } );
 
-    });
+    } );
 
     describe( `[color]`, () => {
 
@@ -65,9 +65,9 @@ describe( Tooltip.is, () => {
 
           expect( element.has( '.c-tooltip--right' ) ).toBe( true );
 
-        });
+        } );
 
-      });
+      } );
 
       it( `should render with top position`, () => {
 
@@ -77,12 +77,12 @@ describe( Tooltip.is, () => {
 
           expect( element.has( '.c-tooltip--top' ) ).toBe( true );
 
-        });
+        } );
 
-      });
+      } );
 
-    });
+    } );
 
-  });
+  } );
 
-});
+} );

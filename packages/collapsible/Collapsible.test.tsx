@@ -65,9 +65,9 @@ describe( Collapsible.is, () => {
 
             done();
 
-          });
+          } );
 
-        });
+        } );
 
         emit(
           secondCollapsible.one( 'label.c-card__item' ).node,
@@ -75,9 +75,9 @@ describe( Collapsible.is, () => {
           { composed: false }
         );
 
-      });
+      } );
 
-  });
+  } );
 
 
-});
+} );

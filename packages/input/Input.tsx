@@ -54,32 +54,32 @@ export class Input extends Component<InputProps> {
         attribute: {
           source: true
         }
-      }),
+      } ),
       valid: prop.string( {
         attribute: {
           source: true
         }
-      }),
+      } ),
       placeholder: prop.string( {
         attribute: {
           source: true
         }
-      }),
+      } ),
       disabled: prop.boolean( {
         attribute: {
           source: true
         }
-      }),
+      } ),
       type: prop.string( {
         attribute: {
           source: true
         }
-      }),
+      } ),
       inputSize: prop.string( {
         attribute: {
           source: true
         }
-      }),
+      } ),
     };
   }
 
@@ -133,7 +133,7 @@ export class Input extends Component<InputProps> {
 
     // emit change event on root element
     const input: Partial<HTMLInputElement> = event.target;
-    emit( this, Input.events.change, { detail: { data: input.value } });
+    emit( this, Input.events.change, { detail: { data: input.value } } );
   }
 
 }

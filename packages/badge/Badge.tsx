@@ -26,17 +26,17 @@ export class Badge extends Component<BadgeProps> {
         attribute: {
           source: true
         }
-      }),
+      } ),
       rounded: prop.boolean( {
         attribute: {
           source: true
         }
-      }),
+      } ),
       ghost: prop.boolean( {
         attribute: {
           source: true
         }
-      }),
+      } ),
     };
   }
 

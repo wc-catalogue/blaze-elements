@@ -25,7 +25,7 @@ export class Bubble extends Component<BubbleProps> {
       type: prop.string(),
       isDisplayed: prop.boolean( {
         attribute: true
-      }),
+      } ),
       disableAutoShowHide: prop.boolean()
     };
   }

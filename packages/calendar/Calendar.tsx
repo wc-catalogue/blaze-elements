@@ -48,7 +48,7 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       'bl-calendar': GenericTypes.IntrinsicCustomElement<CalendarProps>
-        & GenericTypes.IntrinsicBoreElement<Attrs, Events>
+      & GenericTypes.IntrinsicBoreElement<Attrs, Events>
     }
   }
 }
@@ -176,7 +176,7 @@ export class Calendar extends Component<CalendarProps> {
     const { year, month, selectedDate } = this;
 
     // create date elements
-    const days = this.days.map( ( day ) => {
+    const days = this.days.map(( day ) => {
       const className = css(
         'c-calendar__date',
         {
@@ -189,9 +189,9 @@ export class Calendar extends Component<CalendarProps> {
     } );
 
     // create weekDays elements
-    const weekDays = this.days.filter( ( day, index ) =>
-    index < 7 ).map( ( day ) =>
-      <div class="c-calendar__day">{this.format( day, 'dd' )}</div> );
+    const weekDays = this.days.filter(( day, index ) =>
+      index < 7 ).map(( day ) =>
+        <div class="c-calendar__day">{this.format( day, 'dd' )}</div> );
 
     return [
       <style>{styles}</style>,
@@ -241,7 +241,7 @@ export class Calendar extends Component<CalendarProps> {
           : 1
       } );
 
-    const days: Date[] = this.daysMatrix.reduce( ( acc: Date[] ) => {
+    const days: Date[] = this.daysMatrix.reduce(( acc: Date[] ) => {
       const lastDate = acc[ acc.length - 1 ];
       const nextDate = addDays( lastDate, 1 );
       return [ ...acc, nextDate ];

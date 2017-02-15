@@ -12,6 +12,6 @@ describe( Drawer.is, () => {
       <Drawer />
     ).wait();
 
-  });
+  } );
 
-});
+} );

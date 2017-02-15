@@ -24,13 +24,13 @@ export class Nav extends Component<NavProps> {
     return {
       inline: prop.boolean( {
         attribute: true
-      }),
+      } ),
       shadow: prop.boolean( {
         attribute: true
-      }),
+      } ),
       position: prop.string( {
         attribute: true
-      })
+      } )
     };
   }
 
@@ -65,7 +65,7 @@ export class Nav extends Component<NavProps> {
         'c-nav--right': position === Positions.right,
         'c-nav--left': position === Positions.left,
         'c-nav--fixed': position === Positions.fixed,
-      });
+      } );
 
     return [
       <style>{styles}</style>,

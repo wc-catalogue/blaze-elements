@@ -12,6 +12,6 @@ describe( Range.is, () => {
       <Range value={10} />
     ).wait();
 
-  });
+  } );
 
-});
+} );

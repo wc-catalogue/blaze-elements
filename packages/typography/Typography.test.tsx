@@ -6,6 +6,6 @@ describe( 'Typography', () => {
 
     console.warn( 'Missing tests for Typography!' );
 
-  });
+  } );
 
-});
+} );

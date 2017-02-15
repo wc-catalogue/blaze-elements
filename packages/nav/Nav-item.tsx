@@ -16,16 +16,16 @@ export class NavItem extends Component<NavItemProps> {
     return {
       color: prop.string( {
         attribute: true
-      }),
+      } ),
       active: prop.boolean( {
         attribute: true
-      }),
+      } ),
       right: prop.boolean( {
         attribute: true
-      }),
+      } ),
       inline: prop.boolean( {
         attribute: true
-      }),
+      } ),
     };
   }
 

@@ -12,6 +12,6 @@ describe( Progress.is, () => {
       <Progress value={10} />
     ).wait();
 
-  });
+  } );
 
-});
+} );

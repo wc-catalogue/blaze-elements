@@ -23,10 +23,10 @@ export class TagSelector extends Component<TagSelectorProps> {
     return {
       tags: prop.array( {
         attribute: true
-      }),
+      } ),
       delimiter: prop.string( {
         attribute: true
-      }),
+      } ),
     };
   }
 
@@ -92,7 +92,7 @@ export class TagSelector extends Component<TagSelectorProps> {
       detail: {
         tags
       }
-    });
+    } );
   }
 
 }

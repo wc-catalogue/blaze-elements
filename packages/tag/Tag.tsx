@@ -19,7 +19,7 @@ export class Tag extends Component<TagProps> {
     return {
       label: prop.string( {
         attribute: true
-      })
+      } )
     };
   }
 
@@ -47,7 +47,7 @@ export class Tag extends Component<TagProps> {
       detail: {
         tag: this
       }
-    });
+    } );
   }
 
 

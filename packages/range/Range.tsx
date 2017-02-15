@@ -26,19 +26,19 @@ export class Range extends Component<RangeProps> {
     return {
       value: prop.number( {
         attribute: true
-      }),
+      } ),
       min: prop.number( {
         attribute: true
-      }),
+      } ),
       max: prop.number( {
         attribute: true
-      }),
+      } ),
       color: prop.string( {
         attribute: true
-      }),
+      } ),
       disabled: prop.boolean( {
         attribute: true
-      }),
+      } ),
     };
   }
   static get events() {

@@ -41,7 +41,7 @@ export class Accordion extends Component<void> {
       if ( event.target !== item ) {
         item.isOpened = false;
       }
-    });
+    } );
   }
 }
 

@@ -27,7 +27,7 @@ export class Collapsible extends Component<CollapsibleProps> {
     return {
       isOpened: prop.boolean( {
         attribute: true
-      }),
+      } ),
       isNotStandAlone: prop.boolean(),
       isLast: prop.boolean()
     };
@@ -48,7 +48,7 @@ export class Collapsible extends Component<CollapsibleProps> {
   }
 
   renderCallback() {
-    const {isOpened, isLast, isNotStandAlone} = this;
+    const { isOpened, isLast, isNotStandAlone } = this;
 
     const wrapperClassName = css(
       'c-card--accordion',
@@ -97,7 +97,7 @@ export class Collapsible extends Component<CollapsibleProps> {
         opened: this.isOpened,
         collapsed: !this.isOpened
       }
-    }); // emit state changed event on root element
+    } ); // emit state changed event on root element
   }
 }
 

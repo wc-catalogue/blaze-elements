@@ -12,6 +12,6 @@ describe( Breadcrumb.is, () => {
       <Breadcrumb />
     ).wait();
 
-  });
+  } );
 
-});
+} );
