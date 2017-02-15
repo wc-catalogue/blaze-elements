@@ -12,6 +12,6 @@ describe( Bubble.is, () => {
       <Bubble />
     ).wait();
 
-  });
+  } );
 
-});
+} );

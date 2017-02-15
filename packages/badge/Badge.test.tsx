@@ -10,7 +10,7 @@ describe( Badge.is, () => {
 
       expect( customElements.get( Badge.is ) ).toBe( Badge );
 
-    });
+    } );
 
     it( `should render via JSX IntrinsicElement`, () => {
 
@@ -20,9 +20,9 @@ describe( Badge.is, () => {
 
         expect( element.node.localName ).toBe( Badge.is );
 
-      });
+      } );
 
-    });
+    } );
 
     it( `should render via JSX class`, () => {
 
@@ -32,10 +32,10 @@ describe( Badge.is, () => {
 
         expect( element.has( '.c-badge' ) ).toBe( true );
 
-      });
+      } );
 
-    });
-  });
+    } );
+  } );
 
   describe( `API`, () => {
 
@@ -49,11 +49,11 @@ describe( Badge.is, () => {
 
           expect( element.has( '.c-badge--warning' ) ).toBe( true );
 
-        });
+        } );
 
-      });
+      } );
 
-    });
+    } );
 
     describe( `[ghost]`, () => {
 
@@ -65,11 +65,11 @@ describe( Badge.is, () => {
 
           expect( element.has( '.c-badge--ghost' ) ).toBe( true );
 
-        });
+        } );
 
-      });
+      } );
 
-    });
+    } );
 
     describe( `[rounded]`, () => {
 
@@ -81,12 +81,12 @@ describe( Badge.is, () => {
 
           expect( element.has( '.c-badge--rounded' ) ).toBe( true );
 
-        });
+        } );
 
-      });
+      } );
 
-    });
+    } );
 
-  });
+  } );
 
-});
+} );

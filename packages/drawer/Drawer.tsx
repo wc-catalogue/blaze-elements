@@ -23,10 +23,10 @@ export class Drawer extends Component<DrawerProps> {
     return {
       position: prop.string( {
         attribute: true
-      }),
+      } ),
       visible: prop.boolean( {
         attribute: true
-      })
+      } )
     };
   }
 
@@ -44,7 +44,7 @@ export class Drawer extends Component<DrawerProps> {
         'o-drawer--left': position === DrawerPositions.left,
         'o-drawer--right': position === DrawerPositions.right,
         'o-drawer--visible': visible,
-      });
+      } );
 
     return [
       <style>{styles}</style>,

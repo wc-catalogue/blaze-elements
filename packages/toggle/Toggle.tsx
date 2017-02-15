@@ -16,13 +16,13 @@ export class Toggle extends Component<ToggleProps> {
     return {
       disabled: prop.boolean( {
         attribute: true
-      }),
+      } ),
       checked: prop.boolean( {
         attribute: true
-      }),
+      } ),
       color: prop.string( {
         attribute: true
-      })
+      } )
     };
   }
   disabled = false;
@@ -55,7 +55,7 @@ export class Toggle extends Component<ToggleProps> {
     ];
   }
   private handleChecked( e?: Event ) {
-    props( this, { checked: !this.checked });
+    props( this, { checked: !this.checked } );
   }
 }
 

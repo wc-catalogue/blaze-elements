@@ -12,6 +12,6 @@ describe( Accordion.is, () => {
       <Accordion />
     ).wait();
 
-  });
+  } );
 
-});
+} );

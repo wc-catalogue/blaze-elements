@@ -12,6 +12,6 @@ describe( Tree.is, () => {
       <Tree />
     ).wait();
 
-  });
+  } );
 
-});
+} );

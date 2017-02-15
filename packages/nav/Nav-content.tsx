@@ -12,7 +12,7 @@ export class NavContent extends Component<NavContentProps> {
     return {
       inline: prop.boolean( {
         attribute: true
-      }),
+      } ),
     };
   }
 
@@ -24,7 +24,7 @@ export class NavContent extends Component<NavContentProps> {
       'c-nav__content u-window-box--none',
       {
         'inline-li': inline
-      });
+      } );
 
     return [
       <style>{styles}</style>,

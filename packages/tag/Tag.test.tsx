@@ -12,6 +12,6 @@ describe( Tag.is, () => {
       <Tag label="" />
     ).wait();
 
-  });
+  } );
 
-});
+} );

@@ -12,6 +12,6 @@ describe( Alert.is, () => {
       <Alert />
     ).wait();
 
-  });
+  } );
 
-});
+} );

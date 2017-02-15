@@ -12,6 +12,6 @@ describe( Overlay.is, () => {
       <Overlay />
     ).wait();
 
-  });
+  } );
 
-});
+} );

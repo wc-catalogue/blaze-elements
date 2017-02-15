@@ -22,7 +22,7 @@ describe( Calendar.is, () => {
 
       return mount(
         <bl-calendar />
-      ).wait( ( element ) => {
+      ).wait(( element ) => {
 
         expect( element.node.localName ).toBe( Calendar.is );
 
@@ -34,7 +34,7 @@ describe( Calendar.is, () => {
 
       return mount(
         <Calendar />
-      ).wait( ( element ) => {
+      ).wait(( element ) => {
 
         expect( element.has( '.c-calendar' ) ).toBe( true );
 
@@ -52,7 +52,7 @@ describe( Calendar.is, () => {
 
         return mount(
           <bl-calendar />
-        ).wait( ( element ) => {
+        ).wait(( element ) => {
 
           const today = new Date();
           const calendar = element.node as Calendar;
@@ -65,7 +65,7 @@ describe( Calendar.is, () => {
       it( `should set selectedDate via attribute`, () => {
 
         return mount(
-          <bl-calendar attrs={{'selected-date': '1987-12-22'}}/>
+          <bl-calendar attrs={{ 'selected-date': '1987-12-22' }} />
         ).wait( checkCorrectlySetDateFromProps );
 
       } );
@@ -73,7 +73,7 @@ describe( Calendar.is, () => {
       it( `should set year and month based on selectedDay`, () => {
 
         return mount(
-          <bl-calendar selectedDate={new Date( '1987-12-22' )}/>
+          <bl-calendar selectedDate={new Date( '1987-12-22' )} />
         ).wait( checkCorrectlySetDateFromProps );
 
       } );
@@ -99,7 +99,7 @@ describe( Calendar.is, () => {
       it( `should set monday`, () => {
 
         return mount(
-          <bl-calendar weekStartsOn="monday"/>
+          <bl-calendar weekStartsOn="monday" />
         ).wait( checkWeekStarts.bind( null, 'Mo' ) );
 
       } );
@@ -107,7 +107,7 @@ describe( Calendar.is, () => {
       it( `should set monday via attribute`, () => {
 
         return mount(
-          <bl-calendar attrs={{'week-starts-on': 'monday'}}/>
+          <bl-calendar attrs={{ 'week-starts-on': 'monday' }} />
         ).wait( checkWeekStarts.bind( null, 'Mo' ) );
 
       } );
@@ -115,7 +115,7 @@ describe( Calendar.is, () => {
       it( `should set sunday`, () => {
 
         return mount(
-          <bl-calendar weekStartsOn="sunday"/>
+          <bl-calendar weekStartsOn="sunday" />
         ).wait( checkWeekStarts.bind( null, 'Su' ) );
 
       } );
@@ -152,8 +152,8 @@ describe( Calendar.is, () => {
       it( `should set months internationalized`, () => {
 
         return mount(
-          <bl-calendar i18n={i18n} selectedDate={new Date( '1987-12-22' )}/>
-        ).wait( ( element ) => {
+          <bl-calendar i18n={i18n} selectedDate={new Date( '1987-12-22' )} />
+        ).wait(( element ) => {
 
           expect( element.all( '.c-calendar__header' )[ 1 ].node.innerHTML ).toBe( 'Prosinec' );
 
@@ -164,8 +164,8 @@ describe( Calendar.is, () => {
       it( `should set weekdays internationalized`, () => {
 
         return mount(
-          <bl-calendar i18n={i18n}/>
-        ).wait( ( element ) => {
+          <bl-calendar i18n={i18n} />
+        ).wait(( element ) => {
 
           expect( element.all( '.c-calendar__day' )[ 0 ].node.innerHTML ).toBe( 'Ne' );
 
@@ -176,8 +176,8 @@ describe( Calendar.is, () => {
       it( `should set button text internationalized`, () => {
 
         return mount(
-          <bl-calendar i18n={i18n}/>
-        ).wait( ( element ) => {
+          <bl-calendar i18n={i18n} />
+        ).wait(( element ) => {
 
           expect( element.one( CalendarButton.is ).node.innerHTML ).toBe( 'DNES' );
 
@@ -205,7 +205,7 @@ describe( Calendar.is, () => {
             events={{ dateChange: handleChange }}
             selectedDate={parse( '1987-12-22' )}
           />
-        ).wait( ( element ) => {
+        ).wait(( element ) => {
 
           // existing day in month
           const oneDay = element.all( 'button:not(.c-calendar__control)' )[ 10 ].node as HTMLButtonElement;

@@ -28,28 +28,28 @@ export class Link extends Component<LinkProps> {
     return {
       href: prop.string( {
         attribute: true
-      }),
+      } ),
       download: prop.string( {
         attribute: true
-      }),
+      } ),
       hreflang: prop.string( {
         attribute: true
-      }),
+      } ),
       referrerpolicy: prop.string( {
         attribute: true
-      }),
+      } ),
       rel: prop.string( {
         attribute: true
-      }),
+      } ),
       target: prop.string( {
         attribute: true
-      }),
+      } ),
       type: prop.string( {
         attribute: true
-      }),
+      } ),
       color: prop.string( {
         attribute: true
-      })
+      } )
     };
   }
 

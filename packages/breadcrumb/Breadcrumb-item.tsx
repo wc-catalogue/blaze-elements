@@ -14,11 +14,11 @@ export class BreadcrumbItem extends Component<BreadcrumbItemProps> {
     return {
       isActive: prop.boolean( {
         attribute: true
-      }),
+      } ),
       isLast: prop.boolean(),
       href: prop.string( {
         attribute: true
-      }),
+      } ),
     };
   }
 

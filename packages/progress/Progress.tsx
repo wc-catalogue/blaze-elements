@@ -19,16 +19,16 @@ export class Progress extends Component<ProgressProps> {
     return {
       value: prop.number( {
         attribute: true
-      }),
+      } ),
       color: prop.string( {
         attribute: true
-      }),
+      } ),
       displaySize: prop.string( {
         attribute: true
-      }),
+      } ),
       rounded: prop.boolean( {
         attribute: true
-      })
+      } )
     };
   }
 

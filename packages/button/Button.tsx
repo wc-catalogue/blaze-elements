@@ -41,27 +41,27 @@ export class Button extends Component<ButtonProps> {
     return {
       disabled: prop.boolean( {
         attribute: true
-      }),
+      } ),
       block: prop.boolean( {
         attribute: {
           source: true
         }
-      }),
+      } ),
       close: prop.boolean( {
         attribute: {
           source: true
         }
-      }),
+      } ),
       ghost: prop.boolean( {
         attribute: {
           source: true
         }
-      }),
+      } ),
       color: prop.string<Button, ColorType>( {
         attribute: {
           source: true
         }
-      })
+      } )
     };
   }
 
@@ -72,7 +72,7 @@ export class Button extends Component<ButtonProps> {
   color: ColorType;
 
   renderCallback() {
-    const {color, ghost, close, block} = this;
+    const { color, ghost, close, block } = this;
     const colorClass = cssClassForColorType( ghost ? 'c-button--ghost' : 'c-button', color, ghost );
     const className = css(
       'c-button',

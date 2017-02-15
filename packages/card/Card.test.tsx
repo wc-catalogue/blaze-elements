@@ -12,6 +12,6 @@ describe( Card.is, () => {
       <Card />
     ).wait();
 
-  });
+  } );
 
-});
+} );

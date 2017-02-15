@@ -15,7 +15,7 @@ export class Modal extends Component<ModalProps> {
     return {
       isOpen: prop.boolean( {
         attribute: true
-      }),
+      } ),
       closeTitle: prop.string()
     };
   }
@@ -32,7 +32,7 @@ export class Modal extends Component<ModalProps> {
     this.focusModal = this.focusModal.bind( this );
   }
   renderCallback() {
-    const {isOpen, closeTitle} = this;
+    const { isOpen, closeTitle } = this;
     return [
       <style>{styles}</style>,
       isOpen &&

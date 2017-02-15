@@ -14,14 +14,14 @@ export class Code extends Component<CodeProps> {
     return {
       isMultiline: prop.boolean( {
         attribute: true
-      })
+      } )
     };
   }
 
   isMultiline: boolean;
 
   renderCallback() {
-    const {isMultiline} = this;
+    const { isMultiline } = this;
 
     const className = css(
       'c-code',

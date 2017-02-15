@@ -13,7 +13,7 @@ export class TreeItem extends Component<TreeItemProps> {
     return {
       isOpen: prop.boolean( {
         attribute: true
-      }),
+      } ),
     };
   }
 

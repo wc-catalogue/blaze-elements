@@ -10,20 +10,20 @@ describe( Button.is, () => {
 
     it( `should be registered`, () => {
       expect( customElements.get( Button.is ) ).toBe( Button );
-    });
+    } );
 
     it( `should render via JSX IntrinsicElement`, () => {
       return mount( <bl-button>Hello</bl-button> ).wait(( element ) => {
         expect( element.node.localName ).toBe( Button.is );
-      });
-    });
+      } );
+    } );
 
     it( `should render`, () => {
       return mount( <Button /> ).wait(( element ) => {
         expect( element.has( '.c-button' ) ).toBe( true );
-      });
-    });
-  });
+      } );
+    } );
+  } );
 
   describe( `API`, () => {
 
@@ -32,16 +32,16 @@ describe( Button.is, () => {
       it( `should render no color class on button by default`, () => {
         return mount( <bl-button attrs={{ color: 'brand' }}>huhuh</bl-button> ).wait(( element ) => {
           expect( element.one( 'button' ).node.className ).toContain( 'c-button' );
-        });
-      });
+        } );
+      } );
 
       it( `should render color class on button`, () => {
         return mount( <bl-button attrs={{ color: 'info' }}>hello</bl-button> ).wait(( element ) => {
           expect( element.has( '.c-button--info' ) ).toBe( true );
-        });
-      });
+        } );
+      } );
 
-    });
+    } );
 
     describe( `events`, () => {
 
@@ -54,11 +54,11 @@ describe( Button.is, () => {
           .wait(( element ) => {
             emit( element.node, 'click' );
             expect( clickTriggered ).toBe( true );
-          });
-      });
+          } );
+      } );
 
-    });
+    } );
 
-  });
+  } );
 
-});
+} );
