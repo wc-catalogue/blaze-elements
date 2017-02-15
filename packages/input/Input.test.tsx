@@ -2,6 +2,7 @@ import { mount, h } from 'bore';
 import * as expect from 'expect';
 import { Input } from './index';
 import { emit } from 'skatejs';
+import { GenericEvents } from '../_helpers';
 
 describe( Input.is, () => {
 
@@ -152,20 +153,21 @@ describe( Input.is, () => {
 
     describe( `(change)`, () => {
 
-      it( `should emit onChange event`, () => {
+      it( `should emit onChange event`, (done) => {
 
-        let changeTriggered = false;
-        const handleChange = ( e: CustomEvent ) => {
-          changeTriggered = true;
+        const value = 'splash';
+        const handleChange = ( e: GenericEvents.CustomChangeEvent<string> ) => {
+          if ( e.detail.value === value) {
+            done();
+          }
         };
 
-        return mount( <bl-input value="water" events={{ change: handleChange }} /> )
+        mount( <bl-input value="water" events={{ change: handleChange }} /> )
           .wait(( element ) => {
 
             const input = element.one( 'input' ).node as HTMLInputElement;
-            input.value = 'splash';
+            input.value = value;
             emit( input, 'input' );
-            expect( changeTriggered ).toBe( true );
 
           } );
 
