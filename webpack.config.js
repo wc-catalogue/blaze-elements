@@ -35,12 +35,10 @@ module.exports = ( env ) => {
     } ),
     output: {
       filename: ifProd('[name].min.js', '[name].js'),
-      path:
-        ifSite( resolve( context, 'tmp', 'site' ) ) ||
-        ifTest(
-          resolve( context, 'tmp', 'tests' ),
-          resolve( context, 'packages', env.element, 'dist' )
-        ),
+      path: getPathConfig( env.element, {
+        isSite: ifSite(),
+        isTest: ifTest(),
+      }),
       // Include comments with information about the modules.
       pathinfo: ifNotProd()
     },
@@ -258,5 +256,23 @@ function getPackagesForBuild( element, allPackages ) {
 function isBlazeElementsMainPackage(packageName) {
 
   return packageName === 'blaze-elements';
+
+}
+
+function getPathConfig( packageName, { isSite, isTest } = {} ) {
+
+  if ( isSite ) {
+
+    return resolve( context, 'tmp', 'site' );
+
+  }
+
+  if ( isTest ) {
+
+    return resolve( context, 'tmp', 'tests' );
+
+  }
+
+  return resolve( context, 'packages', packageName, 'dist' );
 
 }
