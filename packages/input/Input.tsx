@@ -20,13 +20,13 @@ type EventProps = {
   onKeyup?: GenericEvents.KeyupHandler,
   onFocus?: GenericEvents.FocusHandler,
   onBlur?: GenericEvents.BlurHandler,
-  onChange?: ( ev: CustomEvent ) => void,
+  onChange?: GenericEvents.CustomChangeHandler<string>,
 };
 type Events = {
   keyup?: GenericEvents.KeyupHandler,
   focus?: GenericEvents.FocusHandler,
   blur?: GenericEvents.BlurHandler,
-  change?: ( ev: CustomEvent ) => void,
+  change?: GenericEvents.CustomChangeHandler<string>,
 };
 type Props = {
   value: string,
@@ -133,7 +133,7 @@ export class Input extends Component<InputProps> {
 
     // emit change event on root element
     const input: Partial<HTMLInputElement> = event.target;
-    emit( this, Input.events.change, { detail: { data: input.value } } );
+    emit( this, Input.events.change, { detail: { value: input.value } } );
   }
 
 }
