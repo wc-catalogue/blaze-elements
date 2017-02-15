@@ -1,7 +1,8 @@
 import { h, Component, emit, prop } from 'skatejs';
 import styles from './Tag.scss';
 import { Tag } from './Tag';
-import { Input } from '../input/index';
+import { Input } from '@blaze-elements/input';
+import { GenericEvents } from '../_helpers';
 
 
 // public
@@ -61,9 +62,9 @@ export class TagSelector extends Component<TagSelectorProps> {
     ];
   }
 
-  private handleInput( event: CustomEvent ) {
+  private handleInput( event: GenericEvents.CustomChangeEvent<string> ) {
     const input = event.target as Input;
-    const value = event.detail.data;
+    const value = event.detail.value;
     const lastChar = value.substr( -1 );
     const newValue = value.slice( 0, -1 ).trim();
     const isDelimiter = lastChar === this.delimiter;
