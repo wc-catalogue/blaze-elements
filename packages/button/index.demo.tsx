@@ -55,7 +55,7 @@ export class Demo extends Component<DemoProps> {
   }
 
   private addLogEntry( entry: string ) {
-    return ( ev: Event ) => {
+    return ( ev: MouseEvent ) => {
       props( this, { logger: [ ...this.logger, `${entry} - ${this.logger.length}` ] });
     };
   }
