@@ -59,7 +59,6 @@
     "test-fixture": "^1.0.2",
     "to-string-loader": "^1.1.5",
     "tslint": "^4.4.2",
-    "tslint-loader": "^3.3.0",
     "tslint-react": "^2.3.0",
     "typescript": "2.2.0",
     "typescript-formatter": "4.1.0",

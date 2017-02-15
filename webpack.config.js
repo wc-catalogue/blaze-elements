@@ -17,9 +17,9 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 // webpack config helpers
 const { getIfUtils, removeEmpty } = require( 'webpack-config-utils' );
 
+const context = resolve( __dirname );
 
 module.exports = ( env ) => {
-  const context = resolve( __dirname );
   const { ifProd, ifNotProd, ifTest, ifDev, ifSite } = getIfUtils( env, ['prod', 'test', 'dev', 'site'] );
   const { ifProdOrSite, ifDevOrSite } = getCustomIfUtils( { ifDev, ifProd, ifSite } );
 
@@ -62,12 +62,6 @@ module.exports = ( env ) => {
 
     module: {
       rules: [
-
-        {
-          test: /\.tsx?$/,
-          enforce: "pre",
-          loader: 'tslint-loader'
-        },
 
         // Typescript
         {
@@ -130,7 +124,7 @@ module.exports = ( env ) => {
         // Default webpack build options saves a couple of kBs
         minimize: ifProdOrSite(),
         debug: ifDev(),
-        quiet: ifProdOrSite()
+        quiet: ifProdOrSite(),
 
       }),
 
@@ -151,7 +145,7 @@ module.exports = ( env ) => {
        * https://github.com/ampedandwired/html-webpack-plugin
        */
       ifDevOrSite(new HtmlWebpackPlugin({
-          template: resolve( 'index.html' ),
+          template: resolve( context, isBlazeElementsMainPackage( env.element ) ? 'index.html' : 'index.package.html' ),
           packages: getPackagesForBuild( env.element, require('./package.json').packages ),
           excludeChunks: [ 'index', 'index-with-dependencies' ], // Exclude 'index' & 'index-with-dependencies' as it is included in 'main.demo'
           inject: 'head',
@@ -223,7 +217,7 @@ function getEntryPointConfig( basePath, { isTest, isProd } = {} ) {
   if ( isTest ) {
     return {
       'test': resolve( basePath, 'index.test.ts' ),
-      'test-helpers' : resolve( __dirname, 'test-helpers.ts' )
+      'test-helpers' : resolve( context, 'test-helpers.ts' )
     };
   }
 
@@ -235,8 +229,8 @@ function getEntryPointConfig( basePath, { isTest, isProd } = {} ) {
 
   return {
     'main.demo': resolve( basePath, 'index.demo.tsx'),
-    'polyfills': resolve( __dirname, 'polyfills.ts'),
-    'styles': resolve( __dirname, 'styles.ts')
+    'polyfills': resolve( context, 'polyfills.ts'),
+    'styles': resolve( context, 'styles.ts')
   };
 }
 
@@ -251,10 +245,16 @@ function buildChunksSort( order ) {
 
 function getPackagesForBuild( element, allPackages ) {
 
-  if ( element === 'blaze-elements' ) {
+  if ( isBlazeElementsMainPackage( element ) ) {
     return allPackages;
   }
 
   return element;
+
+}
+
+function isBlazeElementsMainPackage(packageName) {
+
+  return packageName === 'blaze-elements';
 
 }
