@@ -7,9 +7,6 @@ jdk:
 addons:
   firefox: latest
   sauce_connect: true
-cache:
-  directories:
-    - node_modules
 before_install:
   - nvm install $NODE_VERSION
   - nvm alias $NODE_VERSION
@@ -27,10 +24,5 @@ install:
   - yarn
 script:
   - yarn test
-deploy:
-  skip_cleanup: true
-  provider: script
-  script:
-    - toolbelt/publish-and-deploy.sh
-  on:
-    branch: master
+after_success:
+  - toolbelt/publish-and-deploy.sh
