@@ -2,8 +2,8 @@
 
 (
  yarn site
- cp assets/blaze-elements-logo.svg dist
- cd dist
+ cp assets/blaze-elements-logo.svg tmp/site
+ cd tmp/site
  git init
  git config user.name "Travis-CI"
  git config user.email "travis@nodemeatspace.com"

@@ -35,10 +35,12 @@ module.exports = ( env ) => {
     } ),
     output: {
       filename: ifProd('[name].min.js', '[name].js'),
-      path: ifTest(
-        resolve( context, 'tmp', 'tests' ),
-        resolve( context, 'packages', env.element, 'dist' )
-      ),
+      path:
+        ifSite( resolve( context, 'tmp', 'site' ) ) ||
+        ifTest(
+          resolve( context, 'tmp', 'tests' ),
+          resolve( context, 'packages', env.element, 'dist' )
+        ),
       // Include comments with information about the modules.
       pathinfo: ifNotProd()
     },
