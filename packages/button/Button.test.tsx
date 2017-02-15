@@ -3,7 +3,6 @@ import { h, mount } from 'bore';
 import { emit } from 'skatejs';
 
 import { Button } from './index';
-import { ClickEvent } from '../_helpers/definitions/events';
 
 describe( Button.is, () => {
 
@@ -49,7 +48,7 @@ describe( Button.is, () => {
       it( `should handle click`, () => {
 
         let clickTriggered = false;
-        const handleClick = ( e: ClickEvent ) => { clickTriggered = true; };
+        const handleClick = ( e: MouseEvent ) => { clickTriggered = true; };
 
         return mount( <bl-button events={{ click: handleClick }}>Click me</bl-button> )
           .wait(( element ) => {

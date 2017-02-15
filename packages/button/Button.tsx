@@ -24,7 +24,7 @@ export type Events = {
   click?: GenericEvents.ClickHandler,
 };
 export type EventHandlers = {
-  onClick?: GenericEvents.ClickEvent,
+  onClick?: GenericEvents.ClickHandler,
 };
 
 declare global {

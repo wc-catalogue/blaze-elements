@@ -17,9 +17,9 @@ type TypesType = {
 
 type InputProps = Props & EventProps;
 type EventProps = {
-  onKeyup?: GenericEvents.KeyupEvent,
-  onFocus?: GenericEvents.FocusEvent,
-  onBlur?: GenericEvents.BlurEvent,
+  onKeyup?: GenericEvents.KeyupHandler,
+  onFocus?: GenericEvents.FocusHandler,
+  onBlur?: GenericEvents.BlurHandler,
   onChange?: ( ev: CustomEvent ) => void,
 };
 type Events = {
