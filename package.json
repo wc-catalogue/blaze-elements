@@ -14,7 +14,7 @@
     "build": "npm run cleanup && webpack --env.prod --env.element=blaze-elements",
     "build:test": "npm run cleanup && webpack --env.test --env.element=blaze-elements",
     "build:test:watch": "npm run cleanup && webpack-dev-server --env.test --env.element=blaze-elements",
-    "site": "npm run cleanup && webpack --env.site --env.element=blaze-elements",
+    "site": "rimraf tmp/site && webpack --env.site --env.element=blaze-elements",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
     "precommit": "yarn ts:lint && yarn test",
