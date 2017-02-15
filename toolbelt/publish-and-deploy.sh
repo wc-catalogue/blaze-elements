@@ -1,3 +1,12 @@
 #!/bin/bash
 
-toolbelt/publish.sh && toolbelt/deploy.sh
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+  echo "We are in a pull request, not setting up release"
+  exit 0
+fi
+
+if [[ $TRAVIS_BRANCH == 'master' ]]; then
+
+  toolbelt/publish.sh && toolbelt/deploy.sh
+
+fi

@@ -20,7 +20,8 @@
     "precommit": "yarn ts:lint && yarn test",
     "toolbelt:generate:configs": "node toolbelt/generate-configs.js",
     "toolbelt:packagelist": "node toolbelt/generate-packages-list.js",
-    "cleanup": "rimraf dist && rimraf packages/**/dist"
+    "cleanup": "rimraf dist && rimraf packages/**/dist",
+    "semantic-release": "lerna-semantic-release pre && lerna-semantic-release perform && lerna-semantic-release post"
   },
   "dependencies": {
     "blaze": "^3.2.0",
@@ -47,6 +48,7 @@
     "html-webpack-plugin": "^2.26.0",
     "husky": "^0.13.1",
     "lerna": "2.0.0-beta.37",
+    "lerna-semantic-release": "^9.0.6",
     "lodash.capitalize": "^4.2.1",
     "markdown-loader": "^2.0.0",
     "node-sass": "^4.1.1",
