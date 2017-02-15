@@ -23,6 +23,6 @@ cache:
 install:
   - yarn
 script:
-  - yarn test
+  - yarn ts:lint && yarn test
 after_success:
   - toolbelt/publish-and-deploy.sh
