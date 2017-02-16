@@ -7,6 +7,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "repositories": {
+    "type": "git",
+    "url": "https://github.com/wc-catalogue/blaze-elements.git"
+  },
   "scripts": {
     "start": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.dev --env.element=tooltip --hot",
     "test": "npm run build:test && ../../node_modules/.bin/wct",
