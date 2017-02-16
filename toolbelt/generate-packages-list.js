@@ -8,7 +8,9 @@ const path = require( 'path' );
 
 const PACKAGE_JSON_NAME = 'package.json';
 
-const packageList = require('./packages-list.js').packageList();
+const packageList = require('./packages-list.js')
+  .packageList()
+  .filter(( packageName ) => packageName !== 'blaze-elements');
 
 console.log(packageList);
 

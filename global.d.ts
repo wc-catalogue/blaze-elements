@@ -168,18 +168,5 @@ interface Document {
 
 // Tests
 // we are not using Chai anymore. We use Expect which has Jest style assertions
-// @TODO remove this once all test are refactored to use `epxect` instead of chai
+// @TODO remove this once all test are refactored to use `expect` instead of chai
 declare var expect: Chai.ExpectStatic;
-
-// TODO: Use proper types
-declare namespace JSX {
-
-  interface IntrinsicElements {
-
-    'svg': any,
-    'g': any,
-    'path': any
-
-  }
-
-}

@@ -1,5 +1,6 @@
 import '@blaze-elements/accordion/index.demo';
 import '@blaze-elements/alert/index.demo';
+import '@blaze-elements/app-layout/index.demo';
 import '@blaze-elements/badge/index.demo';
 import '@blaze-elements/breadcrumb/index.demo';
 import '@blaze-elements/bubble/index.demo';

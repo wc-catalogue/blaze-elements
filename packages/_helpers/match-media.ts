@@ -4,20 +4,18 @@
  */
 export function matchMedia( mediaQuery: string, callback: ( matches: boolean ) => void ): () => void {
 
-  function handleOrientationChange( mql: MediaQueryList ) {
+  function handleMediaChange( mql: MediaQueryList ) {
 
     callback( mql.matches );
 
   }
 
   const mql = window.matchMedia( mediaQuery );
-  mql.addListener( handleOrientationChange );
+  mql.addListener( handleMediaChange );
 
   // Call manually to get initial state
-  handleOrientationChange( mql );
+  handleMediaChange( mql );
 
-  return () => {
-    mql.removeListener( handleOrientationChange );
-  };
+  return () => mql.removeListener( handleMediaChange );
 
 }

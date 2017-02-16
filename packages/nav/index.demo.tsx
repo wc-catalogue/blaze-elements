@@ -1,7 +1,5 @@
 import { h, Component } from 'skatejs';
-import { Nav } from './Nav';
-import { NavItem } from './NavItem';
-import { NavContent } from './NavContent';
+import { Nav, NavItem, NavContent } from './index';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-nav-demo'; }
