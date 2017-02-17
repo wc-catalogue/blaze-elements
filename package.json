@@ -23,7 +23,7 @@
     "cleanup": "rimraf dist && rimraf packages/**/dist",
     "semantic-release": "lerna-semantic-release pre && lerna-semantic-release perform && lerna-semantic-release post"
   },
-  "repositories": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/wc-catalogue/blaze-elements.git"
   },

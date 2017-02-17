@@ -1,13 +1,13 @@
 {
   "name": "blaze-elements",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "dist/index.min.js",
   "typings": "definitions/index.d.ts",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
-  "repositories": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/wc-catalogue/blaze-elements.git"
   },

@@ -7,7 +7,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "repositories": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/wc-catalogue/blaze-elements.git"
   },
