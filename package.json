@@ -17,13 +17,16 @@
     "site": "rimraf tmp/site && webpack --env.site --env.element=blaze-elements",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
-    "precommit": "yarn ts:lint && yarn test",
     "toolbelt:generate:configs": "node toolbelt/generate-configs.js",
     "toolbelt:packagelist": "node toolbelt/generate-packages-list.js",
     "cleanup": "rimraf dist && rimraf packages/**/dist",
-    "semantic-release": "lerna-semantic-release pre && lerna-semantic-release perform && lerna-semantic-release post"
+
+    "main-changelog": "standard-changelog -i CHANGELOG.md -k packages/blaze-elements/package.json -w",
+
+    "semantic-release": "lerna-semantic-release pre && lerna-semantic-release perform && lerna-semantic-release post",
+    "release": "SET VERSION && npm run build && npm run main-changelog"
   },
-  "repositories": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/wc-catalogue/blaze-elements.git"
   },
@@ -39,8 +42,10 @@
     "@types/expect": "^1.20.0",
     "@types/mocha": "^2.2.37",
     "@types/sinon-chai": "^2.7.27",
+    "ascii-table": "^0.0.9",
     "awesome-typescript-loader": "^3.0.3",
     "bore": "^2.0.1",
+    "cli-table": "^0.3.1",
     "commitizen": "^2.9.5",
     "concurrently": "^3.1.0",
     "css-loader": "^0.26.1",
@@ -59,6 +64,8 @@
     "pushstate-server": "^2.1.0",
     "rimraf": "^2.5.4",
     "sass-loader": "^5.0.1",
+    "semantic-release": "^6.3.2",
+    "standard-changelog": "^0.0.1",
     "style-loader": "^0.13.1",
     "test-fixture": "^1.0.2",
     "to-string-loader": "^1.1.5",

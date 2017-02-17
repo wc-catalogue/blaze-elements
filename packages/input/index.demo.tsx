@@ -1,5 +1,7 @@
 import { h, Component, prop } from 'skatejs';
+
 import { Input } from './index';
+
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-input-demo'; }

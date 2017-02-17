@@ -6,6 +6,9 @@
   git config user.email "travis@nodemeatspace.com"
   echo "\n" >> ~/.npmrc
   echo "//registry.npmjs.org/:_authToken=$NPM_KEY" >> ~/.npmrc
+
+  # Build & release whole package
   npm run build
+  cd ./packages/blaze-elements
   npm run semantic-release
 )

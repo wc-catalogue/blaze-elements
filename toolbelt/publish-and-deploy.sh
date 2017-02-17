@@ -5,7 +5,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   exit 0
 fi
 
-if [[ $TRAVIS_BRANCH == 'master' ]]; then
+if [[ $TRAVIS_BRANCH == 'release-testing' ]]; then
 
   toolbelt/publish.sh && toolbelt/deploy.sh
 
