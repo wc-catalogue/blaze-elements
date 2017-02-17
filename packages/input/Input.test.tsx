@@ -11,7 +11,7 @@ describe( Input.is, () => {
 
       expect( customElements.get( Input.is ) ).toBe( Input );
 
-    } );
+    });
 
     it( `should render via JSX IntrinsicElement`, () => {
 
@@ -21,9 +21,9 @@ describe( Input.is, () => {
 
         expect( element.node.localName ).toBe( Input.is );
 
-      } );
+      });
 
-    } );
+    });
 
     it( `should render via JSX class`, () => {
 
@@ -33,10 +33,10 @@ describe( Input.is, () => {
 
         expect( element.has( '.c-field' ) ).toBe( true );
 
-      } );
+      });
 
-    } );
-  } );
+    });
+  });
 
   describe( `API`, () => {
 
@@ -51,11 +51,11 @@ describe( Input.is, () => {
           const input: Partial<HTMLInputElement> = element.one( 'input' ).node;
           expect( input.value ).toBe( 'inputValue' );
 
-        } );
+        });
 
-      } );
+      });
 
-    } );
+    });
 
     describe( `[placeholder]`, () => {
 
@@ -68,11 +68,11 @@ describe( Input.is, () => {
           const input: Partial<HTMLInputElement> = element.one( 'input' ).node;
           expect( input.getAttribute( 'placeholder' ) ).toBe( 'placeholder value' );
 
-        } );
+        });
 
-      } );
+      });
 
-    } );
+    });
 
     describe( `[inputSize]`, () => {
 
@@ -84,11 +84,11 @@ describe( Input.is, () => {
 
           expect( element.has( '.u-medium' ) ).toBe( true );
 
-        } );
+        });
 
-      } );
+      });
 
-    } );
+    });
 
     describe( `[valid]`, () => {
 
@@ -100,9 +100,9 @@ describe( Input.is, () => {
 
           expect( element.has( '.c-field--success' ) ).toBe( true );
 
-        } );
+        });
 
-      } );
+      });
 
       it( `should be invalid`, () => {
 
@@ -112,11 +112,11 @@ describe( Input.is, () => {
 
           expect( element.has( '.c-field--error' ) ).toBe( true );
 
-        } );
+        });
 
-      } );
+      });
 
-    } );
+    });
 
     describe( `[disabled]`, () => {
 
@@ -128,11 +128,11 @@ describe( Input.is, () => {
 
           expect( element.one( 'input' ).node.hasAttribute( 'disabled' ) ).toBe( true );
 
-        } );
+        });
 
-      } );
+      });
 
-    } );
+    });
 
     describe( `[type]`, () => {
 
@@ -144,11 +144,11 @@ describe( Input.is, () => {
 
           expect( element.one( 'input' ).node.getAttribute( 'type' ) ).toBe( 'password' );
 
-        } );
+        });
 
-      } );
+      });
 
-    } );
+    });
 
     describe( `(change)`, () => {
 
@@ -167,12 +167,12 @@ describe( Input.is, () => {
             emit( input, 'input' );
             expect( changeTriggered ).toBe( true );
 
-          } );
+          });
 
-      } );
+      });
 
-    } );
+    });
 
-  } );
+  });
 
-} );
+});
