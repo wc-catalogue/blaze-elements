@@ -1,4 +1,4 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component, prop, props } from 'skatejs';
 
 import {
   GenericTypes,
@@ -53,16 +53,11 @@ export class AppLayout extends Component<AppLayoutProps> {
         }
       } ),
       responsiveWidth: prop.string( {
-        initial: DEFAULT_RESPONSIBLE_WIDTH,
         attribute: {
           source: true
         }
       } ),
-      narrow: prop.boolean( {
-        attribute: {
-          source: true,
-        }
-      } )
+      narrow: prop.boolean()
     };
   }
 
@@ -70,7 +65,7 @@ export class AppLayout extends Component<AppLayoutProps> {
 
   narrow: boolean;
 
-  responsiveWidth: string;
+  responsiveWidth: string = DEFAULT_RESPONSIBLE_WIDTH;
 
   connectedCallback() {
 
@@ -126,9 +121,17 @@ export class AppLayout extends Component<AppLayoutProps> {
     ];
   }
 
-  private openDrawer = () => { this.drawerVisible = true; };
+  private openDrawer = () => {
 
-  private closeDrawer = () => { this.drawerVisible = false; };
+    props( this, { drawerVisible: true } );
+
+  }
+
+  private closeDrawer = () => {
+
+    props( this, { drawerVisible: false } );
+
+  }
 
   private matchMediaUnsubscribe = () => { };
 
@@ -141,17 +144,10 @@ export class AppLayout extends Component<AppLayoutProps> {
       `(min-width: ${this.responsiveWidth})`,
       ( matches ) => {
 
-        if ( matches ) {
-
-          this.openDrawer();
-          this.narrow = false;
-
-        } else {
-
-          this.closeDrawer();
-          this.narrow = true;
-
-        }
+        props( this, {
+          narrow: !matches,
+          drawerVisible: matches
+        } );
 
       }
     );

@@ -10,38 +10,34 @@ export class Demo extends Component<void> {
 
   renderCallback() {
     return (
-      <fieldset>
-        <legend>{AppLayout.is}</legend>
+      <AppLayout responsiveWidth="1270px">
 
-        <AppLayout responsiveWidth="1270px">
+        <span slot="drawer-toolbar">LOGO</span>
 
-          <span slot="drawer-toolbar">LOGO</span>
+        <Nav slot="drawer">
+          <NavItem>Never</NavItem>
+          <NavItem>Gonna</NavItem>
+          <NavItem>Give</NavItem>
+          <NavItem>You</NavItem>
+          <NavItem>Up</NavItem>
+          <NavItem>Never</NavItem>
+          <NavItem>Gonna</NavItem>
+          <NavItem>Let</NavItem>
+          <NavItem>You</NavItem>
+          <NavItem>Down</NavItem>
+        </Nav>
 
-          <Nav slot="drawer">
-            <NavItem>Never</NavItem>
-            <NavItem>Gonna</NavItem>
-            <NavItem>Give</NavItem>
-            <NavItem>You</NavItem>
-            <NavItem>Up</NavItem>
-            <NavItem>Never</NavItem>
-            <NavItem>Gonna</NavItem>
-            <NavItem>Let</NavItem>
-            <NavItem>You</NavItem>
-            <NavItem>Down</NavItem>
-          </Nav>
+        <Nav slot="toolbar" inline>
+          <NavContent>Bread / Crumbs / Whatever</NavContent>
+          <NavItem right>Logout</NavItem>
+        </Nav>
 
-          <Nav slot="toolbar" inline>
-            <NavContent>Bread / Crumbs / Whatever</NavContent>
-            <NavItem right>Logout</NavItem>
-          </Nav>
+        <div>
+          <h1>Content</h1>
+          <img style={{ width: '100%' } as any} src={neverGonnaGiveYouUp} />
+        </div>
 
-          <div>
-            <h1>Content</h1>
-            <img style={{ width: '100%' } as any} src={neverGonnaGiveYouUp} />
-          </div>
-
-        </AppLayout>
-      </fieldset>
+      </AppLayout>
     );
   }
 }
