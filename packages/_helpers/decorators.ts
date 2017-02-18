@@ -1,4 +1,4 @@
-import { h, Component, prop, define } from 'skatejs';
+import { h, Component, ComponentProps, PropOptions, prop as skProp, define } from 'skatejs';
 import { ColorType } from './colorTypes';
 export function renderCss(): MethodDecorator {
   return function<T extends Function>(
@@ -23,13 +23,51 @@ export function customElement(name: string): ClassDecorator {
     return define(Target);
   };
 }
+type PropConfig = PropOptions<any, any> & {type?: Function };
+type PropType = 'string' | 'number' | 'object' | 'array' | 'boolean';
+const identityFn = (_: any) => _;
+export function prop(config: PropConfig = {}): PropertyDecorator {
+  return function(targetProto: Object, propertyKey: string | symbol) {
+    const {type, ...skPropConfig} = config;
+    const configType = parseType(type);
+    const skatePropTypeFn = skProp[configType] || identityFn;
+    const Ctor = targetProto.constructor as typeof Component;
+    const existingProps = (Ctor.props || {}) as ComponentProps<any, any>;
+    const newProps = {
+      ...existingProps,
+      ...{[propertyKey]: skatePropTypeFn(skPropConfig)}
+    };
+    Object.defineProperty(
+      Ctor,
+      'props',
+      {
+        configurable: true,
+        get() { return newProps; }
+      }
+    );
+  };
+}
+
+function parseType(type: Function): PropType {
+  if (typeof type !== 'function') {
+    return;
+  }
+  const inst = type() as Array<any> | Object | number | boolean | string;
+  if (inst instanceof Array) {
+    return 'array';
+  }
+  if (typeof inst === 'object') {
+    return 'object';
+  }
+  return (typeof inst) as 'boolean' | 'number' | 'string';
+}
 
 export function colored(): ClassDecorator {
   return function<T extends typeof Component>(Target: T) {
 
     const newProps = {
       ...(Target as any).props,
-      ...{color: prop.string<any, ColorType>({attribute: {source: true}})}
+      ...{color: skProp.string<any, ColorType>({attribute: {source: true}})}
     };
     Object.defineProperty(Target, 'props', {get() { return newProps; }});
     return Target;
@@ -41,7 +79,7 @@ export function disabled(): ClassDecorator {
 
     const newProps = {
       ...Target.props,
-      ...{disabled: prop.boolean( { attribute: true } )}
+      ...{disabled: skProp.boolean( { attribute: true } )}
     };
     Object.defineProperty(Target, 'props', {get() { return newProps; }});
   };
