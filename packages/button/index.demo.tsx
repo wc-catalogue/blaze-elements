@@ -1,5 +1,5 @@
-import { h, Component, prop, props, ComponentProps } from 'skatejs';
-import { Css, customElement, renderCss } from '../_helpers';
+import { h, Component, props } from 'skatejs';
+import { Css, customElement, renderCss, prop } from '../_helpers';
 import { Button } from './index';
 
 export type DemoProps = { logger: string[] };
@@ -7,11 +7,8 @@ export type DemoProps = { logger: string[] };
 @customElement( 'bl-button-demo' )
 export class Demo extends Css( Component )<DemoProps> {
 
-  static get props(): ComponentProps<Demo, DemoProps> {
-    return {
-      logger: prop.array<Demo, string>()
-    };
-  }
+  @prop( { attribute: true } ) private wat: string = 'bl-button';
+  @prop( { type: Array, attribute: { source: true } } ) private logger: string[];
 
   get css(){
     return `
@@ -27,13 +24,11 @@ export class Demo extends Css( Component )<DemoProps> {
     `;
   }
 
-  private logger: string[];
-
   @renderCss()
   renderCallback() {
-    const { logger } = this;
+    const { logger, wat } = this;
     return [
-      <h2 class="div">bl-button DEMO:</h2>,
+      <h2 class="div">{wat} DEMO:</h2>,
       <fieldset>
         <legend>{Button.is}</legend>
 
