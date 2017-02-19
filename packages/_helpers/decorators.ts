@@ -4,47 +4,48 @@ import { IS_DEV } from './environment';
 import { scopeCss, Constructable } from './utils';
 
 export function renderCss(): MethodDecorator {
-  return function<T extends Function>(
-      target: Object,
-      propertyKey: string | symbol,
-      descriptor: TypedPropertyDescriptor<T>) {
+  return function <T extends Function>(
+    target: Object,
+    propertyKey: string | symbol,
+    descriptor: TypedPropertyDescriptor<T>,
+  ) {
     return {
-      value(this: { css?: string, shadyCss?: string | void } & Object) {
+      value( this: { css?: string, shadyCss?: string | void } & Object ) {
         // we preffer shadyCss which is present if Css Mixin is used, otherwise fallback to css property
         // tslint:disable-next-line:no-invalid-this
         const css = 'shadyCss' in this ? this.shadyCss : this.css;
         // tslint:disable-next-line:no-invalid-this
-        return [h('style', css)].concat(descriptor.value.call(this, this));
+        return [ h( 'style', css ) ].concat( descriptor.value.call( this, this ) );
       }
     };
   };
 }
 
-export function customElement(name: string): ClassDecorator {
-  return function<T extends Constructable<Component<any>>>(Target: T): T {
-    Object.defineProperty(Target, 'is', {
+export function customElement( name: string ): ClassDecorator {
+  return function <T extends Constructable<Component<any>>>( Target: T ): T {
+    Object.defineProperty( Target, 'is', {
       configurable: true,
       get() { return name; }
-    });
-    return define(Target);
+    } );
+    return define( Target );
   };
 }
 
-type PropConfig = PropOptions<any, any> & {type?: Function };
+type PropConfig = PropOptions<any, any> & { type?: Function };
 type PropType = 'string' | 'number' | 'object' | 'array' | 'boolean';
-const identityFn = (_: any) => _;
+const identityFn = <T>( _: T ) => _;
 
-export function prop(config: PropConfig = {}): PropertyDecorator {
-  return function(targetProto: {[key: string]: any} & Component<any>, propertyKey: string | symbol) {
-    const currentValue = targetProto[propertyKey];
-    const {type, ...skPropConfig} = config;
-    const configType = parseType(type);
-    const skatePropTypeFn = skProp[configType] || identityFn;
+export function prop( config: PropConfig = {} ): PropertyDecorator {
+  return function( targetProto: { [ key: string ]: any } & Component<any>, propertyKey: string | symbol ) {
+    const currentValue = targetProto[ propertyKey ];
+    const { type, ...skPropConfig } = config;
+    const configType = parseType( type );
+    const skatePropTypeFn = skProp[ configType ] || identityFn;
     const Ctor = targetProto.constructor as typeof Component;
-    const existingProps = (Ctor.props || {}) as ComponentProps<any, any>;
+    const existingProps = ( Ctor.props || {} ) as ComponentProps<any, any>;
     const newProps = {
       ...existingProps,
-      ...{[propertyKey]: skatePropTypeFn(skPropConfig)}
+      ...{ [ propertyKey ]: skatePropTypeFn( skPropConfig ) }
     };
     Object.defineProperty(
       Ctor,
@@ -64,10 +65,10 @@ export function prop(config: PropConfig = {}): PropertyDecorator {
   };
 }
 
-export function event(alias?: string): PropertyDecorator {
-  return function(targetProto: {[key: string]: any} & Component<any>, propertyKey: string | symbol) {
+export function event( alias?: string ): PropertyDecorator {
+  return function( targetProto: { [ key: string ]: any } & Component<any>, propertyKey: string | symbol ) {
 
-    let propertyValue: EventEmitter<any> = targetProto[propertyKey];
+    let propertyValue: EventEmitter<any> = targetProto[ propertyKey ];
     const eventName = alias || propertyKey;
 
     return {
@@ -75,13 +76,13 @@ export function event(alias?: string): PropertyDecorator {
       get() {
         return propertyValue;
       },
-      set(value: any) {
-        if (value instanceof EventEmitter) {
+      set( value: any ) {
+        if ( value instanceof EventEmitter ) {
           // tslint:disable-next-line:no-invalid-this
-          value._configByDecorator(this, eventName as string);
+          value._configByDecorator( this, eventName as string );
           propertyValue = value;
         } else {
-          throw new Error(`${propertyKey} must be an instance of EventEmiiter`)
+          throw new Error( `${propertyKey} must be an instance of EventEmiiter` );
         }
       }
     };
@@ -94,65 +95,66 @@ export class EventEmitter<T> {
   private eventName: string;
 
   constructor(
-      private eventConfig: Object = {}
-  ) {}
+    private eventConfig: Object = {}
+  ) { }
 
-  emit(data: T): boolean {
+  emit( data: T ): boolean {
     return emit(
       this.origin,
       this.eventName,
       {
         ...this.eventConfig,
-        ...{detail: data}
+        ...{ detail: data }
       }
     );
   }
 
-  _configByDecorator(origin: Component<any>, eventName: string) {
+  _configByDecorator( origin: Component<any>, eventName: string ) {
     this.origin = origin;
     this.eventName = eventName;
   }
 }
 
-function parseType(type: Function): PropType {
-  if (typeof type !== 'function') {
+function parseType( type: Function ): PropType {
+  if ( typeof type !== 'function' ) {
     return;
   }
   const inst = type() as Array<any> | Object | number | boolean | string;
-  if (inst instanceof Array) {
+  if ( inst instanceof Array ) {
     return 'array';
   }
-  if (typeof inst === 'object') {
+  if ( typeof inst === 'object' ) {
     return 'object';
   }
-  return (typeof inst) as 'boolean' | 'number' | 'string';
+  return ( typeof inst ) as 'boolean' | 'number' | 'string';
 }
 
 export function colored(): ClassDecorator {
-  return function<T extends typeof Component>(Target: T): T {
+  return function <T extends typeof Component>( Target: T ): T {
 
     const newProps = {
-      ...(Target as any).props,
-      ...{color: skProp.string<any, ColorType>({attribute: {source: true}})}
+      ...( Target as any ).props,
+      ...{ color: skProp.string<any, ColorType>( { attribute: { source: true } } ) }
     };
-    Object.defineProperty(Target, 'props', {
+    Object.defineProperty( Target, 'props', {
       configurable: true,
       get() { return newProps; }
-    });
+    } );
     return Target;
   };
 }
 
 export function disabled(): ClassDecorator {
-  return function<T extends typeof Component>(Target: T): T {
+  return function <T extends typeof Component>( Target: T ): T {
 
     const newProps = {
       ...Target.props,
-      ...{disabled: skProp.boolean( { attribute: true } )}
+      ...{ disabled: skProp.boolean( { attribute: true } ) }
     };
-    Object.defineProperty(Target, 'props', {
+    Object.defineProperty( Target, 'props', {
       configurable: true,
-      get() { return newProps; }}
+      get() { return newProps; }
+    }
     );
     return Target;
   };
@@ -160,30 +162,30 @@ export function disabled(): ClassDecorator {
 
 
 export function shadyCssStyles() {
-  return function<T extends Constructable<Component<any>>>(Target: T) {
-      const proto = Target.prototype;
-      const originalRenderCallback = proto.renderCallback;
+  return function <T extends Constructable<Component<any>>>( Target: T ) {
+    const proto = Target.prototype;
+    const originalRenderCallback = proto.renderCallback;
 
-      Object.defineProperties(proto, {
-        shadyCss: {
-          get(this: {css: string}) {
-            // tslint:disable-next-line:no-invalid-this
-            if (IS_DEV && !('css' in this)) {
-              throw new Error(`you have to implement 'css' property when using '@shadyCssStyles' Class Decorator!`);
-            }
-            // tslint:disable-next-line:no-invalid-this
-            return scopeCss(this as any, this.css);
+    Object.defineProperties( proto, {
+      shadyCss: {
+        get( this: { css: string } ) {
+          // tslint:disable-next-line:no-invalid-this
+          if ( IS_DEV && !( 'css' in this ) ) {
+            throw new Error( `you have to implement 'css' property when using '@shadyCssStyles' Class Decorator!` );
           }
-        },
-        renderCallback: {
-          value(this: {shadyCss: string}, ...args: any[]) {
-            // tslint:disable-next-line:no-invalid-this
-            return [h('style', this.shadyCss)].concat( originalRenderCallback.apply(this, args));
-          }
+          // tslint:disable-next-line:no-invalid-this
+          return scopeCss( this as any, this.css );
         }
-      });
+      },
+      renderCallback: {
+        value( this: { shadyCss: string }, ...args: any[] ) {
+          // tslint:disable-next-line:no-invalid-this
+          return [ h( 'style', this.shadyCss ) ].concat( originalRenderCallback.apply( this, args ) );
+        }
+      }
+    } );
 
-      return Target;
+    return Target;
 
     // return class extends Target {
     //   get shadyCss(this: {css: string}) {

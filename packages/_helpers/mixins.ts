@@ -37,16 +37,16 @@ export function Disabled<BC extends Constructable<{}>>( Base: BC ) {
 
 
 
-export function Css<BC extends Constructable<{}>>( Base: BC) {
+export function Css<BC extends Constructable<{}>>( Base: BC ) {
   return class extends Base {
-      readonly css: string;
+    readonly css: string;
 
-      get shadyCss() {
-        if (IS_DEV && !('css' in this)) {
-          throw new Error(`you have to implement 'css' property when using 'Css' Mixin!`);
-        }
-        return scopeCss(this as any, this.css);
+    get shadyCss() {
+      if ( IS_DEV && !( 'css' in this ) ) {
+        throw new Error( `you have to implement 'css' property when using 'Css' Mixin!` );
       }
+      return scopeCss( this as any, this.css );
+    }
 
   };
 

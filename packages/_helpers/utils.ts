@@ -12,11 +12,11 @@ export interface Constructable<T> {
   new ( ...args: any[] ): T,
 }
 
-export function scopeCss (elem: Component<any> & {[key: string]: any}, css: string): string | void {
-  if (hasNativeShadowDomSupport) {
+export function scopeCss( elem: Component<any> & { [ key: string ]: any }, css: string ): string | void {
+  if ( hasNativeShadowDomSupport ) {
     return css;
   }
-  const template = elem[$template] || (elem[$template] = document.createElement('template'));
+  const template = elem[ $template ] || ( elem[ $template ] = document.createElement( 'template' ) );
   template.innerHTML = `<style>${css}</style>`;
-  window.ShadyCSS.prepareTemplate(template, elem.localName);
+  window.ShadyCSS.prepareTemplate( template, elem.localName );
 }
