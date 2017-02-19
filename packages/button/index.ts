@@ -1,7 +1,13 @@
 
-import { define } from 'skatejs';
+import { customElement, GenericTypes } from '../_helpers';
+import Button, { ButtonProps, Props, Events } from './Button';
 
-import { Button } from './Button';
-export { Button } from './Button';
+export default customElement('bl-button')(Button) as typeof Button;
 
-define( Button );
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-button': GenericTypes.IntrinsicCustomElement<ButtonProps> & GenericTypes.IntrinsicBoreElement<Props, Events>
+    }
+  }
+}

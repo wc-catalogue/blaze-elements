@@ -1,14 +1,16 @@
 import { h, Component, props } from 'skatejs';
-import { Css, customElement, renderCss, prop } from '../_helpers';
-import { Button } from './index';
+import { customElement, prop, shadyCssStyles } from '../_helpers';
 
-export type DemoProps = { logger: string[] };
+import Button from './index';
+
+export type DemoProps = { logger: string[], wat?: string,  };
 
 @customElement( 'bl-button-demo' )
-export class Demo extends Css( Component )<DemoProps> {
+@shadyCssStyles()
+export class Demo extends Component<DemoProps> {
 
-  @prop( { attribute: true } ) private wat: string = 'bl-button';
-  @prop( { type: Array, attribute: { source: true } } ) private logger: string[];
+  @prop( { attribute: true } ) wat: string = 'bl-button';
+  @prop( { type: Array } ) private logger: string[];
 
   get css(){
     return `
@@ -24,7 +26,6 @@ export class Demo extends Css( Component )<DemoProps> {
     `;
   }
 
-  @renderCss()
   renderCallback() {
     const { logger, wat } = this;
     return [
