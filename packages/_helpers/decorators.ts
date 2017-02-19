@@ -1,5 +1,8 @@
 import { h, Component, ComponentProps, PropOptions, prop as skProp, define } from 'skatejs';
 import { ColorType } from './colorTypes';
+import { IS_DEV } from './environment';
+import { scopeCss, Constructable } from './utils';
+
 export function renderCss(): MethodDecorator {
   return function<T extends Function>(
       target: Object,
@@ -18,16 +21,22 @@ export function renderCss(): MethodDecorator {
 }
 
 export function customElement(name: string): ClassDecorator {
-  return function<T extends typeof Component>(Target: T) {
-    Object.defineProperty(Target, 'is', {get() { return name; }});
+  return function<T extends Constructable<Component<any>>>(Target: T): T {
+    Object.defineProperty(Target, 'is', {
+      configurable: true,
+      get() { return name; }
+    });
     return define(Target);
   };
 }
+
 type PropConfig = PropOptions<any, any> & {type?: Function };
 type PropType = 'string' | 'number' | 'object' | 'array' | 'boolean';
 const identityFn = (_: any) => _;
+
 export function prop(config: PropConfig = {}): PropertyDecorator {
-  return function(targetProto: Object, propertyKey: string | symbol) {
+  return function(targetProto: {[key: string]: any} & Component<any>, propertyKey: string | symbol) {
+    const currentValue = targetProto[propertyKey];
     const {type, ...skPropConfig} = config;
     const configType = parseType(type);
     const skatePropTypeFn = skProp[configType] || identityFn;
@@ -45,6 +54,13 @@ export function prop(config: PropConfig = {}): PropertyDecorator {
         get() { return newProps; }
       }
     );
+
+    // this is needed for Babel ... :-/
+    return {
+      enumerable: true,
+      configurable: true,
+      value: currentValue,
+    };
   };
 }
 
@@ -63,24 +79,77 @@ function parseType(type: Function): PropType {
 }
 
 export function colored(): ClassDecorator {
-  return function<T extends typeof Component>(Target: T) {
+  return function<T extends typeof Component>(Target: T): T {
 
     const newProps = {
       ...(Target as any).props,
       ...{color: skProp.string<any, ColorType>({attribute: {source: true}})}
     };
-    Object.defineProperty(Target, 'props', {get() { return newProps; }});
+    Object.defineProperty(Target, 'props', {
+      configurable: true,
+      get() { return newProps; }
+    });
     return Target;
   };
 }
 
 export function disabled(): ClassDecorator {
-  return function<T extends typeof Component>(Target: T) {
+  return function<T extends typeof Component>(Target: T): T {
 
     const newProps = {
       ...Target.props,
       ...{disabled: skProp.boolean( { attribute: true } )}
     };
-    Object.defineProperty(Target, 'props', {get() { return newProps; }});
+    Object.defineProperty(Target, 'props', {
+      configurable: true,
+      get() { return newProps; }}
+    );
+    return Target;
+  };
+}
+
+
+export function shadyCssStyles() {
+  return function<T extends Constructable<Component<any>>>(Target: T) {
+      const proto = Target.prototype;
+      const originalRenderCallback = proto.renderCallback;
+
+      Object.defineProperties(proto, {
+        shadyCss: {
+          get(this: {css: string}) {
+            // tslint:disable-next-line:no-invalid-this
+            if (IS_DEV && !('css' in this)) {
+              throw new Error(`you have to implement 'css' property when using '@shadyCssStyles' Class Decorator!`);
+            }
+            // tslint:disable-next-line:no-invalid-this
+            return scopeCss(this as any, this.css);
+          }
+        },
+        renderCallback: {
+          value(this: {shadyCss: string}, ...args: any[]) {
+            // tslint:disable-next-line:no-invalid-this
+            return [h('style', this.shadyCss)].concat( originalRenderCallback.apply(this, args));
+          }
+        }
+      });
+
+      return Target;
+
+    // return class extends Target {
+    //   get shadyCss(this: {css: string}) {
+    //     // tslint:disable-next-line:no-invalid-this
+    //     if (IS_DEV && !('css' in this)) {
+    //       throw new Error(
+    //           `you have to implement 'css' property when using '@shadyCssStyles' Class Decorator!`);
+    //     }
+    //     // tslint:disable-next-line:no-invalid-this
+    //     return scopeCss(this as any, this.css);
+    //   }
+    //   renderCallback(this: {shadyCss: string}, ...args: any[]) {
+    //     // tslint:disable-next-line:no-invalid-this
+    //     return [h('style', this.shadyCss)].concat(
+    //         super.renderCallback.apply(this, args));
+    //   }
+    // };
   };
 }
