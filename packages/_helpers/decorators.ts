@@ -1,4 +1,4 @@
-import { h, Component, ComponentProps, PropOptions, prop as skProp, define } from 'skatejs';
+import { h, Component, ComponentProps, PropOptions, prop as skProp, emit, define } from 'skatejs';
 import { ColorType } from './colorTypes';
 import { IS_DEV } from './environment';
 import { scopeCss, Constructable } from './utils';
@@ -62,6 +62,56 @@ export function prop(config: PropConfig = {}): PropertyDecorator {
       value: currentValue,
     };
   };
+}
+
+export function event(alias?: string): PropertyDecorator {
+  return function(targetProto: {[key: string]: any} & Component<any>, propertyKey: string | symbol) {
+
+    let propertyValue: EventEmitter<any> = targetProto[propertyKey];
+    const eventName = alias || propertyKey;
+
+    return {
+      enumerable: true,
+      get() {
+        return propertyValue;
+      },
+      set(value: any) {
+        if (value instanceof EventEmitter) {
+          // tslint:disable-next-line:no-invalid-this
+          value._configByDecorator(this, eventName as string);
+          propertyValue = value;
+        } else {
+          throw new Error(`${propertyKey} must be an instance of EventEmiiter`)
+        }
+      }
+    };
+  };
+}
+
+export class EventEmitter<T> {
+
+  private origin: Component<any>;
+  private eventName: string;
+
+  constructor(
+      private eventConfig: Object = {}
+  ) {}
+
+  emit(data: T): boolean {
+    return emit(
+      this.origin,
+      this.eventName,
+      {
+        ...this.eventConfig,
+        ...{detail: data}
+      }
+    );
+  }
+
+  _configByDecorator(origin: Component<any>, eventName: string) {
+    this.origin = origin;
+    this.eventName = eventName;
+  }
 }
 
 function parseType(type: Function): PropType {
