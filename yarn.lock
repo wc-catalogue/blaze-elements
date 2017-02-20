@@ -1637,7 +1637,7 @@ cz-conventional-changelog@1.2.0:
     right-pad "^1.0.1"
     word-wrap "^1.0.3"
 
-"cz-conventional-changelog@github:jpnelson/cz-conventional-changelog#a9a5468d":
+cz-conventional-changelog@jpnelson/cz-conventional-changelog#a9a5468d:
   version "0.0.0-semantically-released.0"
   resolved "https://codeload.github.com/jpnelson/cz-conventional-changelog/tar.gz/a9a5468d"
   dependencies:
@@ -1681,13 +1681,13 @@ debug@0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-0.7.4.tgz#06e1ea8082c2cb14e39806e22e2f6f757f92af39"
 
-debug@2, debug@2.6.1:
+debug@2, debug@2.6.1, debug@^2.2.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
   dependencies:
     ms "0.7.2"
 
-debug@2.2.0, debug@^2.2.0, debug@~2.2.0:
+debug@2.2.0, debug@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
@@ -5829,9 +5829,9 @@ sass-graph@^2.1.1:
     lodash "^4.0.0"
     yargs "^4.7.1"
 
-sass-loader@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-5.0.1.tgz#4aa82f44242abe62ed8fdcd28d6331a34ef27c2d"
+sass-loader@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-6.0.1.tgz#fcfa0251cd18a61e62c8a6ec0eb56dd6baa8278c"
   dependencies:
     async "^2.0.1"
     loader-utils "^0.2.15"
@@ -6516,6 +6516,10 @@ temp@^0.8.1:
     os-tmpdir "^1.0.0"
     rimraf "~2.2.6"
 
+test-fixture@PolymerElements/test-fixture:
+  version "2.0.1"
+  resolved "https://codeload.github.com/PolymerElements/test-fixture/tar.gz/f72f0ff4e83b83b0157afed664f560da91d20f31"
+
 test-fixture@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/test-fixture/-/test-fixture-1.0.2.tgz#7f156322a3e2cf2bf7b9470f405cf2785d2e59be"
@@ -6523,10 +6527,6 @@ test-fixture@^1.0.2:
     fs-extra "^0.10.0"
     tmp "^0.0.23"
     underscore "^1.6.0"
-
-"test-fixture@github:polymerelements/test-fixture":
-  version "2.0.1"
-  resolved "https://codeload.github.com/polymerelements/test-fixture/tar.gz/f72f0ff4e83b83b0157afed664f560da91d20f31"
 
 text-extensions@^1.0.0:
   version "1.4.0"
@@ -7104,9 +7104,9 @@ webpack-dev-server@^2.3.0:
     webpack-dev-middleware "^1.9.0"
     yargs "^6.0.0"
 
-webpack-merge@^2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-2.6.1.tgz#f1d801d2c5d39f83ffec9f119240b3e3be994a1c"
+webpack-merge@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-3.0.0.tgz#f2c9c28691bc44fdb124745cb84a8fab74125701"
   dependencies:
     lodash "^4.17.4"
 
