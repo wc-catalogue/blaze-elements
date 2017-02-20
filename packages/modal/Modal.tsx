@@ -1,6 +1,6 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Modal.scss';
-import { Button } from '../button/Button';
+import { Button } from '../button';
 import { Card } from '../card/Card';
 import { Overlay } from '../overlay/Overlay';
 

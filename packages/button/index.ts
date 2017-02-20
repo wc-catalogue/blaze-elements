@@ -1,8 +1,13 @@
 
 import { customElement, GenericTypes } from '../_helpers';
-import Button, { ButtonProps, Props, Events } from './Button';
+import RawButton, { ButtonProps, Props, Events } from './Button';
 
-export default customElement('bl-button')(Button) as typeof Button;
+const Button = customElement('bl-button')(RawButton) as typeof RawButton;
+
+export {
+  Button
+};
+
 
 declare global {
   namespace JSX {

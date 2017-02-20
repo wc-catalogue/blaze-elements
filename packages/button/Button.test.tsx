@@ -2,7 +2,7 @@ import * as expect from 'expect';
 import { h, mount } from 'bore';
 import { emit } from 'skatejs';
 
-import Button from './index';
+import { Button } from './index';
 
 describe( Button.is, () => {
 

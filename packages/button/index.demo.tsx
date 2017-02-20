@@ -1,7 +1,7 @@
 import { h, Component, props } from 'skatejs';
 import { customElement, prop, shadyCssStyles } from '../_helpers';
 
-import Button from './index';
+import { Button } from './index';
 
 export type DemoProps = { logger: string[], wat?: string,  };
 

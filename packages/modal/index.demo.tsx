@@ -1,6 +1,6 @@
 import { h, Component, prop } from 'skatejs';
 import { Modal } from './Modal';
-import { Button } from '../button/Button';
+import { Button } from '../button';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-modal-demo'; }
