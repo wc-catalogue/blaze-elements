@@ -1,13 +1,27 @@
 import styles from './Toggle.scss';
-import { h, Component, prop, props } from 'skatejs';
+import { h, Component, prop, props, emit } from 'skatejs';
 import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
-import { css } from '../_helpers/css';
+import { css, GenericTypes, GenericEvents } from '../_helpers/index';
 
-
-export interface ToggleProps {
+type ToggleProps = Props & EventProps;
+type EventProps = {
+  onChange?: GenericEvents.CustomChangeHandler<string>,
+};
+type Events = {
+  change?: GenericEvents.CustomChangeHandler<string>,
+};
+type Props = {
   disabled?: boolean,
   checked?: boolean,
   color?: ColorType,
+};
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-toggle': GenericTypes.IntrinsicCustomElement<ToggleProps> & GenericTypes.IntrinsicBoreElement<Props, Events>
+    }
+  }
 }
 
 export class Toggle extends Component<ToggleProps> {
@@ -23,6 +37,11 @@ export class Toggle extends Component<ToggleProps> {
       color: prop.string( {
         attribute: true
       } )
+    };
+  }
+  static get events() {
+    return {
+      CHANGE: 'change'
     };
   }
   disabled = false;
@@ -54,10 +73,13 @@ export class Toggle extends Component<ToggleProps> {
       </label>
     ];
   }
-  private handleChecked( e?: Event ) {
+  private handleChecked( event: Event ) {
+    event.stopPropagation();
     props( this, { checked: !this.checked } );
+    emit( this, Toggle.events.CHANGE, {
+      detail: {
+        value: this.checked
+      }
+    } );
   }
 }
-
-
-customElements.define( Toggle.is, Toggle );
