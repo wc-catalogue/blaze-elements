@@ -153,21 +153,21 @@ describe( Input.is, () => {
 
     describe( `(change)`, () => {
 
-      it( `should emit onChange event`, (done) => {
+      it( `should emit onChange event`, () => {
 
         const value = 'splash';
+        let expectedValue: string;
         const handleChange = ( e: GenericEvents.CustomChangeEvent<string> ) => {
-          if ( e.detail.value === value) {
-            done();
-          }
+          expectedValue = e.detail.value;
         };
 
-        mount( <bl-input value="water" events={{ change: handleChange }} /> )
-          .wait(( element ) => {
+        mount( <bl-input value="water" events={{ change: handleChange }}/> )
+          .wait( ( element ) => {
 
             const input = element.one( 'input' ).node as HTMLInputElement;
             input.value = value;
             emit( input, 'input' );
+            expect( expectedValue ).toBe( value );
 
           } );
 
