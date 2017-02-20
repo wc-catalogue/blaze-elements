@@ -32,9 +32,8 @@
     "core-js": "^2.4.1",
     "date-fns": "^1.24.0",
     "decko": "^1.1.3",
-    "skatejs": "^4.6.5",
-    "skatejs-web-components": "^5.1.0",
-    "@webcomponents/template": "https://github.com/webcomponents/template/archive/0973368.tar.gz",
+    "skatejs": "4.6.7",
+    "skatejs-web-components": "5.2.0",
     "tslib": "^1.5.0"
   },
   "devDependencies": {

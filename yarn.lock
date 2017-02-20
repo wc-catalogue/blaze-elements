@@ -6086,20 +6086,21 @@ skatejs-dom-diff@^0.4.2:
   dependencies:
     object-assign "^4.0.1"
 
-skatejs-web-components@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/skatejs-web-components/-/skatejs-web-components-5.1.0.tgz#1686e76c742850dadff1e5ecce3b499d7b0d38a3"
+skatejs-web-components@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/skatejs-web-components/-/skatejs-web-components-5.2.0.tgz#a29473c61118b471737f175d592cd40ca2a48418"
   dependencies:
     "@webcomponents/custom-elements" "https://github.com/webcomponents/custom-elements/archive/36451e1.tar.gz"
     "@webcomponents/shadycss" "https://github.com/webcomponents/shadycss/archive/bea402d.tar.gz"
     "@webcomponents/shadydom" "https://github.com/webcomponents/shadydom/archive/a8b4c4c.tar.gz"
+    "@webcomponents/template" "https://github.com/webcomponents/template/archive/0973368.tar.gz"
     array.from "^1.0.3"
     es6-promise "^4.0.5"
     object.assign "^4.0.4"
 
-skatejs@^4.6.5:
-  version "4.6.6"
-  resolved "https://registry.yarnpkg.com/skatejs/-/skatejs-4.6.6.tgz#5d68f6154cebac89d7344166782f8dc0aa156c03"
+skatejs@4.6.7:
+  version "4.6.7"
+  resolved "https://registry.yarnpkg.com/skatejs/-/skatejs-4.6.7.tgz#655d87bd3f8135a4e4d6e1c9d9afd483dbb40aeb"
   dependencies:
     incremental-dom "0.4.1"
 
