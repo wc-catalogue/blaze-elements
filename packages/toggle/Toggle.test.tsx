@@ -89,7 +89,7 @@ describe( Toggle.is, () => {
 
     function checkColor( element: WrappedNode ) {
       const label: Partial<HTMLInputElement> = element.one( 'label' ).node;
-      expect( label.getAttribute( 'class' ) ).toContain( 'warning' );
+      expect( label.classList.contains( 'c-toggle--warning' ) ).toBe( true );
     }
 
   } );
