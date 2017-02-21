@@ -19,15 +19,15 @@ export class TagSelector extends Component<TagSelectorProps> {
 
   static get is() { return 'bl-tag-selector'; }
 
-  @prop({
+  @prop( {
     type: Array,
     attribute: { source: true },
-  }) tags: string[] = [];
+  } ) tags: string[] = [];
 
-  @prop({
+  @prop( {
     type: String,
     attribute: { source: true },
-  }) delimiter = ' '; // default value is space ' '
+  } ) delimiter = ' '; // default value is space ' '
 
   @event() tagChange = new EventEmitter<{ tags: string[] }>();
 
@@ -74,7 +74,7 @@ export class TagSelector extends Component<TagSelectorProps> {
     this.emitNewData( newTags );
   }
 
-// @TODO correctly annotate event to proper type
+  // @TODO correctly annotate event to proper type
   @bind
   private handleTagClose( event: CustomEvent ) {
     const target = event.target as Tag;

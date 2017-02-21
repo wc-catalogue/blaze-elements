@@ -186,22 +186,5 @@ export function shadyCssStyles() {
     } );
 
     return Target;
-
-    // return class extends Target {
-    //   get shadyCss(this: {css: string}) {
-    //     // tslint:disable-next-line:no-invalid-this
-    //     if (IS_DEV && !('css' in this)) {
-    //       throw new Error(
-    //           `you have to implement 'css' property when using '@shadyCssStyles' Class Decorator!`);
-    //     }
-    //     // tslint:disable-next-line:no-invalid-this
-    //     return scopeCss(this as any, this.css);
-    //   }
-    //   renderCallback(this: {shadyCss: string}, ...args: any[]) {
-    //     // tslint:disable-next-line:no-invalid-this
-    //     return [h('style', this.shadyCss)].concat(
-    //         super.renderCallback.apply(this, args));
-    //   }
-    // };
   };
 }

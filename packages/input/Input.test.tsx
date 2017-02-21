@@ -161,8 +161,8 @@ describe( Input.is, () => {
           expectedValue = e.detail.value;
         };
 
-        mount( <bl-input value="water" events={{ change: handleChange }}/> )
-          .wait( ( element ) => {
+        mount( <bl-input value="water" events={{ change: handleChange }} /> )
+          .wait(( element ) => {
 
             const input = element.one( 'input' ).node as HTMLInputElement;
             input.value = value;

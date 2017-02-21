@@ -6,6 +6,7 @@
     "ts:lint": "tslint \"packages/**/*.tsx\" \"packages/**/*.ts\"",
     "ts:lint:fix": "yarn ts:lint -- --fix",
     "ts:format": "tsfmt --replace packages/**/*.ts packages/**/*.tsx",
+    "ts:style": "npm run ts:lint:fix && npm run ts:format",
     "start": "webpack-dev-server --env.dev --env.element=blaze-elements --hot",
     "start:prod": "pushstate-server dist/",
     "test": "npm run build:test && toolbelt/test.sh",
