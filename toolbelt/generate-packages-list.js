@@ -65,7 +65,7 @@ function generateDependencies() {
         return accumulator;
       }
 
-      accumulator[`@blaze-elements/${packageName}`] = packageJson.version;
+      accumulator[`@blaze-elements/${packageName}`] = `^${packageJson.version}`;
 
       return accumulator;
     }, {}
