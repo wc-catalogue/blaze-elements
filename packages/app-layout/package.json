@@ -1,0 +1,23 @@
+{
+  "name": "@blaze-elements/app-layout",
+  "version": "1.0.0",
+  "main": "dist/index.min.js",
+  "typings": "definitions/index.d.ts",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repositories": {
+    "type": "git",
+    "url": "https://github.com/wc-catalogue/blaze-elements.git"
+  },
+  "scripts": {
+    "start": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.dev --env.element=app-layout --hot",
+    "test": "npm run build:test && ../../node_modules/.bin/wct",
+    "test:watch": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p\"",
+    "test:watch:firefox": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p -l firefox\"",
+    "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.prod --env.element=app-layout",
+    "build:test": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.test --env.element=app-layout",
+    "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=app-layout"
+  }
+}

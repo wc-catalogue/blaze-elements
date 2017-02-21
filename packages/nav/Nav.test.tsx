@@ -1,4 +1,4 @@
-import { Nav } from './Nav';
+import { Nav } from './index';
 
 import { h, mount } from 'bore';
 

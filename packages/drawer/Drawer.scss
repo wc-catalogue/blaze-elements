@@ -1,2 +1,13 @@
 @import '~blaze/scss/objects.drawers';
 @import '~blaze/scss/utilities.elevation';
+
+// Allow static drawer
+.o-drawer--static {
+  position: static;
+
+  &.o-drawer--left.o-drawer--visible {
+    transform: initial;
+  }
+
+}
+

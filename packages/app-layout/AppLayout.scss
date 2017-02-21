@@ -1,0 +1,33 @@
+.app-layout-container {
+  display: flex;
+}
+
+// TODO: center what ever user pass
+.drawer-header-content {
+  text-align: center;
+}
+
+.header-layout-container {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  background: #111;
+}
+
+.toolbar {
+  flex-grow: 1;
+}
+
+.hamburger-button {
+  font-size: 1.6rem;
+  line-height: 3.6rem;
+  margin: auto 15px;
+  color: white;
+}
+
+.content {
+  padding: 1rem;
+}

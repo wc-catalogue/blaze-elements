@@ -23,6 +23,7 @@
   "dependencies": {
     "@blaze-elements/accordion": "^1.0.0",
     "@blaze-elements/alert": "^1.0.0",
+    "@blaze-elements/app-layout": "^1.0.0",
     "@blaze-elements/badge": "^1.0.0",
     "@blaze-elements/breadcrumb": "^1.0.0",
     "@blaze-elements/bubble": "^1.0.0",
