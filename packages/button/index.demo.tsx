@@ -3,7 +3,7 @@ import { customElement, prop, shadyCssStyles } from '../_helpers';
 
 import { Button } from './index';
 
-export type DemoProps = { logger: string[], wat?: string,  };
+export type DemoProps = { logger: string[], wat?: string, };
 
 @customElement( 'bl-button-demo' )
 @shadyCssStyles()
@@ -12,7 +12,7 @@ export class Demo extends Component<DemoProps> {
   @prop( { attribute: true } ) wat: string = 'bl-button';
   @prop( { type: Array } ) private logger: string[];
 
-  get css(){
+  get css() {
     return `
     :host {
       display: block;
@@ -69,7 +69,7 @@ export class Demo extends Component<DemoProps> {
 
   private addLogEntry( entry: string ) {
     return ( ev: MouseEvent ) => {
-      props( this, { logger: [ ...this.logger, `${entry} - ${this.logger.length}` ] });
+      props( this, { logger: [ ...this.logger, `${entry} - ${this.logger.length}` ] } );
     };
   }
 }

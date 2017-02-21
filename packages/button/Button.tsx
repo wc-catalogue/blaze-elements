@@ -21,8 +21,8 @@ export type Props = {
   close?: boolean,
   ghost?: boolean,
 }
-& ColoredProps
-& DisabledProps;
+  & ColoredProps
+  & DisabledProps;
 
 export type Events = {
   click?: GenericEvents.ClickHandler,
