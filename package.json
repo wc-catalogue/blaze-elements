@@ -9,7 +9,7 @@
     "ts:style": "npm run ts:lint:fix && npm run ts:format",
     "start": "webpack-dev-server --env.dev --env.element=blaze-elements --hot",
     "start:prod": "pushstate-server dist/",
-    "test": "npm run build:test && toolbelt/test.sh",
+    "test": "npm run build:test && toolbelt/test.sh -l firefox",
     "test:watch": "concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html toolbelt/test.sh -p\"",
     "test:watch:firefox": "concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html toolbelt/test.sh -p -l firefox\"",
     "build": "npm run cleanup && webpack --env.prod --env.element=blaze-elements",

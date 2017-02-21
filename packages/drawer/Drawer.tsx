@@ -36,15 +36,14 @@ export class Drawer extends Component<DrawerProps> {
       floating: prop.boolean( {
         attribute: {
           source: true
-        },
-        initial: true
+        }
       } )
     };
   }
 
   position = 'top';
   visible: boolean;
-  floating: boolean;
+  floating = true;
 
   renderCallback() {
 

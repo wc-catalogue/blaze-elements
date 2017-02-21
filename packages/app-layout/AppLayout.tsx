@@ -5,7 +5,6 @@ import {
   matchMedia
 } from '../_helpers';
 
-import { HamburgerButton } from './components/HamburgerButton';
 import { Drawer } from './components/Drawer';
 import { Overlay } from './components/Overlay';
 import { Nav } from './components/Nav';
@@ -15,22 +14,25 @@ import styles from './AppLayout.scss';
 
 const DEFAULT_RESPONSIBLE_WIDTH = '640px';
 
-type AppLayoutProps = Props & EventProps;
+export type AppLayoutProps = Props & EventProps;
 
-type Attrs = {
+export type Attrs = {
   'drawer-visible'?: boolean,
-  'responsive-width'?: string
+  'responsive-width'?: string,
+  'force-narrow'?: boolean,
 };
 
-type Props = {
+export type Props = {
   drawerVisible?: boolean,
-  responsiveWidth?: string
+  responsiveWidth?: string,
+  narrow?: boolean,
+  forceNarrow?: boolean
 };
 
 // TODO: add onDrawerChange / onNarrowChange
-type EventProps = {};
+export type EventProps = {};
 
-type Events = {};
+export type Events = {};
 
 declare global {
   namespace JSX {
@@ -47,25 +49,42 @@ export class AppLayout extends Component<AppLayoutProps> {
 
   static get props() {
     return {
+      /**
+       * Trigger drawer visibility
+       */
       drawerVisible: prop.boolean( {
         attribute: {
           source: true
         }
       } ),
+      /**
+       * If the viewport's width is smaller than this value, the panel will change to narrow
+       * layout. In the mode the drawer will be closed.
+       */
       responsiveWidth: prop.string( {
         attribute: {
           source: true
         }
       } ),
-      narrow: prop.boolean()
+      /**
+       * If true, ignore `responsiveWidth` setting and force the narrow layout.
+       */
+      forceNarrow: prop.boolean( {
+        attribute: {
+          source: true
+        }
+      } ),
+      narrow: prop.boolean(),
     };
   }
 
   drawerVisible: boolean;
 
-  narrow: boolean;
-
   responsiveWidth: string = DEFAULT_RESPONSIBLE_WIDTH;
+
+  forceNarrow = false;
+
+  narrow: boolean;
 
   connectedCallback() {
 
@@ -92,6 +111,7 @@ export class AppLayout extends Component<AppLayoutProps> {
           <Overlay
             isDismissable
             onClick={this.closeDrawer}
+            isFullpage
           />
         }
         <Drawer
@@ -108,9 +128,9 @@ export class AppLayout extends Component<AppLayoutProps> {
         </Drawer>
         <div class="header-layout-container">
           <div class="header">
-            {this.narrow && ( <div class="hamburger-button">
-              <HamburgerButton onClick={this.openDrawer} slot="hamburger-button" />
-            </div> )}
+            {this.narrow && (
+              <div class="hamburger-button" onClick={this.openDrawer}>☰</div>
+            )}
             <div class="toolbar"><slot name="toolbar">{`Add <bl-nav slot="toolbar"></bl-nav>`}</slot></div>
           </div>
           <div class="content">
@@ -141,12 +161,12 @@ export class AppLayout extends Component<AppLayoutProps> {
     this.matchMediaUnsubscribe();
 
     this.matchMediaUnsubscribe = matchMedia(
-      `(min-width: ${this.responsiveWidth})`,
+      this.forceNarrow ? '(min-width: 0px)' : `(max-width: ${this.responsiveWidth})`,
       ( matches ) => {
 
         props( this, {
-          narrow: !matches,
-          drawerVisible: matches
+          narrow: matches,
+          drawerVisible: !matches
         } );
 
       }

@@ -4,7 +4,7 @@ import { Overlay as OriginalOverlay } from '../../overlay/Overlay';
 
 export class Overlay extends OriginalOverlay {
 
-  static get is() { return 'app-layout-overlay'; }
+  static get is() { return 'bl-app-layout-overlay'; }
 
 }
 
