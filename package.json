@@ -17,7 +17,6 @@
     "site": "rimraf tmp/site && webpack --env.site --env.element=blaze-elements",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
-    "precommit": "npm run ts:lint",
     "prepush": "npm run ts:lint && npm test",
     "toolbelt:generate:configs": "node toolbelt/generate-configs.js",
     "toolbelt:packagelist": "node toolbelt/generate-packages-list.js",
