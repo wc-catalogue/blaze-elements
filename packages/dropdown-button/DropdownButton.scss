@@ -1,2 +1,11 @@
 @import "../generics.shared";
-@import "~blaze/scss/components.buttons";
+
+bl-dropdown-button-card {
+  z-index: 401;
+  position: absolute;
+  display: block;
+  minWidth: 200;
+  maxWidth: 300;
+}
+
+

@@ -1,64 +1,63 @@
-import { h, Component, prop, props, ComponentProps } from 'skatejs';
-import { Button } from './index';
+import { h, Component, prop, ComponentProps } from 'skatejs';
+import { DropdownButton } from './index';
+import { NavItem } from '../nav/Nav-item';
+import { Nav } from '../nav/Nav';
 
-export type DemoProps = { logger: string[] };
+export type DemoProps = { title: string };
+
+const LANGS: any = {
+  cs: 'Česky',
+  en: 'English',
+  ru: 'Pусский',
+};
+
 export class Demo extends Component<DemoProps> {
-  static get is() { return 'bl-button-demo'; }
+  static get is() { return 'bl-dropdown-button-demo'; }
 
   static get props(): ComponentProps<Demo, DemoProps> {
     return {
-      logger: prop.array<Demo, string>()
+      title: prop.string(),
     };
   }
 
-  private logger: string[];
+  selectedKey = 'en';
+  title = 'English';
+
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind( this );
+  }
 
   renderCallback() {
-    const { logger } = this;
+
     return [
       <style />,
       <fieldset>
-        <legend>{Button.is}</legend>
+        <legend>{DropdownButton.is}</legend>
 
-        <bl-button color="brand" onClick={this.addLogEntry( 'Clicked! bl-button' )}>Click me</bl-button>
+        <bl-dropdown-button title={this.title}>
+          <Nav>
+            {this.renderLangs()}
+          </Nav>
+        </bl-dropdown-button>
 
-        <Button
-          disabled
-          color="brand"
-          onClick={this.addLogEntry( 'Im Disabled!' )}
-        >
-          Click me
-        </Button>
-        <Button
-          color="brand"
-          onClick={this.addLogEntry( 'Clicked Button!' )}
-        >
-          Click me
-        </Button>
-        <Button
-          ghost
-          color="warning"
-          onClick={this.addLogEntry( 'Clicked Button ghost!' )}
-        >
-          Click me
-        </Button>
-      </fieldset>,
-      <div>
-        <h4>Logs:</h4>
-        <ul>
-          {
-            logger.map(( log ) => ( <li>{log}</li> ) )
-          }
-        </ul>
-      </div>
+      </fieldset>
     ];
   }
 
-  private addLogEntry( entry: string ) {
-    return ( ev: MouseEvent ) => {
-      props( this, { logger: [ ...this.logger, `${entry} - ${this.logger.length}` ] } );
-    };
+  handleClick( event: MouseEvent ) {
+    console.log( 'Dropdown clicked', event );
+    this.title = 'Česky';
+    this.selectedKey = 'cs';
   }
+
+  renderLangs() {
+    return Object.keys( LANGS ).map(( ( key: string ) => {
+      const langName: string = LANGS[ key ];
+      return <NavItem active={this.selectedKey === key} onClick={this.handleClick}>{langName}</NavItem>;
+    } ) );
+  }
+
 }
 
 customElements.define( Demo.is, Demo );
