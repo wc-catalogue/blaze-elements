@@ -1,7 +1,7 @@
 import { h, Component, prop } from 'skatejs';
 import styles from './Overlay.demo.scss';
 import { Overlay } from './Overlay';
-import { Button } from '../button/Button';
+import { Button } from '../button';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-overlay-demo'; }

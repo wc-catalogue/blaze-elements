@@ -7,4 +7,5 @@ export * from './css';
 export * from './sizes';
 export * from './bore-h';
 export * from './buildFormatLocale';
-
+export * from './mixins';
+export * from './decorators';

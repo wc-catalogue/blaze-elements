@@ -1,7 +1,7 @@
 import { h, Component } from 'skatejs';
 import { Drawer } from './Drawer';
 import { Card } from '../card/Card';
-import { Button } from '../button/Button';
+import { Button } from '../button';
 
 const customDivStyleBase = {
   position: 'relative',

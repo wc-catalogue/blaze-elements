@@ -9,6 +9,7 @@
     "noEmitHelpers": true,
     "importHelpers": true,
     "stripInternal": true,
+    "experimentalDecorators": true,
     "moduleResolution": "node",
     "outDir": "ts-output",
     "rootDir": "./",
@@ -23,7 +24,8 @@
     ],
     "types": [
       "mocha",
-      "sinon-chai"
+      "sinon-chai",
+      "node"
     ],
     "lib": [
       "dom",

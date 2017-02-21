@@ -1,8 +1,11 @@
-import { h, Component, emit, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
+import { bind } from 'decko';
+
+import { GenericEvents, EventEmitter, event, prop } from '../_helpers';
+import { Input } from '@blaze-elements/input';
+
 import styles from './Tag.scss';
 import { Tag } from './Tag';
-import { Input } from '@blaze-elements/input';
-import { GenericEvents } from '../_helpers';
 
 
 // public
@@ -15,30 +18,18 @@ interface TagSelectorProps {
 export class TagSelector extends Component<TagSelectorProps> {
 
   static get is() { return 'bl-tag-selector'; }
-  static get events() {
-    return {
-      TAG_CHANGE: 'tagChange'
-    };
-  }
-  static get props() {
-    return {
-      tags: prop.array( {
-        attribute: true
-      } ),
-      delimiter: prop.string( {
-        attribute: true
-      } ),
-    };
-  }
 
-  tags: string[] = [];
-  delimiter = ' '; // default value is space ' '
+  @prop({
+    type: Array,
+    attribute: { source: true },
+  }) tags: string[] = [];
 
-  constructor() {
-    super();
-    this.handleInput = this.handleInput.bind( this );
-    this.handleTagClose = this.handleTagClose.bind( this );
-  }
+  @prop({
+    type: String,
+    attribute: { source: true },
+  }) delimiter = ' '; // default value is space ' '
+
+  @event() tagChange = new EventEmitter<{ tags: string[] }>();
 
   renderCallback() {
 
@@ -62,6 +53,7 @@ export class TagSelector extends Component<TagSelectorProps> {
     ];
   }
 
+  @bind
   private handleInput( event: GenericEvents.CustomChangeEvent<string> ) {
     const input = event.target as Input;
     const value = event.detail.value;
@@ -82,6 +74,8 @@ export class TagSelector extends Component<TagSelectorProps> {
     this.emitNewData( newTags );
   }
 
+// @TODO correctly annotate event to proper type
+  @bind
   private handleTagClose( event: CustomEvent ) {
     const target = event.target as Tag;
     const newTags = this.tags.filter(( tag ) => tag !== target.label );
@@ -89,11 +83,7 @@ export class TagSelector extends Component<TagSelectorProps> {
   }
 
   private emitNewData( tags: string[] ) {
-    emit( this, TagSelector.events.TAG_CHANGE, {
-      detail: {
-        tags
-      }
-    } );
+    this.tagChange.emit( { tags } );
   }
 
 }

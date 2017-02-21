@@ -117,6 +117,10 @@ module.exports = ( env ) => {
      */
     plugins: removeEmpty([
 
+        // Set NODE_ENV to enable production react version
+      new webpack.DefinePlugin( {
+        'process.env': { NODE_ENV: ifProd( '"production"', '"development"' ) }
+      } ),
 
       new webpack.LoaderOptionsPlugin( {
         // The UglifyJsPlugin will no longer put loaders into minimize mode, and the debug option has been deprecated.

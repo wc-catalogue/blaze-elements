@@ -1,22 +1,35 @@
-import { h, Component, prop, props, ComponentProps } from 'skatejs';
+import { h, Component, props } from 'skatejs';
+import { customElement, prop, shadyCssStyles } from '../_helpers';
+
 import { Button } from './index';
 
-export type DemoProps = { logger: string[] };
-export class Demo extends Component<DemoProps> {
-  static get is() { return 'bl-button-demo'; }
+export type DemoProps = { logger: string[], wat?: string,  };
 
-  static get props(): ComponentProps<Demo, DemoProps> {
-    return {
-      logger: prop.array<Demo, string>()
-    };
+@customElement( 'bl-button-demo' )
+@shadyCssStyles()
+export class Demo extends Component<DemoProps> {
+
+  @prop( { attribute: true } ) wat: string = 'bl-button';
+  @prop( { type: Array } ) private logger: string[];
+
+  get css(){
+    return `
+    :host {
+      display: block;
+      padding: 1rem;
+      box-shadow: 0 1px 10px #ccc;
+    }
+     h2 {
+       color: tomato;
+       font-size: 2rem;
+     }
+    `;
   }
 
-  private logger: string[];
-
   renderCallback() {
-    const { logger } = this;
+    const { logger, wat } = this;
     return [
-      <style />,
+      <h2 class="div">{wat} DEMO:</h2>,
       <fieldset>
         <legend>{Button.is}</legend>
 
@@ -60,6 +73,3 @@ export class Demo extends Component<DemoProps> {
     };
   }
 }
-
-customElements.define( Demo.is, Demo );
-

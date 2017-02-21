@@ -3,7 +3,7 @@ import { h, Component, prop, emit } from 'skatejs';
 import { ColorType, cssClassForColorType, css } from '../_helpers';
 
 // @FIXME this needs to be imported from package import {Button} from '@blaze-elements/button'
-import { Button } from '../button/Button';
+import { Button } from '../button';
 
 import styles from './Alert.scss';
 

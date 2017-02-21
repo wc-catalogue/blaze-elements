@@ -1,7 +1,18 @@
 
-import { define } from 'skatejs';
+import { customElement, GenericTypes } from '../_helpers';
+import RawButton, { ButtonProps, Props, Events } from './Button';
 
-import { Button } from './Button';
-export { Button } from './Button';
+const Button = customElement('bl-button')(RawButton) as typeof RawButton;
 
-define( Button );
+export {
+  Button
+};
+
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-button': GenericTypes.IntrinsicCustomElement<ButtonProps> & GenericTypes.IntrinsicBoreElement<Props, Events>
+    }
+  }
+}
