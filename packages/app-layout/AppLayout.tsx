@@ -1,9 +1,6 @@
 import { h, Component, prop, props } from 'skatejs';
 
-import {
-  GenericTypes,
-  matchMedia
-} from '@blaze-elements/common';
+import { matchMedia } from '@blaze-elements/common';
 
 import { Drawer } from './components/Drawer';
 import { Overlay } from './components/Overlay';
@@ -34,18 +31,7 @@ export type EventProps = {};
 
 export type Events = {};
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'bl-app-layout': GenericTypes.IntrinsicCustomElement<AppLayoutProps>
-      & GenericTypes.IntrinsicBoreElement<Attrs, Events>
-    }
-  }
-}
-
-export class AppLayout extends Component<AppLayoutProps> {
-
-  static get is() { return 'bl-app-layout'; }
+export default class AppLayout extends Component<AppLayoutProps> {
 
   static get props() {
     return {

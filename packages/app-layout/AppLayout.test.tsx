@@ -2,6 +2,7 @@ import { mount, h } from 'bore';
 import { emit } from 'skatejs';
 import * as expect from 'expect';
 import { AppLayout } from './index';
+import RawAppLayout from './AppLayout';
 import { Drawer } from './components/Drawer';
 
 describe( AppLayout.is, () => {
@@ -50,7 +51,7 @@ describe( AppLayout.is, () => {
           <bl-app-layout />
         ).wait(( wrapper ) => {
 
-          const appLayout = wrapper.node as AppLayout;
+          const appLayout = wrapper.node as RawAppLayout;
 
           expect( appLayout.drawerVisible ).toBe( false );
           expect(( wrapper.one( 'bl-app-layout-drawer' ).node as Drawer ).visible ).toBe( false );
@@ -78,7 +79,7 @@ describe( AppLayout.is, () => {
           />
         ).wait(( wrapper ) => {
 
-          const appLayout = wrapper.node as AppLayout;
+          const appLayout = wrapper.node as RawAppLayout;
 
           expect( appLayout.drawerVisible ).toBe( true );
           expect(( wrapper.one( 'bl-app-layout-drawer' ).node as Drawer ).visible ).toBe( true );
@@ -110,7 +111,7 @@ describe( AppLayout.is, () => {
           />
         ).wait(( wrapper ) => {
 
-          expect(( wrapper.node as AppLayout ).drawerVisible ).toBe( false );
+          expect(( wrapper.node as RawAppLayout ).drawerVisible ).toBe( false );
 
         } );
 
@@ -124,7 +125,7 @@ describe( AppLayout.is, () => {
           />
         ).wait(( wrapper ) => {
 
-          expect(( wrapper.node as AppLayout ).drawerVisible ).toBe( true );
+          expect(( wrapper.node as RawAppLayout ).drawerVisible ).toBe( true );
 
         } );
 
@@ -147,8 +148,8 @@ describe( AppLayout.is, () => {
 
           setTimeout(() => {
 
-            expect(( wrapper.node as AppLayout ).narrow ).toBe( true );
-            expect(( wrapper.node as AppLayout ).drawerVisible ).toBe( false );
+            expect(( wrapper.node as RawAppLayout ).narrow ).toBe( true );
+            expect(( wrapper.node as RawAppLayout ).drawerVisible ).toBe( false );
 
             done();
 
@@ -174,7 +175,7 @@ describe( AppLayout.is, () => {
           />
         ).wait(( wrapper ) => {
 
-          const appLayout = wrapper.node as AppLayout;
+          const appLayout = wrapper.node as RawAppLayout;
 
           expect( appLayout.drawerVisible ).toBe( false );
 
@@ -203,7 +204,7 @@ describe( AppLayout.is, () => {
           />
         ).wait(( wrapper ) => {
 
-          const appLayout = wrapper.node as AppLayout;
+          const appLayout = wrapper.node as RawAppLayout;
 
           appLayout.drawerVisible = true;
 
