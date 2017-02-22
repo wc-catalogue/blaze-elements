@@ -13,11 +13,11 @@ export type Props = {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'bl-card-item': GenericTypes.IntrinsicCustomElement<CardItemProps> & GenericTypes.IntrinsicBoreElement<Props, void>
+      'bl-card-item': GenericTypes.IntrinsicCustomElement<CardItemProps>
+        & GenericTypes.IntrinsicBoreElement<Props, void>
     }
   }
 }
-
 
 export class CardItem extends Component<CardItemProps> {
   static get is() { return 'bl-card-item'; }
