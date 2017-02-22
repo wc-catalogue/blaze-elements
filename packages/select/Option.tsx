@@ -9,7 +9,7 @@ export type OptionProps = Props & EventHandlers;
 
 export type Props = {
   value?: string,
-}
+};
 
 export type Events = {
   click?: GenericEvents.ClickHandler,
