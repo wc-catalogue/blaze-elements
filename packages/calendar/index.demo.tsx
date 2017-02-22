@@ -1,6 +1,6 @@
 import { h, Component, prop } from 'skatejs';
 import { bind } from 'decko';
-import { GenericEvents, customElement } from '../_helpers';
+import { GenericEvents, customElement } from '@blaze-elements/common';
 import { Calendar } from './index';
 
 @customElement( 'bl-calendar-demo' )

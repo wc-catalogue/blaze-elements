@@ -1,6 +1,6 @@
 import { h, Component, prop } from 'skatejs';
 import styles from './Overlay.scss';
-import { css } from '../_helpers/css';
+import { css } from '@blaze-elements/common';
 
 // public
 type OverlayProps = Props & EventProps;

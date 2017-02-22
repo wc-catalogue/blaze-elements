@@ -1,6 +1,6 @@
 import { h, Component } from 'skatejs';
 import styles from './KeyboardKeys.scss';
-import { css } from '../_helpers/css';
+import { css } from '@blaze-elements/common';
 
 // public
 interface KeyboardKeysProps {

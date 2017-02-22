@@ -1,6 +1,6 @@
 import { h, Component } from 'skatejs';
 import styles from './MonospaceText.scss';
-import { css } from '../_helpers/css';
+import { css } from '@blaze-elements/common';
 
 // public
 interface MonospaceTextProps {

@@ -10,7 +10,13 @@ import * as format from 'date-fns/format';
 import * as isToday from 'date-fns/is_today';
 import * as parse from 'date-fns/parse';
 import * as isSameDay from 'date-fns/is_same_day';
-import { css, buildFormatLocale, LocaleType, GenericEvents, GenericTypes } from '../_helpers';
+import {
+  css,
+  buildFormatLocale,
+  LocaleType,
+  GenericEvents,
+  GenericTypes
+} from '@blaze-elements/common';
 import { CalendarButton } from './components/Button';
 
 const BUTTON_TODAY = 'TODAY';

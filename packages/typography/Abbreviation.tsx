@@ -1,6 +1,6 @@
 import { h, Component, prop } from 'skatejs';
 import styles from './Abbreviation.scss';
-import { css } from '../_helpers/css';
+import { css } from '@blaze-elements/common';
 
 // public
 interface AbbreviationProps {

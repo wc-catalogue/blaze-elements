@@ -2,7 +2,7 @@ import { mount, h } from 'bore';
 import * as expect from 'expect';
 import { Input } from './index';
 import { emit } from 'skatejs';
-import { GenericEvents } from '../_helpers';
+import { GenericEvents } from '@blaze-elements/common';
 
 describe( Input.is, () => {
 

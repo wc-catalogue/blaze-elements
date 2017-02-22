@@ -1,7 +1,7 @@
 import styles from './Nav.scss';
 import { h, Component, prop } from 'skatejs';
-import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
-import { css } from '../_helpers/css';
+import { ColorType, cssClassForColorType } from '@blaze-elements/common/colorTypes';
+import { css } from '@blaze-elements/common';
 
 interface NavItemProps {
   color?: ColorType,

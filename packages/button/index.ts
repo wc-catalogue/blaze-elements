@@ -1,5 +1,5 @@
 
-import { customElement, GenericTypes } from '../_helpers';
+import { customElement, GenericTypes } from '@blaze-elements/common';
 import RawButton, { ButtonProps, Props, Events } from './Button';
 
 const Button = customElement( 'bl-button' )( RawButton ) as typeof RawButton;

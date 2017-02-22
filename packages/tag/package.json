@@ -21,6 +21,7 @@
     "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=tag"
   },
   "dependencies": {
+    "@blaze-elements/common": "^1.0.0",
     "@blaze-elements/input": "^1.0.0"
   }
 }

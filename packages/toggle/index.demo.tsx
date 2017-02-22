@@ -1,6 +1,6 @@
 import { h, Component } from 'skatejs';
 import { Toggle } from './Toggle';
-import { GenericEvents } from '../_helpers/index';
+import { GenericEvents } from '@blaze-elements/common';
 
 class Demo extends Component<void> {
   static get is() { return 'bl-toggle-demo'; };

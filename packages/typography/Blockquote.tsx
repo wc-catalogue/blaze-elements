@@ -1,7 +1,6 @@
 import { h, Component, prop } from 'skatejs';
-import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
+import { ColorType, cssClassForColorType, css } from '@blaze-elements/common';
 import styles from './Blockquote.scss';
-import { css } from '../_helpers/css';
 
 // public
 interface BlockquoteProps {

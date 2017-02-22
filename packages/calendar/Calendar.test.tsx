@@ -6,7 +6,7 @@ import { CalendarButton } from './components/Button';
 
 import { h, mount, WrappedNode } from 'bore';
 import { emit } from 'skatejs';
-import { GenericEvents } from '../_helpers';
+import { GenericEvents } from '@blaze-elements/common';
 
 describe( Calendar.is, () => {
 

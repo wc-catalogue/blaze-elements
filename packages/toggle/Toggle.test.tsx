@@ -1,7 +1,7 @@
 import * as expect from 'expect';
 import { h, mount, WrappedNode } from 'bore';
 import { emit } from 'skatejs';
-import { GenericEvents } from '../_helpers';
+import { GenericEvents } from '@blaze-elements/common';
 import { Toggle } from './index';
 
 describe( Toggle.is, () => {

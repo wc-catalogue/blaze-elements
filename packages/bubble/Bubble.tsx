@@ -1,6 +1,6 @@
 import { h, Component, prop } from 'skatejs';
 import styles from './Bubble.scss';
-import { css } from '../_helpers/css';
+import { css } from '@blaze-elements/common';
 
 const BubbleTypes = {
   top: 'top',

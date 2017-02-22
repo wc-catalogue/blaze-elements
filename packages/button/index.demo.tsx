@@ -1,5 +1,5 @@
 import { h, Component, props } from 'skatejs';
-import { customElement, prop, shadyCssStyles } from '../_helpers';
+import { customElement, prop, shadyCssStyles } from '@blaze-elements/common';
 
 import { Button } from './index';
 

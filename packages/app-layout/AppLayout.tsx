@@ -3,7 +3,7 @@ import { h, Component, prop, props } from 'skatejs';
 import {
   GenericTypes,
   matchMedia
-} from '../_helpers';
+} from '@blaze-elements/common';
 
 import { Drawer } from './components/Drawer';
 import { Overlay } from './components/Overlay';

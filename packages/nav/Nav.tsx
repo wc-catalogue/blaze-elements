@@ -1,6 +1,6 @@
 import styles from './Nav.scss';
 import { h, Component, prop } from 'skatejs';
-import { css } from '../_helpers/css';
+import { css } from '@blaze-elements/common';
 
 const Positions = {
   top: 'top',
