@@ -20,7 +20,6 @@ export type EventHandlers = {
 @shadyCssStyles()
 export default class Option extends Component<OptionProps> {
 
-  @prop( { type: Boolean } ) disabled: boolean;
   @prop( { type: Object } ) value: any;
   @prop( { type: Boolean } ) private _selected = false;
 
