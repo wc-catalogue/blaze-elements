@@ -1,6 +1,5 @@
 import { h, Component } from 'skatejs';
-import { GenericEvents } from '../_helpers/index';
-import { prop, customElement, shadyCssStyles } from '../_helpers/decorators';
+import { prop, shadyCssStyles, GenericEvents } from '../_helpers';
 import { bind } from 'decko';
 import { SelectCardItem } from './components/CardItem';
 import styles from './Select.scss';
@@ -19,12 +18,11 @@ export type EventHandlers = {
 };
 
 @shadyCssStyles()
-@customElement( 'bl-option' )
 export default class Option extends Component<OptionProps> {
 
   @prop( { type: Boolean } ) disabled: boolean;
   @prop( { type: Object } ) value: any;
-  @prop( { type: Boolean } ) _selected = false;
+  @prop( { type: Boolean } ) private _selected = false;
 
   private slotElement: HTMLSlotElement;
 
@@ -50,9 +48,11 @@ export default class Option extends Component<OptionProps> {
 
   renderCallback() {
 
-    return <SelectCardItem selected={this.selected}>
-      <slot ref={this.setSlot} />
-    </SelectCardItem>;
+    return (
+      <SelectCardItem selected={this.selected}>
+        <slot ref={this.setSlot} />
+      </SelectCardItem>
+    );
   }
 
   @bind

@@ -1,10 +1,9 @@
-import { h, Component } from 'skatejs';
-import { GenericEvents, prop } from '../_helpers';
-import Option from './Option';
+import { h, Component, props } from 'skatejs';
 import { bind } from 'decko';
-import { customElement, shadyCssStyles } from '../_helpers/decorators';
-import { SelectOverlay } from './components/Overlay';
+import { GenericEvents, prop, shadyCssStyles } from '../_helpers';
 import styles from './Select.scss';
+import Option from './Option';
+import { SelectOverlay } from './components/Overlay';
 import { SelectButton } from './components/Button';
 import { SelectCard } from './components/Card';
 
@@ -24,12 +23,11 @@ export type EventHandlers = {
 };
 
 @shadyCssStyles()
-@customElement( 'bl-select' )
 export default class Select extends Component<SelectProps> {
 
-  @prop( { type: String } ) placeholder: string;
+  @prop( { type: String, attribute: { source: true } } ) placeholder: string;
   @prop( { type: Boolean, attribute: { source: true } } ) open = true;
-  @prop( { attribute: true } ) value: any;
+  @prop() value: any;
 
   get selected(): Option {
     return this._selected;
@@ -39,27 +37,26 @@ export default class Select extends Component<SelectProps> {
     return styles;
   }
 
-  get selectedViewValue(): string {
+  get selectedViewValue(): string | void {
     if ( this.selected ) {
       return this.selected.viewValue;
     }
+  }
 
+  get slottedValue(): any {
+    return this.slotElement.assignedNodes( { flatten: true } );
   }
 
   private slotElement: HTMLSlotElement;
   private _selected: Option;
   private options: Option[];
 
-  get slottedValue(): any {
-    return this.slotElement.assignedNodes( { flatten: true } );
-  }
-
-  attributeChangedCallback() {
+  connectedCallback() {
     super.connectedCallback();
-    setTimeout(() => {
+    setTimeout( () => {
       this.options = this.slottedValue;
       this._setSelectionByValue( this.value );
-      this.open = false;
+      this.closeOptions();
     } );
   }
 
@@ -69,10 +66,10 @@ export default class Select extends Component<SelectProps> {
       <SelectButton onClick={this.toggleOptions}>{this.selectedViewValue || this.placeholder} &#9660;</SelectButton>,
 
       this.open && <SelectCard>
-        <slot ref={this.setSlot} slot="body" />
+        <slot ref={this.setSlot} slot="body"/>
       </SelectCard>,
 
-      this.open && <SelectOverlay onClick={this.toggleOptions} isFullpage isTransparent />
+      this.open && <SelectOverlay onClick={this.toggleOptions} isFullpage isTransparent/>
 
     ] );
   }
@@ -84,7 +81,16 @@ export default class Select extends Component<SelectProps> {
 
   @bind
   toggleOptions() {
-    this.open = !this.open;
+    props( this, {
+      open: !this.open
+    } );
+  }
+
+  @bind
+  closeOptions() {
+    props( this, {
+      open: false
+    } );
   }
 
   private _setSelectionByValue( value: any ): void {
@@ -106,8 +112,8 @@ export default class Select extends Component<SelectProps> {
     this._updateOptions();
   }
 
-  private _updateOptions() {
-    this.options.forEach(( option: Option ) => {
+  private _updateOptions(): void {
+    this.options.forEach( ( option: Option ) => {
       if ( option !== this.selected ) {
         option.deselect();
       }

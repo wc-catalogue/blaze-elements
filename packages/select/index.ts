@@ -1,7 +1,15 @@
 
-import { GenericTypes } from '../_helpers';
-import { SelectProps, Props, Events } from './Select';
-import { OptionProps, Props as PropsOption, Events as EventsOption } from './Option';
+import { GenericTypes, customElement } from '../_helpers';
+import RawSelect, { SelectProps, Props, Events } from './Select';
+import RawOption, { OptionProps, Props as PropsOption, Events as EventsOption } from './Option';
+
+const Select = customElement( 'bl-select' )( RawSelect ) as typeof RawSelect;
+const Option = customElement( 'bl-option' )( RawOption ) as typeof RawOption;
+
+export {
+  Select,
+  Option,
+}
 
 declare global {
   namespace JSX {

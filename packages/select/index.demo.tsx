@@ -1,7 +1,6 @@
 import { h, Component } from 'skatejs';
 import { customElement } from '../_helpers';
-import Select from './Select';
-import Option from './Option';
+import { Select, Option } from './index';
 import { prop } from '../_helpers/decorators';
 import { bind } from 'decko';
 
@@ -15,13 +14,13 @@ export class Demo extends Component<DemoProps> {
 
   @bind
   setSelected( e: MouseEvent ) {
-    const target = e.target as Option;
+    const target = e.target as any;
     this.value = target.value;
   }
 
   @bind
   setSelected2( e: MouseEvent ) {
-    const target = e.target as Option;
+    const target = e.target as any;
     this.value2 = target.value;
   }
 
