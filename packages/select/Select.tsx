@@ -65,8 +65,13 @@ export default class Select extends Component<SelectProps> {
     if ( !previousProps ) {
       return true;
     }
+
     this._setSelectionByValue( this.value );
-    return true;
+    if ( previousProps.value !== this.value ) {
+      this.closeOptions();
+    }
+
+    return previousProps.value === this.value || super.updatedCallback( previousProps );
   }
 
   renderCallback() {

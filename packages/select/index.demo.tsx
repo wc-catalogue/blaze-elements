@@ -30,7 +30,6 @@ export class Demo extends Component<DemoProps> {
   }
 
   renderCallback() {
-    console.log( 'demo render', this.value, this.value2 );
     return [
       <h2>DEMO:</h2>,
       <fieldset>
