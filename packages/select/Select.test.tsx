@@ -1,61 +1,85 @@
-//
-// import { Select } from './Select';
-//
-// describe( Select.is, () => {
-//
-//   // describe( `Custom element`, () => {
-//   //
-//   //   it( `should be registered`, () => {
-//   //     expect( customElements.get( Button.is ) ).toBe( Button );
-//   //   } );
-//   //
-//   //   it( `should render via JSX IntrinsicElement`, () => {
-//   //     return mount( <bl-button>Hello</bl-button> ).wait(( element ) => {
-//   //       expect( element.node.localName ).toBe( Button.is );
-//   //     } );
-//   //   } );
-//   //
-//   //   it( `should render`, () => {
-//   //     return mount( <Button /> ).wait(( element ) => {
-//   //       expect( element.has( '.c-button' ) ).toBe( true );
-//   //     } );
-//   //   } );
-//   // } );
-//
-//   // describe( `API`, () => {
-//   //
-//   //   describe( `[color]`, () => {
-//   //
-//   //     it( `should render no color class on button by default`, () => {
-//   //       return mount( <bl-button attrs={{ color: 'brand' }}>huhuh</bl-button> ).wait(( element ) => {
-//   //         expect( element.one( 'button' ).node.className ).toContain( 'c-button' );
-//   //       } );
-//   //     } );
-//   //
-//   //     it( `should render color class on button`, () => {
-//   //       return mount( <bl-button attrs={{ color: 'info' }}>hello</bl-button> ).wait(( element ) => {
-//   //         expect( element.has( '.c-button--info' ) ).toBe( true );
-//   //       } );
-//   //     } );
-//   //
-//   //   } );
-//   //
-//   //   describe( `events`, () => {
-//   //
-//   //     it( `should handle click`, () => {
-//   //
-//   //       let clickTriggered = false;
-//   //       const handleClick = ( e: MouseEvent ) => { clickTriggered = true; };
-//   //
-//   //       return mount( <bl-button events={{ click: handleClick }}>Click me</bl-button> )
-//   //         .wait(( element ) => {
-//   //           emit( element.node, 'click' );
-//   //           expect( clickTriggered ).toBe( true );
-//   //         } );
-//   //     } );
-//   //
-//   //   } );
-//   //
-//   // } );
-//
-// } );
+import { Select } from './index';
+import { h, mount, WrappedNode } from 'bore';
+import * as expect from 'expect';
+import { SelectButton } from './components/Button';
+
+
+describe( Select.is, () => {
+
+  describe( `Custom element`, () => {
+
+    it( `should be registered`, () => {
+      expect( customElements.get( Select.is ) ).toBe( Select );
+    } );
+
+    it( `should render via JSX IntrinsicElement`, () => {
+      return mount( <bl-select>
+        <bl-option value="cs">Czech</bl-option>
+      </bl-select> ).wait(( element ) => {
+        expect( element.node.localName ).toBe( Select.is );
+      } );
+    } );
+
+    it( `should render`, () => {
+      return mount( <Select>
+        <bl-option value="cs">Czech</bl-option>
+      </Select> ).wait(( element ) => {
+        expect( element.has( SelectButton.is ) ).toBe( true );
+      } );
+    } );
+  } );
+
+  describe( `API`, () => {
+
+    describe( `[placeholder]`, () => {
+
+      const expectedText = 'Placeholder Text ▼';
+
+      it( `should set placeholder`, () => {
+
+        return mount(
+          <bl-select placeholder="Placeholder Text">
+            <bl-option value="cs">Czech</bl-option>
+          </bl-select>
+        ).wait( checkPlaceholder );
+
+      } );
+
+      it( `should set placeholder via attribute`, () => {
+
+        return mount(
+          <bl-select attrs={{ placeholder: 'Placeholder Text' }}>
+            <bl-option value="cs">Czech</bl-option>
+          </bl-select>
+        ).wait( checkPlaceholder );
+
+      } );
+
+      function checkPlaceholder( element: WrappedNode ) {
+        const button: Partial<HTMLInputElement> = element.one( SelectButton.is ).node;
+        expect( button.innerText ).toBe( expectedText );
+      }
+
+    } );
+
+    describe( `[value]`, () => {
+
+      it( `should set value`, () => {
+
+        return mount(
+          <bl-select value="en">
+            <bl-option value="cs">Czech</bl-option>
+            <bl-option value="en">English</bl-option>
+          </bl-select>
+        ).wait(( element: WrappedNode ) => {
+          const selectButton = element.one( 'bl-select-button' ).node;
+          expect( selectButton.innerText ).toBe( 'English ▼' );
+        } );
+
+      } );
+
+    } );
+
+  } );
+
+} );
