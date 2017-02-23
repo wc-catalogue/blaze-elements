@@ -14,7 +14,7 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       'bl-card-item': GenericTypes.IntrinsicCustomElement<CardItemProps>
-        & GenericTypes.IntrinsicBoreElement<Props, void>
+      & GenericTypes.IntrinsicBoreElement<Props, void>
     }
   }
 }

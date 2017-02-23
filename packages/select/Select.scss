@@ -1,0 +1,15 @@
+@import "../generics.shared";
+
+bl-select-button {
+  display: block;
+}
+
+bl-select-card {
+  position: absolute;
+  z-index: 401;
+}
+
+bl-select-card-item {
+  display: block;
+  cursor: pointer;
+}
