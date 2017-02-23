@@ -1,10 +1,11 @@
-import { h, Component } from 'skatejs';
+import { h, Component, props } from 'skatejs';
 import { customElement } from '../_helpers';
 import { Select, Option } from './index';
 import { prop } from '../_helpers/decorators';
 import { bind } from 'decko';
+import OptionType from './Option';
 
-export type DemoProps = { logger: string[], wat?: string, };
+export type DemoProps = { value?: string, value2?: string };
 
 @customElement( 'bl-select-demo' )
 export class Demo extends Component<DemoProps> {
@@ -14,17 +15,22 @@ export class Demo extends Component<DemoProps> {
 
   @bind
   setSelected( e: MouseEvent ) {
-    const target = e.target as any;
-    this.value = target.value;
+    const target = e.target as OptionType;
+    props( this, {
+      value: target.value
+    });
   }
 
   @bind
   setSelected2( e: MouseEvent ) {
-    const target = e.target as any;
-    this.value2 = target.value;
+    const target = e.target as OptionType;
+    props( this, {
+      value2: target.value
+    });
   }
 
   renderCallback() {
+    console.log( 'demo render', this.value, this.value2 );
     return [
       <h2>DEMO:</h2>,
       <fieldset>

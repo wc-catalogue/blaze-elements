@@ -60,6 +60,15 @@ export default class Select extends Component<SelectProps> {
     } );
   }
 
+  updatedCallback( previousProps: Props ) {
+    // The 'previousProps' will be undefined if it is the initial render.
+    if ( !previousProps ) {
+      return true;
+    }
+    this._setSelectionByValue( this.value );
+    return true;
+  }
+
   renderCallback() {
     return ( [
 
@@ -69,7 +78,7 @@ export default class Select extends Component<SelectProps> {
         <slot ref={this.setSlot} slot="body"/>
       </SelectCard>,
 
-      this.open && <SelectOverlay onClick={this.toggleOptions} isFullpage isTransparent/>
+      this.open && <SelectOverlay onClick={this.closeOptions} isFullpage isTransparent/>
 
     ] );
   }
