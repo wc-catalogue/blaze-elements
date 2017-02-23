@@ -18,7 +18,7 @@ export class Demo extends Component<DemoProps> {
     const target = e.target as OptionType;
     props( this, {
       value: target.value
-    });
+    } );
   }
 
   @bind
@@ -26,7 +26,7 @@ export class Demo extends Component<DemoProps> {
     const target = e.target as OptionType;
     props( this, {
       value2: target.value
-    });
+    } );
   }
 
   renderCallback() {

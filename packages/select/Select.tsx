@@ -53,7 +53,7 @@ export default class Select extends Component<SelectProps> {
 
   connectedCallback() {
     super.connectedCallback();
-    setTimeout( () => {
+    setTimeout(() => {
       this.options = this.slottedValue;
       this._setSelectionByValue( this.value );
       this.closeOptions();
@@ -75,10 +75,10 @@ export default class Select extends Component<SelectProps> {
       <SelectButton onClick={this.toggleOptions}>{this.selectedViewValue || this.placeholder} &#9660;</SelectButton>,
 
       this.open && <SelectCard>
-        <slot ref={this.setSlot} slot="body"/>
+        <slot ref={this.setSlot} slot="body" />
       </SelectCard>,
 
-      this.open && <SelectOverlay onClick={this.closeOptions} isFullpage isTransparent/>
+      this.open && <SelectOverlay onClick={this.closeOptions} isFullpage isTransparent />
 
     ] );
   }
@@ -122,7 +122,7 @@ export default class Select extends Component<SelectProps> {
   }
 
   private _updateOptions(): void {
-    this.options.forEach( ( option: Option ) => {
+    this.options.forEach(( option: Option ) => {
       if ( option !== this.selected ) {
         option.deselect();
       }
