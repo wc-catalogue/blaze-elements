@@ -79,9 +79,11 @@ export default class Select extends Component<SelectProps> {
 
       <SelectButton onClick={this.toggleOptions}>{this.selectedViewValue || this.placeholder} &#9660;</SelectButton>,
 
-      this.open && <SelectCard>
-        <slot ref={this.setSlot} slot="body" />
-      </SelectCard>,
+      this.open && (
+        <SelectCard>
+          <slot ref={this.setSlot} slot="body" />
+        </SelectCard>
+      ),
 
       this.open && <SelectOverlay onClick={this.closeOptions} isFullpage isTransparent />
 
