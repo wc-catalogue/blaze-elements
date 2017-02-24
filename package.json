@@ -47,7 +47,7 @@
     "commitizen": "^2.9.5",
     "concurrently": "^3.1.0",
     "css-loader": "^0.26.1",
-    "cz-lerna-changelog": "1.0.0",
+    "cz-lerna-changelog": "1.2.0",
     "expect": "^1.20.2",
     "favicons-webpack-plugin": "^0.0.7",
     "file-loader": "^0.10.0",
