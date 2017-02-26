@@ -1,8 +1,8 @@
 
 import { customElement, GenericTypes } from '@blaze-elements/common';
-import RawNav, {NavProps} from './Nav';
-import RawNavItem, {NavItemProps} from './NavItem';
-import RawNavContent, {NavContentProps} from './NavContent';
+import RawNav, { NavProps } from './Nav';
+import RawNavItem, { NavItemProps } from './NavItem';
+import RawNavContent, { NavContentProps } from './NavContent';
 
 const Nav = customElement( 'bl-nav' )( RawNav ) as typeof RawNav;
 const NavItem = customElement( 'bl-nav-item' )( RawNavItem ) as typeof RawNavItem;

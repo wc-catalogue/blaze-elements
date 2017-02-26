@@ -14,7 +14,7 @@ export type Props = {
   active?: boolean,
   right?: boolean,
   inline?: boolean,
-}
+};
 
 export default class NavItem extends Component<NavItemProps> {
 

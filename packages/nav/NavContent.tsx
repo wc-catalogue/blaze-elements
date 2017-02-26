@@ -6,7 +6,7 @@ export type NavContentProps = Props;
 
 export type Props = {
   inline?: boolean;
-}
+};
 export default class NavContent extends Component<NavContentProps> {
 
   @prop( {

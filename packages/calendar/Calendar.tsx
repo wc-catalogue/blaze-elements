@@ -54,6 +54,16 @@ export type Events = {
 
 export default class Calendar extends Component<CalendarProps> {
 
+  static get events() {
+    return {
+      DATE_CHANGE: 'dateChange'
+    };
+  }
+
+  static range( count: number ): number[] {
+    return Array.from( { length: count }, ( value: number, key: number ) => key );
+  }
+
 
   @prop( {
     type: Number
@@ -87,16 +97,6 @@ export default class Calendar extends Component<CalendarProps> {
   @prop( {
     type: Object
   } ) i18n: LocaleType = { todayButtonText: this.todayButtonText };
-
-  static get events() {
-    return {
-      DATE_CHANGE: 'dateChange'
-    };
-  }
-
-  static range( count: number ): number[] {
-    return Array.from( { length: count }, ( value: number, key: number ) => key );
-  }
 
   private days: Date[] = [];
   private daysMatrix = Calendar.range( DAYS_IN_MATRIX );

@@ -3,7 +3,7 @@ import { customElement } from '@blaze-elements/common';
 
 import { Card, CardItem } from './index';
 
-@customElement('bl-card-demo')
+@customElement( 'bl-card-demo' )
 export class Demo extends Component<void> {
 
   renderCallback() {

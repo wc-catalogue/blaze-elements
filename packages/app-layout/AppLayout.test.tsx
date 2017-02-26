@@ -3,7 +3,7 @@ import { emit } from 'skatejs';
 import * as expect from 'expect';
 import { AppLayout } from './index';
 import RawAppLayout from './AppLayout';
-import { Drawer } from './components/Drawer';
+import Drawer from './components/Drawer';
 
 describe( AppLayout.is, () => {
 

@@ -18,7 +18,7 @@ export type Props = {
   inline?: boolean,
   shadow?: boolean,
   position?: keyof PositionsType,
-}
+};
 
 export default class Nav extends Component<NavProps> {
 
@@ -27,21 +27,21 @@ export default class Nav extends Component<NavProps> {
     attribute: {
       source: true
     }
-  }) inline = false;
+  } ) inline = false;
 
   @prop( {
     type: Boolean,
     attribute: {
       source: true
     }
-  }) shadow = false;
+  } ) shadow = false;
 
   @prop( {
     type: String,
     attribute: {
       source: true
     }
-  }) position: string;
+  } ) position: string;
 
   renderCallback() {
 
@@ -70,7 +70,7 @@ export default class Nav extends Component<NavProps> {
         'c-nav--right': position === Positions.right,
         'c-nav--left': position === Positions.left,
         'c-nav--fixed': position === Positions.fixed,
-      });
+      } );
 
     return [
       <style>{styles}</style>,
