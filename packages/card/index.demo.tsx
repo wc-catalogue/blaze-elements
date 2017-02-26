@@ -1,9 +1,10 @@
 import { h, Component } from 'skatejs';
-import { Card } from './Card';
-import { CardItem } from './CardItem';
+import { customElement } from '@blaze-elements/common';
 
+import { Card, CardItem } from './index';
+
+@customElement('bl-card-demo')
 export class Demo extends Component<void> {
-  static get is() { return 'bl-card-demo'; }
 
   renderCallback() {
     return [
@@ -32,5 +33,3 @@ export class Demo extends Component<void> {
     ];
   }
 }
-
-customElements.define( Demo.is, Demo );

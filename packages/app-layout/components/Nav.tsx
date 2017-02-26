@@ -1,11 +1,5 @@
-import { define } from 'skatejs';
+import { Nav as OriginalNav } from '@blaze-elements/nav';
+import { customElement } from '@blaze-elements/common';
 
-import { Nav as OriginalNav } from '../../nav/Nav';
-
-export class Nav extends OriginalNav {
-
-  static get is() { return 'bl-app-layout-nav'; }
-
-}
-
-define( Nav );
+@customElement( 'bl-app-layout-nav' )
+export default class Nav extends OriginalNav {}

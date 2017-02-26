@@ -1,8 +1,13 @@
 import { h, Component } from 'skatejs';
-import { Nav, NavItem, NavContent } from './index';
+import { customElement } from '@blaze-elements/common';
+import {
+  Nav,
+  NavItem,
+  NavContent
+} from './index';
 
+@customElement( 'bl-nav-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-nav-demo'; }
 
   renderCallback() {
     return [
@@ -87,6 +92,3 @@ export class Demo extends Component<void> {
     ];
   }
 }
-
-
-customElements.define( Demo.is, Demo );

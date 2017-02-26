@@ -1,4 +1,4 @@
-import { Overlay } from './Overlay';
+import { Overlay } from './index';
 
 import { h, mount } from 'bore';
 

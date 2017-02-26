@@ -1,12 +1,14 @@
-import { Component, h, define } from 'skatejs';
+import { Component, h } from 'skatejs';
+import { customElement } from '@blaze-elements/common';
 
 import { AppLayout } from './index';
-import { Nav, NavItem, NavContent } from '../nav/index';
+
+import { Nav, NavItem, NavContent } from '@blaze-elements/nav';
 
 import neverGonnaGiveYouUp from '../../assets/never-gonna-give-you-up.gif';
 
+@customElement( 'bl-app-layout-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-app-layout-demo'; }
 
   renderCallback() {
     return (
@@ -41,5 +43,3 @@ export class Demo extends Component<void> {
     );
   }
 }
-
-define( Demo );

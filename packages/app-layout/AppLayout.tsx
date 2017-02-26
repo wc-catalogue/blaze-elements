@@ -1,11 +1,11 @@
-import { h, Component, prop, props } from 'skatejs';
+import { h, Component, props } from 'skatejs';
 
-import { matchMedia } from '@blaze-elements/common';
+import { matchMedia, prop } from '@blaze-elements/common';
 
-import { Drawer } from './components/Drawer';
-import { Overlay } from './components/Overlay';
-import { Nav } from './components/Nav';
-import { NavContent } from './components/NavContent';
+import Drawer from './components/Drawer';
+import Overlay from './components/Overlay';
+import Nav from './components/Nav';
+import NavContent from './components/NavContent';
 
 import styles from './AppLayout.scss';
 
@@ -33,44 +33,34 @@ export type Events = {};
 
 export default class AppLayout extends Component<AppLayoutProps> {
 
-  static get props() {
-    return {
-      /**
-       * Trigger drawer visibility
-       */
-      drawerVisible: prop.boolean( {
-        attribute: {
-          source: true
-        }
-      } ),
-      /**
-       * If the viewport's width is smaller than this value, the panel will change to narrow
-       * layout. In the mode the drawer will be closed.
-       */
-      responsiveWidth: prop.string( {
-        attribute: {
-          source: true
-        }
-      } ),
-      /**
-       * If true, ignore `responsiveWidth` setting and force the narrow layout.
-       */
-      forceNarrow: prop.boolean( {
-        attribute: {
-          source: true
-        }
-      } ),
-      narrow: prop.boolean(),
-    };
-  }
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) drawerVisible?: boolean;
 
-  drawerVisible: boolean;
 
-  responsiveWidth: string = DEFAULT_RESPONSIBLE_WIDTH;
+  /**
+   * If the viewport's width is smaller than this value, the panel will change to narrow
+   * layout. In the mode the drawer will be closed.
+   */
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) responsiveWidth?: string = DEFAULT_RESPONSIBLE_WIDTH;
 
-  forceNarrow = false;
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) forceNarrow?: boolean = false;
 
-  narrow: boolean;
+
+  @prop( { type: Boolean } ) narrow?: boolean;
 
   connectedCallback() {
 

@@ -8,6 +8,7 @@ import '@blaze-elements/button/index.test';
 import '@blaze-elements/calendar/index.test';
 import '@blaze-elements/card/index.test';
 import '@blaze-elements/collapsible/index.test';
+import '@blaze-elements/common/index.test';
 import '@blaze-elements/drawer/index.test';
 import '@blaze-elements/input/index.test';
 import '@blaze-elements/modal/index.test';

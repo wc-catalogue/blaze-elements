@@ -1,4 +1,4 @@
-import { Nav } from './index';
+import Nav from './Nav';
 
 import { h, mount } from 'bore';
 
@@ -12,6 +12,6 @@ describe( Nav.is, () => {
       <Nav />
     ).wait();
 
-  } );
+  });
 
-} );
+});

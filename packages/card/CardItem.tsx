@@ -1,8 +1,6 @@
 import { h, Component } from 'skatejs';
 import styles from './Card.scss';
-import { GenericTypes } from '../_helpers';
-import { prop } from '../_helpers/decorators';
-import { css } from '../_helpers/css';
+import { prop, css } from '@blaze-elements/common';
 
 export type CardItemProps = Props;
 
@@ -10,17 +8,8 @@ export type Props = {
   selected?: boolean,
 };
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'bl-card-item': GenericTypes.IntrinsicCustomElement<CardItemProps>
-      & GenericTypes.IntrinsicBoreElement<Props, void>
-    }
-  }
-}
 
-export class CardItem extends Component<CardItemProps> {
-  static get is() { return 'bl-card-item'; }
+export default class CardItem extends Component<CardItemProps> {
 
   @prop( { type: Boolean } ) selected: boolean;
 
@@ -39,5 +28,3 @@ export class CardItem extends Component<CardItemProps> {
     ];
   }
 }
-
-customElements.define( CardItem.is, CardItem );

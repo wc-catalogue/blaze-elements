@@ -1,4 +1,4 @@
-import { Card } from './Card';
+import { Card } from './index';
 
 import { h, mount } from 'bore';
 

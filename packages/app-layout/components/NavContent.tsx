@@ -1,11 +1,5 @@
-import { define } from 'skatejs';
+import { NavContent as OriginalNavContent } from '@blaze-elements/nav';
+import { customElement } from '@blaze-elements/common';
 
-import { NavContent as OriginalNavContent } from '../../nav/NavContent';
-
-export class NavContent extends OriginalNavContent {
-
-  static get is() { return 'bl-app-layout-nav-content'; }
-
-}
-
-define( NavContent );
+@customElement( 'bl-app-layout-nav-content' )
+export default class NavContent extends OriginalNavContent {}

@@ -1,5 +1,15 @@
-import { h, Component, prop, emit, props } from 'skatejs';
+import { h, Component, emit, props } from 'skatejs';
 import styles from './Calendar.scss';
+
+import {
+  css,
+  buildFormatLocale,
+  LocaleType,
+  GenericEvents,
+  prop
+} from '@blaze-elements/common';
+
+import Button from './components/Button';
 
 import * as getYear from 'date-fns/get_year';
 import * as getMonth from 'date-fns/get_month';
@@ -10,29 +20,21 @@ import * as format from 'date-fns/format';
 import * as isToday from 'date-fns/is_today';
 import * as parse from 'date-fns/parse';
 import * as isSameDay from 'date-fns/is_same_day';
-import {
-  css,
-  buildFormatLocale,
-  LocaleType,
-  GenericEvents,
-  GenericTypes
-} from '@blaze-elements/common';
-import { CalendarButton } from './components/Button';
 
 const BUTTON_TODAY = 'TODAY';
 const WEEK_STARTS_ON = 'sunday';
 const DAYS_IN_MATRIX = 41;
 
-type WeekStart = 'sunday' | 'monday';
+export type WeekStart = 'sunday' | 'monday';
 
-type CalendarProps = Props & EventProps;
+export type CalendarProps = Props & EventProps;
 
-type Attrs = {
+export type Attrs = {
   'selected-date'?: string,
   'week-starts-on'?: WeekStart,
 };
 
-type Props = {
+export type Props = {
   selectedDate?: Date,
   i18n?: {
     monthsFull: string[],
@@ -42,50 +44,49 @@ type Props = {
   weekStartsOn?: WeekStart,
 };
 
-type EventProps = {
+export type EventProps = {
   onDateChange?: GenericEvents.CustomChangeHandler<Date>,
 };
 
-type Events = {
+export type Events = {
   dateChange?: GenericEvents.CustomChangeHandler<Date>,
 };
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'bl-calendar': GenericTypes.IntrinsicCustomElement<CalendarProps>
-      & GenericTypes.IntrinsicBoreElement<Attrs, Events>
+export default class Calendar extends Component<CalendarProps> {
+
+
+  @prop( {
+    type: Number
+  } ) year: number;
+
+  @prop( {
+    type: Number
+  } ) month: number;
+
+  @prop( {
+    type: Date,
+    attribute: {
+      source: true
+    },
+    deserialize( value: string ) {
+      return parse( value );
     }
-  }
-}
+  } ) selectedDate = new Date();
 
-export class Calendar extends Component<CalendarProps> {
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) weekStartsOn = WEEK_STARTS_ON;
 
-  static get is() { return 'bl-calendar'; }
+  @prop( {
+    type: String
+  } ) todayButtonText = BUTTON_TODAY;
 
-  static get props() {
-    return {
-      year: prop.number(),
-      month: prop.number(),
-      selectedDate: prop.object<Calendar, Date>( {
-        attribute: {
-          source: true
-        },
-        default: new Date(),
-        deserialize( value: string ) {
-          return parse( value );
-        }
-      } ),
-      weekStartsOn: prop.string( {
-        attribute: {
-          source: true
-        },
-        default: WEEK_STARTS_ON
-      } ),
-      todayButtonText: prop.string(),
-      i18n: prop.object(),
-    };
-  }
+  @prop( {
+    type: Object
+  } ) i18n: LocaleType = { todayButtonText: this.todayButtonText };
 
   static get events() {
     return {
@@ -97,14 +98,6 @@ export class Calendar extends Component<CalendarProps> {
     return Array.from( { length: count }, ( value: number, key: number ) => key );
   }
 
-  selectedDate: Date;
-  i18n: LocaleType = {
-    todayButtonText: BUTTON_TODAY
-  };
-  weekStartsOn: string;
-
-  private year: number;
-  private month: number;
   private days: Date[] = [];
   private daysMatrix = Calendar.range( DAYS_IN_MATRIX );
 
@@ -213,7 +206,7 @@ export class Calendar extends Component<CalendarProps> {
         {weekDays}
         {days}
 
-        <CalendarButton onClick={this.setDateHandler()}>{this.i18n.todayButtonText}</CalendarButton>
+        <Button onClick={this.setDateHandler()}>{this.i18n.todayButtonText}</Button>
       </div>
     ];
   }

@@ -1,11 +1,6 @@
-import { define } from 'skatejs';
+import { customElement } from '@blaze-elements/common';
 
-import { Drawer as OriginalDrawer } from '../../drawer/Drawer';
+import { Drawer as OriginalDrawer } from '@blaze-elements/drawer';
 
-export class Drawer extends OriginalDrawer {
-
-  static get is() { return 'bl-app-layout-drawer'; }
-
-}
-
-define( Drawer );
+@customElement( 'bl-app-layout-drawer' )
+export default class Drawer extends OriginalDrawer {}

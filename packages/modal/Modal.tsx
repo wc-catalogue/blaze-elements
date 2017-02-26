@@ -1,27 +1,33 @@
-import { h, Component, prop, emit } from 'skatejs';
-import styles from './Modal.scss';
-import { Button } from '../button';
-import { Card } from '../card/Card';
-import { Overlay } from '../overlay/Overlay';
+import { h, Component, emit } from 'skatejs';
+import { prop } from '@blaze-elements/common';
 
-interface ModalProps {
+import styles from './Modal.scss';
+
+import Button from './components/Button';
+import Card from './components/Card';
+import Overlay from './components/Overlay';
+
+const DEFAULT_CLOSE_TITLE = 'close';
+
+export interface ModalProps {
   isOpen?: boolean,
   closeTitle?: string,
   onModalClose?: Function,
 }
-export class Modal extends Component<ModalProps> {
-  static get is() { return 'bl-modal'; }
-  static get props() {
-    return {
-      isOpen: prop.boolean( {
-        attribute: true
-      } ),
-      closeTitle: prop.string()
-    };
-  }
 
-  isOpen = false;
-  private closeTitle = 'close';
+export class Modal extends Component<ModalProps> {
+
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) isOpen = false;
+
+  @prop( {
+    type: String
+  } ) closeTitle = DEFAULT_CLOSE_TITLE;
+
   private modalElement: HTMLDivElement;
   private lastActiveElement: HTMLElement;
 
