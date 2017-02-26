@@ -1,4 +1,4 @@
-import { Modal } from './Modal';
+import { Modal } from './index';
 
 import { h, mount } from 'bore';
 

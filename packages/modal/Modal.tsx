@@ -15,7 +15,7 @@ export interface ModalProps {
   onModalClose?: Function,
 }
 
-export class Modal extends Component<ModalProps> {
+export default class Modal extends Component<ModalProps> {
 
   @prop( {
     type: Boolean,
@@ -135,5 +135,3 @@ export class Modal extends Component<ModalProps> {
   }
 
 }
-
-customElements.define( Modal.is, Modal );

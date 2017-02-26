@@ -1,7 +1,7 @@
 // @FIXME this needs to be imoprted from 'bl-button' package, not relatively
 
-import { customElement } from '../../_helpers';
-import { Overlay } from '../../overlay/Overlay';
+import { customElement } from '@blaze-elements/common';
+import { Overlay as OriginalOverlay } from '@blaze-elements/overlay';
 
 @customElement('bl-select-overlay')
-export class SelectOverlay extends Overlay {}
+export default class Overlay extends OriginalOverlay {}

@@ -2,7 +2,7 @@
 import { customElement, GenericTypes } from '@blaze-elements/common';
 import RawCalendar, { CalendarProps, Attrs, Events } from './Calendar';
 
-const Calendar = customElement( 'bl-app-layout' )( RawCalendar ) as typeof RawCalendar;
+const Calendar = customElement( 'bl-calendar' )( RawCalendar ) as typeof RawCalendar;
 
 export {
   Calendar

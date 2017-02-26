@@ -1,7 +1,8 @@
 import { h, Component } from 'skatejs';
-import { prop, shadyCssStyles, GenericEvents } from '../_helpers';
+import { prop, shadyCssStyles, GenericEvents } from '@blaze-elements/common';
 import { bind } from 'decko';
-import { SelectCardItem } from './components/CardItem';
+import CardItem from './components/CardItem';
+
 import styles from './Select.scss';
 
 export type OptionProps = Props & EventHandlers;
@@ -48,9 +49,9 @@ export default class Option extends Component<OptionProps> {
   renderCallback() {
 
     return (
-      <SelectCardItem selected={this.selected}>
+      <CardItem selected={this.selected}>
         <slot ref={this.setSlot} />
-      </SelectCardItem>
+      </CardItem>
     );
   }
 

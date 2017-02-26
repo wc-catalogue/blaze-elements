@@ -1,5 +1,5 @@
 
-import { GenericTypes, customElement } from '../_helpers';
+import { GenericTypes, customElement } from '@blaze-elements/common';
 import RawSelect, { SelectProps, Props, Events } from './Select';
 import RawOption, { OptionProps, Props as PropsOption, Events as EventsOption } from './Option';
 

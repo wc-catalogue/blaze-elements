@@ -1,16 +1,15 @@
-import { h, Component, prop } from 'skatejs';
-import { Modal } from './Modal';
-import { Button } from '../button';
+import { h, Component } from 'skatejs';
+import { customElement, prop } from '@blaze-elements/common';
 
+import { Modal } from './index';
+import Button from './components/Button';
+
+@customElement( 'bl-modal-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-modal-demo'; }
-  static get props() {
-    return {
-      isModalOpen: prop.boolean()
-    };
-  }
 
-  isModalOpen = false;
+  @prop( {
+    type: Boolean
+  } ) isModalOpen = false;
 
   toggleModal() {
     console.log( 'toggleModal' );
@@ -44,5 +43,3 @@ export class Demo extends Component<void> {
     ];
   }
 }
-
-customElements.define( Demo.is, Demo );

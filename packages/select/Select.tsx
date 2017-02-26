@@ -1,11 +1,11 @@
 import { h, Component, props } from 'skatejs';
 import { bind } from 'decko';
-import { GenericEvents, prop, shadyCssStyles } from '../_helpers';
+import { GenericEvents, prop, shadyCssStyles } from '@blaze-elements/common';
 import styles from './Select.scss';
 import Option from './Option';
-import { SelectOverlay } from './components/Overlay';
-import { SelectButton } from './components/Button';
-import { SelectCard } from './components/Card';
+import Overlay from './components/Overlay';
+import Button from './components/Button';
+import Card from './components/Card';
 
 export type SelectProps = Props & EventHandlers;
 
@@ -77,15 +77,15 @@ export default class Select extends Component<SelectProps> {
   renderCallback() {
     return ( [
 
-      <SelectButton onClick={this.toggleOptions}>{this.selectedViewValue || this.placeholder} &#9660;</SelectButton>,
+      <Button onClick={this.toggleOptions}>{this.selectedViewValue || this.placeholder} &#9660;</Button>,
 
       this.open && (
-        <SelectCard>
+        <Card>
           <slot ref={this.setSlot} slot="body" />
-        </SelectCard>
+        </Card>
       ),
 
-      this.open && <SelectOverlay onClick={this.closeOptions} isFullpage isTransparent />
+      this.open && <Overlay onClick={this.closeOptions} isFullpage isTransparent />
 
     ] );
   }

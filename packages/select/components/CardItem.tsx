@@ -1,15 +1,15 @@
 // @FIXME this needs to be imoprted from 'bl-button' package, not relatively
 
-import { customElement } from '../../_helpers';
-import { CardItem } from '../../card/CardItem';
+import { customElement } from '@blaze-elements/common';
+import { CardItem as OriginalCardItem } from '@blaze-elements/card';
 
 @customElement( 'bl-select-card-item' )
-export class SelectCardItem extends CardItem {
+export default class CardItem extends OriginalCardItem {
 
   get css() {
     return (
-      `:hover { 
-         background: rgba(0, 0, 0, 0.1) 
+      `:hover {
+         background: rgba(0, 0, 0, 0.1)
        }`
     );
   }
