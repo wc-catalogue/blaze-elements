@@ -1,5 +1,5 @@
-import * as GenericEvents from './definitions/events';
-import * as GenericTypes from './definitions/types';
+import * as GenericEvents from './static-definitions/events';
+import * as GenericTypes from './static-definitions/types';
 
 export { GenericEvents, GenericTypes };
 export * from './colorTypes';
