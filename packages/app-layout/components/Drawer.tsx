@@ -1,6 +1,6 @@
 import { customElement } from '@blaze-elements/common';
+import Drawer from '@blaze-elements/drawer/Drawer';
 
-import { Drawer as OriginalDrawer } from '@blaze-elements/drawer';
 
 @customElement( 'bl-app-layout-drawer' )
-export default class Drawer extends OriginalDrawer {}
+export default class AppLayoutDrawer extends Drawer {}

@@ -2,10 +2,10 @@ import { h, Component, props } from 'skatejs';
 
 import { matchMedia, prop } from '@blaze-elements/common';
 
-import Drawer from './components/Drawer';
-import Overlay from './components/Overlay';
-import Nav from './components/Nav';
-import NavContent from './components/NavContent';
+import AppLayoutDrawer from './components/Drawer';
+import AppLayoutOverlay from './components/Overlay';
+import AppLayoutNav from './components/Nav';
+import AppLayoutNavContent from './components/NavContent';
 
 import styles from './AppLayout.scss';
 
@@ -84,24 +84,24 @@ export default class AppLayout extends Component<AppLayoutProps> {
       <style>{styles}</style>,
       <div class="app-layout-container">
         {( this.drawerVisible && this.narrow ) &&
-          <Overlay
+          <AppLayoutOverlay
             isDismissable
             onClick={this.closeDrawer}
             isFullpage
           />
         }
-        <Drawer
+        <AppLayoutDrawer
           visible={this.drawerVisible}
           position="left"
           floating={this.narrow}
         >
-          <Nav>
-            <NavContent>
+          <AppLayoutNav>
+            <AppLayoutNavContent>
               <div class="drawer-header-content"><slot name="drawer-toolbar" /></div>
-            </NavContent>
-          </Nav>
+            </AppLayoutNavContent>
+          </AppLayoutNav>
           <slot name="drawer">{`Add <bl-nav slot="drawer"></bl-nav>`}</slot>
-        </Drawer>
+        </AppLayoutDrawer>
         <div class="header-layout-container">
           <div class="header">
             {this.narrow && (
