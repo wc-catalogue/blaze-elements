@@ -11,14 +11,14 @@ const DrawerPositions = {
 
 type DrawerPositionsType = typeof DrawerPositions;
 
-interface DrawerProps {
+export interface DrawerProps {
   position?: keyof DrawerPositionsType,
   visible?: boolean,
 
   floating?: boolean,
 }
 
-export class Drawer extends Component<DrawerProps> {
+export default class Drawer extends Component<DrawerProps> {
 
   static get is() { return 'bl-drawer'; }
   static get props() {
