@@ -110,6 +110,9 @@ export default class Select extends Component<SelectProps> {
   }
 
   private _setSelectionByValue( value: any ): void {
+    if ( !this.options ) {
+      return;
+    }
     const options = Array.from( this.options );
     for ( let i = 0; i < this.options.length; i++ ) {
       if ( options[ i ].value === value ) {
