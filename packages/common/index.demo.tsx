@@ -11,7 +11,7 @@ export class Demo extends Component<void> {
   renderCallback() {
     return [
       // @TODO add here some content baby :D
-      <div/>
+      <div />
     ];
   }
 }
