@@ -1,4 +1,4 @@
-import { Select } from './index';
+import { Select, Option } from './index';
 import { h, mount, WrappedNode } from 'bore';
 import * as expect from 'expect';
 import { SelectButton } from './components/Button';
@@ -22,7 +22,7 @@ describe( Select.is, () => {
 
     it( `should render`, () => {
       return mount( <Select>
-        <bl-option value="cs">Czech</bl-option>
+        <Option value="cs">Czech</Option>
       </Select> ).wait(( element ) => {
         expect( element.has( SelectButton.is ) ).toBe( true );
       } );
