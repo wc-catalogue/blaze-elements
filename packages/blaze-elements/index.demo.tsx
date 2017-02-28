@@ -16,6 +16,7 @@ import '@blaze-elements/nav/index.demo';
 import '@blaze-elements/overlay/index.demo';
 import '@blaze-elements/progress/index.demo';
 import '@blaze-elements/range/index.demo';
+import '@blaze-elements/select/index.demo';
 import '@blaze-elements/tag/index.demo';
 import '@blaze-elements/toggle/index.demo';
 import '@blaze-elements/tooltip/index.demo';

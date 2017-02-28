@@ -39,6 +39,7 @@
     "@blaze-elements/overlay": "^1.0.0",
     "@blaze-elements/progress": "^1.0.0",
     "@blaze-elements/range": "^1.0.0",
+    "@blaze-elements/select": "^1.0.0",
     "@blaze-elements/tag": "^1.0.0",
     "@blaze-elements/toggle": "^1.0.0",
     "@blaze-elements/tooltip": "^1.0.0",
