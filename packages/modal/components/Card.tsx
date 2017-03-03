@@ -1,6 +1,6 @@
 import { customElement } from '@blaze-elements/common';
 
-import { Card as OriginalCard } from '@blaze-elements/card';
+import Card from '@blaze-elements/card/Card';
 
 @customElement( 'bl-modal-card' )
-export default class Card extends OriginalCard {}
+export default class ModalCard extends Card {}

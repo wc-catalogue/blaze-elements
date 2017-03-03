@@ -1,5 +1,5 @@
-import { Nav as OriginalNav } from '@blaze-elements/nav';
 import { customElement } from '@blaze-elements/common';
+import Nav from '@blaze-elements/nav/Nav';
 
 @customElement( 'bl-app-layout-nav' )
-export default class Nav extends OriginalNav {}
+export default class AppLayoutNav extends Nav {}

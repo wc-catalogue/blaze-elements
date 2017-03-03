@@ -1,7 +1,7 @@
 // @FIXME this needs to be imoprted from 'bl-button' package, not relatively
 
 import { customElement } from '@blaze-elements/common';
-import { Button as OriginalButton} from '@blaze-elements/button';
+import Button from '@blaze-elements/button/Button';
 
 @customElement('bl-select-button')
-export default class Button extends OriginalButton {}
+export default class SelectButton extends Button {}

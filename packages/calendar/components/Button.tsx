@@ -1,7 +1,7 @@
 import { customElement } from '@blaze-elements/common';
-import { Button as OriginalButton } from '@blaze-elements/button';
+import Button from '@blaze-elements/button/Button';
 
 @customElement('bl-calendar-button')
-export default class Button extends OriginalButton {
+export default class CalendarButton extends Button {
   block = true;
 }

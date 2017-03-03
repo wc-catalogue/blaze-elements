@@ -9,7 +9,7 @@ import {
   prop
 } from '@blaze-elements/common';
 
-import Button from './components/Button';
+import CalendarButton from './components/Button';
 
 import * as getYear from 'date-fns/get_year';
 import * as getMonth from 'date-fns/get_month';
@@ -206,7 +206,7 @@ export default class Calendar extends Component<CalendarProps> {
         {weekDays}
         {days}
 
-        <Button onClick={this.setDateHandler()}>{this.i18n.todayButtonText}</Button>
+        <CalendarButton onClick={this.setDateHandler()}>{this.i18n.todayButtonText}</CalendarButton>
       </div>
     ];
   }

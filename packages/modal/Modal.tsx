@@ -3,9 +3,9 @@ import { prop } from '@blaze-elements/common';
 
 import styles from './Modal.scss';
 
-import Button from './components/Button';
-import Card from './components/Card';
-import Overlay from './components/Overlay';
+import ModalButton from './components/Button';
+import ModalCard from './components/Card';
+import ModalOverlay from './components/Overlay';
 
 const DEFAULT_CLOSE_TITLE = 'close';
 
@@ -42,7 +42,7 @@ export default class Modal extends Component<ModalProps> {
     return [
       <style>{styles}</style>,
       isOpen &&
-      <Overlay
+      <ModalOverlay
         isFullpage
         tabIndex={-1}
         onFocus={this.focusModal}
@@ -57,14 +57,14 @@ export default class Modal extends Component<ModalProps> {
         aria-describedby="modal-body"
         onKeydown={this.handleEsc}
       >
-        <Card>
-          <Button
+        <ModalCard>
+          <ModalButton
             slot="dismiss"
             aria-label={closeTitle}
             onClick={this.handleModalClose}
           >
             x
-          </Button>
+          </ModalButton>
           <div slot="heading" id="modal-heading">
             <slot name="title" />
           </div>
@@ -74,7 +74,7 @@ export default class Modal extends Component<ModalProps> {
           <div slot="footer">
             <slot name="footer" />
           </div>
-        </Card>
+        </ModalCard>
       </div>
     ];
   }
