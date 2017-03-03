@@ -1,7 +1,7 @@
 import { h, Component } from 'skatejs';
 import { customElement } from '@blaze-elements/common';
 
-import { Card, CardItem } from './index';
+import { Card, CardContent, CardItem, CardHeader, CardFooter } from './index';
 
 @customElement( 'bl-card-demo' )
 export class Demo extends Component<void> {
@@ -15,17 +15,17 @@ export class Demo extends Component<void> {
 
         <div>
           <Card>
-            <span slot="heading">Hello</span>
-            <span slot="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, reiciendis.</span>
-            <span slot="footer">Footer baby</span>
+            <CardHeader>Hello</CardHeader>
+            <CardContent>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, reiciendis.</CardContent>
+            <CardFooter>Footer baby</CardFooter>
           </Card>
 
           <Card>
-            <span slot="body">
+            <CardContent>
               <CardItem>Item 1</CardItem>
               <CardItem selected>Item 2</CardItem>
               <CardItem>Item 3</CardItem>
-            </span>
+            </CardContent>
           </Card>
         </div>
 

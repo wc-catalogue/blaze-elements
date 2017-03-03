@@ -13,7 +13,7 @@ export default class CardItem extends Component<CardItemProps> {
 
   get css() { return styles; }
 
-  @prop( { type: Boolean } ) selected: boolean;
+  @prop( { type: Boolean, attribute: { source: true } } ) selected: boolean;
 
   renderCallback() {
     const { selected } = this;
