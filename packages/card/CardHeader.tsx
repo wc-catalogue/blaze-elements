@@ -16,7 +16,7 @@ export default class CardHeader extends Component<CardHeaderProps> {
       <header class="c-card__header">
         <slot name="dismiss" />
         <h2 class="c-heading">
-          <slot/>
+          <slot />
         </h2>
       </header>
     ];

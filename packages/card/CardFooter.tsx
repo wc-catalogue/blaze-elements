@@ -14,7 +14,7 @@ export default class CardFooter extends Component<CardFooterProps> {
   renderCallback() {
     return [
       <footer class="c-card__footer">
-        <slot/>
+        <slot />
       </footer>
     ];
   }

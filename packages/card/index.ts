@@ -1,9 +1,29 @@
-import { GenericTypes, customElement } from '@blaze-elements/common';
-import RawCard, { CardProps, Props, Events } from './Card';
-import RawCardContent, { CardContentProps, Props as PropsCardContent, Events as EventsCardContent } from './CardContent';
-import RawCardItem, { CardItemProps, Props as PropsCardItem, Events as EventsCardItem } from './CardItem';
-import RawCardHeader, { CardHeaderProps, Props as PropsCardHeader, Events as EventsCardHeader } from './CardHeader';
-import RawCardFooter, { CardFooterProps, Props as PropsCardFooter, Events as EventsCardFooter } from './CardFooter';
+import { customElement, GenericTypes } from '../_helpers';
+import RawCard, {
+  CardProps,
+  Props,
+  Events
+} from './Card';
+import RawCardContent, {
+  CardContentProps,
+  Props as PropsCardContent,
+  Events as EventsCardContent
+} from './CardContent';
+import RawCardItem, {
+  CardItemProps,
+  Props as PropsCardItem,
+  Events as EventsCardItem
+} from './CardItem';
+import RawCardHeader, {
+  CardHeaderProps,
+  Props as PropsCardHeader,
+  Events as EventsCardHeader
+} from './CardHeader';
+import RawCardFooter, {
+  CardFooterProps,
+  Props as PropsCardFooter,
+  Events as EventsCardFooter
+} from './CardFooter';
 
 const Card = customElement( 'bl-card' )( RawCard ) as typeof RawCard;
 const CardContent = customElement( 'bl-card-content' )( RawCardContent ) as typeof RawCardContent;
