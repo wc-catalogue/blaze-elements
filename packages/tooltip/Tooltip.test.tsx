@@ -1,4 +1,4 @@
-import { h } from '../_helpers';
+import { h } from '@blaze-elements/common';
 import { mount } from 'bore';
 import * as expect from 'expect';
 import { Tooltip } from './index';

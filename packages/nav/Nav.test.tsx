@@ -1,6 +1,7 @@
+import { h, mount } from 'bore';
+
 import { Nav } from './index';
 
-import { h, mount } from 'bore';
 
 describe( Nav.is, () => {
 

@@ -1,8 +1,8 @@
 import styles from './Nav.scss';
-import { h, Component, prop } from 'skatejs';
-import { css } from '../_helpers/css';
+import { h, Component } from 'skatejs';
+import { css, prop } from '@blaze-elements/common';
 
-const Positions = {
+export const Positions = {
   top: 'top',
   bottom: 'bottom',
   left: 'left',
@@ -10,33 +10,38 @@ const Positions = {
   fixed: 'fixed'
 };
 
-type PositionsType = typeof Positions;
+export type PositionsType = typeof Positions;
 
-interface NavProps {
+export type NavProps = Props;
+
+export type Props = {
   inline?: boolean,
   shadow?: boolean,
   position?: keyof PositionsType,
-}
-export class Nav extends Component<NavProps> {
+};
 
-  static get is() { return 'bl-nav'; }
-  static get props() {
-    return {
-      inline: prop.boolean( {
-        attribute: true
-      } ),
-      shadow: prop.boolean( {
-        attribute: true
-      } ),
-      position: prop.string( {
-        attribute: true
-      } )
-    };
-  }
+export default class Nav extends Component<NavProps> {
 
-  inline = false;
-  shadow = false;
-  position: string;
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) inline = false;
+
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) shadow = false;
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) position: string;
 
   renderCallback() {
 

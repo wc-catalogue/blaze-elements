@@ -1,7 +1,7 @@
 import { Select } from './index';
 import { h, mount, WrappedNode } from 'bore';
 import * as expect from 'expect';
-import { SelectButton } from './components/Button';
+import SelectButton from './components/Button';
 
 
 describe( Select.is, () => {

@@ -1,8 +1,8 @@
 import { h, Component, props } from 'skatejs';
-import { customElement } from '../_helpers';
+import { customElement, prop } from '@blaze-elements/common';
 import { Select, Option } from './index';
-import { prop } from '../_helpers/decorators';
 import { bind } from 'decko';
+
 import OptionType from './Option';
 
 export type DemoProps = { value?: string, value2?: string };

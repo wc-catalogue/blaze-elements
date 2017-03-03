@@ -1,19 +1,21 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
+import { customElement, prop } from '@blaze-elements/common';
+
 import styles from './Overlay.demo.scss';
-import { Overlay } from './Overlay';
-import { Button } from '../button';
 
+import { Overlay } from './index';
+import { Button } from '@blaze-elements/button';
+
+@customElement( 'bl-overlay-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-overlay-demo'; }
-  static get props() {
-    return {
-      overlay: prop.boolean(),
-      fullPageOverlay: prop.boolean(),
-    };
-  }
 
-  private overlay = false;
-  private fullPageOverlay = false;
+  @prop( {
+    type: Boolean
+  } ) overlay = false;
+
+  @prop( {
+    type: Boolean
+  } ) fullPageOverlay = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -104,5 +106,3 @@ export class Demo extends Component<void> {
     this.fullPageOverlay = false;
   }
 }
-
-customElements.define( Demo.is, Demo );

@@ -1,27 +1,33 @@
-import { h, Component, prop, emit } from 'skatejs';
-import styles from './Modal.scss';
-import { Button } from '../button';
-import { Card } from '../card/Card';
-import { Overlay } from '../overlay/Overlay';
+import { h, Component, emit } from 'skatejs';
+import { prop } from '@blaze-elements/common';
 
-interface ModalProps {
+import styles from './Modal.scss';
+
+import ModalButton from './components/Button';
+import ModalCard from './components/Card';
+import ModalOverlay from './components/Overlay';
+
+const DEFAULT_CLOSE_TITLE = 'close';
+
+export interface ModalProps {
   isOpen?: boolean,
   closeTitle?: string,
   onModalClose?: Function,
 }
-export class Modal extends Component<ModalProps> {
-  static get is() { return 'bl-modal'; }
-  static get props() {
-    return {
-      isOpen: prop.boolean( {
-        attribute: true
-      } ),
-      closeTitle: prop.string()
-    };
-  }
 
-  isOpen = false;
-  private closeTitle = 'close';
+export default class Modal extends Component<ModalProps> {
+
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) isOpen = false;
+
+  @prop( {
+    type: String
+  } ) closeTitle = DEFAULT_CLOSE_TITLE;
+
   private modalElement: HTMLDivElement;
   private lastActiveElement: HTMLElement;
 
@@ -36,7 +42,7 @@ export class Modal extends Component<ModalProps> {
     return [
       <style>{styles}</style>,
       isOpen &&
-      <Overlay
+      <ModalOverlay
         isFullpage
         tabIndex={-1}
         onFocus={this.focusModal}
@@ -51,14 +57,14 @@ export class Modal extends Component<ModalProps> {
         aria-describedby="modal-body"
         onKeydown={this.handleEsc}
       >
-        <Card>
-          <Button
+        <ModalCard>
+          <ModalButton
             slot="dismiss"
             aria-label={closeTitle}
             onClick={this.handleModalClose}
           >
             x
-          </Button>
+          </ModalButton>
           <div slot="heading" id="modal-heading">
             <slot name="title" />
           </div>
@@ -68,7 +74,7 @@ export class Modal extends Component<ModalProps> {
           <div slot="footer">
             <slot name="footer" />
           </div>
-        </Card>
+        </ModalCard>
       </div>
     ];
   }
@@ -129,5 +135,3 @@ export class Modal extends Component<ModalProps> {
   }
 
 }
-
-customElements.define( Modal.is, Modal );

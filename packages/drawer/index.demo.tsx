@@ -1,7 +1,7 @@
 import { h, Component } from 'skatejs';
 import { Drawer } from './index';
-import { Card } from '../card/Card';
-import { Button } from '../button';
+import { Card } from '@blaze-elements/card';
+import { Button } from '@blaze-elements/button';
 
 const customDivStyleBase = {
   position: 'relative',

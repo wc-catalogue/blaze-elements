@@ -1,6 +1,6 @@
 import * as expect from 'expect';
 import { mount } from 'bore';
-import { h } from '../_helpers';
+import { h } from '@blaze-elements/common';
 import { Badge } from './index';
 
 describe( Badge.is, () => {

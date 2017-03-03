@@ -1,8 +1,7 @@
 import { h, Component } from 'skatejs';
 import styles from './Card.scss';
 
-export class Card extends Component<void> {
-  static get is() { return 'bl-card'; }
+export default class Card extends Component<void> {
 
   renderCallback() {
     return [
@@ -24,5 +23,3 @@ export class Card extends Component<void> {
     ];
   }
 }
-
-customElements.define( Card.is, Card );

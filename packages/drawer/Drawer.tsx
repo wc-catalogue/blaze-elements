@@ -1,29 +1,29 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component, prop, ComponentProps } from 'skatejs';
 import styles from './Drawer.scss';
-import { css } from '../_helpers/css';
+import { css } from '@blaze-elements/common';
 
-const DrawerPositions = {
+export const DrawerPositions = {
   top: 'top',
   bottom: 'bottom',
   left: 'left',
   right: 'right',
 };
 
-type DrawerPositionsType = typeof DrawerPositions;
+export type DrawerPositionsType = typeof DrawerPositions;
 
-interface DrawerProps {
+export interface DrawerProps {
   position?: keyof DrawerPositionsType,
   visible?: boolean,
 
   floating?: boolean,
 }
 
-export class Drawer extends Component<DrawerProps> {
+export default class Drawer extends Component<DrawerProps> {
 
   static get is() { return 'bl-drawer'; }
-  static get props() {
+  static get props(): ComponentProps<Drawer, DrawerProps> {
     return {
-      position: prop.string( {
+      position: prop.string<Drawer, keyof DrawerPositionsType>( {
         attribute: {
           source: true
         }

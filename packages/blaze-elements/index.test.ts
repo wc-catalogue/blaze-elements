@@ -8,6 +8,7 @@ import '@blaze-elements/button/index.test';
 import '@blaze-elements/calendar/index.test';
 import '@blaze-elements/card/index.test';
 import '@blaze-elements/collapsible/index.test';
+import '@blaze-elements/common/index.test';
 import '@blaze-elements/drawer/index.test';
 import '@blaze-elements/input/index.test';
 import '@blaze-elements/modal/index.test';
@@ -15,6 +16,8 @@ import '@blaze-elements/nav/index.test';
 import '@blaze-elements/overlay/index.test';
 import '@blaze-elements/progress/index.test';
 import '@blaze-elements/range/index.test';
+// @FIXME https://github.com/wc-catalogue/blaze-elements/pull/231
+// import '@blaze-elements/select/index.test';
 import '@blaze-elements/tag/index.test';
 import '@blaze-elements/toggle/index.test';
 import '@blaze-elements/tooltip/index.test';

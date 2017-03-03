@@ -1,22 +1,20 @@
 import styles from './Nav.scss';
-import { h, Component, prop } from 'skatejs';
-import { css } from '../_helpers/css';
+import { h, Component } from 'skatejs';
+import { css, prop } from '@blaze-elements/common';
 
-interface NavContentProps {
-  inline?: boolean,
-}
-export class NavContent extends Component<NavContentProps> {
+export type NavContentProps = Props;
 
-  static get is() { return 'bl-nav-content'; }
-  static get props() {
-    return {
-      inline: prop.boolean( {
-        attribute: true
-      } ),
-    };
-  }
+export type Props = {
+  inline?: boolean;
+};
+export default class NavContent extends Component<NavContentProps> {
 
-  inline: boolean;
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) inline: boolean;
 
   renderCallback() {
     const { inline } = this;

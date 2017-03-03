@@ -1,33 +1,34 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
+import { css, prop } from '@blaze-elements/common';
+
 import styles from './Overlay.scss';
-import { css } from '../_helpers/css';
 
 // public
-type OverlayProps = Props & EventProps;
-type Props = {
+export type OverlayProps = Props & EventProps;
+export type Props = {
   isDismissable?: boolean,
   isTransparent?: boolean,
   isFullpage?: boolean,
   tabIndex?: number | string,
 };
-type EventProps = {
+export type EventProps = {
   onClick?: typeof HTMLElement.prototype.onclick,
   onFocus?: typeof HTMLElement.prototype.onfocus,
 };
 
-export class Overlay extends Component<OverlayProps> {
-  static get is() { return 'bl-overlay'; }
-  static get props() {
-    return {
-      isDismissable: prop.boolean(),
-      isTransparent: prop.boolean(),
-      isFullpage: prop.boolean()
-    };
-  }
+export default class Overlay extends Component<OverlayProps> {
 
-  isDismissable = false;
-  isTransparent = false;
-  isFullpage = false;
+  @prop( {
+    type: Boolean
+  } ) isDismissable = false;
+
+  @prop( {
+    type: Boolean
+  } ) isTransparent = false;
+
+  @prop( {
+    type: Boolean
+  } ) isFullpage = false;
 
   renderCallback() {
     const { isDismissable, isTransparent, isFullpage } = this;
@@ -46,5 +47,3 @@ export class Overlay extends Component<OverlayProps> {
   }
 
 }
-
-customElements.define( Overlay.is, Overlay );

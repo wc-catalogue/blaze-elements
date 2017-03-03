@@ -1,7 +1,7 @@
 import { h, Component } from 'skatejs';
 import { bind } from 'decko';
 
-import { GenericEvents, EventEmitter, event, prop } from '../_helpers';
+import { GenericEvents, EventEmitter, event, prop } from '@blaze-elements/common';
 import { Input } from '@blaze-elements/input';
 
 import styles from './Tag.scss';

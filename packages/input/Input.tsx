@@ -1,10 +1,12 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Input.scss';
 import {
-  Size, cssClassForSize, css,
+  Size,
+  cssClassForSize,
+  css,
   GenericTypes,
   GenericEvents
-} from '../_helpers';
+} from '@blaze-elements/common';
 
 
 type TypesType = {

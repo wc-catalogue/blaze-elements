@@ -1,14 +1,11 @@
-import { h, Component, prop, props } from 'skatejs';
+import { h, Component, props } from 'skatejs';
 
-import {
-  GenericTypes,
-  matchMedia
-} from '../_helpers';
+import { matchMedia, prop } from '@blaze-elements/common';
 
-import { Drawer } from './components/Drawer';
-import { Overlay } from './components/Overlay';
-import { Nav } from './components/Nav';
-import { NavContent } from './components/NavContent';
+import AppLayoutDrawer from './components/Drawer';
+import AppLayoutOverlay from './components/Overlay';
+import AppLayoutNav from './components/Nav';
+import AppLayoutNavContent from './components/NavContent';
 
 import styles from './AppLayout.scss';
 
@@ -34,57 +31,36 @@ export type EventProps = {};
 
 export type Events = {};
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'bl-app-layout': GenericTypes.IntrinsicCustomElement<AppLayoutProps>
-      & GenericTypes.IntrinsicBoreElement<Attrs, Events>
+export default class AppLayout extends Component<AppLayoutProps> {
+
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
     }
-  }
-}
+  } ) drawerVisible?: boolean;
 
-export class AppLayout extends Component<AppLayoutProps> {
 
-  static get is() { return 'bl-app-layout'; }
+  /**
+   * If the viewport's width is smaller than this value, the panel will change to narrow
+   * layout. In the mode the drawer will be closed.
+   */
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) responsiveWidth?: string = DEFAULT_RESPONSIBLE_WIDTH;
 
-  static get props() {
-    return {
-      /**
-       * Trigger drawer visibility
-       */
-      drawerVisible: prop.boolean( {
-        attribute: {
-          source: true
-        }
-      } ),
-      /**
-       * If the viewport's width is smaller than this value, the panel will change to narrow
-       * layout. In the mode the drawer will be closed.
-       */
-      responsiveWidth: prop.string( {
-        attribute: {
-          source: true
-        }
-      } ),
-      /**
-       * If true, ignore `responsiveWidth` setting and force the narrow layout.
-       */
-      forceNarrow: prop.boolean( {
-        attribute: {
-          source: true
-        }
-      } ),
-      narrow: prop.boolean(),
-    };
-  }
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) forceNarrow?: boolean = false;
 
-  drawerVisible: boolean;
 
-  responsiveWidth: string = DEFAULT_RESPONSIBLE_WIDTH;
-
-  forceNarrow = false;
-
-  narrow: boolean;
+  @prop( { type: Boolean } ) narrow?: boolean;
 
   connectedCallback() {
 
@@ -108,24 +84,24 @@ export class AppLayout extends Component<AppLayoutProps> {
       <style>{styles}</style>,
       <div class="app-layout-container">
         {( this.drawerVisible && this.narrow ) &&
-          <Overlay
+          <AppLayoutOverlay
             isDismissable
             onClick={this.closeDrawer}
             isFullpage
           />
         }
-        <Drawer
+        <AppLayoutDrawer
           visible={this.drawerVisible}
           position="left"
           floating={this.narrow}
         >
-          <Nav>
-            <NavContent>
+          <AppLayoutNav>
+            <AppLayoutNavContent>
               <div class="drawer-header-content"><slot name="drawer-toolbar" /></div>
-            </NavContent>
-          </Nav>
+            </AppLayoutNavContent>
+          </AppLayoutNav>
           <slot name="drawer">{`Add <bl-nav slot="drawer"></bl-nav>`}</slot>
-        </Drawer>
+        </AppLayoutDrawer>
         <div class="header-layout-container">
           <div class="header">
             {this.narrow && (

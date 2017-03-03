@@ -10,7 +10,7 @@ import {
   DisabledProps,
   shadyCssStyles,
   prop
-} from '../_helpers';
+} from '@blaze-elements/common';
 
 import styles from './Button.scss';
 

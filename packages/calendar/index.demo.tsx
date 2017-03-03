@@ -1,17 +1,16 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
 import { bind } from 'decko';
-import { GenericEvents, customElement } from '../_helpers';
+import { GenericEvents, customElement, prop } from '@blaze-elements/common';
+
 import { Calendar } from './index';
 
 @customElement( 'bl-calendar-demo' )
 export class Demo extends Component<void> {
-  static get props() {
-    return {
-      selectedDate: prop.string()
-    };
-  }
 
-  selectedDate = new Date( '1987-12-22' );
+  @prop( {
+    type: String
+  } ) selectedDate = new Date( '1987-12-22' );
+
   i18n = {
     cs: {
       monthsFull: [

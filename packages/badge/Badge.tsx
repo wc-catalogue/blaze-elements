@@ -1,6 +1,6 @@
 import styles from './Badge.scss';
 import { h, Component, prop } from 'skatejs';
-import { ColorType, cssClassForColorType, css } from '../_helpers';
+import { ColorType, cssClassForColorType, css } from '@blaze-elements/common';
 
 type BadgeProps = Props;
 type Props = {

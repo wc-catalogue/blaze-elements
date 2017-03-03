@@ -1,11 +1,11 @@
 import { h, Component, props } from 'skatejs';
 import { bind } from 'decko';
-import { GenericEvents, prop, shadyCssStyles } from '../_helpers';
+import { GenericEvents, prop, shadyCssStyles } from '@blaze-elements/common';
 import styles from './Select.scss';
 import Option from './Option';
-import { SelectOverlay } from './components/Overlay';
-import { SelectButton } from './components/Button';
-import { SelectCard } from './components/Card';
+import SelectOverlay from './components/Overlay';
+import SelectButton from './components/Button';
+import SelectCard from './components/Card';
 
 export type SelectProps = Props & EventHandlers;
 

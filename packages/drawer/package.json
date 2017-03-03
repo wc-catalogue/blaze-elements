@@ -19,5 +19,10 @@
     "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.prod --env.element=drawer",
     "build:test": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.test --env.element=drawer",
     "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=drawer"
+  },
+  "dependencies": {
+    "@blaze-elements/button": "^1.0.0",
+    "@blaze-elements/card": "^1.0.0",
+    "@blaze-elements/common": "^1.0.0"
   }
 }

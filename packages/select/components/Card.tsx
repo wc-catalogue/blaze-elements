@@ -1,7 +1,7 @@
 // @FIXME this needs to be imoprted from 'bl-button' package, not relatively
 
-import { customElement } from '../../_helpers';
-import { Card } from '../../card/Card';
+import { customElement } from '@blaze-elements/common';
+import Card from '@blaze-elements/card/Card';
 
 @customElement('bl-select-card')
-export class SelectCard extends Card {}
+export default class SelectCard extends Card {}

@@ -1,7 +1,9 @@
 import { h, Component } from 'skatejs';
-import { prop, shadyCssStyles, GenericEvents } from '../_helpers';
 import { bind } from 'decko';
-import { SelectCardItem } from './components/CardItem';
+import { prop, shadyCssStyles, GenericEvents } from '@blaze-elements/common';
+
+import SelectCardItem from './components/CardItem';
+
 import styles from './Select.scss';
 
 export type OptionProps = Props & EventHandlers;

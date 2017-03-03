@@ -1,7 +1,6 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Range.scss';
-import { ColorType, cssClassForColorType } from '../_helpers/colorTypes';
-import { css } from '../_helpers/css';
+import { ColorType, cssClassForColorType, css } from '@blaze-elements/common';
 
 
 // public

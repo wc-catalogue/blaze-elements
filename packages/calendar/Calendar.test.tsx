@@ -2,11 +2,12 @@ import * as expect from 'expect';
 import * as isSameDay from 'date-fns/is_same_day';
 import * as parse from 'date-fns/parse';
 import { Calendar } from './index';
-import { CalendarButton } from './components/Button';
+import RawCalendar from './Calendar';
+import Button from './components/Button';
 
 import { h, mount, WrappedNode } from 'bore';
 import { emit } from 'skatejs';
-import { GenericEvents } from '../_helpers';
+import { GenericEvents } from '@blaze-elements/common';
 
 describe( Calendar.is, () => {
 
@@ -55,7 +56,7 @@ describe( Calendar.is, () => {
         ).wait(( element ) => {
 
           const today = new Date();
-          const calendar = element.node as Calendar;
+          const calendar = element.node as RawCalendar;
           expect( isSameDay( calendar.selectedDate, today ) ).toBe( true );
 
         } );
@@ -179,7 +180,7 @@ describe( Calendar.is, () => {
           <bl-calendar i18n={i18n} />
         ).wait(( element ) => {
 
-          expect( element.one( CalendarButton.is ).node.innerHTML ).toBe( 'DNES' );
+          expect( element.one( Button.is ).node.innerHTML ).toBe( 'DNES' );
 
         } );
 

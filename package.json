@@ -21,7 +21,7 @@
     "prepush": "npm run ts:lint && npm test",
     "toolbelt:generate:configs": "node toolbelt/generate-configs.js",
     "toolbelt:packagelist": "node toolbelt/generate-packages-list.js",
-    "cleanup": "rimraf dist && rimraf packages/**/dist",
+    "cleanup": "rimraf dist && rimraf packages/**/dist & rimraf tmp",
     "semantic-release": "lerna-semantic-release pre && lerna-semantic-release perform && lerna-semantic-release post"
   },
   "repository": {
@@ -63,7 +63,6 @@
     "rimraf": "^2.5.4",
     "sass-loader": "^6.0.1",
     "style-loader": "^0.13.1",
-    "test-fixture": "^1.0.2",
     "to-string-loader": "^1.1.5",
     "tslint": "^4.4.2",
     "tslint-react": "^2.3.0",
@@ -98,6 +97,7 @@
     "calendar",
     "card",
     "collapsible",
+    "common",
     "drawer",
     "input",
     "modal",
@@ -105,6 +105,7 @@
     "overlay",
     "progress",
     "range",
+    "select",
     "tag",
     "toggle",
     "tooltip",

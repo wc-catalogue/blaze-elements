@@ -1,6 +1,6 @@
 import { h, Component, prop, emit } from 'skatejs';
 import styles from './Collapsible.scss';
-import { css } from '../_helpers/css';
+import { css } from '@blaze-elements/common';
 
 // public
 // @FIXME this needs to be adressed other way (like Partial<HTMLDivElement)) or element which is root in renderCallback
