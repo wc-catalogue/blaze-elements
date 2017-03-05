@@ -22,6 +22,6 @@
   },
   "dependencies": {
     "@blaze-elements/common": "^1.0.0",
-    "@blaze-elements/input": "^1.0.0"
+    "@blaze-elements/input": "^2.0.0"
   }
 }
