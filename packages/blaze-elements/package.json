@@ -33,7 +33,7 @@
     "@blaze-elements/collapsible": "^1.0.0",
     "@blaze-elements/common": "^1.0.0",
     "@blaze-elements/drawer": "^1.0.0",
-    "@blaze-elements/input": "^1.0.0",
+    "@blaze-elements/input": "^2.0.0",
     "@blaze-elements/modal": "^1.0.0",
     "@blaze-elements/nav": "^1.0.0",
     "@blaze-elements/overlay": "^1.0.0",
