@@ -1,8 +1,7 @@
 import { h, Component } from 'skatejs';
 import styles from './Card.scss';
-import { shadyCssStyles } from '../_helpers';
+import { shadyCssStyles } from '@blaze-elements/common';
 
-export default class Card extends Component<void> {
 export type CardProps = Props;
 export type Props = {};
 export type Events = {};

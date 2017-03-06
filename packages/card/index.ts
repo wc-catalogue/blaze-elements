@@ -1,4 +1,4 @@
-import { customElement, GenericTypes } from '../_helpers';
+import { customElement, GenericTypes } from '@blaze-elements/common';
 import RawCard, {
   CardProps,
   Props,
