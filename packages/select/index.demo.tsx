@@ -2,7 +2,6 @@ import { h, Component, props } from 'skatejs';
 import { customElement } from '../_helpers';
 import { Select, Option } from './index';
 import { prop } from '../_helpers/decorators';
-import { bind } from 'decko';
 import OptionType from './Option';
 
 export type DemoProps = { value?: string, value2?: string };
@@ -13,7 +12,12 @@ export class Demo extends Component<DemoProps> {
   @prop( { type: String } ) value = 'en';
   @prop( { type: String } ) value2: string;
 
-  @bind
+  constructor() {
+    super();
+    this.setSelected = this.setSelected.bind( this );
+    this.setSelected2 = this.setSelected2.bind( this );
+  }
+
   setSelected( e: MouseEvent ) {
     const target = e.target as OptionType;
     props( this, {
@@ -21,7 +25,6 @@ export class Demo extends Component<DemoProps> {
     } );
   }
 
-  @bind
   setSelected2( e: MouseEvent ) {
     const target = e.target as OptionType;
     props( this, {
