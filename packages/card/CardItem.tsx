@@ -1,17 +1,19 @@
 import { h, Component } from 'skatejs';
 import styles from './Card.scss';
-import { prop, css } from '@blaze-elements/common';
+import { prop, css, shadyCssStyles } from '@blaze-elements/common';
 
 export type CardItemProps = Props;
-
 export type Props = {
   selected?: boolean,
 };
+export type Events = {};
 
-
+@shadyCssStyles()
 export default class CardItem extends Component<CardItemProps> {
 
-  @prop( { type: Boolean } ) selected: boolean;
+  get css() { return styles; }
+
+  @prop( { type: Boolean, attribute: { source: true } } ) selected: boolean;
 
   renderCallback() {
     const { selected } = this;

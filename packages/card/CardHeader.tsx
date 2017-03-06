@@ -2,24 +2,23 @@ import { h, Component } from 'skatejs';
 import styles from './Card.scss';
 import { shadyCssStyles } from '@blaze-elements/common';
 
-export type CardProps = Props & Events;
+export type CardHeaderProps = Props & Events;
 export type Props = {};
 export type Events = {};
 
 @shadyCssStyles()
-export default class Card extends Component<CardProps> {
+export default class CardHeader extends Component<CardHeaderProps> {
 
   get css() { return styles; }
 
   renderCallback() {
-
     return [
-      <style>{styles}</style>,
-      <div class="c-card">
-
-        <slot />
-
-      </div>
+      <header class="c-card__header">
+        <slot name="dismiss" />
+        <h2 class="c-heading">
+          <slot />
+        </h2>
+      </header>
     ];
   }
 }
