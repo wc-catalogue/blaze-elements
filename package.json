@@ -75,7 +75,7 @@
     "webpack": "^2.2.1",
     "webpack-config-utils": "^2.3.0",
     "webpack-dev-server": "^2.3.0",
-    "webpack-merge": "^3.0.0"
+    "webpack-merge": "^4.0.0"
   },
   "config": {
     "commitizen": {
