@@ -2,7 +2,7 @@ import { h, Component } from 'skatejs';
 import styles from './Card.scss';
 import { shadyCssStyles } from '@blaze-elements/common';
 
-export type CardProps = Props;
+export type CardProps = Props & Events;
 export type Props = {};
 export type Events = {};
 
