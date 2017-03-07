@@ -1,16 +1,42 @@
+import * as expect from 'expect';
+import { mount } from 'bore';
+import { h } from '@blaze-elements/common';
 import { Drawer } from './index';
 
-import { h, mount } from 'bore';
 
 describe( Drawer.is, () => {
 
-  it( 'should render', () => {
+  describe( `Custom element`, () => {
 
-    console.warn( 'Missing tests for Drawer!' );
+    it( `should be registered`, () => {
 
-    return mount(
-      <Drawer />
-    ).wait();
+      expect( customElements.get( Drawer.is ) ).toBe( Drawer );
+
+    } );
+
+    it( `should render via JSX IntrinsicElement`, () => {
+
+      return mount(
+        <bl-drawer />
+      ).wait(( element ) => {
+
+        expect( element.node.localName ).toBe( Drawer.is );
+
+      } );
+
+    } );
+
+    it( `should render via JSX class`, () => {
+
+      return mount(
+        <Drawer />
+      ).wait(( element ) => {
+
+        expect( element.has( '.o-drawer' ) ).toBe( true );
+
+      } );
+
+    } );
 
   } );
 
