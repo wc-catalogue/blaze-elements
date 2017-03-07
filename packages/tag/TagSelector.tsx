@@ -1,5 +1,4 @@
 import { h, Component } from 'skatejs';
-import { bind } from 'decko';
 
 import { GenericEvents, EventEmitter, event, prop } from '@blaze-elements/common';
 import { Input } from '@blaze-elements/input';
@@ -31,6 +30,12 @@ export class TagSelector extends Component<TagSelectorProps> {
 
   @event() tagChange = new EventEmitter<{ tags: string[] }>();
 
+  constructor() {
+    super();
+    this.handleInput = this.handleInput.bind( this );
+    this.handleTagClose = this.handleTagClose.bind( this );
+  }
+
   renderCallback() {
 
     const tags = this.tags.map(( label ) => (
@@ -53,7 +58,6 @@ export class TagSelector extends Component<TagSelectorProps> {
     ];
   }
 
-  @bind
   private handleInput( event: GenericEvents.CustomChangeEvent<string> ) {
     const input = event.target as Input;
     const value = event.detail.value;
@@ -75,7 +79,6 @@ export class TagSelector extends Component<TagSelectorProps> {
   }
 
   // @TODO correctly annotate event to proper type
-  @bind
   private handleTagClose( event: CustomEvent ) {
     const target = event.target as Tag;
     const newTags = this.tags.filter(( tag ) => tag !== target.label );
