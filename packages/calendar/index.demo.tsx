@@ -1,7 +1,5 @@
 import { h, Component } from 'skatejs';
-import { bind } from 'decko';
 import { GenericEvents, customElement, prop } from '@blaze-elements/common';
-
 import { Calendar } from './index';
 
 @customElement( 'bl-calendar-demo' )
@@ -32,6 +30,11 @@ export class Demo extends Component<void> {
     }
   };
 
+  constructor() {
+    super();
+    this.dateChangeHandler = this.dateChangeHandler.bind( this );
+  }
+
   renderCallback() {
     return (
       <fieldset>
@@ -52,7 +55,6 @@ export class Demo extends Component<void> {
     );
   }
 
-  @bind
   private dateChangeHandler( event: GenericEvents.CustomChangeEvent<Date> ) {
     this.selectedDate = event.detail.value;
   }
