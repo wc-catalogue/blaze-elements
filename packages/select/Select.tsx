@@ -1,5 +1,4 @@
 import { h, Component, props } from 'skatejs';
-import { bind } from 'decko';
 import { GenericEvents, prop, shadyCssStyles } from '../_helpers';
 import styles from './Select.scss';
 import Option from './Option';
@@ -51,6 +50,13 @@ export default class Select extends Component<SelectProps> {
   private _selected: Option;
   private options: Option[];
 
+  constructor() {
+    super();
+    this.setSlot = this.setSlot.bind( this );
+    this.toggleOptions = this.toggleOptions.bind( this );
+    this.closeOptions = this.closeOptions.bind( this );
+  }
+
   connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
@@ -90,19 +96,16 @@ export default class Select extends Component<SelectProps> {
     ] );
   }
 
-  @bind
   setSlot( element: HTMLSlotElement ) {
     this.slotElement = element;
   }
 
-  @bind
   toggleOptions() {
     props( this, {
       open: !this.open
     } );
   }
 
-  @bind
   closeOptions() {
     props( this, {
       open: false
