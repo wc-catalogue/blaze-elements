@@ -1,5 +1,5 @@
 import { h, Component } from 'skatejs';
-import { Badge } from './Badge';
+import { Badge } from './index';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-badge-demo'; }

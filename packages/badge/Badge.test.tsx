@@ -6,6 +6,7 @@ import { Badge } from './index';
 describe( Badge.is, () => {
 
   describe( `Custom element`, () => {
+
     it( `should be registered`, () => {
 
       expect( customElements.get( Badge.is ) ).toBe( Badge );
