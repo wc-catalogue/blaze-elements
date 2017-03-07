@@ -1,5 +1,5 @@
 import { h, Component } from 'skatejs';
-import { Bubble } from './Bubble';
+import { Bubble } from './index';
 
 export class Demo extends Component<void> {
   static get is() { return 'bl-bubble-demo'; }
