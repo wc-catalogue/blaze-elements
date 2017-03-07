@@ -1,16 +1,40 @@
-import { Accordion } from './Accordion';
-
-import { h, mount } from 'bore';
+import { mount, h } from 'bore';
+import * as expect from 'expect';
+import { Accordion } from './index';
 
 describe( Accordion.is, () => {
 
-  it( 'should render', () => {
+  describe( `Custom element`, () => {
 
-    console.warn( 'Missing tests for Accordion!' );
+    it( `should be registered`, () => {
 
-    return mount(
-      <Accordion />
-    ).wait();
+      expect( customElements.get( Accordion.is ) ).toBe( Accordion );
+
+    } );
+
+    it( `should render via JSX IntrinsicElement`, () => {
+
+      return mount(
+        <bl-accordion />
+      ).wait(( element ) => {
+
+        expect( element.node.localName ).toBe( Accordion.is );
+
+      } );
+
+    } );
+
+    it( `should render via JSX class`, () => {
+
+      return mount(
+        <bl-accordion />
+      ).wait(( element ) => {
+
+        expect( element.has( '.c-card--accordion' ) ).toBe( true );
+
+      } );
+
+    } );
 
   } );
 

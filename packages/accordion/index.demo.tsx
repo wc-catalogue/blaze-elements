@@ -1,13 +1,14 @@
 import { h, Component } from 'skatejs';
-import { Accordion } from './Accordion';
-import { Collapsible } from '../collapsible/Collapsible';
+import { customElement } from '@blaze-elements/common';
 
+import { Accordion } from './index';
+import { Collapsible } from '@blaze-elements/collapsible';
+
+@customElement( 'bl-accordion-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-accordion-demo'; }
 
   renderCallback() {
-    return [
-      <style />,
+    return (
       <fieldset>
         <legend>{Accordion.is}</legend>
 
@@ -32,9 +33,6 @@ export class Demo extends Component<void> {
           </Collapsible>
         </Accordion>
       </fieldset>
-    ];
+    );
   }
 }
-
-customElements.define( Demo.is, Demo );
-

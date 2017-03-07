@@ -1,10 +1,22 @@
 import { h, Component } from 'skatejs';
 import styles from './Accordion.scss';
-import { Collapsible, StateChangedEvent } from '../collapsible/Collapsible';
+import { shadyCssStyles } from '@blaze-elements/common';
+import Collapsible, { StateChangedEvent } from '@blaze-elements/collapsible/Collapsible';
 
+export type AccordionProps = Props & EventProps;
 
-export class Accordion extends Component<void> {
-  static get is() { return 'bl-accordion'; }
+export type Attrs = {};
+
+export type Props = {};
+
+export type EventProps = {};
+
+export type Events = {};
+
+@shadyCssStyles()
+export default class Accordion extends Component<AccordionProps> {
+
+  get css() { return styles; }
 
   private items = new Array<Collapsible>();
 
@@ -28,12 +40,11 @@ export class Accordion extends Component<void> {
       }
     }
 
-    return [
-      <style>{styles}</style>,
+    return (
       <div className="c-card c-card--accordion">
         <slot />
       </div>
-    ];
+    );
   }
 
   private handleStateChanged( event: StateChangedEvent ) {
@@ -44,5 +55,3 @@ export class Accordion extends Component<void> {
     } );
   }
 }
-
-customElements.define( Accordion.is, Accordion );

@@ -19,5 +19,9 @@
     "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.prod --env.element=accordion",
     "build:test": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.test --env.element=accordion",
     "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=accordion"
+  },
+  "dependencies": {
+    "@blaze-elements/collapsible": "^1.0.0",
+    "@blaze-elements/common": "^1.0.0"
   }
 }
