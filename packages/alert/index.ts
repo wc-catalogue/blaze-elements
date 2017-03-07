@@ -1,9 +1,18 @@
-import { define } from 'skatejs';
+import { customElement, GenericTypes } from '@blaze-elements/common';
+import RawAlert, {
+  AlertProps,
+  Props,
+  Events
+} from './Alert';
+const Alert = customElement( 'bl-alert' )( RawAlert ) as typeof RawAlert;
+export { Alert };
 
-import { Alert } from './Alert';
-
-// export for public access to Skate Class
-export { Alert } from './Alert';
-
-// register WebComponent by our name
-define( Alert );
+// extend JSX.IntrinsicElements namepsace with our definition
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-alert': GenericTypes.IntrinsicCustomElement<AlertProps>
+      & GenericTypes.IntrinsicBoreElement<Props, Events>,
+    }
+  }
+}
