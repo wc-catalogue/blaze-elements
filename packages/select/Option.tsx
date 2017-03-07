@@ -1,6 +1,5 @@
 import { h, Component } from 'skatejs';
 import { prop, shadyCssStyles, GenericEvents } from '../_helpers';
-import { bind } from 'decko';
 import { SelectCardItem } from './components/CardItem';
 import styles from './Select.scss';
 
@@ -24,6 +23,11 @@ export default class Option extends Component<OptionProps> {
   @prop( { type: Boolean } ) private _selected = false;
 
   private slotElement: HTMLSlotElement;
+
+  constructor() {
+    super();
+    this.setSlot = this.setSlot.bind( this );
+  }
 
   get selected() { return this._selected; };
 
@@ -54,7 +58,6 @@ export default class Option extends Component<OptionProps> {
     );
   }
 
-  @bind
   private setSlot( element: HTMLSlotElement ) {
     this.slotElement = element;
   }
