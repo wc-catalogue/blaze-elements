@@ -1,5 +1,4 @@
 import { h, Component } from 'skatejs';
-import { bind } from 'decko';
 import { prop, shadyCssStyles, GenericEvents } from '@blaze-elements/common';
 
 import SelectCardItem from './components/CardItem';
@@ -26,6 +25,11 @@ export default class Option extends Component<OptionProps> {
   @prop( { type: Boolean } ) private _selected = false;
 
   private slotElement: HTMLSlotElement;
+
+  constructor() {
+    super();
+    this.setSlot = this.setSlot.bind( this );
+  }
 
   get selected() { return this._selected; };
 
@@ -56,7 +60,6 @@ export default class Option extends Component<OptionProps> {
     );
   }
 
-  @bind
   private setSlot( element: HTMLSlotElement ) {
     this.slotElement = element;
   }
