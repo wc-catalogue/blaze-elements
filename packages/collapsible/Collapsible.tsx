@@ -1,46 +1,68 @@
-import { h, Component, prop, emit } from 'skatejs';
+import { h, Component, emit, props } from 'skatejs';
 import styles from './Collapsible.scss';
-import { css } from '@blaze-elements/common';
+import { css, prop, GenericEvents, shadyCssStyles } from '@blaze-elements/common';
 
-// public
-// @FIXME this needs to be adressed other way (like Partial<HTMLDivElement)) or element which is root in renderCallback
-interface NativeDivAttrs {
-  id?: string,
-}
-interface CollapsibleProps extends NativeDivAttrs {
+export type CollapsibleProps = Props & EventProps;
+
+export type Attrs = {
+  'is-opened'?: boolean,
+};
+
+export type Props = {
   isOpened?: boolean,
   isLast?: boolean,
-  onStateChanged?: ( this: this, ev: StateChangedEvent ) => any,
-}
+  isNotStandAlone?: boolean,
+};
 
-interface StateChangedEventDetail {
+export type EventProps = {
+  onStateChanged?: GenericEvents.CustomChangeHandler<StateChangedEventDetail>
+};
+
+export type Events = {
+  stateChanged: GenericEvents.CustomChangeHandler<StateChangedEventDetail>
+};
+
+export interface StateChangedEventDetail {
   readonly opened: boolean;
   readonly collapsed: boolean;
 }
+
+// TODO: Deprecated remove when accordion is refactored
 export interface StateChangedEvent extends Event {
   readonly detail: StateChangedEventDetail
 }
 
-export class Collapsible extends Component<CollapsibleProps> {
-  static get is() { return 'bl-collapsible'; }
-  static get props() {
-    return {
-      isOpened: prop.boolean( {
-        attribute: true
-      } ),
-      isNotStandAlone: prop.boolean(),
-      isLast: prop.boolean()
-    };
-  }
+@shadyCssStyles()
+export default class Collapsible extends Component<CollapsibleProps> {
 
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } )
   isOpened: boolean;
 
-  // internal property to be used from other components, when there is collection of collapsible items to indicate
-  // this is the last one in the collection
+  /**
+   * internal property to be used from other components,
+   * when there is collection of collapsible items to indicate
+   * this is the last one in the collection
+   */
+  @prop( {
+    type: Boolean
+  } )
   isLast: boolean;
 
-  // internal property to be used from other components, when there is collection of collapsible items
-  isNotStandAlone: boolean;
+  /**
+   * internal property to be used from other components,
+   * when there is collection of collapsible items
+   */
+  @prop( {
+    type: Boolean
+  } )
+  isNotStandAlone: boolean; // TODO: rename this to isCollection
+
+  get css() { return styles; }
 
   connectedCallback() {
     super.connectedCallback();
@@ -78,20 +100,21 @@ export class Collapsible extends Component<CollapsibleProps> {
       </div>
       : null;
 
-    return [
-      <style>{styles}</style>,
+    return (
       <div className={wrapperClassName}>
         <label className={headerClassName} onClick={this.handleStateChange}>
           <slot name="title" />
         </label>
         {content}
       </div>
-    ];
+    );
   }
 
   private handleStateChange( event: Event ) {
-    this.isOpened = !this.isOpened;
 
+    props( this, { isOpened: !this.isOpened } );
+
+    // TODO: we should return boolean instead
     emit( this, 'stateChanged', {
       detail: {
         opened: this.isOpened,
@@ -101,4 +124,7 @@ export class Collapsible extends Component<CollapsibleProps> {
   }
 }
 
-customElements.define( Collapsible.is, Collapsible );
+// TODO: Deprecated remove when accordion is refactored
+export {
+  Collapsible
+}
