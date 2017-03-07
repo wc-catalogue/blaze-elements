@@ -1,5 +1,4 @@
 import { h, Component, prop } from 'skatejs';
-import { bind } from 'decko';
 import { GenericEvents, customElement } from '../_helpers';
 import { Calendar } from './index';
 
@@ -33,6 +32,11 @@ export class Demo extends Component<void> {
     }
   };
 
+  constructor() {
+    super();
+    this.dateChangeHandler = this.dateChangeHandler.bind( this );
+  }
+
   renderCallback() {
     return (
       <fieldset>
@@ -53,7 +57,6 @@ export class Demo extends Component<void> {
     );
   }
 
-  @bind
   private dateChangeHandler( event: GenericEvents.CustomChangeEvent<Date> ) {
     this.selectedDate = event.detail.value;
   }
