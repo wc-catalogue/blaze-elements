@@ -1,16 +1,11 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
 import { Input } from './index';
+import { customElement, prop } from '@blaze-elements/common';
 
+@customElement( 'bl-input-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-input-demo'; }
 
-  static get props() {
-    return {
-      errorValue: prop.string()
-    };
-  }
-
-  errorValue = 'error state';
+  @prop( { type: String } ) errorValue = 'error state';
 
   constructor() {
     super();
@@ -72,5 +67,3 @@ export class Demo extends Component<void> {
     console.log( message );
   }
 }
-
-customElements.define( Demo.is, Demo );

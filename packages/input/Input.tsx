@@ -1,15 +1,16 @@
-import { h, Component, prop, emit } from 'skatejs';
+import { h, Component, emit } from 'skatejs';
 import styles from './Input.scss';
 import {
   Size,
   cssClassForSize,
   css,
-  GenericTypes,
-  GenericEvents
+  GenericEvents,
+  prop,
+  shadyCssStyles
 } from '@blaze-elements/common';
 
 
-type TypesType = {
+export type TypesType = {
   text: string,
   password: string,
   reset: string,
@@ -17,86 +18,47 @@ type TypesType = {
   number: string
 };
 
-type InputProps = Props & EventProps;
-type EventProps = {
+export type InputProps = Props & EventProps;
+export type EventProps = {
   onKeyup?: GenericEvents.KeyupHandler,
   onFocus?: GenericEvents.FocusHandler,
   onBlur?: GenericEvents.BlurHandler,
   onChange?: GenericEvents.CustomChangeHandler<string>,
 };
-type Events = {
+export type Events = {
   keyup?: GenericEvents.KeyupHandler,
   focus?: GenericEvents.FocusHandler,
   blur?: GenericEvents.BlurHandler,
   change?: GenericEvents.CustomChangeHandler<string>,
 };
-type Props = {
+export type Props = {
   value: string,
   valid?: string,
   placeholder?: string,
-  disabled?: boolean,
+  disabled?: boolean | null,
   inputSize?: keyof Size,
   type?: keyof TypesType
 };
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'bl-input': GenericTypes.IntrinsicCustomElement<InputProps> & GenericTypes.IntrinsicBoreElement<Props, Events>
-    }
-  }
-}
+@shadyCssStyles()
+export default class Input extends Component<InputProps> {
 
-export class Input extends Component<InputProps> {
-  static get is() { return 'bl-input'; }
+  get css() { return styles; }
 
-  static get props() {
-    return {
-      value: prop.string( {
-        attribute: {
-          source: true
-        }
-      } ),
-      valid: prop.string( {
-        attribute: {
-          source: true
-        }
-      } ),
-      placeholder: prop.string( {
-        attribute: {
-          source: true
-        }
-      } ),
-      disabled: prop.boolean( {
-        attribute: {
-          source: true
-        }
-      } ),
-      type: prop.string( {
-        attribute: {
-          source: true
-        }
-      } ),
-      inputSize: prop.string( {
-        attribute: {
-          source: true
-        }
-      } ),
-    };
-  }
+  @prop( { type: String, attribute: { source: true } } ) value: string;
+  @prop( { type: String, attribute: { source: true } } ) placeholder: string;
+  @prop( { type: String, attribute: { source: true } } ) type = 'text';
+  @prop( { type: String, attribute: { source: true } } ) inputSize: Size;
+  @prop( { type: String, attribute: { source: true } } ) valid: string;
+  // @prop( { type: Boolean, attribute: { source: true } } ) disabled: boolean;
+
+  disabled: boolean | null = null;
 
   static get events() {
     return {
       change: 'change',
     };
   }
-
-  valid: string;
-  value: string;
-  inputSize: Size;
-  placeholder: string;
-  type = 'text';
-  disabled: boolean;
 
   constructor() {
     super();
@@ -116,7 +78,6 @@ export class Input extends Component<InputProps> {
     );
 
     return [
-      <style>{styles}</style>,
       <input
         className={className}
         type={type}
