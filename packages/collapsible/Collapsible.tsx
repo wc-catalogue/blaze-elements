@@ -114,7 +114,7 @@ export default class Collapsible extends Component<CollapsibleProps> {
 
     props( this, { isOpened: !this.isOpened } );
 
-    // TODO: we should return boolean instead
+    // TODO: we should emit single boolean instead
     emit( this, 'stateChanged', {
       detail: {
         opened: this.isOpened,
