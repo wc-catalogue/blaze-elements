@@ -1,12 +1,23 @@
 import styles from './Breadcrumb.scss';
 import { h, Component } from 'skatejs';
-import { BreadcrumbItem } from './Breadcrumb-item';
+import { shadyCssStyles } from '@blaze-elements/common';
 
-interface BreadcrumbProps { }
+import BreadcrumbItem from './BreadcrumbItem';
 
-export class Breadcrumb extends Component<BreadcrumbProps> {
+export type BreadcrumbProps = Props & EventProps;
 
-  static get is() { return 'bl-breadcrumb'; }
+export type Attrs = {};
+
+export type Props = {};
+
+export type EventProps = {};
+
+export type Events = {};
+
+@shadyCssStyles()
+export default class Breadcrumb extends Component<BreadcrumbProps> {
+
+  get css() { return styles; }
 
   renderCallback() {
     const items = this.getElementsByTagName( 'bl-breadcrumb-item' );
@@ -16,13 +27,10 @@ export class Breadcrumb extends Component<BreadcrumbProps> {
       lastItem.isLast = true;
     }
 
-    return [
-      <style>{styles}</style>,
+    return (
       <ol className="c-breadcrumbs">
         <slot />
       </ol>
-    ];
+    );
   }
 }
-
-customElements.define( Breadcrumb.is, Breadcrumb );
