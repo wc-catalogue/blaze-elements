@@ -1,45 +1,67 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
 import styles from './Progress.scss';
 import {
   ColorType,
   cssClassForColorType,
   Size,
   cssClassForSize,
-  css
+  css,
+  prop,
+  shadyCssStyles
 } from '@blaze-elements/common';
 
+export type ProgressProps = Props & EventProps;
 
-// public
-interface ProgressProps {
-  value: number,
+export type Attrs = {
+  value?: number,
+  color?: ColorType,
+  'display-size'?: keyof Size,
+  rounded?: boolean,
+};
+
+export type Props = {
+  value?: number,
   color?: ColorType,
   displaySize?: keyof Size,
   rounded?: boolean,
-}
+};
 
-export class Progress extends Component<ProgressProps> {
-  static get is() { return 'bl-progress'; }
-  static get props() {
-    return {
-      value: prop.number( {
-        attribute: true
-      } ),
-      color: prop.string( {
-        attribute: true
-      } ),
-      displaySize: prop.string( {
-        attribute: true
-      } ),
-      rounded: prop.boolean( {
-        attribute: true
-      } )
-    };
-  }
+export type EventProps = {};
 
-  value: number;
-  color: ColorType;
-  displaySize: Size;
-  rounded: boolean;
+export type Events = {};
+
+@shadyCssStyles()
+export default class Progress extends Component<ProgressProps> {
+
+  @prop( {
+    type: Number,
+    attribute: {
+      source: true
+    }
+  } ) value: number;
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) color: ColorType;
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) displaySize: Size;
+
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) rounded: boolean;
+
+  get css() { return styles; }
 
   renderCallback() {
     const { color, displaySize, value, rounded } = this;
@@ -63,18 +85,12 @@ export class Progress extends Component<ProgressProps> {
       width: `${value}%`
     } as CSSStyleDeclaration;
 
-    return [
-      <style>{styles}</style>,
+    return (
       <div className={className}>
         <div className={barClassName} style={cssWidth}>
           <slot />
         </div>
       </div>
-    ];
+    );
   }
 }
-
-
-customElements.define( Progress.is, Progress );
-
-
