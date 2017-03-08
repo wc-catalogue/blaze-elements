@@ -6670,13 +6670,7 @@ right-pad@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/right-pad/-/right-pad-1.0.1.tgz#8ca08c2cbb5b55e74dafa96bf7fd1a27d568c8d0"
 
-rimraf@2, rimraf@^2.5.4:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.0.tgz#89b8a0fe432b9ff9ec9a925a00b6cdb3a91bbada"
-  dependencies:
-    glob "^7.0.5"
-
-rimraf@2.6.1, rimraf@^2.4.4:
+rimraf@2, rimraf@2.6.1, rimraf@^2.4.4, rimraf@^2.5.4:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.1.tgz#c2338ec643df7a1b7fe5c54fa86f57428a55f33d"
   dependencies:
@@ -7492,9 +7486,9 @@ term-size@^0.1.0:
   dependencies:
     execa "^0.4.0"
 
-"test-fixture@github:polymerelements/test-fixture":
+test-fixture@PolymerElements/test-fixture:
   version "3.0.0-rc.1"
-  resolved "https://codeload.github.com/polymerelements/test-fixture/tar.gz/eb86ce25c850bb20523d47a55d07235f0fad5858"
+  resolved "https://codeload.github.com/PolymerElements/test-fixture/tar.gz/eb86ce25c850bb20523d47a55d07235f0fad5858"
   dependencies:
     web-component-tester "^6.0.0-prerelease.5"
 
@@ -7711,9 +7705,9 @@ typescript-formatter@5.1.1:
     commandpost "^1.0.0"
     editorconfig "^0.13.2"
 
-typescript@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.0.tgz#626f2fc70087d2480f21ebb12c1888288c8614e3"
+typescript@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.1.tgz#4862b662b988a4c8ff691cc7969622d24db76ae9"
 
 typical@^2.6.0:
   version "2.6.0"
