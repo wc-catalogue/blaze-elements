@@ -1,38 +1,28 @@
-import { prop, ComponentProps } from 'skatejs';
 import { ColorType } from './colorTypes';
 import { IS_DEV } from './environment';
 import { scopeCss, Constructable } from './utils';
-
-
+import { prop } from './decorators';
 
 export type ColoredProps = {
   color?: ColorType,
 };
 export function Colored<BC extends Constructable<{}>>( Base: BC ) {
-  return class Colored extends Base {
-    static get props(): ComponentProps<Colored, ColoredProps> {
-      return {
-        ...super.props,
-        color: prop.string<any, ColorType>( { attribute: { source: true } } )
-      };
-    }
-    color?: ColorType;
+  class ColoredCmp extends Base {
+    @prop( { type: String, attribute: { source: true } } ) color?: ColorType;
   };
+
+  return ColoredCmp;
 }
 
 export type DisabledProps = {
   disabled?: boolean,
 };
 export function Disabled<BC extends Constructable<{}>>( Base: BC ) {
-  return class extends Base {
-    static get props(): ComponentProps<any, DisabledProps> {
-      return {
-        ...super.props,
-        disabled: prop.boolean( { attribute: true } )
-      };
-    }
-    disabled?: boolean;
+  class DisabledCmp extends Base {
+    @prop( { type: Boolean, attribute: true } ) disabled?: boolean;
   };
+
+  return DisabledCmp;
 }
 
 
