@@ -30,32 +30,17 @@ declare namespace ShadyCSS {
 
 
 // Custom Elements
-declare const customElements: CustomElementRegistry;
-
-interface CustomElementRegistry {
-  define(
-    name: string, constructor: Function,
-    options?: ElementDefinitionOptions): void;
-  get(name: string): any;
-  whenDefined(name: string): Promise<void>;
-  flush(): void;
-}
-
-interface ElementDefinitionOptions {
-  extends: string;
-}
-
 interface ElementCreationOptions {
   is: string;
 }
 
 interface Window {
-  customElements: CustomElementRegistry;
   ShadyCSS: ShadyCSS.ShadyCssStatic,
 }
 
 interface Document {
   createElement(name: string, options: ElementCreationOptions): HTMLElement;
+  createElement(tagName: 'slot'): HTMLSlotElement;
 }
 
 interface HTMLElement extends OnConnectedCallback, OnDisconnectedCallback, OnAdoptedCallback, OnAttributeChangedCallback {
@@ -89,51 +74,8 @@ interface OnAttributeChangedCallback {
 }
 
 // ShadowDom
-
-interface DocumentOrShadowRoot {
-  getSelection(): Selection;
-  elementFromPoint(x: number, y: number): Element | null;
-  elementsFromPoint(x: number, y: number): Element[];
-  caretPositionFromPoint(x: number, y: number): CaretPosition | null;
-  readonly activeElement: Element | null;
-  readonly styleSheets: StyleSheetList | null;
-}
-
-interface Document extends DocumentOrShadowRoot { }
-interface ShadowRoot extends DocumentOrShadowRoot { }
-
-interface CaretPosition { }
-
-interface ShadowRoot extends DocumentFragment {
-  readonly host: Element;
-  innerHTML: string;
-}
-
-interface Element {
-  attachShadow(shadowRootInitDict: ShadowRootInit): ShadowRoot;
-  readonly assignedSlot: HTMLSlotElement | null;
-  slot: string;
-  readonly shadowRoot: ShadowRoot | null;
-}
-
-interface ShadowRootInit {
-  mode: ShadowRootMode;
-  delegatesFocus?: boolean;  // default false
-}
-
-type ShadowRootMode = 'open' | 'closed';
-
 interface Text {
   readonly assignedSlot: HTMLSlotElement | null;
-}
-
-interface HTMLSlotElement extends HTMLElement {
-  name: string;
-  assignedNodes(options?: AssignedNodesOptions): Node[];
-}
-
-interface AssignedNodesOptions {
-  flatten?: boolean;  // default false
 }
 
 interface EventInit {
