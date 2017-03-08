@@ -1,24 +1,24 @@
 import { mount, h } from 'bore';
 import * as expect from 'expect';
-import { Breadcrumb } from './index';
+import { BreadcrumbItem } from './index';
 
-describe( Breadcrumb.is, () => {
+describe( BreadcrumbItem.is, () => {
 
   describe( `Custom element`, () => {
 
     it( `should be registered`, () => {
 
-      expect( customElements.get( Breadcrumb.is ) ).toBe( Breadcrumb );
+      expect( customElements.get( BreadcrumbItem.is ) ).toBe( BreadcrumbItem );
 
     } );
 
     it( `should render via JSX IntrinsicElement`, () => {
 
       return mount(
-        <bl-breadcrumb />
+        <bl-breadcrumb-item />
       ).wait(( element ) => {
 
-        expect( element.node.localName ).toBe( Breadcrumb.is );
+        expect( element.node.localName ).toBe( BreadcrumbItem.is );
 
       } );
 
@@ -27,10 +27,10 @@ describe( Breadcrumb.is, () => {
     it( `should render via JSX class`, () => {
 
       return mount(
-        <bl-breadcrumb />
+        <bl-breadcrumb-item />
       ).wait(( element ) => {
 
-        expect( element.has( '.c-breadcrumbs' ) ).toBe( true );
+        expect( element.has( '.c-breadcrumbs__crumb' ) ).toBe( true );
 
       } );
 

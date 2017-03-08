@@ -1,13 +1,13 @@
 import { h, Component } from 'skatejs';
-import { Breadcrumb } from './Breadcrumb';
-import { BreadcrumbItem } from './Breadcrumb-item';
 
+import { Breadcrumb, BreadcrumbItem } from './index';
+import { customElement } from '@blaze-elements/common';
+
+@customElement( 'bl-breadcrumb-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-breadcrumb-demo'; }
 
   renderCallback() {
-    return [
-      <style />,
+    return (
       <fieldset>
         <legend>{Breadcrumb.is}</legend>
         <div>
@@ -20,9 +20,6 @@ export class Demo extends Component<void> {
           </Breadcrumb>
         </div>
       </fieldset>
-    ];
+    );
   }
 }
-
-
-customElements.define( Demo.is, Demo );
