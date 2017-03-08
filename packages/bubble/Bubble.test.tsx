@@ -1,16 +1,41 @@
-import { Bubble } from './Bubble';
-
-import { h, mount } from 'bore';
+import * as expect from 'expect';
+import { mount } from 'bore';
+import { h } from '@blaze-elements/common';
+import { Bubble } from './index';
 
 describe( Bubble.is, () => {
 
-  it( 'should render', () => {
+  describe( `Custom element`, () => {
 
-    console.warn( 'Missing tests for Bubble!' );
+    it( `should be registered`, () => {
 
-    return mount(
-      <Bubble />
-    ).wait();
+      expect( customElements.get( Bubble.is ) ).toBe( Bubble );
+
+    } );
+
+    it( `should render via JSX IntrinsicElement`, () => {
+
+      return mount(
+        <bl-bubble />
+      ).wait(( element ) => {
+
+        expect( element.node.localName ).toBe( Bubble.is );
+
+      } );
+
+    } );
+
+    it( `should render via JSX class`, () => {
+
+      return mount(
+        <Bubble />
+      ).wait(( element ) => {
+
+        expect( element.node.localName ).toBe( Bubble.is );
+
+      } );
+
+    } );
 
   } );
 

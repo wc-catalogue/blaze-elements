@@ -1,6 +1,6 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
 import styles from './Bubble.scss';
-import { css } from '@blaze-elements/common';
+import { css, prop, shadyCssStyles } from '@blaze-elements/common';
 
 const BubbleTypes = {
   top: 'top',
@@ -9,33 +9,26 @@ const BubbleTypes = {
   bottom: 'bottom',
 };
 
-type BubbleTypesType = typeof BubbleTypes;
 
-// public
-interface BubbleProps {
-  type?: keyof BubbleTypesType,
+export type BubbleProps = Props & Events;
+export type Props = {
+  type?: keyof typeof BubbleTypes,
   isDisplayed?: boolean,
   disableAutoShowHide?: boolean
-}
+};
+export type Events = {};
 
-export class Bubble extends Component<BubbleProps> {
-  static get is() { return 'bl-bubble'; }
-  static get props() {
-    return {
-      type: prop.string(),
-      isDisplayed: prop.boolean( {
-        attribute: true
-      } ),
-      disableAutoShowHide: prop.boolean()
-    };
-  }
+@shadyCssStyles()
+export default class Bubble extends Component<BubbleProps> {
 
-  type = 'right';
-  isDisplayed = false;
-  disableAutoShowHide = false;
+  @prop( { type: String } ) type = 'right';
+  @prop( { type: Boolean, attribute: { source: true } } ) isDisplayed = false;
+  @prop( { type: Boolean } ) disableAutoShowHide = false;
 
-  connectedCallback() {
-    super.connectedCallback();
+  get css() { return styles; }
+
+  constructor() {
+    super();
     this.handleMouseOver = this.handleMouseOver.bind( this );
     this.handleMouseLeave = this.handleMouseLeave.bind( this );
   }
@@ -52,7 +45,6 @@ export class Bubble extends Component<BubbleProps> {
     );
 
     return [
-      <style>{styles}</style>,
       isDisplayed
         ? (
           <div
@@ -92,5 +84,3 @@ export class Bubble extends Component<BubbleProps> {
   }
 
 }
-
-customElements.define( Bubble.is, Bubble );
