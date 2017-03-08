@@ -1,24 +1,17 @@
-import { h, Component, prop } from 'skatejs';
-import { Progress } from './Progress';
+import { h, Component } from 'skatejs';
+import { customElement, prop } from '@blaze-elements/common';
 
+import { Progress } from './index';
+
+@customElement( 'bl-progress-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-progress-demo'; }
-  static get props() {
-    return {
-      val: prop.number()
-    };
-  }
 
-  val: number;
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.reflectValue = this.reflectValue.bind( this );
-  }
+  @prop( {
+    type: Number
+  } ) val: number;
 
   renderCallback() {
-    return [
-      <style />,
+    return (
       <fieldset>
         <legend>{Progress.is}</legend>
 
@@ -62,12 +55,7 @@ export class Demo extends Component<void> {
         </div>
 
       </fieldset>
-    ];
+    );
   }
 
-  private reflectValue( event: Event ) {
-    this.val = Number.parseInt(( event.currentTarget as HTMLInputElement ).value );
-  }
 }
-
-customElements.define( Demo.is, Demo );
