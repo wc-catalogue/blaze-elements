@@ -1,13 +1,12 @@
 import { h, Component } from 'skatejs';
-import { Collapsible } from './Collapsible';
-import styles from './Collapsible.scss';
+import { Collapsible } from './index';
+import { customElement } from '@blaze-elements/common';
 
+@customElement( 'bl-collapsible-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-collapsible-demo'; }
 
   renderCallback() {
-    return [
-      <style>{styles}</style>,
+    return (
       <fieldset>
         <legend>{Collapsible.is}</legend>
 
@@ -18,9 +17,6 @@ export class Demo extends Component<void> {
           </div>
         </Collapsible>
       </fieldset>
-    ];
+    );
   }
 }
-
-customElements.define( Demo.is, Demo );
-
