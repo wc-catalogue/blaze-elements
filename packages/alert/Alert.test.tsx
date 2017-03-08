@@ -1,16 +1,40 @@
-import { Alert } from './';
-
+import * as expect from 'expect';
 import { h, mount } from 'bore';
+
+import { Alert } from './index';
 
 describe( Alert.is, () => {
 
-  it( 'should render', () => {
+  describe( `Custom element`, () => {
+    it( `should be registered`, () => {
 
-    console.warn( 'Missing tests for Alert!' );
+      expect( customElements.get( Alert.is ) ).toBe( Alert );
 
-    return mount(
-      <Alert />
-    ).wait();
+    } );
+
+    it( `should render via JSX IntrinsicElement`, () => {
+
+      return mount(
+        <bl-alert />
+      ).wait(( element ) => {
+
+        expect( element.node.localName ).toBe( Alert.is );
+
+      } );
+
+    } );
+
+    it( `should render via JSX class`, () => {
+
+      return mount(
+        <Alert isOpen={true} />
+      ).wait(( element ) => {
+
+        expect( element.node.localName ).toBe( Alert.is );
+
+      } );
+
+    } );
 
   } );
 

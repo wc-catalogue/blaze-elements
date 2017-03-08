@@ -1,50 +1,30 @@
-import { h, Component, prop, emit } from 'skatejs';
-
-import { ColorType, cssClassForColorType, css } from '@blaze-elements/common';
-
-// @FIXME this needs to be imported from package import {Button} from '@blaze-elements/button'
-import { Button } from '../button';
-
+import { h, Component, emit } from 'skatejs';
+import { ColorType, cssClassForColorType, css, prop, shadyCssStyles } from '@blaze-elements/common';
 import styles from './Alert.scss';
+import AlertButton from './components/Button';
 
-type AlertProps = Props & EventProps;
-type Props = {
+export type AlertProps = Props & Events;
+export type Props = {
   color?: ColorType,
   isOpen?: boolean,
 };
-type EventProps = {
+export type Events = {
   onAlertClose?: ( ev: CustomEvent ) => void,
 };
 
-// extend JSX.IntrinsicElements namepsace with our definition
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'bl-alert': AlertProps & Partial<HTMLElement>,
-    }
-  }
-}
+@shadyCssStyles()
+export default class Alert extends Component<AlertProps> {
 
-export class Alert extends Component<AlertProps> {
-  static get is() { return 'bl-alert'; }
-  static get props() {
-    return {
-      color: prop.string( {
-        attribute: true
-      } ),
-      isOpen: prop.boolean( {
-        attribute: true
-      } )
-    };
-  }
+  @prop( { type: String, attribute: { source: true } } ) color: ColorType;
+  @prop( { type: Boolean, attribute: { source: true } } ) isOpen = false;
+
   static get events() {
     return {
       alertClose: 'alertClose'
     };
   }
 
-  isOpen?= false;
-  color?: ColorType;
+  get css() { return styles; }
 
   renderCallback() {
     const { color, isOpen } = this;
@@ -52,10 +32,9 @@ export class Alert extends Component<AlertProps> {
     const className = css( 'c-alert', colorClass );
 
     return [
-      <style>{styles}</style>,
       isOpen && (
         <div className={className}>
-          <Button close onClick={this.handleClose}>×</Button>
+          <AlertButton close onClick={this.handleClose}>×</AlertButton>
           <slot />
         </div>
       )

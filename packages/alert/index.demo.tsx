@@ -1,18 +1,15 @@
-import { h, Component, prop, props, define } from 'skatejs';
-import { Alert } from './index';
+import { h, Component, props } from 'skatejs';
+import { customElement, prop } from '@blaze-elements/common';
 
-import { Button } from '../button';
+import { Alert } from './index';
+import AlertButton from './components/Button';
 
 type DemoProps = { isOpen?: boolean };
-export class Demo extends Component<DemoProps> {
-  static get is() { return 'bl-alert-demo'; }
-  static get props() {
-    return {
-      isOpen: prop.boolean()
-    };
-  }
 
-  isOpen = false;
+@customElement( 'bl-alert-demo' )
+export class Demo extends Component<DemoProps> {
+
+  @prop( { type: Boolean } ) isOpen = false;
 
   renderCallback() {
     const { isOpen } = this;
@@ -22,7 +19,7 @@ export class Demo extends Component<DemoProps> {
       <fieldset>
         <legend>{Alert.is}</legend>
 
-        {!isOpen && <Button onClick={this.handleAlertOpen}>Show alerts</Button>}
+        {!isOpen && <AlertButton onClick={this.handleAlertOpen}>Show alerts</AlertButton>}
 
         <div>
           <bl-alert isOpen={this.isOpen} onAlertClose={this.handleAlertClose}>Alert default via dom element</bl-alert>
@@ -41,10 +38,9 @@ export class Demo extends Component<DemoProps> {
   private handleAlertOpen = () => {
     props( this, { isOpen: true } );
   }
+
   private handleAlertClose = () => {
     props( this, { isOpen: false } );
   }
 
 }
-
-define( Demo );
