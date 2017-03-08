@@ -1,48 +1,23 @@
 import styles from './Badge.scss';
-import { h, Component, prop } from 'skatejs';
-import { ColorType, cssClassForColorType, css } from '@blaze-elements/common';
+import { h, Component } from 'skatejs';
+import { ColorType, cssClassForColorType, css, prop, shadyCssStyles } from '@blaze-elements/common';
 
-type BadgeProps = Props;
-type Props = {
+export type BadgeProps = Props & Events;
+export type Props = {
   color?: ColorType,
   rounded?: boolean,
   ghost?: boolean,
 };
+export type Events = {};
 
-// extend JSX.IntrinsicElements namespace with our definition
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'bl-badge': BadgeProps & Partial<HTMLElement>
-    }
-  }
-}
+@shadyCssStyles()
+export default class Badge extends Component<BadgeProps> {
 
-export class Badge extends Component<BadgeProps> {
-  static get is() { return 'bl-badge'; }
-  static get props() {
-    return {
-      color: prop.string( {
-        attribute: {
-          source: true
-        }
-      } ),
-      rounded: prop.boolean( {
-        attribute: {
-          source: true
-        }
-      } ),
-      ghost: prop.boolean( {
-        attribute: {
-          source: true
-        }
-      } ),
-    };
-  }
+  @prop( { type: String, attribute: { source: true } } ) color: ColorType;
+  @prop( { type: Boolean, attribute: { source: true } } ) rounded: boolean;
+  @prop( { type: Boolean, attribute: { source: true } } ) ghost: boolean;
 
-  color: ColorType;
-  rounded: boolean;
-  ghost: boolean;
+  get css() { return styles; }
 
   renderCallback() {
 
@@ -60,7 +35,6 @@ export class Badge extends Component<BadgeProps> {
     );
 
     return [
-      <style>{styles}</style>,
       <span className={className}><slot /></span>
     ];
   }

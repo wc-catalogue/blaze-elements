@@ -21,6 +21,6 @@
     "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=badge"
   },
   "dependencies": {
-    "@blaze-elements/common": "^1.0.0"
+    "@blaze-elements/common": "1.0.1"
   }
 }
