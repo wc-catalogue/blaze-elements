@@ -1,25 +1,27 @@
 import { h, Component } from 'skatejs';
 import styles from './KeyboardKeys.scss';
-import { css } from '@blaze-elements/common';
+import { shadyCssStyles } from '@blaze-elements/common';
 
-// public
-interface KeyboardKeysProps {
-}
+export type KeyboardKeysProps = Props & EventProps;
 
-export class KeyboardKeys extends Component<KeyboardKeysProps> {
-  static get is() { return 'bl-keyboard-keys'; }
+export type KeyboardKeysAttrs = {};
+
+export type Props = {};
+
+export type EventProps = {};
+
+export type KeyboardKeysEvents = {};
+
+@shadyCssStyles()
+export default class KeyboardKeys extends Component<KeyboardKeysProps> {
+
+  get css() { return styles; }
 
   renderCallback() {
-    const className = css(
-      'c-kbd'
-    );
-    return [
-      <style>{styles}</style>,
-      <kbd className={className}>
+    return (
+      <kbd class="c-kbd">
         <slot />
       </kbd>
-    ];
+    );
   }
 }
-
-customElements.define( KeyboardKeys.is, KeyboardKeys );

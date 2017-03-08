@@ -1,25 +1,27 @@
 import { h, Component } from 'skatejs';
 import styles from './MonospaceText.scss';
-import { css } from '@blaze-elements/common';
+import { shadyCssStyles } from '@blaze-elements/common';
 
-// public
-interface MonospaceTextProps {
-}
+export type MonospaceTextProps = Props & EventProps;
 
-export class MonospaceText extends Component<MonospaceTextProps> {
-  static get is() { return 'bl-monospace-text'; }
+export type MonospaceTextAttrs = {};
+
+export type Props = {};
+
+export type EventProps = {};
+
+export type MonospaceTextEvents = {};
+
+@shadyCssStyles()
+export default class MonospaceText extends Component<MonospaceTextProps> {
+
+  get css() { return styles; }
 
   renderCallback() {
-    const className = css(
-      'c-text--mono'
-    );
-    return [
-      <style>{styles}</style>,
-      <span className={className}>
+    return (
+      <span class="c-text--mono">
         <slot />
       </span>
-    ];
+    );
   }
 }
-
-customElements.define( MonospaceText.is, MonospaceText );

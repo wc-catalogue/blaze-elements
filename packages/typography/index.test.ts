@@ -1,1 +1,10 @@
-import './Typography.test';
+import './Abbreviation.test';
+import './Blockquote.test';
+import './Code.test';
+import './HighlightedText.test';
+import './KeyboardKeys.test';
+import './Link.test';
+import './LoudText.test';
+import './MonospaceText.test';
+import './Paragraph.test';
+import './QuietText.test';

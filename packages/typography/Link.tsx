@@ -1,15 +1,17 @@
-import { h, Component, prop } from 'skatejs';
-import { ColorType, cssClassForColorType, css } from '@blaze-elements/common';
-import style from './Link.scss';
+import { h, Component } from 'skatejs';
+import { ColorType, cssClassForColorType, css, prop, shadyCssStyles } from '@blaze-elements/common';
+import styles from './Link.scss';
 
-const LinkTargets = {
+export const LinkTargets = {
   _self: '_self',
   _blank: '_blank',
   _parent: '_parent',
   _top: '_top',
 };
 
-interface LinkProps {
+export type LinkProps = Props & EventProps;
+
+export type LinkAttrs = {
   href?: string,
   download?: string,
   hreflang?: string,
@@ -17,48 +19,75 @@ interface LinkProps {
   target?: keyof typeof LinkTargets | string,
   type?: string,
   color?: ColorType,
-}
+};
 
-export class Link extends Component<LinkProps> {
+export type Props = {
+  href?: string,
+  download?: string,
+  hreflang?: string,
+  rel?: string,
+  target?: keyof typeof LinkTargets | string,
+  type?: string,
+  color?: ColorType,
+};
 
-  static get is() { return 'bl-link'; }
+export type EventProps = {};
 
-  static get props() {
-    return {
-      href: prop.string( {
-        attribute: true
-      } ),
-      download: prop.string( {
-        attribute: true
-      } ),
-      hreflang: prop.string( {
-        attribute: true
-      } ),
-      referrerpolicy: prop.string( {
-        attribute: true
-      } ),
-      rel: prop.string( {
-        attribute: true
-      } ),
-      target: prop.string( {
-        attribute: true
-      } ),
-      type: prop.string( {
-        attribute: true
-      } ),
-      color: prop.string( {
-        attribute: true
-      } )
-    };
-  }
+export type LinkEvents = {};
 
-  href: string;
-  download: string;
-  hreflang: string;
-  rel: string;
-  target: string;
-  type: string;
-  color: ColorType;
+@shadyCssStyles()
+export default class Link extends Component<LinkProps> {
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) href: string;
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) download: string;
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) hreflang: string;
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) rel: string;
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) target: string;
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) type: string;
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) color: ColorType;
+
+  get css() { return styles; }
 
   renderCallback() {
 
@@ -66,8 +95,7 @@ export class Link extends Component<LinkProps> {
     const colorClass = cssClassForColorType( 'c-link', color );
     const className = css( 'c-link', colorClass );
 
-    return [
-      <style>{style}</style>,
+    return (
       <a
         className={className}
         href={href}
@@ -79,9 +107,8 @@ export class Link extends Component<LinkProps> {
       >
         <slot />
       </a>
-    ];
+    );
 
   }
 
 }
-customElements.define( Link.is, Link );

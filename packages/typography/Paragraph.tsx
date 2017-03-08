@@ -1,25 +1,27 @@
 import { h, Component } from 'skatejs';
 import styles from './Paragraph.scss';
-import { css } from '@blaze-elements/common';
+import { shadyCssStyles } from '@blaze-elements/common';
 
-// public
-interface ParagraphProps {
-}
+export type ParagraphProps = Props & EventProps;
 
-export class Paragraph extends Component<ParagraphProps> {
-  static get is() { return 'bl-paragraph'; }
+export type ParagraphAttrs = {};
+
+export type Props = {};
+
+export type EventProps = {};
+
+export type ParagraphEvents = {};
+
+@shadyCssStyles()
+export default class Paragraph extends Component<ParagraphProps> {
+
+  get css() { return styles; }
 
   renderCallback() {
-    const className = css(
-      'c-paragraph'
-    );
-    return [
-      <style>{styles}</style>,
-      <p className={className}>
+    return (
+      <p class="c-paragraph">
         <slot />
       </p>
-    ];
+    );
   }
 }
-
-customElements.define( Paragraph.is, Paragraph );
