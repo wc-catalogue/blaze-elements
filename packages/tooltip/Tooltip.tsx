@@ -1,48 +1,49 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
 import styles from './Tooltip.scss';
-import { css } from '@blaze-elements/common';
+import { css, prop, shadyCssStyles } from '@blaze-elements/common';
 
-const TooltipTypes = {
+export const TooltipTypes = {
   top: 'top',
   left: 'left',
   right: 'right',
   bottom: 'bottom',
 };
 
-// public
-type TooltipProps = {
+export type TooltipProps = Props & EventProps;
+
+export type Attrs = {
   type?: keyof typeof TooltipTypes,
-  label: string,
+  label?: string,
 };
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'bl-tooltip': TooltipProps & Partial<HTMLElement>,
+export type Props = {
+  type?: keyof typeof TooltipTypes,
+  label?: string,
+};
+
+export type EventProps = {};
+
+export type Events = {};
+
+@shadyCssStyles()
+export default class Tooltip extends Component<TooltipProps> {
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    },
+    default: 'right'
+  } ) type: keyof typeof TooltipTypes;
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
     }
-  }
-};
+  } ) label: string;
 
-export class Tooltip extends Component<TooltipProps> {
-  static get is() { return 'bl-tooltip'; }
-  static get props() {
-    return {
-      type: prop.string( {
-        attribute: {
-          source: true
-        },
-        default: 'right'
-      } ),
-      label: prop.string( {
-        attribute: {
-          source: true
-        }
-      } )
-    };
-  }
-
-  type: string;
-  label: string;
+  get css() { return styles; }
 
   renderCallback() {
     const { label, type } = this;
@@ -55,15 +56,14 @@ export class Tooltip extends Component<TooltipProps> {
       }
     );
 
-    return [
-      <style>{styles}</style>,
+    return (
       <span
         className={className}
         aria-label={label}
       >
         <slot />
       </span>
-    ];
+    );
   }
 
 }

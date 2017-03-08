@@ -1,12 +1,12 @@
 import { h, Component } from 'skatejs';
 import { Tooltip } from './index';
+import { customElement } from '@blaze-elements/common';
 
+@customElement( 'bl-tooltip-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-tooltip-demo'; }
 
   renderCallback() {
-    return [
-      <style />,
+    return (
       <fieldset>
         <legend>{Tooltip.is}</legend>
 
@@ -18,8 +18,6 @@ export class Demo extends Component<void> {
         </div>
 
       </fieldset>
-    ];
+    );
   }
 }
-
-customElements.define( Demo.is, Demo );

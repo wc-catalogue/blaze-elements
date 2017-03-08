@@ -1,9 +1,19 @@
-import { define } from 'skatejs';
 
-import { Tooltip } from './Tooltip';
+import { customElement, GenericTypes } from '@blaze-elements/common';
+import RawTooltip, { TooltipProps, Attrs, Events } from './Tooltip';
 
-// export for public access to Skate Class
-export { Tooltip } from './Tooltip';
+const Tooltip = customElement( 'bl-tooltip' )( RawTooltip ) as typeof RawTooltip;
 
-// register WebComponent by our name
-define( Tooltip );
+export {
+  Tooltip
+};
+
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bl-tooltip': GenericTypes.IntrinsicCustomElement<TooltipProps>
+      & GenericTypes.IntrinsicBoreElement<Attrs, Events>
+    }
+  }
+}
