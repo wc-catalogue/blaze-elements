@@ -1,7 +1,7 @@
 import { h, Component } from 'skatejs';
 
 import { GenericEvents, EventEmitter, event, prop } from '@blaze-elements/common';
-import { Input } from '@blaze-elements/input';
+import Input from '@blaze-elements/input/Input';
 
 import styles from './Tag.scss';
 import { Tag } from './Tag';
