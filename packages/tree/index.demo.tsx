@@ -1,13 +1,12 @@
 import { h, Component } from 'skatejs';
-import { Tree } from './Tree';
-import { TreeItem } from './Tree-item';
+import { Tree, TreeItem } from './index';
+import { customElement } from '@blaze-elements/common';
 
+@customElement( 'bl-tree-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-tree-demo'; }
 
   renderCallback() {
-    return [
-      <style />,
+    return (
       <fieldset>
         <legend>{Tree.is}</legend>
         <div>
@@ -44,9 +43,6 @@ export class Demo extends Component<void> {
           </Tree>
         </div>
       </fieldset>
-    ];
+    );
   }
 }
-
-
-customElements.define( Demo.is, Demo );

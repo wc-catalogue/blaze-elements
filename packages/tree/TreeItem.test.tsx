@@ -1,24 +1,24 @@
 import { mount, h } from 'bore';
 import * as expect from 'expect';
-import { Tree } from './index';
+import { TreeItem } from './index';
 
-describe( Tree.is, () => {
+describe( TreeItem.is, () => {
 
   describe( `Custom element`, () => {
 
     it( `should be registered`, () => {
 
-      expect( customElements.get( Tree.is ) ).toBe( Tree );
+      expect( customElements.get( TreeItem.is ) ).toBe( TreeItem );
 
     } );
 
     it( `should render via JSX IntrinsicElement`, () => {
 
       return mount(
-        <bl-tree />
+        <bl-tree-item />
       ).wait(( element ) => {
 
-        expect( element.node.localName ).toBe( Tree.is );
+        expect( element.node.localName ).toBe( TreeItem.is );
 
       } );
 
@@ -27,10 +27,10 @@ describe( Tree.is, () => {
     it( `should render via JSX class`, () => {
 
       return mount(
-        <bl-tree />
+        <bl-tree-item />
       ).wait(( element ) => {
 
-        expect( element.has( '.c-tree' ) ).toBe( true );
+        expect( element.has( '.c-tree__item' ) ).toBe( true );
 
       } );
 
