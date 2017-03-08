@@ -1,69 +1,79 @@
 import styles from './Toggle.scss';
-import { h, Component, prop, props, emit } from 'skatejs';
+import { h, Component, props, emit } from 'skatejs';
 import {
   ColorType,
   cssClassForColorType,
   css,
-  GenericTypes,
-  GenericEvents
+  GenericEvents,
+  prop,
+  shadyCssStyles
 } from '@blaze-elements/common';
 
-type ToggleProps = Props & EventProps;
-type EventProps = {
-  onChange?: GenericEvents.CustomChangeHandler<string>,
-};
-type Events = {
-  change?: GenericEvents.CustomChangeHandler<string>,
-};
-type Props = {
+export type ToggleProps = Props & EventProps;
+
+export type Attrs = {
   disabled?: boolean,
   checked?: boolean,
   color?: ColorType,
 };
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'bl-toggle': GenericTypes.IntrinsicCustomElement<ToggleProps> & GenericTypes.IntrinsicBoreElement<Props, Events>
-    }
-  }
-}
+export type EventProps = {
+  onChange?: GenericEvents.CustomChangeHandler<string>,
+};
 
-export class Toggle extends Component<ToggleProps> {
-  static get is() { return 'bl-toggle'; }
-  static get props() {
-    return {
-      disabled: prop.boolean( {
-        attribute: true
-      } ),
-      checked: prop.boolean( {
-        attribute: true
-      } ),
-      color: prop.string( {
-        attribute: true
-      } )
-    };
-  }
+export type Events = {
+  change?: GenericEvents.CustomChangeHandler<string>,
+};
+
+export type Props = {
+  disabled?: boolean,
+  checked?: boolean,
+  color?: ColorType,
+};
+
+@shadyCssStyles()
+export default class Toggle extends Component<ToggleProps> {
+
   static get events() {
     return {
       CHANGE: 'change'
     };
   }
-  disabled = false;
-  checked = false;
-  color: ColorType;
+
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) disabled = false;
+
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) checked = false;
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } ) color: ColorType;
+
+  get css() { return styles; }
 
   connectedCallback() {
     super.connectedCallback();
     this.handleChecked = this.handleChecked.bind( this );
   }
+
   renderCallback() {
     const { disabled, checked, color } = this;
     const colorClass = cssClassForColorType( 'c-toggle', color );
     const className = css( 'c-toggle', colorClass );
 
-    return [
-      <style>{styles}</style>,
+    return (
       <label class={className}>
         <input
           type="checkbox"
@@ -76,7 +86,7 @@ export class Toggle extends Component<ToggleProps> {
         </div>
         <slot />
       </label>
-    ];
+    );
   }
   private handleChecked( event: Event ) {
     event.stopPropagation();
