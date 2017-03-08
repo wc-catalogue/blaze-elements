@@ -1,6 +1,6 @@
-import { h, Component, prop, ComponentProps } from 'skatejs';
+import { h, Component } from 'skatejs';
+import { css, prop, shadyCssStyles } from '@blaze-elements/common';
 import styles from './Drawer.scss';
-import { css } from '@blaze-elements/common';
 
 export const DrawerPositions = {
   top: 'top',
@@ -9,41 +9,22 @@ export const DrawerPositions = {
   right: 'right',
 };
 
-export type DrawerPositionsType = typeof DrawerPositions;
-
-export interface DrawerProps {
-  position?: keyof DrawerPositionsType,
+export type DrawerProps = Props & Events;
+export type Props = {
+  position?: keyof typeof DrawerPositions,
   visible?: boolean,
-
   floating?: boolean,
-}
+};
+export type Events = {};
 
+@shadyCssStyles()
 export default class Drawer extends Component<DrawerProps> {
 
-  static get is() { return 'bl-drawer'; }
-  static get props(): ComponentProps<Drawer, DrawerProps> {
-    return {
-      position: prop.string<Drawer, keyof DrawerPositionsType>( {
-        attribute: {
-          source: true
-        }
-      } ),
-      visible: prop.boolean( {
-        attribute: {
-          source: true
-        }
-      } ),
-      floating: prop.boolean( {
-        attribute: {
-          source: true
-        }
-      } )
-    };
-  }
+  @prop( { type: String, attribute: { source: true } } ) position = 'top';
+  @prop( { type: Boolean, attribute: { source: true } } ) visible: boolean;
+  @prop( { type: Boolean, attribute: { source: true } } ) floating = true;
 
-  position = 'top';
-  visible: boolean;
-  floating = true;
+  get css() { return styles; }
 
   renderCallback() {
 
@@ -61,7 +42,6 @@ export default class Drawer extends Component<DrawerProps> {
       } );
 
     return [
-      <style>{styles}</style>,
       <div className={className}>
         <slot />
       </div>

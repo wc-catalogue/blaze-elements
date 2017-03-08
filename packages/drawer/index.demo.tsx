@@ -1,6 +1,7 @@
 import { h, Component } from 'skatejs';
+import { customElement } from '@blaze-elements/common';
 import { Drawer } from './index';
-import { Card } from '@blaze-elements/card';
+import { Card, CardHeader, CardFooter, CardContent } from '@blaze-elements/card';
 import { Button } from '@blaze-elements/button';
 
 const customDivStyleBase = {
@@ -14,8 +15,8 @@ const customDivStyle = {
   marginTop: '10px'
 } as CSSStyleDeclaration;
 
+@customElement( 'bl-drawer-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-drawer-demo'; }
 
   renderCallback() {
     return [
@@ -32,36 +33,36 @@ export class Demo extends Component<void> {
         <div style={customDivStyleBase}>
           <Drawer visible>
             <Card>
-              <span slot="heading">Drawer from top</span>
-              <span slot="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, reiciendis.</span>
-              <span slot="footer"><Button>Button</Button></span>
+              <CardHeader>Drawer from top</CardHeader>
+              <CardContent>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, reiciendis.</CardContent>
+              <CardFooter><Button>Button</Button></CardFooter>
             </Card>
           </Drawer>
         </div>
         <div style={customDivStyle}>
           <Drawer visible position="bottom">
             <Card>
-              <span slot="heading">Drawer from bottom</span>
-              <span slot="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, reiciendis.</span>
-              <span slot="footer"><Button>Button</Button></span>
+              <CardHeader>Drawer from bottom</CardHeader>
+              <CardContent>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, reiciendis.</CardContent>
+              <CardFooter><Button>Button</Button></CardFooter>
             </Card>
           </Drawer>
         </div>
         <div style={customDivStyle}>
           <Drawer visible position="left">
             <Card>
-              <span slot="heading">Drawer from left</span>
-              <span slot="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, reiciendis.</span>
-              <span slot="footer"><Button>Button</Button></span>
+              <CardHeader>Drawer from left</CardHeader>
+              <CardContent>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, reiciendis.</CardContent>
+              <CardFooter><Button>Button</Button></CardFooter>
             </Card>
           </Drawer>
         </div>
         <div style={customDivStyle}>
           <Drawer visible position="right">
             <Card>
-              <span slot="heading">Drawer from right</span>
-              <span slot="body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, reiciendis.</span>
-              <span slot="footer"><Button>Button</Button></span>
+              <CardHeader>Drawer from right</CardHeader>
+              <CardContent>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, reiciendis.</CardContent>
+              <CardFooter><Button>Button</Button></CardFooter>
             </Card>
           </Drawer>
         </div>
@@ -70,5 +71,3 @@ export class Demo extends Component<void> {
     ];
   }
 }
-
-customElements.define( Demo.is, Demo );
