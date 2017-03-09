@@ -1,23 +1,32 @@
 import styles from './Tree.scss';
-import { h, Component, prop } from 'skatejs';
-import { css } from '@blaze-elements/common';
+import { h, Component, props } from 'skatejs';
+import { css, shadyCssStyles, prop } from '@blaze-elements/common';
 
-interface TreeItemProps {
+export type TreeItemProps = Props & EventProps;
+
+export type Attrs = {
   isOpen?: boolean,
-}
-export class TreeItem extends Component<TreeItemProps> {
+};
 
-  static get is() { return 'bl-tree-item'; }
+export type Props = {
+  isOpen?: boolean,
+};
 
-  static get props() {
-    return {
-      isOpen: prop.boolean( {
-        attribute: true
-      } ),
-    };
-  }
+export type EventProps = {};
 
-  isOpen: boolean;
+export type Events = {};
+
+@shadyCssStyles()
+export default class TreeItem extends Component<TreeItemProps> {
+
+  get css() { return styles; }
+
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) isOpen: boolean;
 
   connectedCallback() {
     super.connectedCallback();
@@ -34,19 +43,16 @@ export class TreeItem extends Component<TreeItemProps> {
         'c-tree__item--expanded': isOpen && hasSubItem,
       }
     );
-    return [
-      <style>{styles}</style>,
+    return (
       <li className={className} onClick={this.handleClick}>
         <slot />
         {isOpen ? <slot name="subItems" /> : null}
       </li>
-    ];
+    );
   }
 
   private handleClick() {
-    this.isOpen = !this.isOpen;
+    props( this, { isOpen: !this.isOpen } );
   }
 
 }
-
-customElements.define( TreeItem.is, TreeItem );

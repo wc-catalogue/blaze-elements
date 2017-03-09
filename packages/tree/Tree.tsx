@@ -1,19 +1,28 @@
 import styles from './Tree.scss';
 import { h, Component } from 'skatejs';
+import { shadyCssStyles } from '@blaze-elements/common';
 
-interface TreeProps { }
+export type TreeProps = Props & EventProps;
 
-export class Tree extends Component<TreeProps> {
+export type Attrs = {};
 
-  static get is() { return 'bl-tree'; }
+export type Props = {};
+
+export type EventProps = {};
+
+export type Events = {};
+
+@shadyCssStyles()
+export default class Tree extends Component<TreeProps> {
+
+  get css() { return styles; }
 
   renderCallback() {
 
-    return [
-      <style>{styles}</style>,
+    return (
       <ul className="c-tree"><slot /></ul>
-    ];
-  }
-}
+    );
 
-customElements.define( Tree.is, Tree );
+  }
+
+}
