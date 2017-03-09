@@ -1,25 +1,26 @@
 import * as expect from 'expect';
 import { mount } from 'bore';
 import { h } from '@blaze-elements/common';
-import { Tag } from './index';
+import { TagSelector } from './index';
 
 
-describe( Tag.is, () => {
+describe( TagSelector.is, () => {
 
   describe( `Custom element`, () => {
+
     it( `should be registered`, () => {
 
-      expect( customElements.get( Tag.is ) ).toBe( Tag );
+      expect( customElements.get( TagSelector.is ) ).toBe( TagSelector );
 
     } );
 
     it( `should render via JSX IntrinsicElement`, () => {
 
       return mount(
-        <bl-tag label="tagLabel" />
+        <bl-tag-selector />
       ).wait(( element ) => {
 
-        expect( element.node.localName ).toBe( Tag.is );
+        expect( element.node.localName ).toBe( TagSelector.is );
 
       } );
 
@@ -28,10 +29,10 @@ describe( Tag.is, () => {
     it( `should render via JSX class`, () => {
 
       return mount(
-        <Tag label={'tagLabel'} />
+        <TagSelector />
       ).wait(( element ) => {
 
-        expect( element.has( '.c-tag' ) ).toBe( true );
+        expect( element.has( '.c-tags' ) ).toBe( true );
 
       } );
 

@@ -1,16 +1,11 @@
-import { h, Component, prop } from 'skatejs';
-import { Tag } from './Tag';
-import { TagSelector } from './TagSelector';
+import { h, Component } from 'skatejs';
+import { customElement, prop } from '@blaze-elements/common';
+import { Tag, TagSelector } from './index';
 
+@customElement( 'bl-tag-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-tag-demo'; }
-  static get props() {
-    return {
-      tags: prop.array()
-    };
-  }
 
-  tags = [ 'milk', 'bread', 'chocolate' ];
+  @prop( { type: Array } ) tags = [ 'milk', 'bread', 'chocolate' ];
 
   renderCallback() {
 
@@ -47,5 +42,3 @@ export class Demo extends Component<void> {
     this.tags = [ ...event.detail.tags ];
   }
 }
-
-customElements.define( Demo.is, Demo );

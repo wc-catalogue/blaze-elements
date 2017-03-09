@@ -1,29 +1,33 @@
-import { h, Component, emit, prop } from 'skatejs';
+import { h, Component, emit, } from 'skatejs';
+import { GenericEvents, prop, shadyCssStyles } from '@blaze-elements/common';
 import styles from './Tag.scss';
 
-// public
-interface TagProps {
-  onTagClose?: Function,
+export type TagProps = Props & EventProps;
+
+export type Props = {
   label: string,
-}
+};
 
-export class Tag extends Component<TagProps> {
+export type EventProps = {
+  onTagClose?: GenericEvents.CustomChangeHandler<string>,
+};
 
-  static get is() { return 'bl-tag'; }
+export type Events = {
+  'tag-close': GenericEvents.CustomChangeHandler<string>
+};
+
+@shadyCssStyles()
+export default class Tag extends Component<TagProps> {
+
+  get css() { return styles; }
+
   static get events() {
     return {
       TAG_CLOSE: 'tagClose'
     };
   }
-  static get props() {
-    return {
-      label: prop.string( {
-        attribute: true
-      } )
-    };
-  }
 
-  label = '';
+  @prop( { type: String, attribute: { source: true } } ) label = '';
 
   constructor() {
     super();
@@ -34,7 +38,6 @@ export class Tag extends Component<TagProps> {
     const { label } = this;
 
     return [
-      <style>{styles}</style>,
       <button type="button" class="c-button c-tag">
         {label}
         <span class="c-tag__close" onClick={this.handleClick}>×</span>
@@ -50,7 +53,4 @@ export class Tag extends Component<TagProps> {
     } );
   }
 
-
 }
-
-customElements.define( Tag.is, Tag );

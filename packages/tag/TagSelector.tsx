@@ -1,22 +1,31 @@
 import { h, Component } from 'skatejs';
 
-import { GenericEvents, EventEmitter, event, prop } from '@blaze-elements/common';
-import Input from '@blaze-elements/input/Input';
+import { GenericEvents, EventEmitter, event, prop, shadyCssStyles } from '@blaze-elements/common';
+import TagInput from './components/Input';
 
 import styles from './Tag.scss';
-import { Tag } from './Tag';
+import Tag from './Tag';
 
 
-// public
-interface TagSelectorProps {
-  onTagChange?: Function,
+export type TagSelectorProps = Props & EventProps;
+
+export type Props = {
   delimiter?: string,
   tags?: any
-}
+};
 
-export class TagSelector extends Component<TagSelectorProps> {
+export type EventProps = {
+  onTagChange?: Function,
+};
 
-  static get is() { return 'bl-tag-selector'; }
+export type Events = {
+  'tag-change': GenericEvents.CustomChangeHandler<string>
+};
+
+@shadyCssStyles()
+export default class TagSelector extends Component<TagSelectorProps> {
+
+  get css() { return styles; }
 
   @prop( {
     type: Array,
@@ -46,20 +55,19 @@ export class TagSelector extends Component<TagSelectorProps> {
     ) );
 
     return [
-      <style>{styles}</style>,
       <div class="c-tags">
         <div class="c-tags__container">
           {tags}
         </div>
         <div class="c-tags__field-container">
-          <Input onChange={this.handleInput} value="" />
+          <TagInput onChange={this.handleInput} value="" />
         </div>
       </div>
     ];
   }
 
   private handleInput( event: GenericEvents.CustomChangeEvent<string> ) {
-    const input = event.target as Input;
+    const input = event.target as TagInput;
     const value = event.detail.value;
     const lastChar = value.substr( -1 );
     const newValue = value.slice( 0, -1 ).trim();
@@ -90,5 +98,3 @@ export class TagSelector extends Component<TagSelectorProps> {
   }
 
 }
-
-customElements.define( TagSelector.is, TagSelector );
