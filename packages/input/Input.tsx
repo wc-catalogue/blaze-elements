@@ -32,7 +32,7 @@ export type Events = {
   change?: GenericEvents.CustomChangeHandler<string>,
 };
 export type Props = {
-  value: string,
+  value?: string,
   valid?: string,
   placeholder?: string,
   disabled?: boolean | null,
@@ -50,9 +50,7 @@ export default class Input extends Component<InputProps> {
   @prop( { type: String, attribute: { source: true } } ) type = 'text';
   @prop( { type: String, attribute: { source: true } } ) inputSize: Size;
   @prop( { type: String, attribute: { source: true } } ) valid: string;
-  // @prop( { type: Boolean, attribute: { source: true } } ) disabled: boolean;
-
-  disabled: boolean | null = null;
+  @prop( { type: Boolean, attribute: { source: true } } ) disabled: boolean;
 
   static get events() {
     return {
