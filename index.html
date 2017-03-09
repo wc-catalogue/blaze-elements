@@ -15,7 +15,7 @@
   </header>
 
   <% for(var i=0; i < htmlWebpackPlugin.options.packages.length; i++) {%>
-  <p>
+  <p style="position:relative">
     <bl-<%= htmlWebpackPlugin.options.packages[i] %>-demo></bl-<%= htmlWebpackPlugin.options.packages[i] %>-demo>
   </p>
   <% } %>
