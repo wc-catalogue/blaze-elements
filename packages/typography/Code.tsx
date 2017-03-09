@@ -1,24 +1,32 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
 import styles from './Code.scss';
-import { css } from '@blaze-elements/common';
+import { css, prop, shadyCssStyles } from '@blaze-elements/common';
 
-// public
-interface CodeProps {
+export type CodeProps = Props & EventProps;
+
+export type CodeAttrs = {
   isMultiline?: boolean,
-}
+};
 
-export class Code extends Component<CodeProps> {
-  static get is() { return 'bl-code'; }
+export type Props = {
+  isMultiline?: boolean,
+};
 
-  static get props() {
-    return {
-      isMultiline: prop.boolean( {
-        attribute: true
-      } )
-    };
-  }
+export type EventProps = {};
 
-  isMultiline: boolean;
+export type CodeEvents = {};
+
+@shadyCssStyles()
+export default class Code extends Component<CodeProps> {
+
+  @prop( {
+    type: Boolean,
+    attribute: {
+      source: true
+    }
+  } ) isMultiline: boolean;
+
+  get css() { return styles; }
 
   renderCallback() {
     const { isMultiline } = this;
@@ -30,13 +38,10 @@ export class Code extends Component<CodeProps> {
       }
     );
 
-    return [
-      <style>{styles}</style>,
+    return (
       <code className={className}>
         <slot />
       </code>
-    ];
+    );
   }
 }
-
-customElements.define( Code.is, Code );

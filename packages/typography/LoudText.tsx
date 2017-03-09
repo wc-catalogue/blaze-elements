@@ -1,25 +1,27 @@
 import { h, Component } from 'skatejs';
 import styles from './LoudText.scss';
-import { css } from '@blaze-elements/common';
+import { shadyCssStyles } from '@blaze-elements/common';
 
-// public
-interface LoudTextProps {
-}
+export type LoudTextProps = Props & EventProps;
 
-export class LoudText extends Component<LoudTextProps> {
-  static get is() { return 'bl-loud-text'; }
+export type LoudTextAttrs = {};
+
+export type Props = {};
+
+export type EventProps = {};
+
+export type LoudTextEvents = {};
+
+@shadyCssStyles()
+export default class LoudText extends Component<LoudTextProps> {
+
+  get css() { return styles; }
 
   renderCallback() {
-    const className = css(
-      'c-text--loud'
-    );
-    return [
-      <style>{styles}</style>,
-      <span className={className}>
+    return (
+      <span class="c-text--loud">
         <slot />
       </span>
-    ];
+    );
   }
 }
-
-customElements.define( LoudText.is, LoudText );

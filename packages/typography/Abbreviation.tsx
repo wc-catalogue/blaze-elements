@@ -1,39 +1,41 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component } from 'skatejs';
 import styles from './Abbreviation.scss';
-import { css } from '@blaze-elements/common';
+import { shadyCssStyles, prop } from '@blaze-elements/common';
 
-// public
-interface AbbreviationProps {
-  title: string,
-}
+export type AbbreviationProps = Props & EventProps;
 
-export class Abbreviation extends Component<AbbreviationProps> {
-  static get is() { return 'bl-abbreviation'; }
+export type AbbreviationAttrs = {
+  title?: string
+};
 
-  static get props() {
-    return {
-      title: prop.string( {
-        attribute: true
-      } )
-    };
-  }
+export type Props = {
+  title?: string
+};
 
+export type EventProps = {};
+
+export type AbbreviationEvents = {};
+
+@shadyCssStyles()
+export default class Abbreviation extends Component<AbbreviationProps> {
+
+  @prop({
+    type: String,
+    attribute: {
+      source: true
+    }
+  })
   title: string;
+
+  get css() { return styles; }
 
   renderCallback() {
     const { title } = this;
 
-    const className = css(
-      'c-text--help'
-    );
-
-    return [
-      <style>{styles}</style>,
-      <abbr className={className} title={title}>
+    return (
+      <abbr class="c-text--help" title={title}>
         <slot />
       </abbr>
-    ];
+    );
   }
 }
-
-customElements.define( Abbreviation.is, Abbreviation );

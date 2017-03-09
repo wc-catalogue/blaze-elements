@@ -1,25 +1,27 @@
 import { h, Component } from 'skatejs';
 import styles from './HighlightedText.scss';
-import { css } from '@blaze-elements/common';
+import { shadyCssStyles } from '@blaze-elements/common';
 
-// public
-interface HighlightedTextProps {
-}
+export type HighlightedTextProps = Props & EventProps;
 
-export class HighlightedText extends Component<HighlightedTextProps> {
-  static get is() { return 'bl-highlighted-text'; }
+export type HighlightedTextAttrs = {};
+
+export type Props = {};
+
+export type EventProps = {};
+
+export type HighlightedTextEvents = {};
+
+@shadyCssStyles()
+export default class HighlightedText extends Component<HighlightedTextProps> {
+
+  get css() { return styles; }
 
   renderCallback() {
-    const className = css(
-      'c-text--highlight'
-    );
-    return [
-      <style>{styles}</style>,
-      <span className={className}>
+    return (
+      <span class="c-text--highlight">
         <slot />
       </span>
-    ];
+    );
   }
 }
-
-customElements.define( HighlightedText.is, HighlightedText );

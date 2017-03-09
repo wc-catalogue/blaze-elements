@@ -1,18 +1,21 @@
 import { h } from 'skatejs';
 import { Component } from 'skatejs';
-import { Paragraph } from './Paragraph';
-import { Abbreviation } from './Abbreviation';
-import { Link } from './Link';
-import { LoudText } from './LoudText';
-import { QuietText } from './QuietText';
-import { HighlightedText } from './HighlightedText';
-import { KeyboardKeys } from './KeyboardKeys';
-import { MonospaceText } from './MonospaceText';
-import { Code } from './Code';
-import { Blockquote } from './Blockquote';
+import {
+  Paragraph,
+  Abbreviation,
+  Blockquote,
+  Link,
+  LoudText,
+  QuietText,
+  HighlightedText,
+  KeyboardKeys,
+  MonospaceText,
+  Code
+} from './index';
+import { customElement } from '@blaze-elements/common';
 
+@customElement( 'bl-typography-demo' )
 export class Demo extends Component<void> {
-  static get is() { return 'bl-typography-demo'; }
 
   renderCallback() {
     return [
@@ -101,5 +104,3 @@ export class Demo extends Component<void> {
     ];
   }
 }
-
-customElements.define( Demo.is, Demo );

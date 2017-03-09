@@ -1,23 +1,33 @@
-import { h, Component, prop } from 'skatejs';
-import { ColorType, cssClassForColorType, css } from '@blaze-elements/common';
+import { h, Component } from 'skatejs';
+import { ColorType, cssClassForColorType, css, prop, shadyCssStyles } from '@blaze-elements/common';
 import styles from './Blockquote.scss';
 
-// public
-interface BlockquoteProps {
-  color?: ColorType,
-}
+export type BlockquoteProps = Props & EventProps;
 
-export class Blockquote extends Component<BlockquoteProps> {
-  static get is() { return 'bl-blockquote'; }
-  static get props() {
-    return {
-      color: prop.string( {
-        attribute: true
-      } )
-    };
-  }
+export type BlockquoteAttrs = {
+  color?: string
+};
 
+export type Props = {
+  color?: string
+};
+
+export type EventProps = {};
+
+export type BlockquoteEvents = {};
+
+@shadyCssStyles()
+export default class Blockquote extends Component<BlockquoteProps> {
+
+  @prop( {
+    type: String,
+    attribute: {
+      source: true
+    }
+  } )
   color: ColorType;
+
+  get css() { return styles; }
 
   renderCallback() {
 
@@ -29,8 +39,7 @@ export class Blockquote extends Component<BlockquoteProps> {
       colorClass
     );
 
-    return [
-      <style>{styles}</style>,
+    return (
       <blockquote className={className}>
         <div className="c-blockquote__body">
           <slot />
@@ -39,8 +48,6 @@ export class Blockquote extends Component<BlockquoteProps> {
           <slot name="footer" />
         </footer>
       </blockquote>
-    ];
+    );
   }
 }
-
-customElements.define( Blockquote.is, Blockquote );
