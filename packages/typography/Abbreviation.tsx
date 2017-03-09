@@ -19,12 +19,12 @@ export type AbbreviationEvents = {};
 @shadyCssStyles()
 export default class Abbreviation extends Component<AbbreviationProps> {
 
-  @prop({
+  @prop( {
     type: String,
     attribute: {
       source: true
     }
-  })
+  } )
   title: string;
 
   get css() { return styles; }
