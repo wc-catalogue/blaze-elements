@@ -21,7 +21,7 @@ cache:
   directories:
   - $HOME/.yarn-cache
 install:
-  - yarn
+  - travis_retry yarn
 script:
   - yarn ts:lint && yarn test
 after_success:
