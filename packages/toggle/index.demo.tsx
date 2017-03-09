@@ -1,9 +1,9 @@
 import { h, Component } from 'skatejs';
-import { Toggle } from './Toggle';
-import { GenericEvents } from '@blaze-elements/common';
+import { Toggle } from './index';
+import { GenericEvents, customElement } from '@blaze-elements/common';
 
-class Demo extends Component<void> {
-  static get is() { return 'bl-toggle-demo'; };
+@customElement( 'bl-toggle-demo' )
+export class Demo extends Component<void> {
   toggleChecked = false;
 
   constructor() {
@@ -17,8 +17,7 @@ class Demo extends Component<void> {
   }
 
   renderCallback() {
-    return [
-      <style />,
+    return (
       <fieldset>
         <legend>{Toggle.is}</legend>
 
@@ -29,9 +28,6 @@ class Demo extends Component<void> {
         </div>
 
       </fieldset>
-    ];
+    );
   }
 }
-
-
-customElements.define( Demo.is, Demo );
