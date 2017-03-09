@@ -1,4 +1,4 @@
-import { mount, h } from 'bore';
+import { mount, h, WrappedNode } from 'bore';
 import * as expect from 'expect';
 import { Input } from './index';
 import { emit } from 'skatejs';
@@ -125,13 +125,21 @@ describe( Input.is, () => {
 
         return mount(
           <bl-input disabled value="" />
-        ).wait(( element ) => {
-
-          expect( element.one( 'input' ).node.hasAttribute( 'disabled' ) ).toBe( true );
-
-        } );
+        ).wait(checkDisabled);
 
       } );
+
+      it( `should render disabled via attr`, () => {
+
+        return mount(
+          <bl-input attrs={{disabled: true, value: 'value'}} />
+        ).wait(checkDisabled);
+
+      } );
+
+      function checkDisabled( element: WrappedNode ) {
+        expect( element.one( 'input' ).node.hasAttribute( 'disabled' ) ).toBe( true );
+      }
 
     } );
 
