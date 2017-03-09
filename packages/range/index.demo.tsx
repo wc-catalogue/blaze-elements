@@ -1,14 +1,17 @@
-import { h, Component, prop } from 'skatejs';
-import { Range } from './Range';
+import { h, Component, props } from 'skatejs';
+import { prop, customElement } from '@blaze-elements/common';
+import { Range } from './index';
 
-export class Demo extends Component<void> {
-  static get is() { return 'bl-range-demo'; }
-  static get props() {
-    return {
-      val: prop.number()
-    };
-  }
+export type RangeDemoProps = {
+  val?: number
+};
 
+@customElement( 'bl-range-demo' )
+export class Demo extends Component<RangeDemoProps> {
+
+  @prop( {
+    type: Number,
+  } )
   val: number;
 
   connectedCallback() {
@@ -17,8 +20,7 @@ export class Demo extends Component<void> {
   }
 
   renderCallback() {
-    return [
-      <style />,
+    return (
       <fieldset>
         <legend>{Range.is}</legend>
 
@@ -73,7 +75,7 @@ export class Demo extends Component<void> {
         </div>
 
       </fieldset>
-    ];
+    );
   }
 
   private log = ( message: string ): any => {
@@ -81,8 +83,8 @@ export class Demo extends Component<void> {
   }
 
   private reflectValue( event: Event ) {
-    this.val = Number.parseInt(( event.currentTarget as HTMLInputElement ).value );
+    props( this, {
+      val: Number.parseInt(( event.currentTarget as HTMLInputElement ).value )
+    } );
   }
 }
-
-customElements.define( Demo.is, Demo );

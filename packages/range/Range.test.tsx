@@ -1,16 +1,63 @@
-import { Range } from './Range';
-
-import { h, mount } from 'bore';
+import { mount, h } from 'bore';
+import * as expect from 'expect';
+import { Range } from './index';
 
 describe( Range.is, () => {
 
-  it( 'should render', () => {
+  describe( `Custom element`, () => {
 
-    console.warn( 'Missing tests for Range!' );
+    it( `should be registered`, () => {
 
-    return mount(
-      <Range value={10} />
-    ).wait();
+      expect( customElements.get( Range.is ) ).toBe( Range );
+
+    } );
+
+    it( `should render via JSX IntrinsicElement`, () => {
+
+      return mount(
+        <bl-range />
+      ).wait(( element ) => {
+
+        expect( element.node.localName ).toBe( Range.is );
+
+      } );
+
+    } );
+
+    it( `should render via JSX class`, () => {
+
+      return mount(
+        <bl-range />
+      ).wait(( element ) => {
+
+        expect( element.has( '.c-range' ) ).toBe( true );
+
+      } );
+
+    } );
+  } );
+
+  describe( `API`, () => {
+
+    describe( `[value]`, () => {
+      // TODO
+    } );
+
+    describe( `[min]`, () => {
+      // TODO
+    } );
+
+    describe( `[max]`, () => {
+      // TODO
+    } );
+
+    describe( `[disabled]`, () => {
+      // TODO
+    } );
+
+    describe( `[color]`, () => {
+      // TODO
+    } );
 
   } );
 
