@@ -37,7 +37,6 @@ const identityFn = <T>( _: T ) => _;
 
 export function prop( config: PropConfig = {} ): PropertyDecorator {
   return function( targetProto: { [ key: string ]: any } & Component<any>, propertyKey: string | symbol ) {
-    const currentValue = targetProto[ propertyKey ];
     const { type, ...skPropConfig } = config;
     const configType = parseType( type );
     const skatePropTypeFn = skProp[ configType ] || identityFn;
@@ -60,7 +59,7 @@ export function prop( config: PropConfig = {} ): PropertyDecorator {
     return {
       enumerable: true,
       configurable: true,
-      value: currentValue,
+      // value: targetProto[ propertyKey ], // value causes error with private properties (title, disabled) and in IE
     };
   };
 }
