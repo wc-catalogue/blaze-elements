@@ -3,7 +3,7 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "lerna bootstrap",
-    "ts:lint": "tslint 'packages/**/*.tsx' 'packages/**/*.ts' --exclude 'packages/**/definitions/**/*'",
+    "ts:lint": "tslint \"packages/**/*.tsx\" \"packages/**/*.ts\" --exclude \"packages/**/definitions/**/*\"",
     "ts:lint:fix": "yarn ts:lint -- --fix",
     "ts:format": "tsfmt --replace packages/**/*.ts packages/**/*.tsx",
     "ts:style": "npm run ts:lint:fix && npm run ts:format",
