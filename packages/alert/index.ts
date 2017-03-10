@@ -1,8 +1,8 @@
 import { customElement, GenericTypes } from '@blaze-elements/common';
 import RawAlert, {
   AlertProps,
-  Props,
-  Events
+  Events,
+  Props
 } from './Alert';
 const Alert = customElement( 'bl-alert' )( RawAlert ) as typeof RawAlert;
 export { Alert };

@@ -1,9 +1,9 @@
-import { h, Component } from 'skatejs';
 import { customElement } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 import {
   Nav,
-  NavItem,
-  NavContent
+  NavContent,
+  NavItem
 } from './index';
 
 @customElement( 'bl-nav-demo' )

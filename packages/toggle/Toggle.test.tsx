@@ -1,7 +1,7 @@
-import * as expect from 'expect';
-import { h, mount, WrappedNode } from 'bore';
-import { emit } from 'skatejs';
 import { GenericEvents } from '@blaze-elements/common';
+import { h, mount, WrappedNode } from 'bore';
+import * as expect from 'expect';
+import { emit } from 'skatejs';
 import { Toggle } from './index';
 
 describe( Toggle.is, () => {
@@ -148,6 +148,5 @@ describe( Toggle.is, () => {
     } );
 
   } );
-
 
 } );

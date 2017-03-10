@@ -1,7 +1,7 @@
-import { Collapsible } from './index';
-import * as expect from 'expect';
 import { h, mount } from 'bore';
+import * as expect from 'expect';
 import { emit } from 'skatejs';
+import { Collapsible } from './index';
 
 describe( Collapsible.is, () => {
 

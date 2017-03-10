@@ -1,13 +1,12 @@
 
 import { customElement, GenericTypes } from '@blaze-elements/common';
-import RawTooltip, { TooltipProps, Attrs, Events } from './Tooltip';
+import RawTooltip, { Attrs, Events, TooltipProps } from './Tooltip';
 
 const Tooltip = customElement( 'bl-tooltip' )( RawTooltip ) as typeof RawTooltip;
 
 export {
   Tooltip
 };
-
 
 declare global {
   namespace JSX {

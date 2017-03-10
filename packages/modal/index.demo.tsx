@@ -1,8 +1,8 @@
-import { h, Component } from 'skatejs';
 import { customElement, prop } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 
-import { Modal } from './index';
 import Button from './components/Button';
+import { Modal } from './index';
 
 @customElement( 'bl-modal-demo' )
 export class Demo extends Component<void> {
@@ -22,6 +22,7 @@ export class Demo extends Component<void> {
 
   renderCallback() {
     const { isModalOpen } = this;
+
     return [
       <style />,
       <fieldset>

@@ -1,6 +1,6 @@
 import { customElement, GenericTypes } from '@blaze-elements/common';
 
-import RawBadge, { BadgeProps, Props, Events } from './Badge';
+import RawBadge, { BadgeProps, Events, Props } from './Badge';
 const Badge = customElement( 'bl-badge' )( RawBadge ) as typeof RawBadge;
 
 export { Badge };

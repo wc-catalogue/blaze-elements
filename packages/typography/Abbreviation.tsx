@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
+import { prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 import styles from './Abbreviation.scss';
-import { shadyCssStyles, prop } from '@blaze-elements/common';
 
 export type AbbreviationProps = Props & EventProps;
 

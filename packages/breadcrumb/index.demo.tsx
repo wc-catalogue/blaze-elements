@@ -1,7 +1,7 @@
-import { h, Component } from 'skatejs';
+import { Component, h } from 'skatejs';
 
-import { Breadcrumb, BreadcrumbItem } from './index';
 import { customElement } from '@blaze-elements/common';
+import { Breadcrumb, BreadcrumbItem } from './index';
 
 @customElement( 'bl-breadcrumb-demo' )
 export class Demo extends Component<void> {

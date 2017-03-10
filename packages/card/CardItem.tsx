@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
+import { css, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 import styles from './Card.scss';
-import { prop, css, shadyCssStyles } from '@blaze-elements/common';
 
 export type CardItemProps = Props;
 export type Props = {
@@ -22,6 +22,7 @@ export default class CardItem extends Component<CardItemProps> {
       {
         'c-card__item--active': selected
       } );
+
     return [
       <style>{styles}</style>,
       <div className={className}>

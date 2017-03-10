@@ -1,29 +1,31 @@
-import { h, Component, emit, props } from 'skatejs';
+import { Component, emit, h, props } from 'skatejs';
 import styles from './Calendar.scss';
 
 import {
-  css,
   buildFormatLocale,
-  LocaleType,
+  css,
   GenericEvents,
+  LocaleType,
   prop
 } from '@blaze-elements/common';
 
 import CalendarButton from './components/Button';
 
-import * as getYear from 'date-fns/get_year';
-import * as getMonth from 'date-fns/get_month';
 import * as addDays from 'date-fns/add_days';
-import * as getDate from 'date-fns/get_date';
-import * as startOfWeek from 'date-fns/start_of_week';
 import * as format from 'date-fns/format';
+import * as getDate from 'date-fns/get_date';
+import * as getMonth from 'date-fns/get_month';
+import * as getYear from 'date-fns/get_year';
+import * as isSameDay from 'date-fns/is_same_day';
 import * as isToday from 'date-fns/is_today';
 import * as parse from 'date-fns/parse';
-import * as isSameDay from 'date-fns/is_same_day';
+import * as startOfWeek from 'date-fns/start_of_week';
 
 const BUTTON_TODAY = 'TODAY';
 const WEEK_STARTS_ON = 'sunday';
 const DAYS_IN_MATRIX = 41;
+const LAST_MONTH_IDX = 11;
+const LAST_WEEKDAY_IDX = 7;
 
 export type WeekStart = 'sunday' | 'monday';
 
@@ -63,7 +65,6 @@ export default class Calendar extends Component<CalendarProps> {
   static range( count: number ): number[] {
     return Array.from( { length: count }, ( value: number, key: number ) => key );
   }
-
 
   @prop( {
     type: Number
@@ -117,6 +118,7 @@ export default class Calendar extends Component<CalendarProps> {
       this.initSelectedDay();
       this.initDays();
     }
+
     return super.updatedCallback( previousProps );
 
   }
@@ -134,7 +136,7 @@ export default class Calendar extends Component<CalendarProps> {
   prevMonth() {
     this.month--;
     if ( this.month < 0 ) {
-      this.month = 11;
+      this.month = LAST_MONTH_IDX;
       this.year--;
     }
     this.initDays();
@@ -142,7 +144,7 @@ export default class Calendar extends Component<CalendarProps> {
 
   nextMonth() {
     this.month++;
-    if ( this.month > 11 ) {
+    if ( this.month > LAST_MONTH_IDX ) {
       this.month = 0;
       this.year++;
     }
@@ -184,13 +186,14 @@ export default class Calendar extends Component<CalendarProps> {
           'c-calendar__date--selected': isSameDay( day, selectedDate ),
         }
       );
+
       return <button class={className} onClick={this.setDateHandler( day )}>{getDate( day )}</button>;
     } );
 
     // create weekDays elements
-    const weekDays = this.days.filter(( day, index ) =>
-      index < 7 ).map(( day ) =>
-        <div class="c-calendar__day">{this.format( day, 'dd' )}</div> );
+    const weekDays = this.days
+      .filter(( day, index ) => index < LAST_WEEKDAY_IDX )
+      .map(( day ) => <div class="c-calendar__day">{this.format( day, 'dd' )}</div> );
 
     return [
       <style>{styles}</style>,
@@ -223,6 +226,7 @@ export default class Calendar extends Component<CalendarProps> {
         format: formatLocale
       }
     };
+
     return format( date, formatStr, options );
   }
 
@@ -243,6 +247,7 @@ export default class Calendar extends Component<CalendarProps> {
     const days: Date[] = this.daysMatrix.reduce(( acc: Date[] ) => {
       const lastDate = acc[ acc.length - 1 ];
       const nextDate = addDays( lastDate, 1 );
+
       return [ ...acc, nextDate ];
     }, [ firstDay ] );
 
@@ -257,4 +262,3 @@ export default class Calendar extends Component<CalendarProps> {
   };
 
 }
-

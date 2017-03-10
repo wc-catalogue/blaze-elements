@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
-import styles from './Code.scss';
 import { css, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import styles from './Code.scss';
 
 export type CodeProps = Props & EventProps;
 

@@ -5,14 +5,14 @@ export interface ICssMapping {
 export type ICssInput = string | ICssMapping;
 
 export function css( ...args: ICssInput[] ) {
-  let classes = [];
+  const classes = [];
 
-  for ( let arg of args ) {
+  for ( const arg of args ) {
     if ( arg ) {
       if ( typeof arg === 'string' ) {
         classes.push( arg );
       } else {
-        for ( let key in arg ) {
+        for ( const key in arg ) {
           if ( arg[ key ] ) {
             classes.push( key );
           }

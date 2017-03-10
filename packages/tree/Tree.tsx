@@ -1,6 +1,6 @@
-import styles from './Tree.scss';
-import { h, Component } from 'skatejs';
 import { shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import styles from './Tree.scss';
 
 export type TreeProps = Props & EventProps;
 

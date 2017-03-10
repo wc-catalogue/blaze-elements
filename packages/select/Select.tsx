@@ -1,11 +1,11 @@
-import { h, Component, props } from 'skatejs';
 import { GenericEvents, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, h, props } from 'skatejs';
 
-import styles from './Select.scss';
-import Option from './Option';
-import SelectOverlay from './components/Overlay';
 import SelectButton from './components/Button';
 import SelectCard from './components/Card';
+import SelectOverlay from './components/Overlay';
+import Option from './Option';
+import styles from './Select.scss';
 
 export type SelectProps = Props & EventHandlers;
 
@@ -123,6 +123,7 @@ export default class Select extends Component<SelectProps> {
         options[ i ].select();
         this._selected = options[ i ];
         this._updateOptions();
+
         return;
       }
     }

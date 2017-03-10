@@ -1,4 +1,4 @@
-import { mount, h } from 'bore';
+import { h, mount } from 'bore';
 import * as expect from 'expect';
 import { Breadcrumb } from './index';
 

@@ -1,14 +1,13 @@
-import { h, Component, emit } from 'skatejs';
-import styles from './Input.scss';
 import {
-  Size,
-  cssClassForSize,
   css,
+  cssClassForSize,
   GenericEvents,
   prop,
-  shadyCssStyles
+  shadyCssStyles,
+  Size
 } from '@blaze-elements/common';
-
+import { Component, emit, h } from 'skatejs';
+import styles from './Input.scss';
 
 export type TypesType = {
   text: string,

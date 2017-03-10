@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
-import { Tooltip } from './index';
 import { customElement } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import { Tooltip } from './index';
 
 @customElement( 'bl-tooltip-demo' )
 export class Demo extends Component<void> {

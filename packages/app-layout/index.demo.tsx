@@ -1,9 +1,9 @@
-import { Component, h } from 'skatejs';
 import { customElement } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 
 import { AppLayout } from './index';
 
-import { Nav, NavItem, NavContent } from '@blaze-elements/nav';
+import { Nav, NavContent, NavItem } from '@blaze-elements/nav';
 
 import neverGonnaGiveYouUp from '../../assets/never-gonna-give-you-up.gif';
 

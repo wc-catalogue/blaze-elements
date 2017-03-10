@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
-import styles from './Bubble.scss';
 import { css, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import styles from './Bubble.scss';
 
 const BubbleTypes = {
   top: 'top',
@@ -8,7 +8,6 @@ const BubbleTypes = {
   right: 'right',
   bottom: 'bottom',
 };
-
 
 export type BubbleProps = Props & Events;
 export type Props = {

@@ -1,13 +1,12 @@
 
 import { customElement, GenericTypes } from '@blaze-elements/common';
-import RawButton, { ButtonProps, Props, Events } from './Button';
+import RawButton, { ButtonProps, Events, Props } from './Button';
 
 const Button = customElement( 'bl-button' )( RawButton ) as typeof RawButton;
 
 export {
   Button
 };
-
 
 declare global {
   namespace JSX {

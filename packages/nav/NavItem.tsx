@@ -1,11 +1,11 @@
-import styles from './Nav.scss';
-import { h, Component } from 'skatejs';
 import {
   ColorType,
-  cssClassForColorType,
   css,
+  cssClassForColorType,
   prop
 } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import styles from './Nav.scss';
 
 export type NavItemProps = Props;
 
@@ -67,4 +67,3 @@ export default class NavItem extends Component<NavItemProps> {
     ];
   }
 }
-

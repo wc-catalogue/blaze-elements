@@ -1,13 +1,12 @@
 
 import { customElement, GenericTypes } from '@blaze-elements/common';
-import RawCalendar, { CalendarProps, Attrs, Events } from './Calendar';
+import RawCalendar, { Attrs, CalendarProps, Events } from './Calendar';
 
 const Calendar = customElement( 'bl-calendar' )( RawCalendar ) as typeof RawCalendar;
 
 export {
   Calendar
 };
-
 
 declare global {
   namespace JSX {

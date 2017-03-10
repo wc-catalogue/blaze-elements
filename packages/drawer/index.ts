@@ -1,5 +1,5 @@
 import { customElement, GenericTypes } from '@blaze-elements/common';
-import RawDrawer, { DrawerProps, Props, Events } from './Drawer';
+import RawDrawer, { DrawerProps, Events, Props } from './Drawer';
 
 const Drawer = customElement( 'bl-drawer' )( RawDrawer ) as typeof RawDrawer;
 export { Drawer };

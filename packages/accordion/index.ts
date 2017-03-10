@@ -8,7 +8,6 @@ export {
   Accordion
 };
 
-
 declare global {
   namespace JSX {
     interface IntrinsicElements {

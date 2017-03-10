@@ -1,5 +1,5 @@
-import { h, Component, props } from 'skatejs';
-import { prop, customElement } from '@blaze-elements/common';
+import { customElement, prop } from '@blaze-elements/common';
+import { Component, h, props } from 'skatejs';
 import { Range } from './index';
 
 export type RangeDemoProps = {

@@ -1,8 +1,8 @@
-import { h, Component, props } from 'skatejs';
 import { customElement, prop } from '@blaze-elements/common';
+import { Component, h, props } from 'skatejs';
 
-import { Alert } from './index';
 import AlertButton from './components/Button';
+import { Alert } from './index';
 
 type DemoProps = { isOpen?: boolean };
 
@@ -13,6 +13,7 @@ export class Demo extends Component<DemoProps> {
 
   renderCallback() {
     const { isOpen } = this;
+
     return [
       <style />,
 

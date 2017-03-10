@@ -1,8 +1,8 @@
-import { mount, h, WrappedNode } from 'bore';
-import * as expect from 'expect';
-import { Input } from './index';
-import { emit } from 'skatejs';
 import { GenericEvents } from '@blaze-elements/common';
+import { h, mount, WrappedNode } from 'bore';
+import * as expect from 'expect';
+import { emit } from 'skatejs';
+import { Input } from './index';
 
 describe( Input.is, () => {
 
@@ -125,15 +125,15 @@ describe( Input.is, () => {
 
         return mount(
           <bl-input disabled value="" />
-        ).wait(checkDisabled);
+        ).wait( checkDisabled );
 
       } );
 
       it( `should render disabled via attr`, () => {
 
         return mount(
-          <bl-input attrs={{disabled: true, value: 'value'}} />
-        ).wait(checkDisabled);
+          <bl-input attrs={{ disabled: true, value: 'value' }} />
+        ).wait( checkDisabled );
 
       } );
 

@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
-import { Collapsible } from './index';
 import { customElement } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import { Collapsible } from './index';
 
 @customElement( 'bl-collapsible-demo' )
 export class Demo extends Component<void> {

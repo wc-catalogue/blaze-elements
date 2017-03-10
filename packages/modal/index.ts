@@ -8,7 +8,6 @@ export {
   Modal
 };
 
-
 declare global {
   namespace JSX {
     interface IntrinsicElements {

@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
-import styles from './KeyboardKeys.scss';
 import { shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import styles from './KeyboardKeys.scss';
 
 export type KeyboardKeysProps = Props & EventProps;
 

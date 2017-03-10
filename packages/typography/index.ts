@@ -1,17 +1,17 @@
 
 import { customElement, GenericTypes } from '@blaze-elements/common';
-import RawAbbreviation, { AbbreviationProps, AbbreviationAttrs, AbbreviationEvents } from './Abbreviation';
-import RawBlockquote, { BlockquoteProps, BlockquoteAttrs, BlockquoteEvents } from './Blockquote';
-import RawCode, { CodeProps, CodeAttrs, CodeEvents } from './Code';
+import RawAbbreviation, { AbbreviationAttrs, AbbreviationEvents, AbbreviationProps } from './Abbreviation';
+import RawBlockquote, { BlockquoteAttrs, BlockquoteEvents, BlockquoteProps } from './Blockquote';
+import RawCode, { CodeAttrs, CodeEvents, CodeProps } from './Code';
 import RawHighlightedText, {
-  HighlightedTextProps, HighlightedTextAttrs, HighlightedTextEvents
+  HighlightedTextAttrs, HighlightedTextEvents, HighlightedTextProps
 } from './HighlightedText';
-import RawKeyboardKeys, { KeyboardKeysProps, KeyboardKeysAttrs, KeyboardKeysEvents } from './KeyboardKeys';
-import RawLink, { LinkProps, LinkAttrs, LinkEvents } from './Link';
-import RawLoudText, { LoudTextProps, LoudTextAttrs, LoudTextEvents } from './LoudText';
-import RawMonospaceText, { MonospaceTextProps, MonospaceTextAttrs, MonospaceTextEvents } from './MonospaceText';
-import RawParagraph, { ParagraphProps, ParagraphAttrs, ParagraphEvents } from './Paragraph';
-import RawQuietText, { QuietTextProps, QuietTextAttrs, QuietTextEvents } from './QuietText';
+import RawKeyboardKeys, { KeyboardKeysAttrs, KeyboardKeysEvents, KeyboardKeysProps } from './KeyboardKeys';
+import RawLink, { LinkAttrs, LinkEvents, LinkProps } from './Link';
+import RawLoudText, { LoudTextAttrs, LoudTextEvents, LoudTextProps } from './LoudText';
+import RawMonospaceText, { MonospaceTextAttrs, MonospaceTextEvents, MonospaceTextProps } from './MonospaceText';
+import RawParagraph, { ParagraphAttrs, ParagraphEvents, ParagraphProps } from './Paragraph';
+import RawQuietText, { QuietTextAttrs, QuietTextEvents, QuietTextProps } from './QuietText';
 
 const Abbreviation = customElement( 'bl-abbreviation' )( RawAbbreviation ) as typeof RawAbbreviation;
 const Blockquote = customElement( 'bl-blockquote' )( RawBlockquote ) as typeof RawBlockquote;

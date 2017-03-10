@@ -1,5 +1,5 @@
-import { h, Component, emit } from 'skatejs';
-import { ColorType, cssClassForColorType, css, prop, shadyCssStyles } from '@blaze-elements/common';
+import { ColorType, css, cssClassForColorType, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, emit, h } from 'skatejs';
 import styles from './Alert.scss';
 import AlertButton from './components/Button';
 
@@ -9,7 +9,7 @@ export type Props = {
   isOpen?: boolean,
 };
 export type Events = {
-  onAlertClose?: ( ev: CustomEvent ) => void,
+  onAlertClose?( ev: CustomEvent ): void,
 };
 
 @shadyCssStyles()

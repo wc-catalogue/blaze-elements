@@ -1,5 +1,5 @@
-import { h, Component } from 'skatejs';
-import { prop, shadyCssStyles, GenericEvents } from '@blaze-elements/common';
+import { GenericEvents, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 
 import SelectCardItem from './components/CardItem';
 

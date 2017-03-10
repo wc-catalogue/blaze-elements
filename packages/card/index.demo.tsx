@@ -1,7 +1,7 @@
-import { h, Component } from 'skatejs';
 import { customElement } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 
-import { Card, CardContent, CardItem, CardHeader, CardFooter } from './index';
+import { Card, CardContent, CardFooter, CardHeader, CardItem } from './index';
 
 @customElement( 'bl-card-demo' )
 export class Demo extends Component<void> {

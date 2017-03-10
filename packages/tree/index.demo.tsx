@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
-import { Tree, TreeItem } from './index';
 import { customElement } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import { Tree, TreeItem } from './index';
 
 @customElement( 'bl-tree-demo' )
 export class Demo extends Component<void> {

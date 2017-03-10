@@ -1,14 +1,14 @@
-import { h, Component } from 'skatejs';
-import styles from './Progress.scss';
 import {
   ColorType,
-  cssClassForColorType,
-  Size,
-  cssClassForSize,
   css,
+  cssClassForColorType,
+  cssClassForSize,
   prop,
-  shadyCssStyles
+  shadyCssStyles,
+  Size
 } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import styles from './Progress.scss';
 
 export type ProgressProps = Props & EventProps;
 

@@ -1,9 +1,9 @@
 declare module '*.scss' {
-  const _:string;
+  const _: string;
   export default _;
 };
 declare module '*.css' {
-  const _:string;
+  const _: string;
   export default _;
 };
 declare module '*.json';
@@ -17,15 +17,15 @@ declare namespace JSX {
   }
 }
 declare namespace ShadyCSS {
-    interface IntrinsicElements {
-      'custom-style': HTMLElement,
-    }
+  interface IntrinsicElements {
+    'custom-style': HTMLElement,
+  }
 
-    interface ShadyCssStatic {
-      prepareTemplate( template: HTMLTemplateElement, elementName: string, typeExtension?: string),
-      applyStyle( host: HTMLElement, overrideProps?: {[propName: string]: string}),
-      updateStyles(properties?: {[propName: string]: string}),
-    }
+  interface ShadyCssStatic {
+    prepareTemplate( template: HTMLTemplateElement, elementName: string, typeExtension?: string ),
+    applyStyle( host: HTMLElement, overrideProps?: { [ propName: string ]: string } ),
+    updateStyles( properties?: { [ propName: string ]: string } ),
+  }
 }
 
 
@@ -39,8 +39,8 @@ interface Window {
 }
 
 interface Document {
-  createElement(name: string, options: ElementCreationOptions): HTMLElement;
-  createElement(tagName: 'slot'): HTMLSlotElement;
+  createElement( name: string, options: ElementCreationOptions ): HTMLElement;
+  createElement( tagName: 'slot' ): HTMLSlotElement;
 }
 
 interface HTMLElement extends OnConnectedCallback, OnDisconnectedCallback, OnAdoptedCallback, OnAttributeChangedCallback {
@@ -66,11 +66,11 @@ interface OnDisconnectedCallback {
 }
 
 interface OnAdoptedCallback {
-  adoptedCallback(oldDocument: any, newDocument: any): void;
+  adoptedCallback( oldDocument: any, newDocument: any ): void;
 }
 
 interface OnAttributeChangedCallback {
-  attributeChangedCallback(name: string, oldValue: any, newValue: any): void;
+  attributeChangedCallback( name: string, oldValue: any, newValue: any ): void;
 }
 
 // ShadowDom
@@ -88,7 +88,7 @@ interface Event {
 }
 
 interface Document {
-  createElement(tagName: 'slot'): HTMLSlotElement;
+  createElement( tagName: 'slot' ): HTMLSlotElement;
 }
 
 // Tests

@@ -1,8 +1,8 @@
-import { h, Component } from 'skatejs';
-import { customElement } from '@blaze-elements/common';
-import { Drawer } from './index';
-import { Card, CardHeader, CardFooter, CardContent } from '@blaze-elements/card';
 import { Button } from '@blaze-elements/button';
+import { Card, CardContent, CardFooter, CardHeader } from '@blaze-elements/card';
+import { customElement } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import { Drawer } from './index';
 
 const customDivStyleBase = {
   position: 'relative',

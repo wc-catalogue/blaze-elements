@@ -1,4 +1,4 @@
-import { h, Component } from 'skatejs';
+import { Component, h } from 'skatejs';
 import { customElement, shadyCssStyles } from './decorators';
 
 @customElement( 'bl-common-demo' )

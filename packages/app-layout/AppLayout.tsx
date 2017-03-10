@@ -1,11 +1,11 @@
-import { h, Component, props } from 'skatejs';
+import { Component, h, props } from 'skatejs';
 
 import { matchMedia, prop } from '@blaze-elements/common';
 
 import AppLayoutDrawer from './components/Drawer';
-import AppLayoutOverlay from './components/Overlay';
 import AppLayoutNav from './components/Nav';
 import AppLayoutNavContent from './components/NavContent';
+import AppLayoutOverlay from './components/Overlay';
 
 import styles from './AppLayout.scss';
 
@@ -40,7 +40,6 @@ export default class AppLayout extends Component<AppLayoutProps> {
     }
   } ) drawerVisible?: boolean;
 
-
   /**
    * If the viewport's width is smaller than this value, the panel will change to narrow
    * layout. In the mode the drawer will be closed.
@@ -57,8 +56,7 @@ export default class AppLayout extends Component<AppLayoutProps> {
     attribute: {
       source: true
     }
-  } ) forceNarrow?: boolean = false;
-
+  } ) forceNarrow?= false;
 
   @prop( { type: Boolean } ) narrow?: boolean;
 

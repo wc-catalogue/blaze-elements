@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
-import styles from './Tooltip.scss';
 import { css, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import styles from './Tooltip.scss';
 
 export const TooltipTypes = {
   top: 'top',

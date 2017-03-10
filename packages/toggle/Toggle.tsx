@@ -1,13 +1,13 @@
-import styles from './Toggle.scss';
-import { h, Component, props, emit } from 'skatejs';
 import {
   ColorType,
-  cssClassForColorType,
   css,
+  cssClassForColorType,
   GenericEvents,
   prop,
   shadyCssStyles
 } from '@blaze-elements/common';
+import { Component, emit, h, props } from 'skatejs';
+import styles from './Toggle.scss';
 
 export type ToggleProps = Props & EventProps;
 

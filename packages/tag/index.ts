@@ -1,13 +1,13 @@
 import { customElement, GenericTypes } from '@blaze-elements/common';
 import RawTag, {
-  TagProps,
+  Events,
   Props,
-  Events
+  TagProps
 } from './Tag';
 import RawTagSelector, {
-  TagSelectorProps,
+  Events as EventsTagSelector,
   Props as PropsTagSelector,
-  Events as EventsTagSelector
+  TagSelectorProps
 } from './TagSelector';
 
 const Tag = customElement( 'bl-tag' )( RawTag ) as typeof RawTag;

@@ -8,7 +8,6 @@ export {
   AppLayout
 };
 
-
 declare global {
   namespace JSX {
     interface IntrinsicElements {

@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
-import styles from './LoudText.scss';
 import { shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import styles from './LoudText.scss';
 
 export type LoudTextProps = Props & EventProps;
 

@@ -67,13 +67,15 @@ const defaultLocale: LocaleType = {
   meridiemFull: [ 'a.m.', 'p.m.' ],
 };
 
+const MERIDIEM_TIME_PERIOD = 12;
+
 export function buildFormatLocale( customLocale?: LocaleType ) {
   // Note: in English, the names of days of the week and months are capitalized.
   // If you are making a new locale based on this one, check if the same is true for the language you're working on.
   // Generally, formatted dates should look like they are in the middle of a sentence,
   // e.g. in Spanish language the weekdays and months should be in the lowercase.
 
-  let mergedLocale: LocaleType = Object.assign( {}, defaultLocale, customLocale );
+  const mergedLocale: LocaleType = Object.assign( {}, defaultLocale, customLocale );
 
   const formatters: Formatters & Partial<OrdinalFormatters> = {
     // Month: Jan, Feb, ..., Dec
@@ -93,21 +95,21 @@ export function buildFormatLocale( customLocale?: LocaleType ) {
 
     // AM, PM
     'A': ( date: Date ) => (
-      ( date.getHours() / 12 ) >= 1
+      ( date.getHours() / MERIDIEM_TIME_PERIOD ) >= 1
         ? mergedLocale.meridiemUppercase[ 1 ]
         : mergedLocale.meridiemUppercase[ 0 ]
     ),
 
     // am, pm
     'a': ( date: Date ) => (
-      ( date.getHours() / 12 ) >= 1
+      ( date.getHours() / MERIDIEM_TIME_PERIOD ) >= 1
         ? mergedLocale.meridiemLowercase[ 1 ]
         : mergedLocale.meridiemLowercase[ 0 ]
     ),
 
     // a.m., p.m.
     'aa': ( date: Date ) => (
-      ( date.getHours() / 12 ) >= 1
+      ( date.getHours() / MERIDIEM_TIME_PERIOD ) >= 1
         ? mergedLocale.meridiemFull[ 1 ]
         : mergedLocale.meridiemFull[ 0 ]
     )
@@ -126,6 +128,7 @@ export function buildFormatLocale( customLocale?: LocaleType ) {
 }
 
 function ordinal( num: number ): string {
+  // tslint:disable:no-magic-numbers
   const rem100 = num % 100;
   if ( rem100 > 20 || rem100 < 10 ) {
     switch ( rem100 % 10 ) {
@@ -137,5 +140,6 @@ function ordinal( num: number ): string {
         return num + 'rd';
     }
   }
+
   return num + 'th';
 }

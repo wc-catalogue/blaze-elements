@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
-import { Input } from './index';
 import { customElement, prop } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import { Input } from './index';
 
 @customElement( 'bl-input-demo' )
 export class Demo extends Component<void> {

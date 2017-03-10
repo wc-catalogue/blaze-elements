@@ -1,11 +1,10 @@
-import { h, Component } from 'skatejs';
+import { Component, h } from 'skatejs';
 
-import { GenericEvents, EventEmitter, event, prop, shadyCssStyles } from '@blaze-elements/common';
+import { event, EventEmitter, GenericEvents, prop, shadyCssStyles } from '@blaze-elements/common';
 import TagInput from './components/Input';
 
-import styles from './Tag.scss';
 import Tag from './Tag';
-
+import styles from './Tag.scss';
 
 export type TagSelectorProps = Props & EventProps;
 
@@ -15,7 +14,7 @@ export type Props = {
 };
 
 export type EventProps = {
-  onTagChange?: Function,
+  onTagChange?: GenericEvents.CustomChangeHandler<string>,
 };
 
 export type Events = {

@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
+import { customElement, GenericEvents } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 import { Toggle } from './index';
-import { GenericEvents, customElement } from '@blaze-elements/common';
 
 @customElement( 'bl-toggle-demo' )
 export class Demo extends Component<void> {

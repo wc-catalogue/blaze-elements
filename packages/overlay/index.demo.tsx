@@ -1,10 +1,10 @@
-import { h, Component } from 'skatejs';
 import { customElement, prop } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 
 import styles from './Overlay.demo.scss';
 
-import { Overlay } from './index';
 import { Button } from '@blaze-elements/button';
+import { Overlay } from './index';
 
 @customElement( 'bl-overlay-demo' )
 export class Demo extends Component<void> {
@@ -35,7 +35,6 @@ export class Demo extends Component<void> {
     const fullPageOverlayFragment = fullPageOverlay
       ? <Overlay isFullpage isDismissable onClick={this.dismissFullPageOverlay} />
       : null;
-
 
     return [
       <style>{styles}</style>,
@@ -90,7 +89,6 @@ export class Demo extends Component<void> {
       </fieldset>,
     ];
   }
-
 
   private showOverlay() {
     this.overlay = true;

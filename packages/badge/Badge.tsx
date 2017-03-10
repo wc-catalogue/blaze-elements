@@ -1,6 +1,6 @@
+import { ColorType, css, cssClassForColorType, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 import styles from './Badge.scss';
-import { h, Component } from 'skatejs';
-import { ColorType, cssClassForColorType, css, prop, shadyCssStyles } from '@blaze-elements/common';
 
 export type BadgeProps = Props & Events;
 export type Props = {

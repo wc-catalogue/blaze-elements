@@ -1,6 +1,6 @@
 import { customElement, GenericTypes } from '@blaze-elements/common';
 
-import RawBubble, { BubbleProps, Props, Events } from './Bubble';
+import RawBubble, { BubbleProps, Events, Props } from './Bubble';
 const Bubble = customElement( 'bl-bubble' )( RawBubble ) as typeof RawBubble;
 
 export { Bubble };
