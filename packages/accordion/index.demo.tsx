@@ -1,8 +1,8 @@
-import { h, Component } from 'skatejs';
 import { customElement } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 
-import { Accordion } from './index';
 import { Collapsible } from '@blaze-elements/collapsible';
+import { Accordion } from './index';
 
 @customElement( 'bl-accordion-demo' )
 export class Demo extends Component<void> {

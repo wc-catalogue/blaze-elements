@@ -1,5 +1,5 @@
-import { h, Component } from 'skatejs';
 import { css, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 import styles from './Drawer.scss';
 
 export const DrawerPositions = {
@@ -49,5 +49,3 @@ export default class Drawer extends Component<DrawerProps> {
   }
 
 }
-
-

@@ -1,6 +1,6 @@
+import { css, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, h, props } from 'skatejs';
 import styles from './Tree.scss';
-import { h, Component, props } from 'skatejs';
-import { css, shadyCssStyles, prop } from '@blaze-elements/common';
 
 export type TreeItemProps = Props & EventProps;
 
@@ -43,6 +43,7 @@ export default class TreeItem extends Component<TreeItemProps> {
         'c-tree__item--expanded': isOpen && hasSubItem,
       }
     );
+
     return (
       <li className={className} onClick={this.handleClick}>
         <slot />

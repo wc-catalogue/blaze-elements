@@ -1,8 +1,7 @@
-import * as expect from 'expect';
-import { mount } from 'bore';
 import { h } from '@blaze-elements/common';
+import { mount } from 'bore';
+import * as expect from 'expect';
 import { Drawer } from './index';
-
 
 describe( Drawer.is, () => {
 

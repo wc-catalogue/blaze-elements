@@ -1,13 +1,12 @@
 
 import { customElement, GenericTypes } from '@blaze-elements/common';
-import RawProgress, { ProgressProps, Attrs, Events } from './Progress';
+import RawProgress, { Attrs, Events, ProgressProps } from './Progress';
 
 const Progress = customElement( 'bl-progress' )( RawProgress ) as typeof RawProgress;
 
 export {
   Progress
 };
-
 
 declare global {
   namespace JSX {

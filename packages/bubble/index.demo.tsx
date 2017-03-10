@@ -1,4 +1,4 @@
-import { h, Component } from 'skatejs';
+import { Component, h } from 'skatejs';
 import { Bubble } from './index';
 
 export class Demo extends Component<void> {

@@ -1,7 +1,7 @@
-import { h, Component } from 'skatejs';
-import styles from './Accordion.scss';
-import { shadyCssStyles } from '@blaze-elements/common';
 import Collapsible, { StateChangedEvent } from '@blaze-elements/collapsible/Collapsible';
+import { shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import styles from './Accordion.scss';
 
 export type AccordionProps = Props & EventProps;
 

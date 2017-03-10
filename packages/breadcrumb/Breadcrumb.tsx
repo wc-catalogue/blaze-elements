@@ -1,6 +1,6 @@
-import styles from './Breadcrumb.scss';
-import { h, Component } from 'skatejs';
 import { shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import styles from './Breadcrumb.scss';
 
 import BreadcrumbItem from './BreadcrumbItem';
 

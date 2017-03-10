@@ -1,5 +1,5 @@
-import { h, Component } from 'skatejs';
 import { customElement, prop } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 import { Tag, TagSelector } from './index';
 
 @customElement( 'bl-tag-demo' )

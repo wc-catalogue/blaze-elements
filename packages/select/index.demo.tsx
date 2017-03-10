@@ -1,6 +1,6 @@
-import { h, Component, props } from 'skatejs';
 import { customElement, prop } from '@blaze-elements/common';
-import { Select, Option } from './index';
+import { Component, h, props } from 'skatejs';
+import { Option, Select } from './index';
 
 import OptionType from './Option';
 

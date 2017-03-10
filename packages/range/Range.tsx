@@ -1,12 +1,12 @@
-import { h, Component, emit, props } from 'skatejs';
-import styles from './Range.scss';
 import {
   ColorType,
-  cssClassForColorType,
   css,
-  shadyCssStyles,
-  prop
+  cssClassForColorType,
+  prop,
+  shadyCssStyles
 } from '@blaze-elements/common';
+import { Component, emit, h, props } from 'skatejs';
+import styles from './Range.scss';
 
 export type RangeProps = Props & EventProps;
 
@@ -30,7 +30,7 @@ export type EventProps = {
   onKeyup?: typeof HTMLElement.prototype.onkeyup,
   onFocus?: typeof HTMLElement.prototype.onfocus,
   onBlur?: typeof HTMLElement.prototype.onblur,
-  onChange?: ( ev: CustomEvent ) => void,
+  onChange?( ev: CustomEvent ): void,
 };
 
 export type Events = {};

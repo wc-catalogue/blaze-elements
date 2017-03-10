@@ -1,6 +1,6 @@
-import { h, Component } from 'skatejs';
-import styles from './Card.scss';
 import { shadyCssStyles } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
+import styles from './Card.scss';
 
 export type CardFooterProps = Props & Events;
 export type Props = {};

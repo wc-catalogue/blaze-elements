@@ -8,7 +8,6 @@ export {
   Overlay
 };
 
-
 declare global {
   namespace JSX {
     interface IntrinsicElements {

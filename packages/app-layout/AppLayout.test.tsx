@@ -1,9 +1,9 @@
-import { mount, h } from 'bore';
-import { emit } from 'skatejs';
+import { h, mount } from 'bore';
 import * as expect from 'expect';
-import { AppLayout } from './index';
+import { emit } from 'skatejs';
 import RawAppLayout from './AppLayout';
 import Drawer from './components/Drawer';
+import { AppLayout } from './index';
 
 describe( AppLayout.is, () => {
 
@@ -39,7 +39,6 @@ describe( AppLayout.is, () => {
 
     } );
   } );
-
 
   describe( `API`, () => {
 
@@ -189,7 +188,6 @@ describe( AppLayout.is, () => {
 
           } );
 
-
         } );
 
       } );
@@ -223,7 +221,6 @@ describe( AppLayout.is, () => {
             } );
 
           } );
-
 
         } );
 

@@ -1,8 +1,8 @@
 import { customElement, GenericTypes } from '@blaze-elements/common';
 import RawInput, {
+  Events,
   InputProps,
-  Props,
-  Events
+  Props
 } from './Input';
 const Input = customElement( 'bl-input' )( RawInput ) as typeof RawInput;
 export { Input };

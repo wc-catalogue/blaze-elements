@@ -1,5 +1,5 @@
-import { h, Component, emit } from 'skatejs';
 import { prop } from '@blaze-elements/common';
+import { Component, emit, h } from 'skatejs';
 
 import styles from './Modal.scss';
 
@@ -8,11 +8,12 @@ import ModalCard from './components/Card';
 import ModalOverlay from './components/Overlay';
 
 const DEFAULT_CLOSE_TITLE = 'close';
+const ESC_KEY_CODE = 27;
 
 export interface ModalProps {
   isOpen?: boolean,
   closeTitle?: string,
-  onModalClose?: Function,
+  onModalClose?(): void,
 }
 
 export default class Modal extends Component<ModalProps> {
@@ -39,6 +40,7 @@ export default class Modal extends Component<ModalProps> {
   }
   renderCallback() {
     const { isOpen, closeTitle } = this;
+
     return [
       <style>{styles}</style>,
       isOpen &&
@@ -105,7 +107,7 @@ export default class Modal extends Component<ModalProps> {
   }
 
   private handleEsc( evt: KeyboardEvent ) {
-    if ( evt.which === 27 ) {
+    if ( evt.which === ESC_KEY_CODE ) {
       this.handleModalClose();
     }
   }

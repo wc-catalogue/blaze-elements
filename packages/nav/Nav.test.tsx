@@ -2,7 +2,6 @@ import { h, mount } from 'bore';
 
 import { Nav } from './index';
 
-
 describe( Nav.is, () => {
 
   it( 'should render', () => {

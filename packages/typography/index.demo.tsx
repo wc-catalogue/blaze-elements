@@ -1,18 +1,18 @@
+import { customElement } from '@blaze-elements/common';
 import { h } from 'skatejs';
 import { Component } from 'skatejs';
 import {
-  Paragraph,
   Abbreviation,
   Blockquote,
-  Link,
-  LoudText,
-  QuietText,
+  Code,
   HighlightedText,
   KeyboardKeys,
+  Link,
+  LoudText,
   MonospaceText,
-  Code
+  Paragraph,
+  QuietText
 } from './index';
-import { customElement } from '@blaze-elements/common';
 
 @customElement( 'bl-typography-demo' )
 export class Demo extends Component<void> {

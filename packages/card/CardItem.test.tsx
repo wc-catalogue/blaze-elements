@@ -1,5 +1,5 @@
-import * as expect from 'expect';
 import { h, mount, WrappedNode } from 'bore';
+import * as expect from 'expect';
 import { CardItem } from './index';
 
 describe( CardItem.is, () => {

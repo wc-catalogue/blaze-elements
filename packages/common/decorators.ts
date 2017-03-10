@@ -1,19 +1,20 @@
-import { h, Component, ComponentProps, PropOptions, prop as skProp, emit, define } from 'skatejs';
+import { Component, ComponentProps, define, emit, h, prop as skProp, PropOptions } from 'skatejs';
 import { ColorType } from './colorTypes';
 import { IS_DEV } from './environment';
-import { scopeCss, Constructable } from './utils';
+import { Constructable, scopeCss } from './utils';
 
 export function renderCss(): MethodDecorator {
-  return function <T extends Function>(
-    target: Object,
+  return function <T extends () => void>(
+    target: object,
     propertyKey: string | symbol,
     descriptor: TypedPropertyDescriptor<T>,
   ) {
     return {
-      value( this: { css?: string, shadyCss?: string | void } & Object ) {
+      value( this: { css?: string, shadyCss?: string | void } & object ) {
         // we preffer shadyCss which is present if Css Mixin is used, otherwise fallback to css property
         // tslint:disable-next-line:no-invalid-this
         const css = 'shadyCss' in this ? this.shadyCss : this.css;
+
         // tslint:disable-next-line:no-invalid-this
         return [ h( 'style', css ) ].concat( descriptor.value.call( this, this ) );
       }
@@ -27,11 +28,13 @@ export function customElement( name: string ): ClassDecorator {
       configurable: true,
       get() { return name; }
     } );
+
     return define( Target );
   };
 }
 
-export type PropConfig = PropOptions<any, any> & { type?: Function };
+export type PropCtorFn = () => any[] | object | number | boolean | string;
+export type PropConfig = PropOptions<any, any> & { type?: PropCtorFn };
 export type PropType = 'string' | 'number' | 'object' | 'array' | 'boolean';
 const identityFn = <T>( _: T ) => _;
 
@@ -94,7 +97,7 @@ export class EventEmitter<T> {
   private eventName: string;
 
   constructor(
-    private eventConfig: Object = {}
+    private eventConfig: object = {}
   ) { }
 
   emit( data: T ): boolean {
@@ -114,17 +117,18 @@ export class EventEmitter<T> {
   }
 }
 
-function parseType( type: Function ): PropType {
+function parseType( type: PropCtorFn ): PropType {
   if ( typeof type !== 'function' ) {
     return;
   }
-  const inst = type() as Array<any> | Object | number | boolean | string;
+  const inst = type();
   if ( inst instanceof Array ) {
     return 'array';
   }
   if ( typeof inst === 'object' ) {
     return 'object';
   }
+
   return ( typeof inst ) as 'boolean' | 'number' | 'string';
 }
 
@@ -139,6 +143,7 @@ export function colored(): ClassDecorator {
       configurable: true,
       get() { return newProps; }
     } );
+
     return Target;
   };
 }
@@ -153,12 +158,11 @@ export function disabled(): ClassDecorator {
     Object.defineProperty( Target, 'props', {
       configurable: true,
       get() { return newProps; }
-    }
-    );
+    } );
+
     return Target;
   };
 }
-
 
 export function shadyCssStyles() {
   return function <T extends Constructable<Component<any>>>( Target: T ) {
@@ -172,6 +176,7 @@ export function shadyCssStyles() {
           if ( IS_DEV && !( 'css' in this ) ) {
             throw new Error( `you have to implement 'css' property when using '@shadyCssStyles' Class Decorator!` );
           }
+
           // tslint:disable-next-line:no-invalid-this
           return scopeCss( this as any, this.css );
         }

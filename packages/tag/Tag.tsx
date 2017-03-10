@@ -1,5 +1,5 @@
-import { h, Component, emit, } from 'skatejs';
 import { GenericEvents, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, emit, h, } from 'skatejs';
 import styles from './Tag.scss';
 
 export type TagProps = Props & EventProps;

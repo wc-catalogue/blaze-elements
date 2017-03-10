@@ -1,8 +1,8 @@
 import { ColorType } from './colorTypes';
-import { IS_DEV } from './environment';
-import { scopeCss, Constructable } from './utils';
 import { prop } from './decorators';
+import { IS_DEV } from './environment';
 import { MixinClass } from './static-definitions/types';
+import { Constructable, scopeCss } from './utils';
 
 export type ColoredProps = {
   color?: ColorType,
@@ -26,7 +26,6 @@ export function Disabled<BC extends Constructable<{}>>( Base: BC ): MixinClass<B
   return DisabledCmp;
 }
 
-
 export type CssProps = {
   readonly css: string,
   readonly shadyCss: void | string,
@@ -39,11 +38,10 @@ export function Css<BC extends Constructable<{}>>( Base: BC ): MixinClass<BC, Cs
       if ( IS_DEV && !( 'css' in this ) ) {
         throw new Error( `you have to implement 'css' property when using 'Css' Mixin!` );
       }
+
       return scopeCss( this as any, this.css );
     }
 
   };
 
 }
-
-

@@ -1,13 +1,13 @@
-import * as expect from 'expect';
 import * as isSameDay from 'date-fns/is_same_day';
 import * as parse from 'date-fns/parse';
-import { Calendar } from './index';
+import * as expect from 'expect';
 import RawCalendar from './Calendar';
 import Button from './components/Button';
+import { Calendar } from './index';
 
+import { GenericEvents } from '@blaze-elements/common';
 import { h, mount, WrappedNode } from 'bore';
 import { emit } from 'skatejs';
-import { GenericEvents } from '@blaze-elements/common';
 
 describe( Calendar.is, () => {
 
@@ -149,7 +149,6 @@ describe( Calendar.is, () => {
         weekdays2char: [ 'Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So' ]
       };
 
-
       it( `should set months internationalized`, () => {
 
         return mount(
@@ -192,6 +191,7 @@ describe( Calendar.is, () => {
 
       it( `should emit onChange event with selected day value`, () => {
 
+        const TENTH_DAY_IDX = 10;
         const expectedDate = parse( '1987-12-09' );
 
         let changeTriggered = false;
@@ -209,7 +209,7 @@ describe( Calendar.is, () => {
         ).wait(( element ) => {
 
           // existing day in month
-          const oneDay = element.all( 'button:not(.c-calendar__control)' )[ 10 ].node as HTMLButtonElement;
+          const oneDay = element.all( 'button:not(.c-calendar__control)' )[ TENTH_DAY_IDX ].node as HTMLButtonElement;
           emit( oneDay, 'click' );
           expect( changeTriggered ).toBe( true );
           expect( isSameDay( expectedDate, selectedDate ) ).toBe( true );

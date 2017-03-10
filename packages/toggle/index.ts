@@ -1,13 +1,12 @@
 
 import { customElement, GenericTypes } from '@blaze-elements/common';
-import RawToggle, { ToggleProps, Attrs, Events } from './Toggle';
+import RawToggle, { Attrs, Events, ToggleProps } from './Toggle';
 
 const Toggle = customElement( 'bl-toggle' )( RawToggle ) as typeof RawToggle;
 
 export {
   Toggle
 };
-
 
 declare global {
   namespace JSX {

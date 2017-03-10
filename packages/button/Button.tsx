@@ -1,15 +1,15 @@
-import { h, Component } from 'skatejs';
+import { Component, h } from 'skatejs';
 
 import {
-  cssClassForColorType,
-  css,
-  GenericEvents,
   Colored,
   ColoredProps,
+  css,
+  cssClassForColorType,
   Disabled,
   DisabledProps,
-  shadyCssStyles,
-  prop
+  GenericEvents,
+  prop,
+  shadyCssStyles
 } from '@blaze-elements/common';
 
 import styles from './Button.scss';
@@ -71,6 +71,7 @@ export default class Button extends Colored( Disabled( Component ) )<ButtonProps
         'c-button--block': block,
       }
     );
+
     return (
       <button
         class={className}

@@ -9,6 +9,7 @@ export function h( name: any, attrs: { [ key: string ]: any }, ...chren: any[] )
       : ( node[ attrName ] = attrs[ attrName ] )
   );
   chren.forEach(( child ) => node.appendChild( child instanceof Node ? child : document.createTextNode( child ) ) );
+
   return node;
 }
 
@@ -32,6 +33,7 @@ function attr( node: any, attrName: string, attrValue: any ): void {
     Object.keys( attrValue ).forEach(( key ) => {
       node.setAttribute( key, attrValue[ key ] );
     } );
+
     return;
   }
   node.setAttribute( attrName, attrValue );

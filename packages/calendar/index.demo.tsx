@@ -1,5 +1,5 @@
-import { h, Component } from 'skatejs';
-import { GenericEvents, customElement, prop } from '@blaze-elements/common';
+import { customElement, GenericEvents, prop } from '@blaze-elements/common';
+import { Component, h } from 'skatejs';
 import { Calendar } from './index';
 
 @customElement( 'bl-calendar-demo' )

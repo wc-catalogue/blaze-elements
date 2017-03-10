@@ -1,6 +1,6 @@
-import { h, Component, emit, props } from 'skatejs';
+import { css, GenericEvents, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, emit, h, props } from 'skatejs';
 import styles from './Collapsible.scss';
-import { css, prop, GenericEvents, shadyCssStyles } from '@blaze-elements/common';
 
 export type CollapsibleProps = Props & EventProps;
 

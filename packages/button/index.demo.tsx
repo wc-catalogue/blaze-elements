@@ -1,5 +1,5 @@
-import { h, Component, props } from 'skatejs';
 import { customElement, prop, shadyCssStyles } from '@blaze-elements/common';
+import { Component, h, props } from 'skatejs';
 
 import { Button } from './index';
 
@@ -9,7 +9,7 @@ export type DemoProps = { logger: string[], wat?: string, };
 @shadyCssStyles()
 export class Demo extends Component<DemoProps> {
 
-  @prop( { attribute: true } ) wat: string = 'bl-button';
+  @prop( { attribute: true } ) wat = 'bl-button';
   @prop( { type: Array } ) private logger: string[];
 
   get css() {
@@ -28,6 +28,7 @@ export class Demo extends Component<DemoProps> {
 
   renderCallback() {
     const { logger, wat } = this;
+
     return [
       <h2 class="div">{wat} DEMO:</h2>,
       <fieldset>

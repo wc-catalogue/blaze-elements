@@ -1,7 +1,7 @@
 
-import { GenericTypes, customElement } from '@blaze-elements/common';
-import RawSelect, { SelectProps, Props, Events } from './Select';
-import RawOption, { OptionProps, Props as PropsOption, Events as EventsOption } from './Option';
+import { customElement, GenericTypes } from '@blaze-elements/common';
+import RawOption, { Events as EventsOption, OptionProps, Props as PropsOption } from './Option';
+import RawSelect, { Events, Props, SelectProps } from './Select';
 
 const Select = customElement( 'bl-select' )( RawSelect ) as typeof RawSelect;
 const Option = customElement( 'bl-option' )( RawOption ) as typeof RawOption;

@@ -1,4 +1,4 @@
-import { h, Component } from 'skatejs';
+import { Component, h } from 'skatejs';
 import { Badge } from './index';
 
 export class Demo extends Component<void> {
@@ -43,6 +43,5 @@ export class Demo extends Component<void> {
     ];
   }
 }
-
 
 customElements.define( Demo.is, Demo );
