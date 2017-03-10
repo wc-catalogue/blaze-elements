@@ -31,8 +31,8 @@ export function customElement( name: string ): ClassDecorator {
   };
 }
 
-type PropConfig = PropOptions<any, any> & { type?: Function };
-type PropType = 'string' | 'number' | 'object' | 'array' | 'boolean';
+export type PropConfig = PropOptions<any, any> & { type?: Function };
+export type PropType = 'string' | 'number' | 'object' | 'array' | 'boolean';
 const identityFn = <T>( _: T ) => _;
 
 export function prop( config: PropConfig = {} ): PropertyDecorator {
