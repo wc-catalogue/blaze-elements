@@ -2,11 +2,15 @@
   "name": "@blaze-elements/select",
   "version": "1.0.1",
   "main": "dist/index.min.js",
-  "typings": "definitions/index.d.ts",
+  "typings": "definitions/packages/select/index.d.ts",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "definitions",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/wc-catalogue/blaze-elements.git"
@@ -16,9 +20,10 @@
     "test": "npm run build:test && ../../node_modules/.bin/wct",
     "test:watch": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p\"",
     "test:watch:firefox": "../../node_modules/.bin/concurrently \"npm run build:test:watch\" \"WCT_INDEX=./index.watch.test.html ../../node_modules/.bin/wct -p -l firefox\"",
-    "build": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.prod --env.element=select",
-    "build:test": "../../node_modules/.bin/rimraf dist && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.test --env.element=select",
-    "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=select"
+    "build": "npm run build:cleanup && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.prod --env.element=select",
+    "build:test": "npm run build:cleanup && ../../node_modules/.bin/webpack --config ../../webpack.config.js --env.test --env.element=select",
+    "build:test:watch": "../../node_modules/.bin/webpack-dev-server --config ../../webpack.config.js --env.test --env.element=select",
+    "build:cleanup": "../../node_modules/.bin/rimraf dist definitions"
   },
   "dependencies": {
     "@blaze-elements/button": "^1.0.0",

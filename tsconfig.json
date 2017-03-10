@@ -18,6 +18,8 @@
     "pretty": true,
     "skipLibCheck": true,
     "baseUrl": ".",
+    "declaration": true,
+    "declarationDir": "definitions",
     "typeRoots": [
       "node_modules/@types",
       "manual_definitions"
