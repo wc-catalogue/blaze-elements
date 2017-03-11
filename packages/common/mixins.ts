@@ -1,13 +1,14 @@
 import { ColorType } from './colorTypes';
 import { prop } from './decorators';
 import { IS_DEV } from './environment';
-import { MixinClass } from './static-definitions/types';
-import { Constructable, scopeCss } from './utils';
+import { Constructor, MixinClass } from './static-definitions/types';
+import { scopeCss } from './utils';
 
 export type ColoredProps = {
   color?: ColorType,
 };
-export function Colored<BC extends Constructable<{}>>( Base: BC ): MixinClass<BC, ColoredProps> {
+
+export function Colored<T extends Constructor<{}>>( Base: T ): MixinClass<ColoredProps, T> {
   class ColoredCmp extends Base {
     @prop( { type: String, attribute: { source: true } } ) color?: ColorType;
   }
@@ -18,7 +19,8 @@ export function Colored<BC extends Constructable<{}>>( Base: BC ): MixinClass<BC
 export type DisabledProps = {
   disabled?: boolean,
 };
-export function Disabled<BC extends Constructable<{}>>( Base: BC ): MixinClass<BC, DisabledProps> {
+
+export function Disabled<T extends Constructor<{}>>( Base: T ): MixinClass<DisabledProps, T> {
   class DisabledCmp extends Base {
     @prop( { type: Boolean, attribute: true } ) disabled?: boolean;
   }
@@ -30,7 +32,8 @@ export type CssProps = {
   readonly css: string,
   readonly shadyCss: void | string,
 };
-export function Css<BC extends Constructable<{}>>( Base: BC ): MixinClass<BC, CssProps> {
+
+export function Css<T extends Constructor<{}>>( Base: T ): MixinClass<CssProps, T> {
   return class extends Base {
     readonly css: string;
 
