@@ -36,6 +36,7 @@
   },
   "exclude": [
     "node_modules",
+    "definitions",
     "packages/*/node_modules",
     "packages/*/definitions"
   ]
