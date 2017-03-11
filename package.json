@@ -24,7 +24,7 @@
     "verify": "npm run ts:style && npm test",
     "toolbelt:generate:configs": "node toolbelt/generate-configs.js",
     "toolbelt:packagelist": "node toolbelt/generate-packages-list.js",
-    "cleanup": "rimraf dist && rimraf packages/**/dist && rimraf packages/**/definitions && rimraf tmp",
+    "cleanup": "rimraf dist packages/**/dist definitions packages/**/definitions tmp ts-output",
     "semantic-release": "npm run build && lerna-semantic-release pre && lerna-semantic-release perform && lerna-semantic-release post"
   },
   "repository": {
