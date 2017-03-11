@@ -4,7 +4,7 @@ import { Component, h, props } from 'skatejs';
 import AlertButton from './components/Button';
 import { Alert } from './index';
 
-type DemoProps = { isOpen?: boolean };
+export type DemoProps = { isOpen?: boolean };
 
 @customElement( 'bl-alert-demo' )
 export class Demo extends Component<DemoProps> {

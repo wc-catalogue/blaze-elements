@@ -1,17 +1,16 @@
-import { Component, h } from 'skatejs';
+import { h } from 'skatejs';
 
 import {
-  Colored,
   ColoredProps,
   css,
   cssClassForColorType,
-  Disabled,
   DisabledProps,
   GenericEvents,
   prop,
   shadyCssStyles
 } from '@blaze-elements/common';
 
+import { ColoredDisabledComponent } from '../common/components';
 import styles from './Button.scss';
 
 export type ButtonProps = Props & EventHandlers;
@@ -32,7 +31,7 @@ export type EventHandlers = {
 };
 
 @shadyCssStyles()
-export default class Button extends Colored( Disabled( Component ) )<ButtonProps> {
+export default class Button extends ColoredDisabledComponent<ButtonProps> {
 
   @prop( {
     type: Boolean,
