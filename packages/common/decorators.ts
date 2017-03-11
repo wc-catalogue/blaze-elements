@@ -1,7 +1,8 @@
 import { Component, ComponentProps, define, emit, h, prop as skProp, PropOptions } from 'skatejs';
 import { ColorType } from './colorTypes';
 import { IS_DEV } from './environment';
-import { Constructable, scopeCss } from './utils';
+import { Constructable } from './static-definitions/types';
+import { scopeCss } from './utils';
 
 export function renderCss(): MethodDecorator {
   return function <T extends () => void>(
