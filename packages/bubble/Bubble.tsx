@@ -2,7 +2,7 @@ import { css, prop, shadyCssStyles } from '@blaze-elements/common';
 import { Component, h } from 'skatejs';
 import styles from './Bubble.scss';
 
-const BubbleTypes = {
+export const BubbleTypes = {
   top: 'top',
   left: 'left',
   right: 'right',
