@@ -8,6 +8,7 @@ addons:
   firefox: latest
   sauce_connect: true
 before_install:
+  - .ci/before_install.sh
   - nvm install $NODE_VERSION
   - nvm alias $NODE_VERSION
   # Repo for newer Node.js versions
@@ -23,6 +24,10 @@ cache:
 install:
   - travis_retry yarn
 script:
-  - yarn ts:lint && yarn test
+  - yarn tsc
+  - yarn ts:lint
+  - yarn test
 after_success:
-  - toolbelt/publish-and-deploy.sh
+  - .ci/after_success.sh
+git:
+  depth: 1
