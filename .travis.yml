@@ -24,5 +24,4 @@ install:
   - travis_retry yarn
 script:
   - yarn ts:lint && yarn test
-after_success:
-  - toolbelt/publish-and-deploy.sh
+after_success: .ci/after_success.sh
