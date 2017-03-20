@@ -1,6 +1,6 @@
 {
   "name": "@blaze-elements/tag",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "main": "dist/index.min.js",
   "typings": "definitions/packages/tag/index.d.ts",
   "license": "MIT",
