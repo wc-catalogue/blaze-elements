@@ -1,6 +1,6 @@
 {
   "name": "@blaze-elements/calendar",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "main": "dist/index.min.js",
   "typings": "definitions/packages/calendar/index.d.ts",
   "license": "MIT",
