@@ -17,7 +17,7 @@ RELATIVE_PKG=packages/${PACKAGE_WITHOUT_SCOPE}
 [ -z $NPM_TOKEN ] && echo "need to set NPM_TOKEN" && exit 1
 [ -z $VERSION_TYPE ] && echo "need to set VERSION_TYPE" && exit 1
 
-yarn test
+# yarn test
 
 git fetch
 git pull
