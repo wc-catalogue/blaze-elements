@@ -1,6 +1,6 @@
 {
   "name": "@blaze-elements/modal",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.min.js",
   "typings": "definitions/packages/modal/index.d.ts",
   "license": "MIT",
