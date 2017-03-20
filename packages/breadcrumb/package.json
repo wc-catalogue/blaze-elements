@@ -1,6 +1,6 @@
 {
   "name": "@blaze-elements/breadcrumb",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.min.js",
   "typings": "definitions/packages/breadcrumb/index.d.ts",
   "license": "MIT",
