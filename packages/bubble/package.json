@@ -26,6 +26,6 @@
     "build:cleanup": "../../node_modules/.bin/rimraf dist definitions"
   },
   "dependencies": {
-    "@blaze-elements/common": "1.0.1"
+    "@blaze-elements/common": "1.0.3"
   }
 }

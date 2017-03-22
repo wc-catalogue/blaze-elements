@@ -28,6 +28,6 @@
   "dependencies": {
     "@blaze-elements/button": "1.0.1",
     "@blaze-elements/card": "1.1.2",
-    "@blaze-elements/common": "1.0.1"
+    "@blaze-elements/common": "1.0.3"
   }
 }
