@@ -1,6 +1,6 @@
 {
   "name": "blaze-elements",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "dist/index.min.js",
   "typings": "definitions/packages/blaze-elements/index.d.ts",
   "license": "MIT",
