@@ -1,6 +1,6 @@
 {
   "name": "@blaze-elements/typography",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.min.js",
   "typings": "definitions/packages/typography/index.d.ts",
   "license": "MIT",
