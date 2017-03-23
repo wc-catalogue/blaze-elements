@@ -1,6 +1,6 @@
 {
   "name": "@blaze-elements/range",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.min.js",
   "typings": "definitions/packages/range/index.d.ts",
   "license": "MIT",
