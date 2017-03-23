@@ -1,6 +1,6 @@
 {
   "name": "@blaze-elements/accordion",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/index.min.js",
   "typings": "definitions/packages/accordion/index.d.ts",
   "license": "MIT",
