@@ -33,7 +33,7 @@
   "dependencies": {
     "blaze": "3.2.0",
     "core-js": "2.4.1",
-    "date-fns": "1.28.1",
+    "date-fns": "1.28.2",
     "decko": "1.2.0",
     "skatejs": "4.6.7",
     "skatejs-web-components": "5.2.1",
