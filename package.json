@@ -67,7 +67,7 @@
     "style-loader": "0.13.2",
     "to-string-loader": "1.1.5",
     "tslint": "4.5.1",
-    "tslint-react": "2.4.0",
+    "tslint-react": "2.6.0",
     "typescript": "2.2.1",
     "typescript-formatter": "5.1.1",
     "url-loader": "0.5.8",
