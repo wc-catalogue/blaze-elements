@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@types/expect": "1.20.0",
-    "@types/mocha": "2.2.39",
+    "@types/mocha": "2.2.41",
     "@types/node": "7.0.5",
     "@types/sinon-chai": "2.7.27",
     "awesome-typescript-loader": "3.1.2",
