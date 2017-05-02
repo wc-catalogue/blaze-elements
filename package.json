@@ -48,7 +48,7 @@
     "bore": "2.0.1",
     "commitizen": "2.9.6",
     "concurrently": "3.4.0",
-    "css-loader": "0.26.2",
+    "css-loader": "0.28.1",
     "cz-lerna-changelog": "1.2.1",
     "expect": "1.20.2",
     "favicons-webpack-plugin": "0.0.7",
