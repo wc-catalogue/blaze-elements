@@ -37,7 +37,7 @@
     "decko": "1.2.0",
     "skatejs": "4.6.7",
     "skatejs-web-components": "5.2.1",
-    "tslib": "1.6.0"
+    "tslib": "1.7.1"
   },
   "devDependencies": {
     "@types/expect": "1.20.0",
