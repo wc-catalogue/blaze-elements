@@ -70,7 +70,7 @@
     "tslint-react": "2.4.0",
     "typescript": "2.2.1",
     "typescript-formatter": "5.1.1",
-    "url-loader": "0.5.8",
+    "url-loader": "0.6.1",
     "validate-commit-msg": "2.11.2",
     "wct-sauce": "2.0.0-pre.1",
     "web-component-tester": "5.0.1",
