@@ -74,7 +74,7 @@
     "validate-commit-msg": "2.11.2",
     "wct-sauce": "2.0.0-pre.1",
     "web-component-tester": "5.0.1",
-    "webpack": "2.2.1",
+    "webpack": "3.7.1",
     "webpack-config-utils": "2.3.0",
     "webpack-dev-server": "2.4.1",
     "webpack-merge": "4.0.0"
