@@ -69,7 +69,7 @@
     "tslint": "4.5.1",
     "tslint-react": "2.4.0",
     "typescript": "2.2.1",
-    "typescript-formatter": "5.1.1",
+    "typescript-formatter": "6.1.0",
     "url-loader": "0.5.8",
     "validate-commit-msg": "2.11.2",
     "wct-sauce": "2.0.0-pre.1",
