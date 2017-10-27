@@ -31,7 +31,7 @@
     "url": "https://github.com/wc-catalogue/blaze-elements.git"
   },
   "dependencies": {
-    "blaze": "3.2.0",
+    "blaze": "3.6.1",
     "core-js": "2.4.1",
     "date-fns": "1.28.1",
     "decko": "1.2.0",
