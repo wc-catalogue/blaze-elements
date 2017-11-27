@@ -76,7 +76,7 @@
     "web-component-tester": "5.0.1",
     "webpack": "2.2.1",
     "webpack-config-utils": "2.3.0",
-    "webpack-dev-server": "2.4.1",
+    "webpack-dev-server": "2.9.5",
     "webpack-merge": "4.0.0"
   },
   "config": {
