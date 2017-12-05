@@ -42,7 +42,7 @@
   "devDependencies": {
     "@types/expect": "1.20.0",
     "@types/mocha": "2.2.39",
-    "@types/node": "7.0.5",
+    "@types/node": "8.0.55",
     "@types/sinon-chai": "2.7.27",
     "awesome-typescript-loader": "3.1.2",
     "bore": "2.0.1",
